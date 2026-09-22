@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div>
-      <Router>
+      <Router  basename="/Sroia" >
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<div><HomePage /></div>} />
