@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import heroImage from "./assetes/project-management-hero.png";
 import planningIcon from "./assetes/step-planning.png";
 import executionIcon from "./assetes/step-execution.png";
@@ -75,11 +77,20 @@ function MarkIcon() {
   );
 }
 
+function ArrowIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M19 12H5M11 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+
 export default function ProjectManagement() {
   return (
     <main dir="rtl" className="overflow-hidden bg-[#FAFCF7] font-['Assistant',sans-serif] text-[#213020]">
       <Hero />
-      <AboutAsaf />
+      {/* <AboutAsaf /> */}
       <WhyUs />
       <div>
         <div className="text-center mt-6 font-['Heebo',sans-serif]">
@@ -286,6 +297,55 @@ export default function ProjectManagement() {
         </div>
         <GallerySection status="finish" />
       </div>
+
+      <section
+        dir="rtl"
+        className="relative overflow-hidden bg-[#F7F5EF] py-20 font-['Heebo',sans-serif] md:py-12"
+      >
+        <div className="pointer-events-none absolute -bottom-40 -left-32 h-[380px] w-[380px] rounded-full bg-[#EDE4D6]/60 blur-3xl" />
+
+        <div className="relative mx-auto max-w-[760px] px-5 text-center">
+          <div className="mb-5 flex items-center justify-center gap-4">
+            <span className="h-px w-10 bg-gradient-to-l from-[#8EAD70] to-transparent" />
+
+            <span className="text-[13px] font-black tracking-[0.16em] text-[#78965D]">
+              בואו נדבר
+            </span>
+
+            <span className="h-px w-10 bg-gradient-to-r from-[#8EAD70] to-transparent" />
+          </div>
+
+          <h2 className="text-[32px] font-black leading-[1.25] text-[#31382D] md:text-[42px]">
+            מוכנים להתחיל
+            <span className="block text-[#7F9F62]">לבנות נכון?</span>
+          </h2>
+
+          <p className="mx-auto mt-5 max-w-[560px] text-[16px] font-medium leading-[1.9] text-[#667061]">
+            השאירו פרטים ונחזור אליכם בהקדם כדי להבין את הצורך שלכם
+            ולהתחיל לתכנן יחד את הפרויקט.
+          </p>
+
+          <button
+            onClick={() => navigate("/contact")}
+            className="
+              group mt-9 inline-flex items-center gap-3
+              rounded-full bg-[#7F9F62] px-9 py-4
+              text-[16px] font-black text-white
+              shadow-[0_14px_35px_rgba(127,159,98,0.28)]
+              transition-all duration-300
+              hover:-translate-y-1
+              hover:bg-[#6E8C54]
+              hover:shadow-[0_18px_42px_rgba(127,159,98,0.36)]
+            "
+          >
+            <span>לעמוד יצירת הקשר</span>
+            <span className="transition-transform duration-300 group-hover:-translate-x-1">
+              <ArrowIcon />
+            </span>
+          </button>
+        </div>
+      </section>
+
 
     </main>
   );
