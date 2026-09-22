@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import v3Bg from "./assete/V3.jpg";
+import v3Bg from "./assete/v3.jpg";
 
 // אנימציית כניסה עדינה
 function Reveal({ children, delay = 0 }) {
