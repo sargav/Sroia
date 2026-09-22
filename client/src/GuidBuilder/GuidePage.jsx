@@ -65,34 +65,38 @@ function HeroSection({ onCtaClick }) {
       />
 
       <div className="relative flex flex-col items-center px-0 pb-24 pt-14 text-center sm:pb-32 sm:pt-20">
-        <img
-          src={heroLogoBadge}
-          alt="בית בשתי ידיים - המדריך לבונה - איך לעשות סדר בכל שלבי הבנייה"
-          className="mb-5 max-w-lg"
-        />
-        <button
-                type="button"
-                onClick={onCtaClick}
-                className="
-                  group flex items-center justify-center gap-4
-                  rounded-full bg-[#86B84D]
-                  px-7 py-4 text-[15px] font-bold text-white
-                  shadow-[0_9px_25px_rgba(121,169,66,0.28)]
-                  transition-all duration-300
-                  hover:-translate-y-1 hover:gap-6
-                  hover:bg-[#78A63F]
-                  hover:shadow-[0_14px_32px_rgba(121,169,66,0.36)]
-                "
-              >
-                <span>עכשיו ללא עלות</span>
-
-                <span
-                  className="transition-transform duration-300 group-hover:-translate-x-1"
-                  aria-hidden="true"
+        <Reveal>
+          <img
+            src={heroLogoBadge}
+            alt="בית בשתי ידיים - המדריך לבונה - איך לעשות סדר בכל שלבי הבנייה"
+            className="mb-5 max-w-lg"
+          />
+        </Reveal>
+        <Reveal delay={150}>
+          <button
+                  type="button"
+                  onClick={onCtaClick}
+                  className="
+                    group flex items-center justify-center gap-4
+                    rounded-full bg-[#86B84D]
+                    px-7 py-4 text-[15px] font-bold text-white
+                    shadow-[0_9px_25px_rgba(121,169,66,0.28)]
+                    transition-all duration-300
+                    hover:-translate-y-1 hover:gap-6
+                    hover:bg-[#78A63F]
+                    hover:shadow-[0_14px_32px_rgba(121,169,66,0.36)]
+                  "
                 >
-                  ←
-                </span>
-              </button>
+                  <span>עכשיו ללא עלות</span>
+
+                  <span
+                    className="transition-transform duration-300 group-hover:-translate-x-1"
+                    aria-hidden="true"
+                  >
+                    ←
+                  </span>
+                </button>
+        </Reveal>
       </div>
     </section>
   );
@@ -104,18 +108,20 @@ function VideoSection() {
   return (
     <section className="px-6 py-6" style={{ backgroundColor: CREAM }}>
       <div className="mx-auto max-w-xs">
-        <div
-          className="overflow-hidden rounded-2xl shadow-xl"
-          style={{ aspectRatio: "9 / 16" }}
-        >
-          <iframe
-            className="h-full w-full"
-            src={`https://www.youtube.com/embed/${YOUTUBE_ID}?enablejsapi=1`}
-            title="בית בשתי ידיים - שלבי הבנייה"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </div>
+        <Reveal>
+          <div
+            className="overflow-hidden rounded-2xl shadow-xl"
+            style={{ aspectRatio: "9 / 16" }}
+          >
+            <iframe
+              className="h-full w-full"
+              src={`https://www.youtube.com/embed/${YOUTUBE_ID}?enablejsapi=1`}
+              title="בית בשתי ידיים - שלבי הבנייה"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -143,52 +149,68 @@ function StraightTalkSection({ onCtaClick }) {
   return (
     <section className="px-6 py-6" style={{ backgroundColor: OLIVE_BG }}>
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="mb-2 text-3xl font-black" style={{ color: GREEN }}>
-          בוא נדבר רגע דוגרי
-        </h2>
+        <Reveal>
+          <h2 className="mb-2 text-3xl font-black" style={{ color: GREEN }}>
+            בוא נדבר רגע דוגרי
+          </h2>
+        </Reveal>
 
-        <p className="mx-auto mb-2 max-w-lg text-lg leading-snug text-neutral-800">
-          אם אתם עומדים להתחיל תהליך של בנייה פרטית, אתם בטח מרגישים שילוב
-          של התרגשות יחד עם ים של סימני שאלה.
-        </p>
+        <Reveal delay={100}>
+          <p className="mx-auto mb-2 max-w-lg text-lg leading-snug text-neutral-800">
+            אם אתם עומדים להתחיל תהליך של בנייה פרטית, אתם בטח מרגישים שילוב
+            של התרגשות יחד עם ים של סימני שאלה.
+          </p>
+        </Reveal>
 
-        <img
-          src={questionsCluster}
-          alt="שאלות נפוצות בתהליך הבנייה"
-          className="mx-auto mb-1 w-full max-w-xl"
-        />
+        <Reveal delay={200}>
+          <img
+            src={questionsCluster}
+            alt="שאלות נפוצות בתהליך הבנייה"
+            className="mx-auto mb-1 w-full max-w-xl"
+          />
+        </Reveal>
 
-        <p className="mx-auto mb-1 max-w-lg text-lg leading-snug text-neutral-800">
-          ואיך בכלל שומרים על שליטה כשהכול מרגיש גדול ומבולבל?
-          <br />
-          וזה בדיוק המקום שבו רוב הבונים עושים טעויות שעולות להם בעשרות
-          אלפי שקלים, פשוט כי אף אחד לא מסביר להם את הדרך.
-          <br />
-          המדריך הזה נבנה כדי לתת לכם משהו אחר —
-        </p>
+        <Reveal delay={300}>
+          <p className="mx-auto mb-1 max-w-lg text-lg leading-snug text-neutral-800">
+            ואיך בכלל שומרים על שליטה כשהכול מרגיש גדול ומבולבל?
+            <br />
+            וזה בדיוק המקום שבו רוב הבונים עושים טעויות שעולות להם בעשרות
+            אלפי שקלים, פשוט כי אף אחד לא מסביר להם את הדרך.
+            <br />
+            המדריך הזה נבנה כדי לתת לכם משהו אחר —
+          </p>
+        </Reveal>
 
-        <img
-          src={checklistSafety}
-          alt="סדר, בהירות, ביטחון"
-          className="mx-auto mb-1 w-full max-w-md"
-        />
+        <Reveal delay={400}>
+          <img
+            src={checklistSafety}
+            alt="סדר, בהירות, ביטחון"
+            className="mx-auto mb-1 w-full max-w-md"
+          />
+        </Reveal>
 
-        <p className="mx-auto mb-2 max-w-lg text-lg leading-snug text-neutral-800">
-          כדי שתדעו בדיוק מה מחכה לכם, שלב אחר שלב ותקבלו שליטה מהיום
-          הראשון.
-        </p>
+        <Reveal delay={500}>
+          <p className="mx-auto mb-2 max-w-lg text-lg leading-snug text-neutral-800">
+            כדי שתדעו בדיוק מה מחכה לכם, שלב אחר שלב ותקבלו שליטה מהיום
+            הראשון.
+          </p>
+        </Reveal>
 
-        <p className="mb-2 text-lg font-bold text-neutral-800">
-          כבר 2,000 משפחות הורידו את המדריך והתחילו לבנות נכון
-        </p>
+        <Reveal delay={600}>
+          <p className="mb-2 text-lg font-bold text-neutral-800">
+            כבר 2,000 משפחות הורידו את המדריך והתחילו לבנות נכון
+          </p>
+        </Reveal>
 
-        <button
-          onClick={onCtaClick}
-          className="rounded-full px-8 py-4 text-lg font-bold text-white shadow-lg transition-transform hover:scale-[1.03]"
-          style={{ backgroundColor: GREEN }}
-        >
-          להורדת המדריך בחינם
-        </button>
+        <Reveal delay={700}>
+          <button
+            onClick={onCtaClick}
+            className="rounded-full px-8 py-4 text-lg font-bold text-white shadow-lg transition-transform hover:scale-[1.03]"
+            style={{ backgroundColor: GREEN }}
+          >
+            להורדת המדריך בחינם
+          </button>
+        </Reveal>
       </div>
     </section>
   );
@@ -216,19 +238,23 @@ function ProductShowcase() {
         </svg>
 
         {/* מוקאפ */}
-        <img
-          src={mockupDevices}
-          alt="המדריך לבונה"
-          className="relative mx-auto w-full max-w-3xl pt-12 pb-4 sm:pt-20 sm:pb-6"
-          style={{ zIndex: 2 }}
-        />
+        <RevealSlide>
+          <img
+            src={mockupDevices}
+            alt="המדריך לבונה"
+            className="relative mx-auto w-full max-w-3xl pt-12 pb-4 sm:pt-20 sm:pb-6"
+            style={{ zIndex: 2 }}
+          />
+        </RevealSlide>
 
         {/* "מה תמצאו במדריך?" — יושב בדיוק על קו התפר, חופף לקטע הבא */}
         <div
           className="mx-auto max-w-2xl text-center"
           style={{ position: "relative", overflow: "visible", zIndex: 6, marginBottom: "-56px" }}
         >
-          <img src={badgeWhatYouFind} alt="מה תמצאו במדריך?" className="mx-auto w-full max-w-sm" />
+          <Reveal delay={150}>
+            <img src={badgeWhatYouFind} alt="מה תמצאו במדריך?" className="mx-auto w-full max-w-sm" />
+          </Reveal>
         </div>
 
         {/* משולש קטן בדיוק על קו התפר, מאחורי הבאדג' */}
@@ -245,13 +271,15 @@ function ProductShowcase() {
       {/* טקסט "לא חפירות..." */}
       <section className="relative pt-16 sm:pt-20" style={{ backgroundColor: OLIVE_BG }}>
         <div className="mx-auto max-w-2xl px-6 pb-6 text-center">
-          <p className="mx-auto max-w-md text-lg font-semibold leading-snug text-neutral-700">
-            לא חפירות.<br />
-            לא תיאוריה.<br />
-            לא &quot;מאמרים&quot;.<br />
-            <span style={{ color: GREEN }}>אלא מידע פרקטי, קצר, מסודר וחד</span>{" "}
-            שמגיע מ-15+ שנות ניסיון בליווי עשרות משפחות בתהליכי בנייה.
-          </p>
+          <Reveal>
+            <p className="mx-auto max-w-md text-lg font-semibold leading-snug text-neutral-700">
+              לא חפירות.<br />
+              לא תיאוריה.<br />
+              לא &quot;מאמרים&quot;.<br />
+              <span style={{ color: GREEN }}>אלא מידע פרקטי, קצר, מסודר וחד</span>{" "}
+              שמגיע מ-15+ שנות ניסיון בליווי עשרות משפחות בתהליכי בנייה.
+            </p>
+          </Reveal>
         </div>
 
         {/* משולש קטן - לקו התחתון של הקטע, לקראת קטע 5 השלבים */}
@@ -557,45 +585,53 @@ function AboutSection() {
         style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.75) 100%)" }}
       />
       <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-        <div className="relative mb-3" style={{ marginTop: "-90px", zIndex: 6 }}>
-          <div
-            className="flex h-56 w-56 items-center justify-center rounded-full sm:h-64 sm:w-64"
-            style={{ backgroundColor: "#d7e6b8" }}
-          >
-            <img
-              src={asafPhoto}
-              alt="אסף סרויה"
-              className="h-full w-full object-contain object-bottom"
-            />
+        <Reveal>
+          <div className="relative mb-3" style={{ marginTop: "-90px", zIndex: 6 }}>
+            <div
+              className="flex h-56 w-56 items-center justify-center rounded-full sm:h-64 sm:w-64"
+              style={{ backgroundColor: "#d7e6b8" }}
+            >
+              <img
+                src={asafPhoto}
+                alt="אסף סרויה"
+                className="h-full w-full object-contain object-bottom"
+              />
+            </div>
+            <div
+              className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-xl px-6 py-2 text-lg font-bold text-white"
+              style={{ backgroundColor: "#1f1f1f" }}
+            >
+              נעים להכיר
+            </div>
           </div>
-          <div
-            className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-xl px-6 py-2 text-lg font-bold text-white"
-            style={{ backgroundColor: "#1f1f1f" }}
-          >
-            נעים להכיר
+        </Reveal>
+
+        <Reveal delay={150}>
+          <p className="mb-2 text-2xl font-bold text-neutral-800">
+            נעים מאוד, אני אסף סרויה
+          </p>
+        </Reveal>
+
+        <Reveal delay={280}>
+          <div className="mb-2 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <img src={statYears} alt="15 שנות ניסיון" className="mx-auto h-24 w-auto" />
+            <img src={statFamilies} alt="100+ משפחות" className="mx-auto h-24 w-auto" />
+            <img src={statMillions} alt="מיליוני שקלים שנחסכו" className="mx-auto h-24 w-auto" />
           </div>
-        </div>
+        </Reveal>
 
-        <p className="mb-2 text-2xl font-bold text-neutral-800">
-          נעים מאוד, אני אסף סרויה
-        </p>
-
-        <div className="mb-2 grid grid-cols-1 gap-3 sm:grid-cols-3">
-          <img src={statYears} alt="15 שנות ניסיון" className="mx-auto h-24 w-auto" />
-          <img src={statFamilies} alt="100+ משפחות" className="mx-auto h-24 w-auto" />
-          <img src={statMillions} alt="מיליוני שקלים שנחסכו" className="mx-auto h-24 w-auto" />
-        </div>
-
-        <p className="max-w-xl text-lg leading-snug text-neutral-700">
-          ב-15 השנים האחרונות ליוויתי מעל 100 משפחות בבניית הבית שלהן.
-          <br />
-          <br />
-          המדריך שאתם מקבלים עכשיו הוא בדיוק הדברים שאני מעביר למשפחות
-          שמרוויחות תהליך בנייה{" "}
-          <span className="font-bold" style={{ color: GREEN }}>
-            רגוע, מדויק וחסכוני.
-          </span>
-        </p>
+        <Reveal delay={400}>
+          <p className="max-w-xl text-lg leading-snug text-neutral-700">
+            ב-15 השנים האחרונות ליוויתי מעל 100 משפחות בבניית הבית שלהן.
+            <br />
+            <br />
+            המדריך שאתם מקבלים עכשיו הוא בדיוק הדברים שאני מעביר למשפחות
+            שמרוויחות תהליך בנייה{" "}
+            <span className="font-bold" style={{ color: GREEN }}>
+              רגוע, מדויק וחסכוני.
+            </span>
+          </p>
+        </Reveal>
       </div>
     </section>
   );
@@ -686,91 +722,93 @@ function CTAFormSection() {
       <div className="absolute inset-0 bg-white/70" />
 
       <div className="relative mx-auto max-w-md px-6">
-        <img
-          src={mockupDevices}
-          alt="המדריך לבונה"
-          className="mx-auto w-full max-w-xs"
-          style={{ marginBottom: "-2rem" }}
-        />
+        <Reveal>
+          <img
+            src={mockupDevices}
+            alt="המדריך לבונה"
+            className="mx-auto w-full max-w-xs"
+            style={{ marginBottom: "-2rem" }}
+          />
+        </Reveal>
 
-        <div className="rounded-3xl border border-neutral-200 bg-white p-8 text-center shadow-2xl">
-              <p className="mb-2 text-lg font-bold text-neutral-800">רוצים להתחיל לבנות נכון?</p>
-              <p className="mb-3 text-neutral-600">
-                השאירו פרטים וקבלו את{" "}
-                <span className="font-bold">המדריך החינמי לבונה</span> שיעשה לכם סדר
-                ישירות למייל
-              </p>
+          <div className="rounded-3xl border border-neutral-200 bg-white p-8 text-center shadow-2xl">
+                <p className="mb-2 text-lg font-bold text-neutral-800">רוצים להתחיל לבנות נכון?</p>
+                <p className="mb-3 text-neutral-600">
+                  השאירו פרטים וקבלו את{" "}
+                  <span className="font-bold">המדריך החינמי לבונה</span> שיעשה לכם סדר
+                  ישירות למייל
+                </p>
 
-              <form onSubmit={handleSubmit} className="space-y-4 text-right" noValidate>
-                <div>
-                  <label className="mb-1 block text-sm font-bold text-neutral-700">שם:</label>
-                  <input
-                    type="text"
-                    placeholder="ישראל ישראלי"
-                    value={form.name}
-                    onChange={update("name")}
-                    onBlur={handleBlur("name")}
-                    className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none"
-                    style={{ borderColor: errors.name ? "#e05252" : "#ddd" }}
-                  />
-                  {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
-                </div>
-                <div>
-                  <label className="mb-1 block text-sm font-bold text-neutral-700">אימייל:</label>
-                  <input
-                    type="email"
-                    placeholder="name@email.com"
-                    value={form.email}
-                    onChange={update("email")}
-                    onBlur={handleBlur("email")}
-                    className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none"
-                    style={{ borderColor: errors.email ? "#e05252" : "#ddd" }}
-                  />
-                  {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
-                </div>
-                <div>
-                  <label className="mb-1 block text-sm font-bold text-neutral-700" >טלפון:</label>
-                  <input
-                  dir="rtl"
-                    type="tel"
-                    placeholder="050-1234567"
-                    value={form.phone}
-                    onChange={update("phone")}
-                    onBlur={handleBlur("phone")}
-                    className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none"
-                    style={{ borderColor: errors.phone ? "#e05252" : "#ddd" }}
-                  />
-                  {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
-                </div>
+                <form onSubmit={handleSubmit} className="space-y-4 text-right" noValidate>
+                  <div>
+                    <label className="mb-1 block text-sm font-bold text-neutral-700">שם:</label>
+                    <input
+                      type="text"
+                      placeholder="ישראל ישראלי"
+                      value={form.name}
+                      onChange={update("name")}
+                      onBlur={handleBlur("name")}
+                      className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none"
+                      style={{ borderColor: errors.name ? "#e05252" : "#ddd" }}
+                    />
+                    {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-sm font-bold text-neutral-700">אימייל:</label>
+                    <input
+                      type="email"
+                      placeholder="name@email.com"
+                      value={form.email}
+                      onChange={update("email")}
+                      onBlur={handleBlur("email")}
+                      className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none"
+                      style={{ borderColor: errors.email ? "#e05252" : "#ddd" }}
+                    />
+                    {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-sm font-bold text-neutral-700" >טלפון:</label>
+                    <input
+                    dir="rtl"
+                      type="tel"
+                      placeholder="050-1234567"
+                      value={form.phone}
+                      onChange={update("phone")}
+                      onBlur={handleBlur("phone")}
+                      className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none"
+                      style={{ borderColor: errors.phone ? "#e05252" : "#ddd" }}
+                    />
+                    {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
+                  </div>
 
-                <label className="flex items-center justify-start gap-2 text-sm text-neutral-600">
-                  <input
-                    type="checkbox"
-                    checked={agree}
-                    onChange={(e) => setAgree(e.target.checked)}
-                  />
-                  אני מאשר/ת קבלת תכנים שיווקיים
-                </label>
-                {errors.agree && <p className="text-xs text-red-500">{errors.agree}</p>}
-                {submitError && <p className="text-xs text-red-500">{submitError}</p>}
+                  <label className="flex items-center justify-start gap-2 text-sm text-neutral-600">
+                    <input
+                      type="checkbox"
+                      checked={agree}
+                      onChange={(e) => setAgree(e.target.checked)}
+                    />
+                    אני מאשר/ת קבלת תכנים שיווקיים
+                  </label>
+                  {errors.agree && <p className="text-xs text-red-500">{errors.agree}</p>}
+                  {submitError && <p className="text-xs text-red-500">{submitError}</p>}
 
-                <button
-                  type="submit"
-                  disabled={submitting || !agree}
-                  className="w-full rounded-xl py-4 text-lg font-bold text-white shadow-lg transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:hover:scale-100"
-                  style={{ backgroundColor: GREEN, opacity: submitting || !agree ? 0.5 : 1 }}
-                >
-                  {submitting ? "שולח..." : "כן שלחו לי את המדריך"}
-                </button>
-              </form>
+                  <button
+                    type="submit"
+                    disabled={submitting || !agree}
+                    className="w-full rounded-xl py-4 text-lg font-bold text-white shadow-lg transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:hover:scale-100"
+                    style={{ backgroundColor: GREEN, opacity: submitting || !agree ? 0.5 : 1 }}
+                  >
+                    {submitting ? "שולח..." : "כן שלחו לי את המדריך"}
+                  </button>
+                </form>
 
-              <p className="mt-6 text-sm text-neutral-500">
-                יש שאלות? אנחנו כאן בשבילכם:{" "}
-                <a href="mailto:baitb2yadayim@gmail.com" className="underline">
-                  baitb2yadayim@gmail.com
-                </a>
-              </p>
-        </div>
+                <p className="mt-6 text-sm text-neutral-500">
+                  יש שאלות? אנחנו כאן בשבילכם:{" "}
+                  <a href="mailto:baitb2yadayim@gmail.com" className="underline">
+                    baitb2yadayim@gmail.com
+                  </a>
+                </p>
+          </div>
       </div>
     </section>
   );
