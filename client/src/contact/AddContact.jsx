@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import api from "../api-config";
 import myBgImage from "./assets/v2.png";
 import checking from "../functionChecking/functionChecking";
@@ -16,6 +16,12 @@ const AddContact = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [headingDone, setHeadingDone] = useState(false);
+
+  useEffect(() => {
+    setVisible(true);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -69,21 +75,46 @@ const AddContact = () => {
         backgroundSize: "cover",
       }}
     >
+      <style>{`
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(24px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes popIn {
+          0% { opacity: 0; transform: scale(0.6); }
+          70% { opacity: 1; transform: scale(1.08); }
+          100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes shake {
+          10%, 90% { transform: translateX(-1px); }
+          20%, 80% { transform: translateX(2px); }
+          30%, 50%, 70% { transform: translateX(-4px); }
+          40%, 60% { transform: translateX(4px); }
+        }
+        @keyframes blinkCursor {
+          0%, 45% { opacity: 1; }
+          50%, 95% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+      `}</style>
+
       {/* שכבת שמנת שקופה מעל התמונה */}
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-l from-[#F5F1E8]/55 via-[#F5F1E8]/48 to-[#F5F1E8]/45" />
 
       {/* שכבה תחתונה */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-[#E5DFD1]/25 to-transparent" />
 
-      {/* עיטורי רקע */}
-      {/* <div className="pointer-events-none absolute -right-32 -top-32 -z-10 h-96 w-96 rounded-full bg-[#8DC43E]/15 blur-3xl" />
-
-      <div className="pointer-events-none absolute -bottom-40 left-10 -z-10 h-96 w-96 rounded-full bg-white/60 blur-3xl" /> */}
-
       <div className="mx-auto grid max-w-[1180px] items-center gap-12 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         {/* תוכן צדדי */}
         <div className="text-center text-[#26321F] lg:text-right">
-          <div className="mb-5 flex items-center justify-center gap-3 lg:justify-start">
+          <div
+            className="mb-5 flex items-center justify-center gap-3 lg:justify-start"
+            style={
+              visible
+                ? { animation: "fadeInUp 0.7s ease-out both" }
+                : { opacity: 0 }
+            }
+          >
             <span className="h-px w-10 bg-[#659B2D]" />
 
             <span className="text-[13px] font-bold tracking-[0.12em] text-[#659B2D]">
@@ -91,25 +122,38 @@ const AddContact = () => {
             </span>
           </div>
 
-          <h2 className="text-[36px] font-black leading-[1.2] md:text-[50px]">
-            בואו נדבר על
-            <span className="block text-[#659B2D]">
-              הפרויקט שלכם
-            </span>
+          <h2 className="min-h-[2.4em] text-[36px] font-black leading-[1.2] md:min-h-[2.6em] md:text-[50px]">
+            <Typewriter
+              lines={["בואו נדבר על", "הפרויקט שלכם"]}
+              speed={90}
+              startDelay={350}
+              active={visible}
+              lineClassName={(i) => (i === 1 ? "block text-[#659B2D]" : "block")}
+              onDone={() => setHeadingDone(true)}
+            />
           </h2>
 
-          <p className="mx-auto mt-6 max-w-[480px] text-[17px] font-medium leading-[1.9] text-[#4F594A] lg:mx-0">
+          <p
+            className="mx-auto mt-6 max-w-[480px] text-[17px] font-medium leading-[1.9] text-[#4F594A] lg:mx-0"
+            style={
+              headingDone
+                ? { animation: "fadeInUp 0.7s ease-out both" }
+                : { opacity: 0 }
+            }
+          >
             השאירו פרטים ונחזור אליכם כדי להבין את הצורך, לענות על
             השאלות ולעזור לכם להתקדם בצורה ברורה ומסודרת.
           </p>
 
           {/* שלבים */}
           <div className="mx-auto mt-9 max-w-[450px] lg:mx-0 text-black/99">
-            <ContactStep number="01" text="ממלאים פרטים קצרים" />
-            <ContactStep number="02" text="אנחנו עוברים על הפנייה" />
+            <ContactStep number="01" text="ממלאים פרטים קצרים" visible={headingDone} delay={150} />
+            <ContactStep number="02" text="אנחנו עוברים על הפנייה" visible={headingDone} delay={300} />
             <ContactStep
               number="03"
               text="יוצרים איתכם קשר"
+              visible={headingDone}
+              delay={450}
               last
             />
           </div>
@@ -125,12 +169,14 @@ const AddContact = () => {
             shadow-[0_25px_65px_rgba(57,72,46,0.18)]
             backdrop-blur-xl sm:p-9
           "
+          style={
+            visible
+              ? { animation: "fadeInUp 0.8s ease-out 0.15s both" }
+              : { opacity: 0 }
+          }
         >
           {/* פס ירוק */}
           <div className="absolute right-0 top-0 h-[4px] w-28 rounded-bl-full bg-[#78A93B]" />
-
-          {/* קישוט עגול */}
-          {/* <div className="pointer-events-none absolute -left-16 -top-16 h-44 w-44 rounded-full border-[32px] border-[#659B2D]/[0.035]" /> */}
 
           {!submitted && (
             <>
@@ -268,7 +314,7 @@ const AddContact = () => {
                 >
                   <span>שליחת הודעה</span>
 
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 transition-transform duration-300 group-hover:-translate-x-1">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 transition-transform duration-300 group-hover:-translate-x-1.5 group-hover:scale-110">
                     ←
                   </span>
                 </button>
@@ -279,20 +325,32 @@ const AddContact = () => {
           {/* הודעת הצלחה */}
           {submitted && (
             <div className="relative z-10 flex min-h-[450px] flex-col items-center justify-center text-center">
-              <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-full border border-[#78A93B]/30 bg-[#78A93B]/10 text-[38px] font-bold text-[#659B2D]">
+              <div
+                className="mb-5 flex h-20 w-20 items-center justify-center rounded-full border border-[#78A93B]/30 bg-[#78A93B]/10 text-[38px] font-bold text-[#659B2D]"
+                style={{ animation: "popIn 0.6s ease-out both" }}
+              >
                 ✓
               </div>
 
-              <h3 className="text-[27px] font-bold text-[#26321F]">
+              <h3
+                className="text-[27px] font-bold text-[#26321F]"
+                style={{ animation: "fadeInUp 0.6s ease-out 0.15s both" }}
+              >
                 הפרטים התקבלו בהצלחה!
               </h3>
 
-              <p className="mt-3 max-w-sm text-[15px] leading-[1.8] text-[#687062]">
+              <p
+                className="mt-3 max-w-sm text-[15px] leading-[1.8] text-[#687062]"
+                style={{ animation: "fadeInUp 0.6s ease-out 0.25s both" }}
+              >
                 תודה שפניתם אלינו. נציג מטעמנו ייצור איתכם קשר בימים
                 הקרובים.
               </p>
 
-              <div className="mt-8 flex items-center gap-3 border-t border-[#659B2D]/15 pt-7">
+              <div
+                className="mt-8 flex items-center gap-3 border-t border-[#659B2D]/15 pt-7"
+                style={{ animation: "fadeInUp 0.6s ease-out 0.35s both" }}
+              >
                 <SocialLink
                   href="https://www.instagram.com/sroiaproject?igsh=bnZkbWxva3FrNXc0"
                   label="Instagram"
@@ -322,14 +380,104 @@ const AddContact = () => {
   );
 };
 
-const ContactStep = ({ number, text, last = false }) => {
+/**
+ * מקליד שורות טקסט אות-אות, עם סמן מהבהב.
+ * lines: מערך שורות. lineClassName: פונקציה שמקבלת אינדקס ומחזירה class לשורה.
+ * onDone: נקרא פעם אחת כשההקלדה של כל השורות הסתיימה.
+ */
+const Typewriter = ({
+  lines,
+  speed = 50,
+  startDelay = 300,
+  active,
+  lineClassName,
+  onDone,
+}) => {
+  const [revealCount, setRevealCount] = useState(0);
+  const [finished, setFinished] = useState(false);
+  const doneCalledRef = useRef(false);
+
+  const totalLength = lines.reduce((sum, line) => sum + line.length, 0);
+
+  useEffect(() => {
+    if (!active) return;
+
+    let charsTyped = 0;
+    let intervalId;
+
+    const timeoutId = setTimeout(() => {
+      intervalId = setInterval(() => {
+        charsTyped += 1;
+        setRevealCount(charsTyped);
+
+        if (charsTyped >= totalLength) {
+          clearInterval(intervalId);
+          setFinished(true);
+        }
+      }, speed);
+    }, startDelay);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (intervalId) clearInterval(intervalId);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active]);
+
+  useEffect(() => {
+    if (finished && !doneCalledRef.current) {
+      doneCalledRef.current = true;
+      if (onDone) onDone();
+    }
+  }, [finished, onDone]);
+
+  let offset = 0;
+  let cursorPlaced = false;
+
+  return (
+    <>
+      {lines.map((line, i) => {
+        const start = offset;
+        offset += line.length;
+        const shown = Math.max(0, Math.min(line.length, revealCount - start));
+        const isCurrentLine = !finished && shown > 0 && shown < line.length;
+        const isLastTypedChar =
+          !finished && !cursorPlaced && shown === Math.max(0, revealCount - start) && revealCount > start && revealCount <= offset;
+
+        if (isLastTypedChar) cursorPlaced = true;
+
+        return (
+          <span key={i} className={lineClassName ? lineClassName(i) : "block"}>
+            {line.slice(0, shown)}
+            {isLastTypedChar && (
+              <span
+                className="inline-block w-[2px] translate-y-[2px] bg-current align-middle"
+                style={{
+                  height: "0.85em",
+                  animation: "blinkCursor 1s step-end infinite",
+                }}
+              />
+            )}
+          </span>
+        );
+      })}
+    </>
+  );
+};
+
+const ContactStep = ({ number, text, last = false, visible, delay = 0 }) => {
   return (
     <div
       className={`flex items-center gap-4 py-4 ${
         last ? "" : "border-b border-[#659B2D]/20"
       }`}
+      style={
+        visible
+          ? { animation: `fadeInUp 0.6s ease-out ${delay}ms both` }
+          : { opacity: 0 }
+      }
     >
-      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#659B2D]/30 bg-white/45 text-[12px] font-bold text-[#659B2D] backdrop-blur-sm">
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#659B2D]/30 bg-white/45 text-[12px] font-bold text-[#659B2D] backdrop-blur-sm transition-transform duration-300 hover:scale-110">
         {number}
       </span>
 
@@ -377,6 +525,7 @@ const FormField = ({
                 : "border-[#CBD7C0] focus:border-[#78A93B] focus:ring-[#78A93B]/10"
             }
           `}
+          style={error ? { animation: "shake 0.4s ease-in-out" } : undefined}
         />
 
         <svg
