@@ -404,9 +404,6 @@ export default function Benefit() {
                         הטבה בשיתוף <span className="font-bold text-white">נגב</span> &middot; קהילת{" "}
                         <span className="font-bold text-white">בית בשתי ידיים</span>
                     </p>
-                    <p className="text-sm font-semibold text-white/80">
-                        קהילת בית בשתי ידיים — אסף סרויה
-                    </p>
                 </div>
             </footer>
         </div>
