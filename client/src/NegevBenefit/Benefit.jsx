@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import heroBathroom from "./assets/hero-bathroom.png";
 import heroTiles from "./assets/hero-tiles.jpg";
 import baitLogo from "./assets/bait-logo.png";
 import negevLogo from "./assets/negev-logo-heart.jpg";
 import giftBox from "./assets/gift-box.png";
 import BenefitTermsDialog from "./component/BenefitTermsDialog";
+
 function SparkleIcon({ className = "", style = {} }) {
     return (
         <svg viewBox="0 0 24 24" fill="currentColor" className={className} style={style}>
@@ -23,6 +24,75 @@ function SparkleIcon({ className = "", style = {} }) {
 const GREEN = "#8DC63F";
 const DARK = "#1B1B1B";
 const CARD = "#242424";
+
+/* ---------- אנימציות: keyframes גלובליים לעמוד ---------- */
+function PageAnimationStyles() {
+    return (
+        <style>{`
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(28px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes popIn {
+                0% { opacity: 0; transform: scale(0.6); }
+                70% { opacity: 1; transform: scale(1.08); }
+                100% { opacity: 1; transform: scale(1); }
+            }
+            @keyframes shake {
+                10%, 90% { transform: translateX(-1px); }
+                20%, 80% { transform: translateX(2px); }
+                30%, 50%, 70% { transform: translateX(-4px); }
+                40%, 60% { transform: translateX(4px); }
+            }
+            @keyframes floatSlow {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-10px); }
+            }
+            @keyframes pulseGlow {
+                0%, 100% { opacity: 0.55; transform: scale(1); }
+                50% { opacity: 1; transform: scale(1.12); }
+            }
+        `}</style>
+    );
+}
+
+/* ---------- Reveal: עוטף תוכן ומפעיל אנימציית כניסה כשהוא נכנס לתצוגה בגלילה ---------- */
+function Reveal({ children, delay = 0, as: Tag = "div", className = "" }) {
+    const ref = useRef(null);
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.15 }
+        );
+
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
+
+    return (
+        <Tag
+            ref={ref}
+            className={className}
+            style={
+                visible
+                    ? { animation: `fadeInUp 0.7s ease-out ${delay}ms both` }
+                    : { opacity: 0 }
+            }
+        >
+            {children}
+        </Tag>
+    );
+}
 
 function HeartIcon({ className = "" }) {
     return (
@@ -100,6 +170,11 @@ export default function Benefit() {
     const [form, setForm] = useState({ name: "", phone: "", email: "", stage: "" });
     const [errors, setErrors] = useState({});
     const [submitted, setSubmitted] = useState(false);
+    const [heroVisible, setHeroVisible] = useState(false);
+
+    useEffect(() => {
+        setHeroVisible(true);
+    }, []);
 
     const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
 
@@ -126,6 +201,7 @@ export default function Benefit() {
     return (
         <div dir="rtl" style={{ backgroundColor: DARK, fontFamily: "'Rubik', 'Arial', sans-serif" }} className="min-h-screen text-white">
             <style>{`@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap');`}</style>
+            <PageAnimationStyles />
 
             {/* HERO */}
             <section className="relative overflow-hidden">
@@ -143,9 +219,15 @@ export default function Benefit() {
 
                 <div className="relative mx-auto flex max-w-4xl flex-col items-center px-6 pb-20 pt-16 text-center sm:px-10">
                     {/* badge */}
-                    <div className="mb-7 inline-flex flex-col items-center gap-2 rounded-2xl border border-white/15 bg-transparent px-7 py-4 text-base">
+                    <div
+                        className="mb-7 inline-flex flex-col items-center gap-2 rounded-2xl border border-white/15 bg-transparent px-7 py-4 text-base"
+                        style={heroVisible ? { animation: "fadeInUp 0.7s ease-out both" } : { opacity: 0 }}
+                    >
                         <span className="inline-flex items-center gap-2 text-white/80">
-                            <SparkleIcon className="h-6 w-6" style={{ color: GREEN }} />
+                            <SparkleIcon
+                                className="h-6 w-6"
+                                style={{ color: GREEN, animation: "pulseGlow 2.2s ease-in-out infinite" }}
+                            />
                             <span style={{ color: GREEN }}>הטבה בלעדית</span>
                         </span>
                         <span className="text-lg font-bold" style={{ color: GREEN }}>
@@ -154,35 +236,70 @@ export default function Benefit() {
                     </div>
 
                     {/* negev badge */}
-                    <div className="mb-7 inline-flex items-center rounded-2xl bg-white px-6 py-4 shadow-lg">
+                    <div
+                        className="mb-7 inline-flex items-center rounded-2xl bg-white px-6 py-4 shadow-lg"
+                        style={heroVisible ? { animation: "fadeInUp 0.7s ease-out 120ms both" } : { opacity: 0 }}
+                    >
                         <img src={negevLogo} alt="נגב" className="h-10 w-auto object-contain" />
                     </div>
 
-                    <p className="mb-4 text-base font-medium tracking-wide text-white/70">
+                    <p
+                        className="mb-4 text-base font-medium tracking-wide text-white/70"
+                        style={heroVisible ? { animation: "fadeInUp 0.7s ease-out 220ms both" } : { opacity: 0 }}
+                    >
                         קרמיקה &middot; סניטריה &middot; ריצוף
                     </p>
 
-                    <h1 className="mb-6 text-5xl font-black leading-tight sm:text-6xl">
+                    <h1
+                        className="mb-6 text-5xl font-black leading-tight sm:text-6xl"
+                        style={heroVisible ? { animation: "fadeInUp 0.8s ease-out 320ms both" } : { opacity: 0 }}
+                    >
                         חוסכים <span style={{ color: GREEN }}>אלפי שקלים</span>
                         <br />
                         בבניית הבית שלכם
                     </h1>
 
-                    <p className="mb-10 max-w-2xl text-xl text-white/80">
+                    <p
+                        className="mb-10 max-w-2xl text-xl text-white/80"
+                        style={heroVisible ? { animation: "fadeInUp 0.7s ease-out 450ms both" } : { opacity: 0 }}
+                    >
                         שיתוף פעולה בלעדי עם חברת נגב מהמובילות בישראל בקרמיקה, סניטריה וריצוף.
                     </p>
 
-                    <button
-                        onClick={scrollToForm}
-                        className="mb-10 inline-flex items-center gap-3 rounded-full px-9 py-3 text-xl font-bold text-black shadow-lg transition-transform hover:scale-[1.03]"
-                        style={{ backgroundColor: GREEN }}
-                    >
-                        <span>&larr;</span> אני רוצה את ההטבה
-                    </button>
+                       <button
+                type="button"
+                onClick={scrollToForm}
+                className="
+                  group flex items-center justify-center gap-4
+                  rounded-full bg-[#86B84D]
+                  px-7 py-4 text-[15px] font-bold text-white
+                  shadow-[0_9px_25px_rgba(121,169,66,0.28)]
+                  transition-all duration-300
+                  hover:-translate-y-1 hover:gap-6
+                  hover:bg-[#8DC63F]
+                  hover:shadow-[0_14px_32px_rgba(121,169,66,0.36)]
+                  mb-6
+                "
+              >
+                <span>אני רוצה את ההטבה</span>
+
+                <span
+                  className="transition-transform duration-300 group-hover:-translate-x-1"
+                  aria-hidden="true"
+                >
+                  ←
+                </span>
+              </button>
 
                     {/* benefit cards */}
-                    <div className="grid grid-cols-1 gap-5 overflow-visible sm:grid-cols-2 sm:gap-8">
-                        <div className="rounded-2xl p-8" style={{ backgroundColor: CARD }}>
+                    <div
+                        className="grid grid-cols-1 gap-5 overflow-visible sm:grid-cols-2 sm:gap-8"
+                        style={heroVisible ? { animation: "fadeInUp 0.8s ease-out 650ms both" } : { opacity: 0 }}
+                    >
+                        <div
+                            className="rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-1"
+                            style={{ backgroundColor: CARD }}
+                        >
                             <p className="mb-1 text-4xl font-black" style={{ color: GREEN }}>
                                 10% הנחה
                             </p>
@@ -190,7 +307,7 @@ export default function Benefit() {
                             <p className="mt-1 text-base text-white/50">לרכישה מעל 50,000 ₪</p>
                         </div>
                         <div
-                            className="relative overflow-visible rounded-2xl py-8 pr-8"
+                            className="relative overflow-visible rounded-2xl py-8 pr-8 transition-transform duration-300 hover:-translate-y-1"
                             style={{ backgroundColor: CARD, paddingLeft: "6.5rem" }}
                         >
                             <div
@@ -198,13 +315,17 @@ export default function Benefit() {
                                 style={{
                                     background: `radial-gradient(circle, ${GREEN}66 0%, ${GREEN}00 70%)`,
                                     filter: "blur(6px)",
+                                    animation: "pulseGlow 2.6s ease-in-out infinite",
                                 }}
                             />
                             <img
                                 src={giftBox}
                                 alt="מתנה לבוני בתים"
-                                className="pointer-events-none absolute -left-9 bottom-0 h-36 w-36 object-contain sm:h-40 sm:w-40"
-                                style={{ filter: `drop-shadow(0 0 18px ${GREEN}99) drop-shadow(0 8px 12px rgba(0,0,0,0.5))` }}
+                                className="pointer-events-none absolute -left-15 bottom-0 h-36 w-36 object-contain sm:h-40 sm:w-40"
+                                style={{
+                                    filter: `drop-shadow(0 0 18px ${GREEN}99) drop-shadow(0 8px 12px rgba(0,0,0,0.5))`,
+                                    animation: "floatSlow 3.2s ease-in-out infinite",
+                                }}
                             />
                             <p className="mb-1 text-4xl font-black" style={{ color: GREEN }}>
                                 + מתנה
@@ -224,45 +345,52 @@ export default function Benefit() {
                     style={{ backgroundImage: `url(${heroTiles})` }}
                 />
                 <div className="relative mx-auto max-w-3xl px-6 sm:px-10">
-                    <h2 className="mb-3 text-center text-3xl font-black sm:text-4xl">
+                    <Reveal as="h2" className="mb-3 text-center text-3xl font-black sm:text-4xl">
                         מה אפשר לקנות בהטבה?
-                    </h2>
-                    <p className="mb-12 text-center text-white/60">
+                    </Reveal>
+                    <Reveal as="p" delay={100} className="mb-12 text-center text-white/60">
                         שלוש קטגוריות מרכזיות שמרכיבות את הבית שלכם
-                    </p>
+                    </Reveal>
 
                     <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
-                        {CATEGORIES.map((c) => (
-                            <div key={c.title} className="rounded-2xl p-6" style={{ backgroundColor: CARD }}>
-                                <div className="mb-3 flex items-center gap-2">
-                                    <span className="h-2 w-2 rounded-full" style={{ backgroundColor: GREEN }} />
-                                    <h3 className="text-lg font-bold">{c.title}</h3>
+                        {CATEGORIES.map((c, i) => (
+                            <Reveal
+                                key={c.title}
+                                delay={i * 120}
+                                className="rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1"
+                            >
+                                <div style={{ backgroundColor: CARD }} className="rounded-2xl p-6 -m-6">
+                                    <div className="mb-3 flex items-center gap-2">
+                                        <span className="h-2 w-2 rounded-full" style={{ backgroundColor: GREEN }} />
+                                        <h3 className="text-lg font-bold">{c.title}</h3>
+                                    </div>
+                                    <p className="text-sm leading-relaxed text-white/60">{c.desc}</p>
                                 </div>
-                                <p className="text-sm leading-relaxed text-white/60">{c.desc}</p>
-                            </div>
+                            </Reveal>
                         ))}
                     </div>
 
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                        {STATS.map((s) => (
-                            <div
-                                key={s.label}
-                                className="flex items-center gap-3 rounded-2xl p-5"
-                                style={{ backgroundColor: CARD }}
-                            >
+                        {STATS.map((s, i) => (
+                            <Reveal key={s.label} delay={i * 120 + 150}>
                                 <div
-                                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
-                                    style={{ backgroundColor: "rgba(141,198,63,0.15)" }}
+                                    className="flex items-center gap-3 rounded-2xl p-5 transition-transform duration-300 hover:-translate-y-1"
+                                    style={{ backgroundColor: CARD }}
                                 >
-                                    <StatIcon icon={s.icon} />
+                                    <div
+                                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
+                                        style={{ backgroundColor: "rgba(141,198,63,0.15)" }}
+                                    >
+                                        <StatIcon icon={s.icon} />
+                                    </div>
+                                    <div>
+                                        <p className="font-black" style={{ color: GREEN }}>
+                                            {s.value}
+                                        </p>
+                                        <p className="text-sm text-white/60">{s.label}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p className="font-black" style={{ color: GREEN }}>
-                                        {s.value}
-                                    </p>
-                                    <p className="text-sm text-white/60">{s.label}</p>
-                                </div>
-                            </div>
+                            </Reveal>
                         ))}
                     </div>
                 </div>
@@ -271,29 +399,46 @@ export default function Benefit() {
             {/* FORM SECTION */}
             <section id="offer-form" className="border-t border-white/5 py-20" style={{ backgroundColor: "#141414" }}>
                 <div className="mx-auto max-w-xl px-6 text-center sm:px-10">
-                    <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm">
+                    <Reveal className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm">
                         <span style={{ color: GREEN }}>✦</span> קבלו את ההטבה
-                    </div>
+                    </Reveal>
 
-                    <h2 className="mb-3 text-3xl font-black sm:text-4xl">
+                    <Reveal as="h2" delay={100} className="mb-3 text-3xl font-black sm:text-4xl">
                         הטבה בלעדית <span style={{ color: GREEN }}>לחברי הקהילה</span>
-                    </h2>
-                    <p className="mb-2 text-xl font-bold text-white/90">השאירו פרטים לתיאום</p>
-                    <p className="mb-10 text-white/50">
+                    </Reveal>
+                    <Reveal as="p" delay={180} className="mb-2 text-xl font-bold text-white/90">
+                        השאירו פרטים לתיאום
+                    </Reveal>
+                    <Reveal as="p" delay={250} className="mb-10 text-white/50">
                         נציג מטעם חברת נגב יצור איתכם קשר תוך 24 שעות לתיאום ההטבה
-                    </p>
+                    </Reveal>
 
-                    <div className="rounded-3xl p-6 text-right sm:p-8" style={{ backgroundColor: CARD }}>
+                    <Reveal delay={350} className="rounded-3xl p-6 text-right sm:p-8">
+                        <div style={{ backgroundColor: CARD }} className="rounded-3xl p-6 -m-6 sm:p-8 sm:-m-8">
                         {submitted ? (
                             <div className="py-10 text-center">
                                 <div
                                     className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full text-3xl"
-                                    style={{ backgroundColor: "rgba(141,198,63,0.15)", color: GREEN }}
+                                    style={{
+                                        backgroundColor: "rgba(141,198,63,0.15)",
+                                        color: GREEN,
+                                        animation: "popIn 0.6s ease-out both",
+                                    }}
                                 >
                                     ✓
                                 </div>
-                                <h3 className="mb-2 text-xl font-bold">הפרטים נשלחו בהצלחה!</h3>
-                                <p className="text-white/60">נציג מטעם חברת נגב יצור איתכם קשר בקרוב.</p>
+                                <h3
+                                    className="mb-2 text-xl font-bold"
+                                    style={{ animation: "fadeInUp 0.6s ease-out 150ms both" }}
+                                >
+                                    הפרטים נשלחו בהצלחה!
+                                </h3>
+                                <p
+                                    className="text-white/60"
+                                    style={{ animation: "fadeInUp 0.6s ease-out 250ms both" }}
+                                >
+                                    נציג מטעם חברת נגב יצור איתכם קשר בקרוב.
+                                </p>
                             </div>
                         ) : (
                             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
@@ -308,6 +453,7 @@ export default function Benefit() {
                                         style={{
                                             backgroundColor: "#1b1b1b",
                                             borderColor: errors.name ? "#e05252" : "rgba(255,255,255,0.1)",
+                                            ...(errors.name ? { animation: "shake 0.4s ease-in-out" } : {}),
                                         }}
                                     />
                                     {errors.name && <p className="mt-1 text-xs text-red-400">{errors.name}</p>}
@@ -325,6 +471,7 @@ export default function Benefit() {
                                             style={{
                                                 backgroundColor: "#1b1b1b",
                                                 borderColor: errors.phone ? "#e05252" : "rgba(255,255,255,0.1)",
+                                                ...(errors.phone ? { animation: "shake 0.4s ease-in-out" } : {}),
                                             }}
                                         />
                                         {errors.phone && <p className="mt-1 text-xs text-red-400">{errors.phone}</p>}
@@ -340,6 +487,7 @@ export default function Benefit() {
                                             style={{
                                                 backgroundColor: "#1b1b1b",
                                                 borderColor: errors.email ? "#e05252" : "rgba(255,255,255,0.1)",
+                                                ...(errors.email ? { animation: "shake 0.4s ease-in-out" } : {}),
                                             }}
                                         />
                                         {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email}</p>}
@@ -355,6 +503,7 @@ export default function Benefit() {
                                         style={{
                                             backgroundColor: "#1b1b1b",
                                             borderColor: errors.stage ? "#e05252" : "rgba(255,255,255,0.1)",
+                                            ...(errors.stage ? { animation: "shake 0.4s ease-in-out" } : {}),
                                         }}
                                     >
                                         <option value="">בחרו שלב בנייה</option>
@@ -383,7 +532,8 @@ export default function Benefit() {
                                 </p>
                             </form>
                         )}
-                    </div>
+                        </div>
+                    </Reveal>
                 </div>
             </section>
 

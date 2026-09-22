@@ -70,14 +70,29 @@ function HeroSection({ onCtaClick }) {
           alt="בית בשתי ידיים - המדריך לבונה - איך לעשות סדר בכל שלבי הבנייה"
           className="mb-5 max-w-lg"
         />
-
         <button
-          onClick={onCtaClick}
-          className="rounded-full px-10 py-4 text-lg font-bold text-white shadow-lg transition-transform hover:scale-[1.03]"
-          style={{ backgroundColor: GREEN }}
-        >
-          עכשיו ללא עלות
-        </button>
+                type="button"
+                onClick={onCtaClick}
+                className="
+                  group flex items-center justify-center gap-4
+                  rounded-full bg-[#86B84D]
+                  px-7 py-4 text-[15px] font-bold text-white
+                  shadow-[0_9px_25px_rgba(121,169,66,0.28)]
+                  transition-all duration-300
+                  hover:-translate-y-1 hover:gap-6
+                  hover:bg-[#78A63F]
+                  hover:shadow-[0_14px_32px_rgba(121,169,66,0.36)]
+                "
+              >
+                <span>עכשיו ללא עלות</span>
+
+                <span
+                  className="transition-transform duration-300 group-hover:-translate-x-1"
+                  aria-hidden="true"
+                >
+                  ←
+                </span>
+              </button>
       </div>
     </section>
   );
