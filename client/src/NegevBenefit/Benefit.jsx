@@ -4,6 +4,7 @@ import heroTiles from "./assets/hero-tiles.jpg";
 import baitLogo from "./assets/bait-logo.png";
 import negevLogo from "./assets/negev-logo-heart.jpg";
 import giftBox from "./assets/gift-box.png";
+import BenefitTermsDialog from "./component/BenefitTermsDialog";
 function SparkleIcon({ className = "", style = {} }) {
     return (
         <svg viewBox="0 0 24 24" fill="currentColor" className={className} style={style}>
@@ -376,8 +377,8 @@ export default function Benefit() {
 
                                 <p className="text-center text-xs text-white/40">
                                     בלחיצה על שליחה אני מאשר/ת את{" "}
-                                    <a href="#" className="underline" style={{ color: GREEN }} onClick={(e) => e.preventDefault()}>
-                                        תנאי השימוש
+                                    <a href="#" className="underline " style={{ color: GREEN }} onClick={(e) => e.preventDefault()}>
+                                    <BenefitTermsDialog/>
                                     </a>
                                 </p>
                             </form>
@@ -403,32 +404,6 @@ export default function Benefit() {
                         הטבה בשיתוף <span className="font-bold text-white">נגב</span> &middot; קהילת{" "}
                         <span className="font-bold text-white">בית בשתי ידיים</span>
                     </p>
-
-                    <div className="mb-6 flex items-center gap-3">
-                        <SocialIcon>
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="#141414">
-                                <path d="M12 2C6.5 2 2 6 2 11c0 2.6 1.2 4.9 3.1 6.5-.1 1.1-.5 2.5-1.1 3.5 1.4-.2 2.9-.7 4-1.4 1.2.4 2.6.6 4 .6 5.5 0 10-4 10-9s-4.5-9-10-9z" />
-                            </svg>
-                        </SocialIcon>
-                        <SocialIcon>
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="#141414">
-                                <path d="M16.6 5.8c-.9-.9-1.4-2.1-1.4-3.4h-3.1v13.4c0 1.5-1.2 2.7-2.7 2.7a2.7 2.7 0 01-2.7-2.7 2.7 2.7 0 012.7-2.7c.3 0 .6 0 .8.1v-3.2c-.3 0-.5-.1-.8-.1-3.2 0-5.8 2.6-5.8 5.9s2.6 5.9 5.8 5.9 5.9-2.6 5.9-5.9V9.2c1.2.9 2.7 1.4 4.3 1.4V7.5c-1 0-1.9-.4-3-1.7z" />
-                            </svg>
-                        </SocialIcon>
-                        <SocialIcon>
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="#141414">
-                                <path d="M13.5 21v-7.7h2.6l.4-3h-3V8.2c0-.9.3-1.5 1.6-1.5H16.6V4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.3H7.5v3H10.2V21h3.3z" />
-                            </svg>
-                        </SocialIcon>
-                        <SocialIcon>
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#141414" strokeWidth="2">
-                                <rect x="3" y="3" width="18" height="18" rx="5" />
-                                <circle cx="12" cy="12" r="4" />
-                                <circle cx="17.2" cy="6.8" r="1.1" fill="#141414" stroke="none" />
-                            </svg>
-                        </SocialIcon>
-                    </div>
-
                     <p className="text-sm font-semibold text-white/80">
                         קהילת בית בשתי ידיים — אסף סרויה
                     </p>
