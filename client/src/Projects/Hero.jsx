@@ -5,7 +5,7 @@ import heroImg from "./assetes/hero.png";
 function AnimatedText({
   text,
   startDelay = 0,
-  letterDelay = 0.035,
+  letterDelay = 0.03,
 }) {
   const letters = useMemo(() => Array.from(text), [text]);
 
@@ -17,7 +17,7 @@ function AnimatedText({
           aria-hidden="true"
           className="inline-block opacity-0"
           style={{
-            animation: "hero-letter-in 0.65s ease-out forwards",
+            animation: "hero-letter-in 0.55s ease-out forwards",
             animationDelay: `${startDelay + index * letterDelay}s`,
           }}
         >
@@ -45,22 +45,20 @@ export default function Hero() {
   return (
     <section
       dir="rtl"
-      className="relative isolate flex min-h-[680px] items-center overflow-hidden bg-[#F7F5EF] font-['Heebo',sans-serif] md:min-h-[750px]"
+      className="relative overflow-hidden bg-[#1F2E18] font-['Heebo',sans-serif] md:h-[680px]"
     >
       <style>{`
         @keyframes hero-letter-in {
           0% {
             opacity: 0;
             filter: blur(4px);
-            transform: translateY(22px);
+            transform: translateY(16px);
           }
-
           65% {
             opacity: 1;
             filter: blur(0);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
           }
-
           100% {
             opacity: 1;
             filter: blur(0);
@@ -68,39 +66,31 @@ export default function Hero() {
           }
         }
 
-        @keyframes hero-content-in {
+        @keyframes hero-tag-in {
           from {
             opacity: 0;
-            transform: translateX(35px);
+            transform: translateY(-8px);
           }
-
           to {
             opacity: 1;
-            transform: translateX(0);
-          }
-        }
-
-        @keyframes hero-image-in {
-          from {
-            opacity: 0;
-            transform: scale(1.07);
-          }
-
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-
-        @keyframes hero-badge-float {
-          0%,
-          100% {
             transform: translateY(0);
           }
+        }
 
-          50% {
-            transform: translateY(-7px);
+        @keyframes hero-rest-in {
+          from {
+            opacity: 0;
+            transform: translateY(14px);
           }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes hero-image-fade {
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
 
         @keyframes hero-line-open {
@@ -108,57 +98,41 @@ export default function Hero() {
             width: 0;
             opacity: 0;
           }
-
           to {
             width: 54px;
             opacity: 1;
           }
         }
 
-        @keyframes hero-scroll-arrow {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-
-          50% {
-            transform: translateY(5px);
-          }
-        }
-
-        .hero-content-in {
+        .hero-tag-in {
           opacity: 0;
-          animation: hero-content-in 0.9s ease-out 0.15s forwards;
-        }
-
-        .hero-image-in {
-          animation: hero-image-in 1.8s ease-out forwards;
-        }
-
-        .hero-badge-float {
-          animation: hero-badge-float 3.2s ease-in-out infinite;
+          animation: hero-tag-in 0.5s ease-out 0.1s forwards;
         }
 
         .hero-line-open {
           width: 0;
           opacity: 0;
-          animation: hero-line-open 0.7s ease-out 1.7s forwards;
+          animation: hero-line-open 0.5s ease-out 0.2s forwards;
         }
 
-        .hero-scroll-arrow {
-          animation: hero-scroll-arrow 1.8s ease-in-out infinite;
+        .hero-rest-in {
+          opacity: 0;
+          animation: hero-rest-in 0.6s ease-out 1.8s forwards;
+        }
+
+        .hero-image-fade {
+          opacity: 0;
+          animation: hero-image-fade 0.9s ease-out forwards;
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .hero-content-in,
-          .hero-image-in,
-          .hero-badge-float,
-          .hero-scroll-arrow {
+          .hero-tag-in,
+          .hero-rest-in,
+          .hero-image-fade {
             animation: none;
             opacity: 1;
             transform: none;
           }
-
           .hero-line-open {
             width: 54px;
             opacity: 1;
@@ -167,98 +141,88 @@ export default function Hero() {
         }
       `}</style>
 
-      {/* תמונת רקע */}
-      <img
-        src={heroImg}
-        alt="בית פרטי"
-        className="hero-image-in absolute inset-0 -z-30 h-full w-full object-cover"
-      />
+      <div className="grid h-full grid-cols-1 md:grid-cols-[1fr_0.95fr]">
+        {/* פאנל טקסט - ירוק כהה מלא */}
+        <div className="order-2 relative flex items-center overflow-hidden px-6 py-16 md:order-1 md:px-12 md:py-0 lg:px-16">
+          {/* עיטור רקע עדין */}
+          <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#3A5A28]/50 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-[#3A5A28]/40 blur-3xl" />
 
-      {/* שכבת שמנת שמבהירה את אזור הטקסט */}
-      <div className="pointer-events-none absolute inset-0 -z-20 bg-gradient-to-l from-[#F8F6EF]/55 via-[#F8F6EF]/80 to-[#F8F6EF]/20" />
+          <div className="relative max-w-[560px]">
+            {/* תווית עליונה */}
+            <div className="hero-tag-in mb-5 flex items-center gap-3">
+              <span className="hero-line-open h-px bg-[#8FC24B]" />
+              <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#9ED164]">
+                בוטיק לניהול בנייה
+              </span>
+            </div>
 
-      {/* שכבה תחתונה עדינה */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-20 h-[35%] bg-gradient-to-t from-[#F4F0E7]/30 to-transparent" />
-
-      {/* כתם ירוק בהיר */}
-      {/* <div className="pointer-events-none absolute -right-32 -top-32 -z-10 h-[430px] w-[430px] rounded-full bg-[#A8CF78]/20 blur-3xl" /> */}
-
-      <div className="relative mx-auto w-full max-w-[1280px] px-6 py-20 md:px-12 lg:px-20">
-        <div className="hero-content-in relative max-w-[720px]">
-          {/* תווית עליונה */}
-          <div className="mb-5 flex items-center gap-3">
-
-
-          </div>
-
-          {/* אזור התוכן */}
-          <div
-            className="
-              relative overflow-hidden
-              rounded-[18px_55px_18px_55px]
-              border border-white/10
-              bg-white/10
-              px-4 py-9
-              shadow-[0_24px_65px_rgba(68,83,54,0.15)]
-              backdrop-blur-md
-              sm:px-9 sm:py-11
-              md:px-12 md:py-12
-            "
-          >
-            {/* פס ירוק עליון */}
-            <div className="absolute right-0 top-0 h-[5px] w-32 rounded-bl-full bg-gradient-to-l from-[#86B84D] to-[#B7D98D]" />
-
-            {/* עיגול רקע */}
-            {/* <div className="pointer-events-none absolute -bottom-28 -left-24 h-72 w-72 rounded-full border-[52px] border-[#A8CF78]/10" /> */}
-
-            {/* כותרת */}
+            {/* כותרת - נכתבת אות-אות */}
             <h1
-              aria-label="ניהול ופיקוח פרויקטים בבנייה פרטית – הבית שלכם בידיים מקצועיות."
-              className="relative z-10 mb-6 text-[33px] font-black leading-[1.22] text-[#252A22] sm:text-[40px] md:text-[50px]"
+              aria-label="ניהול ופיקוח פרויקטים בבנייה פרטית. הבית שלכם בידיים מקצועיות."
+              className="mb-5 text-[28px] font-black leading-[1.25] text-white sm:text-[34px] md:text-[38px]"
             >
               <span className="block">
-                <AnimatedText
-                  text="ניהול ופיקוח פרויקטים"
-                  startDelay={0.25}
-                />
+                <AnimatedText text="ניהול ופיקוח פרויקטים" startDelay={0.3} />
               </span>
-
               <span className="block">
-                <AnimatedText
-                  text="בבנייה פרטית."
-                  startDelay={0.7}
-                />
+                <AnimatedText text="בבנייה פרטית." startDelay={0.75} />
               </span>
-
-              <span className="block text-[#79A942]">
-                <AnimatedText
-                  text="הבית שלכם בידיים"
-                  startDelay={1.15}
-                />
+              <span className="block text-[#9ED164]">
+                <AnimatedText text="הבית שלכם בידיים" startDelay={1.1} />
               </span>
-
-              <span className="block text-[#79A942]">
-                <AnimatedText
-                  text="מקצועיות."
-                  startDelay={1.55}
-                />
+              <span className="block text-[#9ED164]">
+                <AnimatedText text="מקצועיות." startDelay={1.5} />
               </span>
             </h1>
 
-            {/* תיאור */}
-            <p className="relative z-10 mb-8 max-w-[560px] text-[16px] font-medium leading-[1.9] text-[#51594C] md:text-[18px]">
-              חברת בוטיק לניהול ופיקוח בנייה, המתמחה בליווי משפחות הבונות את
-              ביתן הפרטי. אנו מספקים מעטפת מעשית ומקצועית המבטיחה חיסכון
-              כספי ניכר, שמירה על לוחות זמנים ושקט נפשי מוחלט.
-            </p>
+            {/* תיאור + כפתור - נכנסים יחד, אחרי שהכותרת מסיימת להיכתב */}
+            <div className="hero-rest-in">
+              <p className="mb-7 max-w-[500px] text-[15px] font-medium leading-[1.8] text-white/70 md:text-[16px]">
+                חברת בוטיק לניהול ופיקוח בנייה, המתמחה בליווי משפחות הבונות
+                את ביתן הפרטי. אנו מספקים מעטפת מעשית ומקצועית המבטיחה
+                חיסכון כספי ניכר, שמירה על לוחות זמנים ושקט נפשי מוחלט.
+              </p>
 
-
+              <button
+                type="button"
+                onClick={scrollToContact}
+                className="
+                  group flex items-center justify-center gap-4
+                  rounded-full bg-[#8FC24B]
+                  px-7 py-4 text-[15px] font-bold text-[#132009]
+                  shadow-[0_9px_25px_rgba(143,194,75,0.3)]
+                  transition-all duration-300
+                  hover:-translate-y-1 hover:gap-6
+                  hover:bg-[#9ED164]
+                  hover:shadow-[0_14px_32px_rgba(143,194,75,0.4)]
+                "
+              >
+                <span>לתיאום פגישת ייעוץ חינם</span>
+                <span
+                  className="transition-transform duration-300 group-hover:-translate-x-1"
+                  aria-hidden="true"
+                >
+                  ←
+                </span>
+              </button>
+            </div>
           </div>
+        </div>
 
-
+        {/* פאנל תמונה */}
+        <div className="hero-image-fade order-1 relative h-[320px] overflow-hidden md:order-2 md:h-full">
+          <img
+            src={heroImg}
+            alt="בית פרטי"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          {/* גוון עדין על התמונה, לשמירה על התאמה לפלטה */}
+          <div className="pointer-events-none absolute inset-0 bg-[#1F2E18]/10" />
+          {/* מעבר רך בין הפאנלים במסכים גדולים */}
+          <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-24 bg-gradient-to-l from-[#1F2E18] to-transparent md:block" />
         </div>
       </div>
-
     </section>
   );
 }
