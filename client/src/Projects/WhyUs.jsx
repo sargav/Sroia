@@ -68,7 +68,29 @@ export default function WhyUs() {
       }}
     >
       {/* שכבה בהירה מעל התמונה */}
-      <div className="pointer-events-none absolute inset-0 bg-white/35" />
+      <div className="pointer-events-none absolute inset-0 bg-white/60" />
+
+
+      {/* טשטוש לתמונת הרקע, מרוכז בפינה הימנית-עליונה ודועך שמאלה-למטה */}
+      <div
+        className="pointer-events-none absolute inset-0 backdrop-blur-2xl"
+        style={{
+          WebkitMaskImage:
+            "radial-gradient(ellipse 120% 120% at 100% 0%, black 0%, black 30%, transparent 65%)",
+          maskImage:
+            "radial-gradient(ellipse 120% 120% at 100% 0%, black 0%, black 30%, transparent 65%)",
+        }}
+      />
+
+      {/* זוהר גדול כמו ירח - חזק בפינה הימנית-עליונה, דועך לכיוון שמאל-למטה */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 120% 120% at 100% 0%, #F5F1E8 0%, #F5F1E8 15%, rgba(245,241,232,0.5) 35%, transparent 65%)",
+        }}
+      />
+
 
       <div className="relative z-10 mx-auto max-w-[1180px] px-6">
         {/* אזור הכותרת */}
@@ -96,17 +118,15 @@ export default function WhyUs() {
           </h2>
 
           <div
-            className={`mx-auto my-5 h-[3px] rounded-full bg-[#78A93B] ${
-              isVisible ? "why-line-visible" : "why-line-hidden"
-            }`}
+            className={`mx-auto my-5 h-[3px] rounded-full bg-[#78A93B] ${isVisible ? "why-line-visible" : "why-line-hidden"
+              }`}
           />
 
           <p
-            className={`text-[17px] font-normal leading-[1.9] text-black md:text-[18px] ${
-              isVisible
-                ? "why-description-visible"
-                : "why-description-hidden"
-            }`}
+            className={`text-[17px] font-normal leading-[1.9] text-black md:text-[18px] ${isVisible
+              ? "why-description-visible"
+              : "why-description-hidden"
+              }`}
           >
             תהליך בנייה פרטית עלול להיות מורכב, מבלבל ועמוס בטעויות
             שפוגשות אתכם בכיס. בזכות הליווי והפיקוח הצמוד שלנו, אתם
@@ -125,9 +145,8 @@ export default function WhyUs() {
                   ? `${950 + index * 180}ms`
                   : "0ms",
               }}
-              className={`why-card group relative overflow-hidden rounded-2xl border border-[#DDE5D4] bg-white/85 p-7 shadow-[0_10px_35px_rgba(48,67,38,0.07)] backdrop-blur-sm md:p-8 ${
-                isVisible ? "why-card-visible" : "why-card-hidden"
-              }`}
+              className={`why-card group relative overflow-hidden rounded-2xl border border-[#DDE5D4] bg-white/85 p-7 shadow-[0_10px_35px_rgba(48,67,38,0.07)] backdrop-blur-sm md:p-8 ${isVisible ? "why-card-visible" : "why-card-hidden"
+                }`}
             >
               {/* שכבה עדינה בתוך הכרטיס */}
               <div
