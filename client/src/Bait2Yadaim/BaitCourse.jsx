@@ -34,7 +34,7 @@ import RecommendationsSection from '../components/RecommendationsSection';
 import TestimonialVideos from '../components/TestimonialVideos';
 
 const BaitCourse = () => {
-    const GREEN = '#7CB342';
+    const GREEN = '#7CB343';
     const GREEN_DARK = '#5a8a2c';
     const DARK = '#1f1f1f';
     const CREAM = '#faf7ec';
