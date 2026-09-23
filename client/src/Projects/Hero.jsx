@@ -166,13 +166,13 @@ export default function Hero() {
                 <AnimatedText text="ניהול ופיקוח פרויקטים" startDelay={0.3} />
               </span>
               <span className="block">
-                <AnimatedText text="בבנייה פרטית." startDelay={0.75} />
+                <AnimatedText text="בבנייה פרטית." startDelay={0.9} />
               </span>
               <span className="block text-[#9ED164]">
-                <AnimatedText text="הבית שלכם בידיים" startDelay={1.1} />
+                <AnimatedText text="הבית שלכם בידיים" startDelay={1.25} />
               </span>
               <span className="block text-[#9ED164]">
-                <AnimatedText text="מקצועיות." startDelay={1.5} />
+                <AnimatedText text="מקצועיות." startDelay={1.6} />
               </span>
             </h1>
 
