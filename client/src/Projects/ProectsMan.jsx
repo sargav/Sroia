@@ -87,6 +87,8 @@ function ArrowIcon() {
 
 
 export default function ProjectManagement() {
+  const navigate = useNavigate();
+
   return (
     <main dir="rtl" className="overflow-hidden bg-[#FAFCF7] font-['Assistant',sans-serif] text-[#213020]">
       <Hero />
@@ -98,7 +100,7 @@ export default function ProjectManagement() {
             <span className="h-px w-10 bg-gradient-to-l from-[#8EAD70] to-transparent" />
 
             <h2 className="text-xl font-black tracking-[0.16em] text-[#78965D]">
-              ככה זה שבונים נכון
+              ככה זה שמתחילים נכון
             </h2>
 
             <span className="h-px w-10 bg-gradient-to-r from-[#8EAD70] to-transparent" />
@@ -107,16 +109,7 @@ export default function ProjectManagement() {
         </div>
         <GallerySection status="start" />
       </div>
-      {/* <div className="relative z-10 mx-auto -mt-10 max-w-5xl px-5 md:-mt-12">
-        <div className="grid overflow-hidden rounded-[26px] border border-white/70 bg-white/95 shadow-[0_24px_60px_rgba(35,58,28,0.16)] backdrop-blur md:grid-cols-3">
-          {["ליווי אישי ושקוף", "שליטה בתקציב ובזמנים", "פיקוח מקצועי בשטח"].map((item, index) => (
-            <div key={item} className={`flex items-center justify-center gap-3 px-6 py-5 font-extrabold text-[#30402C] ${index !== 2 ? "border-b border-[#E3ECDD] md:border-b-0 md:border-l" : ""}`}>
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-[#EAF4DF] text-[#72A638]"><MarkIcon /></span>
-              {item}
-            </div>
-          ))}
-        </div>
-      </div>  */}
+     
       <StepsSection />
       <section
         dir="rtl"
@@ -338,7 +331,7 @@ export default function ProjectManagement() {
               hover:shadow-[0_18px_42px_rgba(127,159,98,0.36)]
             "
           >
-            <span>לעמוד יצירת הקשר</span>
+            <span>ליצירת קשר</span>
             <span className="transition-transform duration-300 group-hover:-translate-x-1">
               <ArrowIcon />
             </span>

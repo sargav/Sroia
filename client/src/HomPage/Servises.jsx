@@ -51,7 +51,7 @@ export default function Services() {
                         <span className="h-[2px] w-9 rounded-full bg-[#659B2D]" />
 
                         <p className="text-[14px] font-medium text-[#659B2D]">
-                            מעטפת שירותים מלאה
+                            מעטפת השירותים המלאה שלנו
                         </p>
 
                         <span className="h-[2px] w-9 rounded-full bg-[#659B2D]" />

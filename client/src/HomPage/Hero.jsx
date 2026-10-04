@@ -122,12 +122,12 @@ export default function Hero() {
 
           {/* אזור הטקסט - שכבה אחת שעוברת מטושטשת לחדה */}
           <div className="hero-text-focus">
-            <div className="mb-6 flex items-center gap-3">
+            {/* <div className="mb-6 flex items-center gap-3">
               <span className="h-px w-[54px] bg-[#78A93B]" />
               <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#628E32]">
                 ליווי בנייה פרטית
               </span>
-            </div>
+            </div> */}
 
             <h1 className="mb-2 text-[42px] font-black leading-[1.12] text-[#252A22] sm:text-[56px] md:text-[70px]">
               <span className="block">בונים בית פרטי?</span>
@@ -147,7 +147,9 @@ export default function Hero() {
           <div className="hero-btns-in flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <button
               type="button"
-              onClick={scrollToContact}
+              onClick={() => {
+                navigate("/contact");
+              }}
               className="
                 group flex items-center justify-center gap-4
                 rounded-full bg-[#86B84D]

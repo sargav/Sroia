@@ -153,7 +153,7 @@ export default function GiftsCommunity() {
 
                 <button
                   type="button"
-                  onClick={() => navigate("/guid-to-cuilder")}
+                  onClick={() => navigate("/guid-to-builder")}
                   className="
                     group/button inline-flex items-center gap-4
                     rounded-full bg-[#659B2D]
