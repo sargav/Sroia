@@ -21,14 +21,18 @@
   width: 3.75rem;
   height: 3.75rem;
   border-radius: 9999px;
-  border: 2px solid var(--a11y-accent);
+  border: 1px solid rgba(141, 198, 63, 0.55);
   background: var(--a11y-bg);
   color: var(--a11y-accent);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
-.a11y-launcher:hover { transform: scale(1.06); }
+/* במעבר עכבר: גוון עדין ובהיר יותר של הרקע */
+.a11y-launcher:hover {
+  background: #1d2738;
+  border-color: rgba(141, 198, 63, 0.85);
+}
 .a11y-launcher.has-changes::after {
   content: "";
   position: absolute;
@@ -46,7 +50,7 @@
   bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
   right: 1.25rem;
   z-index: 9999;
-  width: min(24rem, calc(100vw - 2.5rem));
+  width: min(19.5rem, calc(100vw - 2.5rem));
   max-height: calc(100vh - 7.5rem);
   max-height: calc(100dvh - 7.5rem);
   display: flex;
@@ -89,17 +93,18 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  padding: 1rem 1.25rem 1.25rem;
+  padding: 1rem 1rem 1.1rem;
   overflow-y: auto;
 }
 
 /* גודל טקסט */
 .a11y-size {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
+  gap: 0.5rem;
+  padding: 0.65rem 0.8rem;
   border-radius: 1rem;
   background: var(--a11y-surface);
   border: 1px solid var(--a11y-line);
@@ -115,8 +120,8 @@
 .a11y-size-icon { color: var(--a11y-accent); font-weight: 800; letter-spacing: -0.04em; }
 .a11y-size-controls { display: flex; align-items: center; gap: 0.5rem; }
 .a11y-size-controls button {
-  min-width: 2.75rem;
-  height: 2.5rem;
+  min-width: 2.4rem;
+  height: 2.4rem;
   padding: 0 0.6rem;
   border-radius: 0.6rem;
   border: 1px solid var(--a11y-line);
@@ -129,7 +134,7 @@
 .a11y-size-controls button:hover:not(:disabled) { border-color: var(--a11y-accent); }
 .a11y-size-controls button:disabled { opacity: 0.4; cursor: default; }
 .a11y-size-value {
-  min-width: 3.2rem;
+  min-width: 2.8rem;
   text-align: center;
   font-variant-numeric: tabular-nums;
   font-weight: 700;
@@ -139,7 +144,7 @@
 /* האריחים */
 .a11y-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.6rem;
 }
 .a11y-tile {
@@ -148,7 +153,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-  min-height: 6.25rem;
+  min-height: 5.75rem;
   padding: 0.75rem 0.4rem;
   border-radius: 1rem;
   border: 1px solid var(--a11y-line);
@@ -158,6 +163,13 @@
   transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 .a11y-tile svg { color: var(--a11y-accent); }
+/* אריח אחרון ברוחב מלא, כדי שלא יישאר לבד בשורה */
+.a11y-tile.is-wide {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  min-height: 3.5rem;
+  gap: 0.6rem;
+}
 .a11y-tile:hover { border-color: var(--a11y-muted); }
 .a11y-tile.is-active {
   border-color: var(--a11y-accent);
@@ -186,16 +198,33 @@
   gap: 0.5rem;
   min-height: 2.75rem;
   border-radius: 0.8rem;
-  border: 1px solid var(--a11y-line);
+  border: 1px solid rgba(141, 198, 63, 0.55);
   background: transparent;
-  color: var(--a11y-text);
+  color: var(--a11y-accent);
   font-weight: 700;
   font-size: 0.95rem;
   cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
-.a11y-reset:hover:not(:disabled) { border-color: var(--a11y-accent); }
-.a11y-reset:disabled { opacity: 0.4; cursor: default; }
+.a11y-reset:hover:not(:disabled) { border-color: var(--a11y-accent); background: rgba(141, 198, 63, 0.08); }
+.a11y-reset:disabled { opacity: 0.5; cursor: default; }
 
+/* קו מפריד, ומתחתיו הקישור להצהרת הנגישות */
+.a11y-statement {
+  border-top: 1px solid var(--a11y-line);
+  padding-top: 0.9rem;
+  text-align: center;
+}
+.a11y-statement-link {
+  color: var(--a11y-accent);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+.a11y-statement-link:hover { text-decoration: underline; }
+
+.a11y-root a:focus-visible,
 .a11y-root button:focus-visible {
   outline: 3px solid var(--a11y-accent);
   outline-offset: 2px;
