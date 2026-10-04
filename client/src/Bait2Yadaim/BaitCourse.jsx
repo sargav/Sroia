@@ -70,7 +70,7 @@ const BaitCourse = () => {
 
     return (
         <div>
-            <div className="text-center text-white font-bold text-lg bg-[#4f7226] py-2">
+            <div className="text-center text-[#1a1a1a] font-bold text-lg bg-[#8BC34A] py-2">
                 <span dir="rtl" className="inline-block">
                     <span dir="ltr" className="inline-block">87%</span> מהבונים חורגים בממוצע מהתקציב ב-<span dir="ltr" className="inline-block">200,000</span> ש"ח!
                 </span>
@@ -90,7 +90,7 @@ const BaitCourse = () => {
                     className="
                     group/button inline-flex items-center gap-4
                     rounded-full bg-[#8BC34A]
-                    px-6 py-3 text-[14px] font-semibold text-[#24301E]
+                    px-6 py-3 text-[0.875rem] font-semibold text-[#24301E]
                     shadow-[0_8px_20px_rgba(139,195,74,0.18)]
                     transition-all duration-300
                     hover:gap-6

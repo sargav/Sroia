@@ -60,18 +60,18 @@ export default function GiftsCommunity() {
           <div className="mb-4 flex items-center justify-center gap-3">
             <span className="h-px w-8 bg-[#659B2D]/70" />
 
-            <span className="text-[13px] font-semibold text-[#4b7322]">
+            <span className="text-[0.8125rem] font-semibold text-[#4e7723]">
               תוכן מקצועי ללא עלות
             </span>
 
             <span className="h-px w-8 bg-[#659B2D]/70" />
           </div>
 
-          <h2 className="text-[31px] font-bold leading-[1.3] text-[#20281D] md:text-[42px]">
+          <h2 className="text-[1.9375rem] font-bold leading-[1.3] text-[#20281D] md:text-[2.625rem]">
             מתנות וכלים לבנייה נכונה
           </h2>
 
-          <p className="mx-auto mt-4 max-w-[580px] text-[16px] font-medium leading-[1.85] text-[#4F594A]">
+          <p className="mx-auto mt-4 max-w-[580px] text-[1rem] font-medium leading-[1.85] text-[#4F594A]">
             מידע מקצועי וכלים שיעזרו לכם להתנהל בצורה מסודרת לאורך
             תהליך הבנייה.
           </p>
@@ -137,16 +137,16 @@ export default function GiftsCommunity() {
                 {/* רקע מספר */}
                 {/* <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute -left-2 -top-5 text-[105px] font-black leading-none text-[#4b7322]/[0.055]"
+                  className="pointer-events-none absolute -left-2 -top-5 text-[6.5625rem] font-black leading-none text-[#60942b]/[0.055]"
                 >
                   01
                 </span> */}
 
-                <h3 className="mb-3 text-[25px] font-bold leading-[1.4] text-[#20281D]">
+                <h3 className="mb-3 text-[1.5625rem] font-bold leading-[1.4] text-[#20281D]">
                   המדריך המלא לבונה
                 </h3>
 
-                <p className="mb-6 text-[15.5px] font-medium leading-[1.85] text-[#535D4F]">
+                <p className="mb-6 text-[0.9688rem] font-medium leading-[1.85] text-[#535D4F]">
                   מידע חשוב, בדיקות מקדימות וכלים שיעזרו לכם להתחיל את
                   תהליך הבנייה בצורה מסודרת.
                 </p>
@@ -156,8 +156,8 @@ export default function GiftsCommunity() {
                   onClick={() => navigate("/guid-to-builder")}
                   className="
                     group/button inline-flex items-center gap-4
-                    rounded-full bg-[#4b7322]
-                    px-6 py-3 text-[14px] font-semibold text-white
+                    rounded-full bg-[#659B2D]
+                    px-6 py-3 text-[0.875rem] font-semibold text-[#1a1a1a]
                     shadow-[0_8px_20px_rgba(101,155,45,0.22)]
                     transition-all duration-300
                     hover:gap-6
@@ -184,7 +184,7 @@ export default function GiftsCommunity() {
                 }`}
               style={{ transitionDelay: "500ms" }}
             >
-              <div className="group/icon relative flex h-[52px] w-[52px] items-center justify-center rounded-full border-[5px] border-[#F8F7F1] bg-[#4b7322]/85 text-white shadow-[0_6px_18px_rgba(101,155,45,0.28)] md:h-[72px] md:w-[72px]">
+              <div className="group/icon relative flex h-[52px] w-[52px] items-center justify-center rounded-full border-[5px] border-[#F8F7F1] bg-[#659B2D]/85 text-[#1a1a1a] shadow-[0_6px_18px_rgba(101,155,45,0.28)] md:h-[72px] md:w-[72px]">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -201,7 +201,7 @@ export default function GiftsCommunity() {
                   <path d="M9 16h6" />
                 </svg>
 
-                <span className="absolute -left-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[9px] font-bold text-[#4b7322] shadow">
+                <span className="absolute -left-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[0.5625rem] font-bold text-[#4e7723] shadow">
                   1
                 </span>
               </div>
@@ -215,7 +215,7 @@ export default function GiftsCommunity() {
                 }`}
               style={{ transitionDelay: "650ms" }}
             >
-              <p className="max-w-[210px] text-[13px] font-medium leading-[1.7] text-[#596153]">
+              <p className="max-w-[210px] text-[0.8125rem] font-medium leading-[1.7] text-[#596153]">
                 מתחילים עם בסיס ברור ומסודר לפני קבלת החלטות.
               </p>
             </div>
@@ -231,7 +231,7 @@ export default function GiftsCommunity() {
                 }`}
               style={{ transitionDelay: "850ms" }}
             >
-              <p className="mr-auto max-w-[210px] text-right text-[13px] font-medium leading-[1.7] text-[#596153]">
+              <p className="mr-auto max-w-[210px] text-right text-[0.8125rem] font-medium leading-[1.7] text-[#596153]">
                 ממשיכים עם מידע שימושי ומענה לאורך הדרך.
               </p>
             </div>
@@ -261,7 +261,7 @@ export default function GiftsCommunity() {
                   <path d="m13.9 13.5 1.2-.8" />
                 </svg>
 
-                <span className="absolute -left-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#8BC34A] text-[9px] font-bold text-[#24301E] shadow">
+                <span className="absolute -left-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#8BC34A] text-[0.5625rem] font-bold text-[#24301E] shadow">
                   2
                 </span>
               </div>
@@ -295,16 +295,16 @@ export default function GiftsCommunity() {
                 {/* מספר ברקע */}
                 {/* <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute -left-2 -top-5 text-[105px] font-black leading-none text-white/[0.04]"
+                  className="pointer-events-none absolute -left-2 -top-5 text-[6.5625rem] font-black leading-none text-white/[0.04]"
                 >
                   02
                 </span> */}
 
-                <h3 className="mb-3 text-[25px] font-bold leading-[1.4] text-white">
+                <h3 className="mb-3 text-[1.5625rem] font-bold leading-[1.4] text-white">
                   קבוצת הוואטסאפ
                 </h3>
 
-                <p className="mb-6 text-[15.5px] font-medium leading-[1.85] text-white/80">
+                <p className="mb-6 text-[0.9688rem] font-medium leading-[1.85] text-white/80">
                   פעם בשבוע הקבוצה נפתחת לשאלות ותשובות, לצד מידע
                   מקצועי וכלים שימושיים לתהליך הבנייה.
                 </p>
@@ -316,7 +316,7 @@ export default function GiftsCommunity() {
                   className="
                     group/button inline-flex items-center gap-4
                     rounded-full bg-[#8BC34A]
-                    px-6 py-3 text-[14px] font-semibold text-[#24301E]
+                    px-6 py-3 text-[0.875rem] font-semibold text-[#24301E]
                     shadow-[0_8px_20px_rgba(139,195,74,0.18)]
                     transition-all duration-300
                     hover:gap-6

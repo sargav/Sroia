@@ -144,7 +144,7 @@ export default function Hero() {
             {/* תווית עליונה */}
             <div className="hero-tag-in mb-5 flex items-center gap-3">
               <span className="hero-line-open h-px bg-[#8FC24B]" />
-              <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#9ED164]">
+              <span className="text-[0.8125rem] font-bold uppercase tracking-[0.2em] text-[#9ED164]">
                 בוטיק לניהול בנייה
               </span>
             </div>
@@ -152,7 +152,7 @@ export default function Hero() {
             {/* כותרת - נכתבת אות-אות */}
             <h1
               aria-label="ניהול ופיקוח פרויקטים בבנייה פרטית. הבית שלכם בידיים מקצועיות."
-              className="mb-5 text-[28px] font-black leading-[1.25] text-white sm:text-[34px] md:text-[38px]"
+              className="mb-5 text-[1.75rem] font-black leading-[1.25] text-white sm:text-[2.125rem] md:text-[2.375rem]"
             >
               <span className="block">
                 <AnimatedText text="ניהול ופיקוח פרויקטים" startDelay={0.3} />
@@ -170,7 +170,7 @@ export default function Hero() {
 
             {/* תיאור + כפתור - נכנסים יחד, אחרי שהכותרת מסיימת להיכתב */}
             <div className="hero-rest-in">
-              <p className="mb-7 max-w-[500px] text-[15px] font-medium leading-[1.8] text-white/70 md:text-[16px]">
+              <p className="mb-7 max-w-[500px] text-[0.9375rem] font-medium leading-[1.8] text-white/70 md:text-[1rem]">
                 חברת בוטיק לניהול ופיקוח בנייה, המתמחה בליווי משפחות הבונות
                 את ביתן הפרטי. אנו מספקים מעטפת מעשית ומקצועית המבטיחה
                 חיסכון כספי ניכר, שמירה על לוחות זמנים ושקט נפשי מוחלט.
@@ -184,7 +184,7 @@ export default function Hero() {
                 className="
                   group flex items-center justify-center gap-4
                   rounded-full bg-[#8FC24B]
-                  px-7 py-4 text-[15px] font-bold text-[#132009]
+                  px-7 py-4 text-[0.9375rem] font-bold text-[#132009]
                   shadow-[0_9px_25px_rgba(143,194,75,0.3)]
                   transition-all duration-300
                   hover:-translate-y-1 hover:gap-6

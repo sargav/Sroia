@@ -135,7 +135,7 @@ function FitSection() {
                 <div className="mb-14 text-center">
                     <p
                         className="text-sm font-bold uppercase tracking-widest"
-                        style={{ color: "#4f722a" }}
+                        style={{ color: "#51762b" }}
                     >
                         לפני שממשיכים
                     </p>

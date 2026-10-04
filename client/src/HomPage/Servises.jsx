@@ -50,7 +50,7 @@ export default function Services() {
                     <div className="mb-4 flex items-center justify-center gap-3">
                         <span className="h-[2px] w-9 rounded-full bg-[#659B2D]" />
 
-                        <p className="text-[14px] font-medium text-[#4b7322]">
+                        <p className="text-[0.875rem] font-medium text-[#4e7723]">
                             מעטפת השירותים המלאה שלנו
                         </p>
 
@@ -58,12 +58,12 @@ export default function Services() {
                     </div>
 
                     {/* כותרת ראשית */}
-                    <h2 className="text-[32px] font-bold leading-[1.3] text-[#26321F] md:text-[44px]">
+                    <h2 className="text-[2rem] font-bold leading-[1.3] text-[#26321F] md:text-[2.75rem]">
                         שלוש דרכים לבנות נכון
                     </h2>
 
                     {/* טקסט הסבר */}
-                    <p className="mt-5 max-w-[600px] text-[16px] font-normal leading-[1.8] text-[#626A5D]">
+                    <p className="mt-5 max-w-[600px] text-[1rem] font-normal leading-[1.8] text-[#626A5D]">
                         בחרו את רמת הליווי שמתאימה לכם וקבלו את הכלים הדרושים
                         לתהליך מסודר, ברור ומדויק.
                     </p>
@@ -83,39 +83,39 @@ export default function Services() {
                             {/* מספר גדול ברקע */}
                             <span
                                 aria-hidden="true"
-                                className="pointer-events-none absolute -left-2 -top-3 select-none text-[100px] font-bold leading-none text-[#4b7322]/[0.045]"
+                                className="pointer-events-none absolute -left-2 -top-3 select-none text-[6.25rem] font-bold leading-none text-[#60942b]/[0.045]"
                             >
                                 {service.number}
                             </span>
 
                             {/* מספר ותווית */}
                             <div className="relative z-10 mb-7 flex items-center justify-between">
-                                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#EAF2DF] text-[16px] font-bold text-[#4b7322] transition-colors duration-300 group-hover:bg-[#4b7322] group-hover:text-white">
+                                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#EAF2DF] text-[1rem] font-bold text-[#4e7723] transition-colors duration-300 group-hover:bg-[#659B2D] group-hover:text-[#1a1a1a]">
                                     {service.number}
                                 </span>
 
-                                <span className="rounded-full border border-[#DCE6D1] bg-[#F9FBF6] px-3.5 py-1.5 text-[12px] font-medium text-[#587047]">
+                                <span className="rounded-full border border-[#DCE6D1] bg-[#F9FBF6] px-3.5 py-1.5 text-[0.75rem] font-medium text-[#617a4e]">
                                     {service.label}
                                 </span>
                             </div>
 
                             {/* תוכן הכרטיס */}
-                            <h3 className="relative z-10 mb-4 text-[23px] font-bold leading-[1.4] text-[#293126]">
+                            <h3 className="relative z-10 mb-4 text-[1.4375rem] font-bold leading-[1.4] text-[#293126]">
                                 {service.title}
                             </h3>
 
-                            <p className="relative z-10 mb-8 flex-1 text-[16px] font-normal leading-[1.85] text-[#626A5D]">
+                            <p className="relative z-10 mb-8 flex-1 text-[1rem] font-normal leading-[1.85] text-[#626A5D]">
                                 {service.description}
                             </p>
 
                             {/* קישור */}
                             <a
                                 href={service.href}
-                                className="relative z-10 flex items-center justify-between border-t border-[#E3E7DE] pt-5 text-[15px] font-semibold text-[#4a7424]"
+                                className="relative z-10 flex items-center justify-between border-t border-[#E3E7DE] pt-5 text-[0.9375rem] font-semibold text-[#538228]"
                             >
                                 <span>{service.buttonText}</span>
 
-                                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#EDF4E5] text-[17px] transition-all duration-300 group-hover:-translate-x-1 group-hover:bg-[#4b7322] group-hover:text-white">
+                                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#EDF4E5] text-[1.0625rem] transition-all duration-300 group-hover:-translate-x-1 group-hover:bg-[#659B2D] group-hover:text-[#1a1a1a]">
                                     ←
                                 </span>
                             </a>
@@ -126,7 +126,7 @@ export default function Services() {
                 {/* קישור תחתון */}
                 <button
                     onClick={() => navigate("/contact")}
-                    className="mx-auto mt-9 block w-fit cursor-pointer text-center text-[14px] font-normal text-[#646b60] underline-offset-4 transition-colors duration-300 hover:text-[#4b7322] hover:underline"
+                    className="mx-auto mt-9 block w-fit cursor-pointer text-center text-[0.875rem] font-normal text-[#6b7266] underline-offset-4 transition-colors duration-300 hover:text-[#4e7723] hover:underline"
                 >
                     לא בטוחים איזה מסלול מתאים לכם? צרו קשר ונעזור לכם לבחור.
                 </button>

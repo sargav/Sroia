@@ -36,7 +36,7 @@ export default function MistakesCompass({ mistakes }) {
             <div className="flex items-center justify-center gap-4">
               <span className="h-px w-10 [background-image:linear-gradient(to_left,#8EAD70,transparent)]" />
 
-              <span className="text-xs font-black tracking-[0.18em] text-[#5a7046]">
+              <span className="text-xs font-black tracking-[0.18em] text-[#5f774a]">
                 לפני שממשיכים
               </span>
 
@@ -45,7 +45,7 @@ export default function MistakesCompass({ mistakes }) {
 
             <h2 className="mt-5 text-4xl font-black leading-[1.2] md:text-5xl">
               שבע הטעויות הנפוצות
-              <span className="mt-2 block text-[#57713f]">של בונים פרטים</span>
+              <span className="mt-2 block text-[#759855]">של בונים פרטים</span>
             </h2>
           </header>
         </Reveal>
@@ -74,7 +74,7 @@ export default function MistakesCompass({ mistakes }) {
               {/* מרכז המצפן */}
               <div className="absolute left-1/2 top-1/2 grid h-[44%] w-[44%] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-[#D3DECC] bg-white/85 shadow-[0_12px_35px_rgba(65,83,56,.08)] backdrop-blur-sm">
                 <Compass
-                  className="h-[58%] w-[58%] text-[#576f43] transition-transform duration-500"
+                  className="h-[58%] w-[58%] text-[#7D9F60] transition-transform duration-500"
                   strokeWidth={1.2}
                   style={{ transform: `rotate(${points[active].angle + 45}deg)` }}
                   aria-hidden="true"
@@ -95,10 +95,10 @@ export default function MistakesCompass({ mistakes }) {
                     style={{ left: `${points[i].left}%`, top: `${points[i].top}%` }}
                     className={`absolute grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-[3px] border-[#F5F6F1] text-xs font-black transition duration-300 md:text-sm ${
                       isActive
-                        ? "h-11 w-11 scale-110 bg-[#576f43] text-white shadow-[0_0_0_1px_#AFC29F,0_10px_24px_rgba(65,83,56,.22)] md:h-14 md:w-14"
+                        ? "h-11 w-11 scale-110 bg-[#7D9F60] text-[#1a1a1a] shadow-[0_0_0_1px_#AFC29F,0_10px_24px_rgba(65,83,56,.22)] md:h-14 md:w-14"
                         : passed
-                        ? "h-9 w-9 bg-[#DCE8CF] text-[#53723f] shadow-[0_0_0_1px_#AFC29F] hover:scale-110 md:h-11 md:w-11"
-                        : "h-9 w-9 bg-white text-[#5a7046] shadow-[0_0_0_1px_#D3DECC] hover:scale-110 md:h-11 md:w-11"
+                        ? "h-9 w-9 bg-[#DCE8CF] text-[#547340] shadow-[0_0_0_1px_#AFC29F] hover:scale-110 md:h-11 md:w-11"
+                        : "h-9 w-9 bg-white text-[#5f774a] shadow-[0_0_0_1px_#D3DECC] hover:scale-110 md:h-11 md:w-11"
                     }`}
                   >
                     {String(i + 1).padStart(2, "0")}
@@ -113,7 +113,7 @@ export default function MistakesCompass({ mistakes }) {
             <article aria-live="polite" className="group relative min-h-[250px] overflow-hidden rounded-[8px_30px_8px_30px] border border-[#D3DECC] bg-white/85 p-6 shadow-[0_12px_35px_rgba(65,83,56,.06)] backdrop-blur-sm md:p-8">
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute -left-2 -top-6 select-none text-[120px] font-black leading-none text-[#7E9D65]/[0.07]"
+                className="pointer-events-none absolute -left-2 -top-6 select-none text-[7.5rem] font-black leading-none text-[#7E9D65]/[0.07]"
               >
                 {num}
               </span>
@@ -121,12 +121,12 @@ export default function MistakesCompass({ mistakes }) {
 
               <div className="relative z-10 flex min-h-[200px] flex-col">
                 <h3 className="text-xl font-black leading-8 text-[#35402F] md:text-2xl">{title}</h3>
-                <p className="mt-3 text-sm font-medium leading-7 text-[#626c5f] md:text-base md:leading-8">
+                <p className="mt-3 text-sm font-medium leading-7 text-[#677163] md:text-base md:leading-8">
                   {text}
                 </p>
 
                 <div className="mt-auto flex items-center justify-between pt-6">
-                  <span className="text-sm font-black text-[#5a7046]">
+                  <span className="text-sm font-black text-[#5f774a]">
                     {num} / {String(n).padStart(2, "0")}
                   </span>
                   <div className="flex gap-2">
@@ -134,7 +134,7 @@ export default function MistakesCompass({ mistakes }) {
                       type="button"
                       onClick={prev}
                       aria-label="הקודם"
-                      className="grid h-10 w-10 place-items-center rounded-full border border-[#D3DECC] bg-white text-[#53723f] transition hover:border-[#A6BC95] hover:bg-[#F5F6F1]"
+                      className="grid h-10 w-10 place-items-center rounded-full border border-[#D3DECC] bg-white text-[#547340] transition hover:border-[#A6BC95] hover:bg-[#F5F6F1]"
                     >
                       <ArrowRight size={18} />
                     </button>
@@ -142,7 +142,7 @@ export default function MistakesCompass({ mistakes }) {
                       type="button"
                       onClick={next}
                       aria-label="הבא"
-                      className="grid h-10 w-10 place-items-center rounded-full bg-[#576f43] text-white transition hover:bg-[#6f9053]"
+                      className="grid h-10 w-10 place-items-center rounded-full bg-[#7D9F60] text-[#1a1a1a] transition hover:bg-[#6f9053]"
                     >
                       <ArrowLeft size={18} />
                     </button>

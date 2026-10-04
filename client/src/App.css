@@ -445,3 +445,10 @@ input[type="radio"]:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+/* ===== נגישות: בלי גלילה הצידה במסכים צרים =====
+   אנימציות שנכנסות מהצד דחפו את הדף לרוחב המסך בטלפון */
+html,
+body {
+  overflow-x: clip;
+}

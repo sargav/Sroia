@@ -29,7 +29,7 @@ function GuaranteeCard() {
                     position: "absolute",
                     top: -22,
                     right: 14,
-                    fontSize: 134,
+                    fontSize: "8.375rem",
                     fontWeight: 900,
                     lineHeight: 1,
                     color: "rgba(255,255,255,0.06)",
@@ -43,7 +43,7 @@ function GuaranteeCard() {
             <div style={{ position: "relative" }}>
                 <div
                     style={{
-                        fontSize: 13,
+                        fontSize: "0.8125rem",
                         fontWeight: 800,
                         color: "#9ed15c",
                         letterSpacing: 0.3,
@@ -54,7 +54,7 @@ function GuaranteeCard() {
                 </div>
                 <h3
                     style={{
-                        fontSize: 27,
+                        fontSize: "1.6875rem",
                         fontWeight: 800,
                         color: "#ffffff",
                         margin: "0 0 14px",
@@ -63,10 +63,10 @@ function GuaranteeCard() {
                 >
                     100% החזר כספי
                 </h3>
-                <p style={{ fontSize: 15, color: "#cfd8d0", margin: "0 0 6px", lineHeight: 1.7 }}>
+                <p style={{ fontSize: "0.9375rem", color: "#cfd8d0", margin: "0 0 6px", lineHeight: 1.7 }}>
                     תוך 30 יום מהרכישה
                 </p>
-                <p style={{ fontSize: 15, color: "#cfd8d0", margin: 0, lineHeight: 1.7 }}>
+                <p style={{ fontSize: "0.9375rem", color: "#cfd8d0", margin: 0, lineHeight: 1.7 }}>
                     בלי שאלות, בלי תירוצים.
                 </p>
             </div>
@@ -131,7 +131,7 @@ export default function Guarant() {
                     </div>
                     <h2
                         style={{
-                            fontSize: 23,
+                            fontSize: "1.4375rem",
                             fontWeight: 800,
                             color: "#14202c",
                             lineHeight: 1.55,
@@ -156,7 +156,7 @@ export default function Guarant() {
                             }}
                         >
                             <CheckIcon />
-                            <span style={{ fontSize: 15.5, color: "#3a3a36", lineHeight: 1.7 }}>{p}</span>
+                            <span style={{ fontSize: "0.9688rem", color: "#3a3a36", lineHeight: 1.7 }}>{p}</span>
                         </div>
                     ))}
                 </div>
@@ -164,7 +164,7 @@ export default function Guarant() {
                 <div
                     style={{
                         textAlign: "center",
-                        fontSize: 15.5,
+                        fontSize: "0.9688rem",
                         lineHeight: 1.8,
                         color: "#6b6b63",
                         paddingTop: 22,

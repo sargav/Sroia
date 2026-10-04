@@ -65,7 +65,7 @@ export default function FixedBackgroundUrgencySection() {
         <div style={{ maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
           <h2
             style={{
-              fontSize: 24,
+              fontSize: "1.5rem",
               fontWeight: 800,
               color: "#7cb342",
               lineHeight: 1.5,
@@ -74,10 +74,10 @@ export default function FixedBackgroundUrgencySection() {
           >
             אבל יש משהו שחשוב שתדעו:
           </h2>
-          <p style={{ fontSize: 20, fontWeight: 700, color: "#ffffff", margin: "0 0 20px" }}>
+          <p style={{ fontSize: "1.25rem", fontWeight: 700, color: "#ffffff", margin: "0 0 20px" }}>
             המחיר הזה לא יחזיק מעמד לנצח.
           </p>
-          <p style={{ fontSize: 17, fontWeight: 700, color: "#ffffff", margin: "0 0 25px" }}>
+          <p style={{ fontSize: "1.0625rem", fontWeight: 700, color: "#ffffff", margin: "0 0 25px" }}>
             הנה הסיבות:
           </p>
 
@@ -96,25 +96,25 @@ export default function FixedBackgroundUrgencySection() {
                     marginRight: "auto", // ממרכז את התמונה אופקית
                   }}
                 />
-                <div style={{ fontSize: 17, fontWeight: 700, color: "#7cb342", marginBottom: 10 }}>
+                <div style={{ fontSize: "1.0625rem", fontWeight: 700, color: "#7cb342", marginBottom: 10 }}>
                   {r.title}
                 </div>
-                <div style={{ fontSize: 16, color: "#e9e9e4", lineHeight: 1.7 }}>{r.text}</div>
+                <div style={{ fontSize: "1rem", color: "#e9e9e4", lineHeight: 1.7 }}>{r.text}</div>
               </div>
             ))}
           </div>
 
-          <p style={{ fontSize: 17, fontWeight: 700, color: "#ffffff", lineHeight: 1.8, margin: "0 0 6px" }}>
+          <p style={{ fontSize: "1.0625rem", fontWeight: 700, color: "#ffffff", lineHeight: 1.8, margin: "0 0 6px" }}>
             בחודש הבא המחיר עולה ל-2,700 ₪.
           </p>
-          <p style={{ fontSize: 16, color: "#d9d9d4", margin: "0 0 40px" }}>
+          <p style={{ fontSize: "1rem", color: "#d9d9d4", margin: "0 0 40px" }}>
             ואם אתם חושבים "אחשוב על זה ואחזור"...
           </p>
 
-          <p style={{ fontSize: 17, fontWeight: 700, color: "#ffffff", margin: "0 0 10px" }}>
+          <p style={{ fontSize: "1.0625rem", fontWeight: 700, color: "#ffffff", margin: "0 0 10px" }}>
             תחשבו על זה:
           </p>
-          <p style={{ fontSize: 18, fontWeight: 800, color: "#7cb342", lineHeight: 1.7, margin: "0 0 50px" }}>
+          <p style={{ fontSize: "1.125rem", fontWeight: 800, color: "#7cb342", lineHeight: 1.7, margin: "0 0 50px" }}>
             הזמן הכי טוב להצטרף היה אתמול.
             <br />
             השני הכי טוב? עכשיו.
@@ -123,7 +123,7 @@ export default function FixedBackgroundUrgencySection() {
           <div style={{ display: "flex", flexDirection: "column", gap: 20, textAlign: "right" }}>
             {warnings.map((w, i) => (
               <div key={i} style={{ display: "flex",flexDirection:"row-reverse", gap: 14, alignItems: "flex-start" ,marginRight:"auto",marginLeft:"auto"}}>
-                <span style={{ fontSize: 15, color: "#e9e9e4", lineHeight: 1.7, flex: 1 }}>
+                <span style={{ fontSize: "0.9375rem", color: "#e9e9e4", lineHeight: 1.7, flex: 1 }}>
                   {w}
                 </span>
                 <AlertTriangle color="#e6c34a" size={22} style={{ flexShrink: 0 }} />

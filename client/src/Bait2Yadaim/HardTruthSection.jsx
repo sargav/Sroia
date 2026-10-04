@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Compass } from "lucide-react";
 
 const GREEN = "#7CB342";
-const GREEN_TEXT = "#4f722a"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
+const GREEN_TEXT = "#51762b"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 const DARK = "#1E2A22";
 const CREAM = "#FBF8F2";
 const BLACK = "#1A1A1A";
@@ -142,7 +142,7 @@ function HardTruthSection() {
                             אבל אף אחד גם לא נמצא{" "}
                             <span
                                 className="font-bold"
-                                style={{ color: "#4f722a" }}
+                                style={{ color: "#51762b" }}
                             >
                                 100% בצד שלכם.
                             </span>

@@ -65,7 +65,7 @@ function FaqItem({ item, index, isOpen, onToggle }) {
                         className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-xl font-bold leading-none transition-colors duration-300"
                         style={{
                             backgroundColor: isOpen ? "#7CB342" : "#F0F3E8",
-                            color: isOpen ? "#ffffff" : "#4f722a",
+                            color: isOpen ? "#ffffff" : "#669336",
                         }}
                     >
                         ?
@@ -88,7 +88,7 @@ function FaqItem({ item, index, isOpen, onToggle }) {
                         className="flex h-full w-full items-center justify-center rounded-full border-2 text-2xl font-bold leading-none"
                         style={{
                             borderColor: isOpen ? "#7CB342" : "#D9DED0",
-                            color: isOpen ? "#4f722a" : "#9CA3AF",
+                            color: isOpen ? "#669336" : "#9CA3AF",
                         }}
                     >
                         {isOpen ? "–" : "+"}
@@ -138,7 +138,7 @@ function FaqSection() {
             {/* התוכן */}
             <div className="relative z-10 mx-auto w-full max-w-2xl">
                 <div className="mb-2 text-center">
-                    <p className="text-sm font-bold uppercase tracking-widest text-[#4f722a]">
+                    <p className="text-sm font-bold uppercase tracking-widest text-[#51762b]">
                         יש לכם ספקות?
                     </p>
                     <h2 className="mt-2 text-3xl font-bold text-neutral-900">

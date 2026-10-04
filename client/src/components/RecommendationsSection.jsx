@@ -5,7 +5,7 @@ import api from "../api-config";
 import useAccessibleDialog from "./useAccessibleDialog";
 
 const GREEN = "#7CB342";
-const GREEN_TEXT = "#4f722a"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
+const GREEN_TEXT = "#51762b"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 const DARK = "#1E2A22";
 const CREAM = "#FBF8F2";
 const BLACK = "#1A1A1A";

@@ -124,12 +124,12 @@ export default function Hero() {
           <div className="hero-text-focus">
             {/* <div className="mb-6 flex items-center gap-3">
               <span className="h-px w-[54px] bg-[#78A93B]" />
-              <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#628E32]">
+              <span className="text-[0.8125rem] font-bold uppercase tracking-[0.2em] text-[#628E32]">
                 ליווי בנייה פרטית
               </span>
             </div> */}
 
-            <h1 className="mb-2 text-[42px] font-black leading-[1.12] text-[#252A22] sm:text-[56px] md:text-[70px]">
+            <h1 className="mb-2 text-[2.625rem] font-black leading-[1.12] text-[#252A22] sm:text-[3.5rem] md:text-[4.375rem]">
               <span className="block">בונים בית פרטי?</span>
               <span className="block">נהנים מהדרך.</span>
               <span className="block text-[#79A942]">חוסכים הון.</span>
@@ -137,7 +137,7 @@ export default function Hero() {
 
             <div className="mb-8 mt-6 h-px w-24 bg-gradient-to-l from-[#78A93B]/60 to-transparent" />
 
-            <p className="mb-9 max-w-[540px] text-[16px] font-medium leading-[1.9] text-[#51594C] md:text-[18px]">
+            <p className="mb-9 max-w-[540px] text-[1rem] font-medium leading-[1.9] text-[#51594C] md:text-[1.125rem]">
               ליווי יד ביד משלב רכישת המגרש ועד קבלת המפתח — ללא חריגות
               תקציב, ללא טעויות יקרות ובסטנדרט הגבוה ביותר.
             </p>
@@ -152,12 +152,12 @@ export default function Hero() {
               }}
               className="
                 group flex items-center justify-center gap-4
-                rounded-full bg-[#53732e]
-                px-7 py-4 text-[15px] font-bold text-white
+                rounded-full bg-[#86B84D]
+                px-7 py-4 text-[0.9375rem] font-bold text-[#1a1a1a]
                 shadow-[0_9px_25px_rgba(121,169,66,0.28)]
                 transition-all duration-300
                 hover:-translate-y-1 hover:gap-6
-                hover:bg-[#46651f]
+                hover:bg-[#78A63F]
                 hover:shadow-[0_14px_32px_rgba(121,169,66,0.36)]
               "
             >
@@ -177,7 +177,7 @@ export default function Hero() {
                 group flex items-center justify-center gap-4
                 rounded-full border border-[#86B84D]/60
                 bg-white/55 px-7 py-4
-                text-[15px] font-bold text-[#628E32]
+                text-[0.9375rem] font-bold text-[#628E32]
                 backdrop-blur-sm transition-all duration-300
                 hover:-translate-y-1 hover:gap-6
                 hover:border-[#86B84D]

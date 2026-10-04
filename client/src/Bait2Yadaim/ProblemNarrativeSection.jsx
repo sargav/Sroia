@@ -12,7 +12,7 @@ import {
 import StatsSection from "./StatsSection";
 
 const GREEN = "#7CB342";
-const GREEN_TEXT = "#4f722a"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
+const GREEN_TEXT = "#51762b"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 const DARK = "#1E2A22";
 const CREAM = "#FBF8F2";
 const BLACK = "#1A1A1A";
@@ -51,8 +51,8 @@ function VsDivider() {
         <div className="flex items-center justify-center gap-2 py-0.5">
             <div className="h-px flex-1" style={{ backgroundColor: "#E5E9DA" }} />
             <span
-                className="text-[10px] font-extrabold tracking-widest"
-                style={{ color: "#656b4e" }}
+                className="text-[0.625rem] font-extrabold tracking-widest"
+                style={{ color: "#656B4E" }}
             >
                 מול
             </span>
