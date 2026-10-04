@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import { MessageSquareQuote, X, ZoomIn } from "lucide-react";
+import { Compass } from "lucide-react";
 import api from "../api-config";
+
+const GREEN = "#7CB342";
+const DARK = "#1E2A22";
+const CREAM = "#FBF8F2";
+const BLACK = "#1A1A1A";
+
 
 function RecommendationsSection() {
     const [recommendationImages, setRecommendationImages] = useState([]);
@@ -67,10 +74,22 @@ function RecommendationsSection() {
                 <div className="relative mx-auto max-w-7xl">
                     {/* כותרת האזור */}
                     <div className="mx-auto mb-12 max-w-3xl text-center">
-                        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#7CB342]/20 bg-white px-4 py-2 text-sm font-bold text-[#5E8E2E] shadow-sm">
-                            <MessageSquareQuote size={18} />
-
-                            תגובות אמיתיות ממשתתפי הקורס
+                    
+                        <div
+                            className="relative mx-auto flex w-fit items-center justify-center gap-3 px-9 py-4 mb-4"
+                            style={{
+                                backgroundColor: BLACK,
+                                clipPath:
+                                    "polygon(3% 0%, 97% 0%, 100% 50%, 97% 100%, 3% 100%, 0% 50%)",
+                            }}
+                        >
+                            <Compass size={20} style={{ color: GREEN }} className="flex-shrink-0" />
+                            <p
+                                className="text-base font-bold leading-snug md:text-lg"
+                                style={{ color: CREAM }}
+                            >
+                                תגובות אמיתיות ממשתתפי הקורס
+                            </p>
                         </div>
 
                         <h2 className="text-3xl font-extrabold leading-tight text-[#1E2B18] sm:text-4xl lg:text-5xl">
@@ -120,9 +139,8 @@ function RecommendationsSection() {
                                     <div className="relative overflow-hidden rounded-[20px] bg-[#F5F7F1]">
                                         <img
                                             src={src}
-                                            alt={`המלצה של משתתף בקורס ${
-                                                index + 1
-                                            }`}
+                                            alt={`המלצה של משתתף בקורס ${index + 1
+                                                }`}
                                             loading="lazy"
                                             className="block h-auto w-full transition duration-500 group-hover:scale-[1.02]"
                                         />
@@ -135,10 +153,10 @@ function RecommendationsSection() {
                                     </div>
 
                                     <div className="flex items-center gap-3 px-2 pb-2 pt-4">
-                                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EAF4DC] text-[#689E35]">
+                                        {/* <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EAF4DC] text-[#689E35]">
                                             <MessageSquareQuote size={18} />
-                                        </span>
-
+                                        </span> */}
+                                        {/* 
                                         <div>
                                             <p className="font-bold text-[#283521]">
                                                 משתתף בקורס
@@ -147,7 +165,7 @@ function RecommendationsSection() {
                                             <p className="mt-0.5 text-xs text-[#75806E]">
                                                 המלצה שנשלחה לאחר הלמידה
                                             </p>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </button>
                             ))}

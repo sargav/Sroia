@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import heroImg from "./assetes/hero.png";
 
 function AnimatedText({
+
   text,
   startDelay = 0,
   letterDelay = 0.03,
@@ -31,16 +32,7 @@ function AnimatedText({
 export default function Hero() {
   const navigate = useNavigate();
 
-  const scrollToContact = () => {
-    const contactSection = document.getElementById("contact");
-
-    if (contactSection) {
-      contactSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
+ 
 
   return (
     <section
@@ -186,7 +178,9 @@ export default function Hero() {
 
               <button
                 type="button"
-                onClick={scrollToContact}
+                onClick={() => {
+                  navigate("/contact");
+                }}
                 className="
                   group flex items-center justify-center gap-4
                   rounded-full bg-[#8FC24B]
