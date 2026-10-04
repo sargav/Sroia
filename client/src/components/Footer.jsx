@@ -56,6 +56,7 @@ const Footer = () => {
             <Link to="/guid-to-builder" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > המדריך לבונה </Link>
             <Link to="/benefit" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > הטבות </Link>
             <Link to="/contact" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > צור קשר </Link>
+            <Link to="/accessibility" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > הצהרת נגישות </Link>
           </nav>
 
 

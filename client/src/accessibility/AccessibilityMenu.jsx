@@ -42,11 +42,11 @@ function LevelDots({ level, levels }) {
     );
 }
 
-function Tile({ icon: Icon, label, active, onClick, level, levels = 2, stateText }) {
+function Tile({ icon: Icon, label, active, onClick, level, levels = 2, stateText, wide = false }) {
     return (
         <button
             type="button"
-            className={`a11y-tile ${active ? "is-active" : ""}`}
+            className={`a11y-tile ${active ? "is-active" : ""} ${wide ? "is-wide" : ""}`}
             onClick={onClick}
             aria-pressed={active}
         >
@@ -165,13 +165,17 @@ export default function AccessibilityMenu() {
                             <Tile icon={Heading} label="הדגשת כותרות" active={settings.highlightHeadings} onClick={() => toggle("highlightHeadings")} />
                             <Tile icon={ImageOff} label="הסתרת תמונות" active={settings.hideImages} onClick={() => toggle("hideImages")} />
                             <Tile icon={RectangleHorizontal} label="מדריך קריאה" active={settings.readingGuide} onClick={() => toggle("readingGuide")} />
-                            <Tile icon={Pause} label="עצירת אנימציות" active={settings.stopAnimations} onClick={() => toggle("stopAnimations")} />
+                            <Tile icon={Pause} label="עצירת אנימציות" active={settings.stopAnimations} onClick={() => toggle("stopAnimations")} wide />
                         </div>
 
                         <button type="button" className="a11y-reset" onClick={reset} disabled={!isChanged}>
                             <RotateCcw size={18} aria-hidden="true" />
                             איפוס הגדרות נגישות
                         </button>
+
+                        <a className="a11y-statement-link" href={`${import.meta.env.BASE_URL}accessibility`}>
+                            להצהרת הנגישות של האתר
+                        </a>
                     </div>
                 </div>
             )}

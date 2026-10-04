@@ -11,6 +11,7 @@ import BaitCourse from './Bait2Yadaim/BaitCourse'
 import Pay from './Bait2Yadaim/pay'
 import ProjectManagement from './Projects/ProectsMan'
 import AppMazpen from './AppMazpen/pages/AppMazpen'
+import AccessibilityStatement from './accessibility/AccessibilityStatement'
 function App() {
 
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path='/benefit' element={<div><Benefit /></div>} />
             <Route path='/contact' element={<div><Contact /></div>} />
             <Route path='/pay' element={<div><Pay /></div>} />
+            <Route path='/accessibility' element={<AccessibilityStatement />} />
 
           </Route>
         </Routes>
