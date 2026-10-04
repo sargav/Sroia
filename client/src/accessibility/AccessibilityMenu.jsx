@@ -21,7 +21,7 @@ import "./accessibility.css";
 // סמל הנגישות הבינלאומי: דמות עם ידיים פרושות
 function AccessIcon() {
     return (
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <circle cx="12" cy="4.2" r="1.9" fill="currentColor" stroke="none" />
             <path d="M4.5 8.2 12 9.8l7.5-1.6" />
             <path d="M12 9.8v5.2" />
@@ -170,12 +170,14 @@ export default function AccessibilityMenu() {
 
                         <button type="button" className="a11y-reset" onClick={reset} disabled={!isChanged}>
                             <RotateCcw size={18} aria-hidden="true" />
-                            איפוס הגדרות נגישות
+                            איפוס להגדרות ברירת מחדל
                         </button>
 
-                        <a className="a11y-statement-link" href={`${import.meta.env.BASE_URL}accessibility`}>
-                            להצהרת הנגישות של האתר
-                        </a>
+                        <div className="a11y-statement">
+                            <a className="a11y-statement-link" href={`${import.meta.env.BASE_URL}accessibility`}>
+                                הצהרת נגישות
+                            </a>
+                        </div>
                     </div>
                 </div>
             )}

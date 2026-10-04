@@ -21,14 +21,18 @@
   width: 3.75rem;
   height: 3.75rem;
   border-radius: 9999px;
-  border: 2px solid var(--a11y-accent);
+  border: 1px solid rgba(141, 198, 63, 0.55);
   background: var(--a11y-bg);
   color: var(--a11y-accent);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
-.a11y-launcher:hover { transform: scale(1.06); }
+/* במעבר עכבר: גוון עדין ובהיר יותר של הרקע */
+.a11y-launcher:hover {
+  background: #1d2738;
+  border-color: rgba(141, 198, 63, 0.85);
+}
 .a11y-launcher.has-changes::after {
   content: "";
   position: absolute;
@@ -194,24 +198,31 @@
   gap: 0.5rem;
   min-height: 2.75rem;
   border-radius: 0.8rem;
-  border: 1px solid var(--a11y-line);
+  border: 1px solid rgba(141, 198, 63, 0.55);
   background: transparent;
-  color: var(--a11y-text);
+  color: var(--a11y-accent);
   font-weight: 700;
   font-size: 0.95rem;
   cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
-.a11y-reset:hover:not(:disabled) { border-color: var(--a11y-accent); }
-.a11y-reset:disabled { opacity: 0.4; cursor: default; }
+.a11y-reset:hover:not(:disabled) { border-color: var(--a11y-accent); background: rgba(141, 198, 63, 0.08); }
+.a11y-reset:disabled { opacity: 0.5; cursor: default; }
 
-.a11y-statement-link {
-  align-self: center;
-  color: var(--a11y-accent);
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+/* קו מפריד, ומתחתיו הקישור להצהרת הנגישות */
+.a11y-statement {
+  border-top: 1px solid var(--a11y-line);
+  padding-top: 0.9rem;
+  text-align: center;
 }
+.a11y-statement-link {
+  color: var(--a11y-accent);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+.a11y-statement-link:hover { text-decoration: underline; }
 
 .a11y-root a:focus-visible,
 .a11y-root button:focus-visible {
