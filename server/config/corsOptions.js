@@ -1,6 +1,7 @@
 const allowedOrigins = [
 'http://localhost:5173',
-'http://localhost:5500'
+'http://localhost:5500',
+'https://sargav.github.io/'
 ]
 const corsOptions = {
 origin: (origin, callback) => {

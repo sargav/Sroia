@@ -1,19 +1,6 @@
 import { useEffect } from "react";
 import { CheckCircle2, AlertCircle, ArrowRight } from "lucide-react";
 
-/**
- * דף התוצאה של התשלום. את הכתובת שלו מגדירים בחברת האשראי:
- *   כתובת הצלחה:  https://הדומיין-שלך/payment-result?status=success
- *   כתובת כישלון:  https://הדומיין-שלך/payment-result?status=failed
- *
- * מה הוא עושה:
- * 1. אם נטען בתוך חלון התשלום (iframe): שולח את התוצאה לדף הראשי וסוגר את החלון.
- * 2. אם נפתח כדף רגיל: מציג הודעה ללקוח.
- * 3. תמיד מדפיס לקונסולה את כל הפרמטרים שחברת האשראי החזירה, כדי שתוכלי לראות אותם.
- *
- * חשוב: הפרמטר status ב-URL אפשר לזייף. אל תשחררו גישה למוצר על סמך הדף הזה.
- * את אישור התשלום האמיתי מקבלים מהודעת השרת (webhook) של חברת האשראי.
- */
 export default function PaymentResult() {
   const params = new URLSearchParams(window.location.search);
   const status = params.get("status") === "success" ? "success" : "failed";
