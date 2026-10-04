@@ -55,7 +55,7 @@ export default function AccessibilityStatement() {
                     מידע משפטי
                 </p>
                 <span className="mx-auto mt-3 block h-0.5 w-12 rounded-full" style={{ backgroundColor: ACCENT, opacity: 0.6 }} aria-hidden="true" />
-                <h1 className="mt-6 text-4xl font-black md:text-6xl" style={{ color: STRONG }}>
+                <h1 className="mt-6 text-3xl font-black md:text-6xl" style={{ color: STRONG }}>
                     הצהרת נגישות
                 </h1>
             </header>
