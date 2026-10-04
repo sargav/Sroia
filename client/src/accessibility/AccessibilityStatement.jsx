@@ -25,7 +25,7 @@ const MENU_FEATURES =
 
 function Paragraph({ label, children }) {
     return (
-        <p className="text-[1.05rem] leading-9" style={{ color: TEXT }}>
+        <p className="text-[1.0625rem] leading-8" style={{ color: TEXT }}>
             {label && (
                 <strong className="font-bold" style={{ color: STRONG }}>
                     {label}{" "}
@@ -48,38 +48,35 @@ export default function AccessibilityStatement() {
         <div dir="rtl" style={{ backgroundColor: BG }}>
             {/* פתיח: תווית קטנה, קו קצר, וכותרת */}
             <header
-                className="px-5 pb-12 pt-10 text-center md:pb-16 md:pt-14"
+                className="px-5 pb-10 pt-10 text-center md:pb-14 md:pt-14"
                 style={{ background: `radial-gradient(ellipse 60% 100% at 50% 0%, #1b2536 0%, ${BG} 70%)` }}
             >
                 <p className="text-sm font-bold tracking-[0.3em]" style={{ color: ACCENT }}>
                     מידע משפטי
                 </p>
                 <span className="mx-auto mt-3 block h-0.5 w-12 rounded-full" style={{ backgroundColor: ACCENT, opacity: 0.6 }} aria-hidden="true" />
-                <h1 className="mt-6 text-4xl font-black md:text-6xl" style={{ color: STRONG }}>
+                <h1 className="mt-5 text-3xl font-black md:text-[2.75rem] md:leading-tight" style={{ color: STRONG }}>
                     הצהרת נגישות
                 </h1>
             </header>
 
-            <div className="mx-auto max-w-4xl px-5 pb-20">
+            <div className="mx-auto max-w-5xl px-5 pb-20 md:px-8">
                 {/* הודעה בולטת: האתר טרם נבדק מקצועית */}
                 <div
-                    className="mb-12 flex items-start gap-3 rounded-xl border px-5 py-4"
-                    style={{ borderColor: "rgba(141, 198, 63, 0.55)", backgroundColor: "rgba(141, 198, 63, 0.08)" }}
+                    className="mb-10 rounded-xl border px-5 py-4 text-center md:px-8"
+                    style={{ borderColor: "rgba(141, 198, 63, 0.55)", backgroundColor: "rgba(141, 198, 63, 0.07)" }}
                     role="note"
                 >
-                    <span className="mt-0.5 shrink-0 text-lg font-black" style={{ color: ACCENT }} aria-hidden="true">
-                        !
-                    </span>
-                    <p className="text-[1.05rem] font-semibold leading-8" style={{ color: STRONG }}>
+                    <p className="text-[1.0625rem] font-semibold leading-8 [text-wrap:balance]" style={{ color: STRONG }}>
                         האתר טרם עבר בדיקת נגישות מקצועית בידי מורשה/ית נגישות.
                         <span className="font-normal" style={{ color: TEXT }}>
                             {" "}
-                            זהו נוסח זמני, והנוסח הסופי יעודכן אחרי בדיקה ואישור מקצועי.
+                            זהו נוסח זמני, שיעודכן אחרי הבדיקה.
                         </span>
                     </p>
                 </div>
 
-                <div className="mx-auto max-w-3xl space-y-7">
+                <div className="mx-auto max-w-[50rem] space-y-6">
                     <Paragraph>אנחנו פועלים כדי לאפשר חוויית גלישה נוחה ונגישה ככל האפשר, לכל אחד ואחת.</Paragraph>
 
                     <Paragraph>
