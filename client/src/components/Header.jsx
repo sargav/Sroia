@@ -33,12 +33,22 @@ const Header = () => {
       }
     }
 
+    // סגירה במקש Esc והחזרת הפוקוס לכפתור
+    function handleEscape(event) {
+      if (event.key === 'Escape') {
+        setIsOpen(false)
+        buttonRef.current?.focus()
+      }
+    }
+
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside)
+      document.addEventListener('keydown', handleEscape)
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleEscape)
     }
   }, [isOpen])
 
@@ -55,10 +65,13 @@ const Header = () => {
             type="button"
             onClick={() => setIsOpen(!isOpen)}
             className="text-gray-300 hover:text-[rgb(141,196,62)] p-2 transition-colors duration-200"
-            aria-label="תפריט"
+            aria-label={isOpen ? 'סגירת תפריט' : 'פתיחת תפריט'}
+            aria-expanded={isOpen}
+            aria-controls="main-menu"
           >
             {isOpen ? (
               <svg
+                aria-hidden="true"
                 className="w-8 h-8"
                 fill="none"
                 stroke="currentColor"
@@ -73,6 +86,7 @@ const Header = () => {
               </svg>
             ) : (
               <svg
+                aria-hidden="true"
                 className="w-8 h-8"
                 fill="none"
                 stroke="currentColor"
@@ -92,6 +106,8 @@ const Header = () => {
           {isOpen && (
             <nav
               ref={menuRef}
+              id="main-menu"
+              aria-label="ניווט ראשי"
               dir="rtl"
               className="absolute top-14 left-0 w-64 bg-gray-900/95 backdrop-blur-md rounded-2xl border border-gray-800 shadow-2xl z-50 p-4"
             >
@@ -125,7 +141,7 @@ const Header = () => {
           <NavLink to="/">
             <img
               src={logowhite}
-              alt="סרויה ניהול פרויקטים"
+              alt="סרויה ניהול פרויקטים - לדף הבית"
               className="h-28 md:h-32 w-auto object-contain"
             />
           </NavLink>
@@ -140,10 +156,10 @@ const Header = () => {
             href="https://www.instagram.com/sroiaproject?igsh=bnZkbWxva3FrNXc0"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Instagram"
+            aria-label="Instagram (נפתח בחלון חדש)"
             className="text-gray-400 hover:text-[rgb(141,196,62)] transition-colors"
           >
-            <FaInstagram size={22} />
+            <FaInstagram size={22} aria-hidden="true" />
           </a>
 
           {/* Facebook */}
@@ -151,10 +167,10 @@ const Header = () => {
             href="https://www.facebook.com/share/17V4qfkUeM/"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Facebook"
+            aria-label="Facebook (נפתח בחלון חדש)"
             className="text-gray-400 hover:text-[rgb(141,196,62)] transition-colors"
           >
-            <FaFacebookF size={22} />
+            <FaFacebookF size={22} aria-hidden="true" />
           </a>
 
           {/* WhatsApp */}
@@ -162,10 +178,10 @@ const Header = () => {
             href="https://wa.me/GGZb8N0x1941Hy1e2rCCtf?s=sh&p=a&ilr=1"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="WhatsApp"
+            aria-label="WhatsApp (נפתח בחלון חדש)"
             className="text-gray-400 hover:text-[rgb(141,196,62)] transition-colors"
           >
-            <FaWhatsapp size={22} />
+            <FaWhatsapp size={22} aria-hidden="true" />
           </a>
 
         </div>
