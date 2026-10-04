@@ -60,7 +60,7 @@ export default function GiftsCommunity() {
           <div className="mb-4 flex items-center justify-center gap-3">
             <span className="h-px w-8 bg-[#659B2D]/70" />
 
-            <span className="text-[13px] font-semibold text-[#659B2D]">
+            <span className="text-[13px] font-semibold text-[#4b7322]">
               תוכן מקצועי ללא עלות
             </span>
 
@@ -137,7 +137,7 @@ export default function GiftsCommunity() {
                 {/* רקע מספר */}
                 {/* <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute -left-2 -top-5 text-[105px] font-black leading-none text-[#659B2D]/[0.055]"
+                  className="pointer-events-none absolute -left-2 -top-5 text-[105px] font-black leading-none text-[#4b7322]/[0.055]"
                 >
                   01
                 </span> */}
@@ -156,7 +156,7 @@ export default function GiftsCommunity() {
                   onClick={() => navigate("/guid-to-builder")}
                   className="
                     group/button inline-flex items-center gap-4
-                    rounded-full bg-[#659B2D]
+                    rounded-full bg-[#4b7322]
                     px-6 py-3 text-[14px] font-semibold text-white
                     shadow-[0_8px_20px_rgba(101,155,45,0.22)]
                     transition-all duration-300
@@ -184,7 +184,7 @@ export default function GiftsCommunity() {
                 }`}
               style={{ transitionDelay: "500ms" }}
             >
-              <div className="group/icon relative flex h-[52px] w-[52px] items-center justify-center rounded-full border-[5px] border-[#F8F7F1] bg-[#659B2D]/85 text-white shadow-[0_6px_18px_rgba(101,155,45,0.28)] md:h-[72px] md:w-[72px]">
+              <div className="group/icon relative flex h-[52px] w-[52px] items-center justify-center rounded-full border-[5px] border-[#F8F7F1] bg-[#4b7322]/85 text-white shadow-[0_6px_18px_rgba(101,155,45,0.28)] md:h-[72px] md:w-[72px]">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -201,7 +201,7 @@ export default function GiftsCommunity() {
                   <path d="M9 16h6" />
                 </svg>
 
-                <span className="absolute -left-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[9px] font-bold text-[#659B2D] shadow">
+                <span className="absolute -left-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[9px] font-bold text-[#4b7322] shadow">
                   1
                 </span>
               </div>

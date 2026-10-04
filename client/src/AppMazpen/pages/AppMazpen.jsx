@@ -99,7 +99,7 @@ function PhoneMockup({ src, alt, className = "" }) {
 
 function CompassPage() {
   return (
-    <main dir="rtl" className="min-h-screen overflow-hidden bg-[#F6F5EF] font-['Heebo',sans-serif] text-[#2E3423]">
+    <div dir="rtl" className="min-h-screen overflow-hidden bg-[#F6F5EF] font-['Heebo',sans-serif] text-[#2E3423]">
       <PageStyles />
       <HeroSection/>
       <HomeBuildingIntro />
@@ -208,13 +208,13 @@ function CompassPage() {
 </section>
       <footer className="bg-[#111811] px-5 py-8 text-white/55">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 text-center text-sm md:flex-row md:text-right">
-          <img src={logo} alt="בית בשתי ידיים" className="h-10 w-auto brightness-0 invert opacity-80" />
+          <img src={logo} alt="לוגו בית בשתי ידיים" className="h-10 w-auto brightness-0 invert opacity-80" />
           <p>© בית בשתי ידיים | אסף סרויה</p>
           <a href="mailto:baitb2yadayim@gmail.com" className="transition hover:text-white">baitb2yadayim@gmail.com</a>
         </div>
       </footer>
 
-    </main>
+    </div>
   );
 }
 

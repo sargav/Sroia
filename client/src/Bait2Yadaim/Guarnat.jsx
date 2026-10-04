@@ -89,7 +89,7 @@ function CheckIcon() {
                 marginTop: 2,
             }}
         >
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
+            <svg aria-hidden="true" width="11" height="11" viewBox="0 0 24 24" fill="none">
                 <path
                     d="M20 6L9 17l-5-5"
                     stroke="#ffffff"

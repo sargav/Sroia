@@ -3,6 +3,7 @@ import { HelpCircle } from "lucide-react";
 import lev from './assete/l.webp'
 
 const GREEN = "#7CB342";
+const GREEN_TEXT = "#4f722a"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 const DARK = "#1E2A22";
 const CREAM = "#FBF8F2";
 
@@ -76,7 +77,7 @@ function QuestionQuote({ text, delay, isLast }) {
                     className="absolute -bottom-4 right-8 flex h-9 w-9 items-center justify-center rounded-full shadow-md"
                     style={{ backgroundColor: DARK }}
                 >
-                    <HelpCircle size={18} style={{ color: GREEN }} strokeWidth={2.5} />
+                    <HelpCircle size={18} style={{ color: GREEN_TEXT }} strokeWidth={2.5} />
                 </div>
             </div>
         </BounceReveal>
@@ -100,12 +101,13 @@ function RecognitionSection() {
                 }
             `}</style>
 
+            <h1 className="sr-only">קורס בית בשתי ידיים</h1>
             <div className="mx-auto max-w-lg">
                 {/* הטמעת הסרטון */}
                 <div className="overflow-hidden rounded-2xl shadow-sm ring-1 ring-black/5">
                     <iframe
                         src="https://www.youtube.com/embed/Zg5GS3l9bdE"
-                        title="YouTube video"
+                        title="סרטון היכרות עם הקורס בית בשתי ידיים"
                         className="aspect-video w-full"
                         allowFullScreen
                     ></iframe>
@@ -124,7 +126,7 @@ function RecognitionSection() {
                     את התחושות האלה:
                 </p>
 
-                <img src={lev} alt="lev" className="mx-auto w-14 h-14 md:w-16 md:h-16 object-contain" />
+                <img src={lev} alt="" className="mx-auto w-14 h-14 md:w-16 md:h-16 object-contain" />
 
                 <p className="pb-10 text-center text-base leading-relaxed text-neutral-600">
                     הלב שמתחיל לפעום קצת יותר מהר

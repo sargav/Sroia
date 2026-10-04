@@ -1,11 +1,15 @@
 import { useState } from "react";
+import useAccessibleDialog from "./useAccessibleDialog";
 
 const  TermsOfUseDialog=()=> {
     const [isOpen, setIsOpen] = useState(false);
+    const dialogRef = useAccessibleDialog(isOpen, () => setIsOpen(false));
 
     return (
         <>
             <button
+                type="button"
+                aria-haspopup="dialog"
                 onClick={() => setIsOpen(true)}
                 className="underline text-sm text-neutral-600"
             >
@@ -15,18 +19,24 @@ const  TermsOfUseDialog=()=> {
             {isOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
                     <div
+                        ref={dialogRef}
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="terms-dialog-title"
+                        tabIndex={-1}
                         className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-6 sm:p-8"
                         dir="rtl"
                     >
                         <button
+                            type="button"
                             onClick={() => setIsOpen(false)}
                             className="absolute left-4 top-4 text-2xl font-bold text-neutral-400 hover:text-neutral-700"
-                            aria-label="סגור"
+                            aria-label="סגירת החלון"
                         >
-                            ×
+                            <span aria-hidden="true">×</span>
                         </button>
 
-                        <h2 className="mb-2 pr-6 text-xl font-bold text-neutral-800">
+                        <h2 id="terms-dialog-title" className="mb-2 pr-6 text-xl font-bold text-neutral-800">
                             תקנון אתר (תנאי שימוש ומדיניות ביטולים)
                         </h2>
 

@@ -51,6 +51,9 @@ function FaqItem({ item, index, isOpen, onToggle }) {
         >
             <button
                 onClick={onToggle}
+                id={`course-faq-q-${index}`}
+                aria-expanded={isOpen}
+                aria-controls={`course-faq-a-${index}`}
                 dir="rtl"
                 className="flex w-full items-center justify-between gap-4 px-6 py-6 text-right"
                 type="button"
@@ -58,10 +61,11 @@ function FaqItem({ item, index, isOpen, onToggle }) {
                 {/* קבוצה ימנית: אייקון סימן שאלה + הטקסט */}
                 <span className="flex min-w-0 flex-1 items-center gap-4">
                     <span
+                        aria-hidden="true"
                         className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-xl font-bold leading-none transition-colors duration-300"
                         style={{
                             backgroundColor: isOpen ? "#7CB342" : "#F0F3E8",
-                            color: isOpen ? "#ffffff" : "#7CB342",
+                            color: isOpen ? "#ffffff" : "#4f722a",
                         }}
                     >
                         ?
@@ -74,6 +78,7 @@ function FaqItem({ item, index, isOpen, onToggle }) {
 
                 {/* אייקון פלוס/מינוס - עם טבעת נוספת מסביב */}
                 <span
+                    aria-hidden="true"
                     className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full p-[3px] transition-colors duration-300"
                     style={{
                         border: `1px solid ${isOpen ? "#B7D89A" : "#E5E8DE"}`,
@@ -83,7 +88,7 @@ function FaqItem({ item, index, isOpen, onToggle }) {
                         className="flex h-full w-full items-center justify-center rounded-full border-2 text-2xl font-bold leading-none"
                         style={{
                             borderColor: isOpen ? "#7CB342" : "#D9DED0",
-                            color: isOpen ? "#7CB342" : "#9CA3AF",
+                            color: isOpen ? "#4f722a" : "#9CA3AF",
                         }}
                     >
                         {isOpen ? "–" : "+"}
@@ -92,7 +97,12 @@ function FaqItem({ item, index, isOpen, onToggle }) {
             </button>
 
             {isOpen && (
-                <div className="px-6 pb-8 pr-[4.25rem]">
+                <div
+                    id={`course-faq-a-${index}`}
+                    role="region"
+                    aria-labelledby={`course-faq-q-${index}`}
+                    className="px-6 pb-8 pr-[4.25rem]"
+                >
                     <div className="border-t pt-4" style={{ borderColor: "#DCE3D0" }}>
                         <div className="space-y-1.5">
                             {sentences.map((sentence, i) => (
@@ -128,7 +138,7 @@ function FaqSection() {
             {/* התוכן */}
             <div className="relative z-10 mx-auto w-full max-w-2xl">
                 <div className="mb-2 text-center">
-                    <p className="text-sm font-bold uppercase tracking-widest text-[#7CB342]">
+                    <p className="text-sm font-bold uppercase tracking-widest text-[#4f722a]">
                         יש לכם ספקות?
                     </p>
                     <h2 className="mt-2 text-3xl font-bold text-neutral-900">

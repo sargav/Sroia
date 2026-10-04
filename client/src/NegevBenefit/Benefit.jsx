@@ -8,7 +8,7 @@ import BenefitTermsDialog from "./component/BenefitTermsDialog";
 
 function SparkleIcon({ className = "", style = {} }) {
     return (
-        <svg viewBox="0 0 24 24" fill="currentColor" className={className} style={style}>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className={className} style={style}>
             <path d="M12 2l1.8 5.6L19.4 9.4 13.8 11.2 12 17l-1.8-5.8L4.6 9.4l5.6-1.8L12 2z" />
             <path d="M19 15l.8 2.4L22.2 18.2 19.8 19l-.8 2.4-.8-2.4L15.8 18.2 18.2 17.4 19 15z" />
         </svg>
@@ -96,7 +96,7 @@ function Reveal({ children, delay = 0, as: Tag = "div", className = "" }) {
 
 function HeartIcon({ className = "" }) {
     return (
-        <svg viewBox="0 0 24 24" fill="none" className={className}>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className={className}>
             <path
                 d="M12 20.5s-7.5-4.6-10-9.2C.5 8.1 2 4.5 5.6 3.8c2-.4 3.9.4 5 2 .5.7 1 .9 1.4.9s.9-.2 1.4-.9c1.1-1.6 3-2.4 5-2 3.6.7 5.1 4.3 3.6 7.5-2.5 4.6-10 9.2-10 9.2z"
                 fill={GREEN}
@@ -145,7 +145,7 @@ function StatIcon({ icon }) {
     const common = { width: 22, height: 22, stroke: GREEN, strokeWidth: 2, fill: "none" };
     if (icon === "wallet")
         return (
-            <svg {...common} viewBox="0 0 24 24">
+            <svg aria-hidden="true" {...common} viewBox="0 0 24 24">
                 <rect x="2" y="6" width="20" height="14" rx="2" />
                 <path d="M2 10h20" />
                 <circle cx="17" cy="15" r="1.2" fill={GREEN} stroke="none" />
@@ -153,13 +153,13 @@ function StatIcon({ icon }) {
         );
     if (icon === "check")
         return (
-            <svg {...common} viewBox="0 0 24 24">
+            <svg aria-hidden="true" {...common} viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="9" />
                 <path d="M8 12.5l2.5 2.5L16 9" />
             </svg>
         );
     return (
-        <svg {...common} viewBox="0 0 24 24">
+        <svg aria-hidden="true" {...common} viewBox="0 0 24 24">
             <path d="M12 21s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" />
             <circle cx="12" cy="9" r="2.3" />
         </svg>
@@ -240,7 +240,7 @@ export default function Benefit() {
                         className="mb-7 inline-flex items-center rounded-2xl bg-white px-6 py-4 shadow-lg"
                         style={heroVisible ? { animation: "fadeInUp 0.7s ease-out 120ms both" } : { opacity: 0 }}
                     >
-                        <img src={negevLogo} alt="נגב" className="h-10 w-auto object-contain" />
+                        <img src={negevLogo} alt="לוגו נגב" className="h-10 w-auto object-contain" />
                     </div>
 
                     <p
@@ -271,12 +271,12 @@ export default function Benefit() {
                 onClick={scrollToForm}
                 className="
                   group flex items-center justify-center gap-4
-                  rounded-full bg-[#86B84D]
+                  rounded-full bg-[#53732e]
                   px-7 py-4 text-[15px] font-bold text-white
                   shadow-[0_9px_25px_rgba(121,169,66,0.28)]
                   transition-all duration-300
                   hover:-translate-y-1 hover:gap-6
-                  hover:bg-[#8DC63F]
+                  hover:bg-[#46651f]
                   hover:shadow-[0_14px_32px_rgba(121,169,66,0.36)]
                   mb-6
                 "
@@ -416,7 +416,7 @@ export default function Benefit() {
                     <Reveal delay={350} className="rounded-3xl p-6 text-right sm:p-8">
                         <div style={{ backgroundColor: CARD }} className="rounded-3xl p-6 -m-6 sm:p-8 sm:-m-8">
                         {submitted ? (
-                            <div className="py-10 text-center">
+                            <div role="status" className="py-10 text-center">
                                 <div
                                     className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full text-3xl"
                                     style={{
@@ -443,63 +443,82 @@ export default function Benefit() {
                         ) : (
                             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
                                 <div>
-                                    <label className="mb-1.5 block text-sm text-white/60">שם מלא</label>
+                                    <label htmlFor="benefit-name" className="mb-1.5 block text-sm text-white/60">שם מלא</label>
                                     <input
+                      id="benefit-name"
+                      name="name"
+                      autoComplete="name"
+                      aria-invalid={Boolean(errors.name)}
+                      aria-describedby={errors.name ? "benefit-name-error" : undefined}
                                         type="text"
                                         value={form.name}
                                         onChange={update("name")}
                                         placeholder="הקלידו שם מלא"
-                                        className="w-full rounded-xl border px-4 py-3 text-white placeholder-white/30 outline-none transition-colors focus:border-[color:var(--g)]"
+                                        className="w-full rounded-xl border px-4 py-3 text-white placeholder-white/30 outline-none focus-visible:ring-2 focus-visible:ring-[#b5df7f] transition-colors focus:border-[color:var(--g)]"
                                         style={{
                                             backgroundColor: "#1b1b1b",
                                             borderColor: errors.name ? "#e05252" : "rgba(255,255,255,0.1)",
                                             ...(errors.name ? { animation: "shake 0.4s ease-in-out" } : {}),
                                         }}
                                     />
-                                    {errors.name && <p className="mt-1 text-xs text-red-400">{errors.name}</p>}
+                                    {errors.name && <p id="benefit-name-error" role="alert" className="mt-1 text-xs text-red-400">{errors.name}</p>}
                                 </div>
 
                                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                     <div>
-                                        <label className="mb-1.5 block text-sm text-white/60">טלפון</label>
+                                        <label htmlFor="benefit-phone" className="mb-1.5 block text-sm text-white/60">טלפון</label>
                                         <input
+                      id="benefit-phone"
+                      name="phone"
+                      autoComplete="tel"
+                      aria-invalid={Boolean(errors.phone)}
+                      aria-describedby={errors.phone ? "benefit-phone-error" : undefined}
                                             type="tel"
                                             value={form.phone}
                                             onChange={update("phone")}
                                             placeholder="050-0000000"
-                                            className="w-full rounded-xl border px-4 py-3 text-white placeholder-white/30 outline-none"
+                                            className="w-full rounded-xl border px-4 py-3 text-white placeholder-white/30 outline-none focus-visible:ring-2 focus-visible:ring-[#b5df7f]"
                                             style={{
                                                 backgroundColor: "#1b1b1b",
                                                 borderColor: errors.phone ? "#e05252" : "rgba(255,255,255,0.1)",
                                                 ...(errors.phone ? { animation: "shake 0.4s ease-in-out" } : {}),
                                             }}
                                         />
-                                        {errors.phone && <p className="mt-1 text-xs text-red-400">{errors.phone}</p>}
+                                        {errors.phone && <p id="benefit-phone-error" role="alert" className="mt-1 text-xs text-red-400">{errors.phone}</p>}
                                     </div>
                                     <div>
-                                        <label className="mb-1.5 block text-sm text-white/60">אימייל</label>
+                                        <label htmlFor="benefit-email" className="mb-1.5 block text-sm text-white/60">אימייל</label>
                                         <input
+                      id="benefit-email"
+                      name="email"
+                      autoComplete="email"
+                      aria-invalid={Boolean(errors.email)}
+                      aria-describedby={errors.email ? "benefit-email-error" : undefined}
                                             type="email"
                                             value={form.email}
                                             onChange={update("email")}
                                             placeholder="name@mail.com"
-                                            className="w-full rounded-xl border px-4 py-3 text-white placeholder-white/30 outline-none"
+                                            className="w-full rounded-xl border px-4 py-3 text-white placeholder-white/30 outline-none focus-visible:ring-2 focus-visible:ring-[#b5df7f]"
                                             style={{
                                                 backgroundColor: "#1b1b1b",
                                                 borderColor: errors.email ? "#e05252" : "rgba(255,255,255,0.1)",
                                                 ...(errors.email ? { animation: "shake 0.4s ease-in-out" } : {}),
                                             }}
                                         />
-                                        {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email}</p>}
+                                        {errors.email && <p id="benefit-email-error" role="alert" className="mt-1 text-xs text-red-400">{errors.email}</p>}
                                     </div>
                                 </div>
 
                                 <div>
-                                    <label className="mb-1.5 block text-sm text-white/60">שלב הבנייה</label>
+                                    <label htmlFor="benefit-stage" className="mb-1.5 block text-sm text-white/60">שלב הבנייה</label>
                                     <select
+                      id="benefit-stage"
+                      name="stage"
+                      aria-invalid={Boolean(errors.stage)}
+                      aria-describedby={errors.stage ? "benefit-stage-error" : undefined}
                                         value={form.stage}
                                         onChange={update("stage")}
-                                        className="w-full appearance-none rounded-xl border px-4 py-3 text-white outline-none"
+                                        className="w-full appearance-none rounded-xl border px-4 py-3 text-white outline-none focus-visible:ring-2 focus-visible:ring-[#b5df7f]"
                                         style={{
                                             backgroundColor: "#1b1b1b",
                                             borderColor: errors.stage ? "#e05252" : "rgba(255,255,255,0.1)",
@@ -513,7 +532,7 @@ export default function Benefit() {
                                             </option>
                                         ))}
                                     </select>
-                                    {errors.stage && <p className="mt-1 text-xs text-red-400">{errors.stage}</p>}
+                                    {errors.stage && <p id="benefit-stage-error" role="alert" className="mt-1 text-xs text-red-400">{errors.stage}</p>}
                                 </div>
 
                                 <button
@@ -526,9 +545,7 @@ export default function Benefit() {
 
                                 <p className="text-center text-xs text-white/40">
                                     בלחיצה על שליחה אני מאשר/ת את{" "}
-                                    <a href="#" className="underline " style={{ color: GREEN }} onClick={(e) => e.preventDefault()}>
                                     <BenefitTermsDialog/>
-                                    </a>
                                 </p>
                             </form>
                         )}
@@ -542,11 +559,11 @@ export default function Benefit() {
                 <div className="mx-auto flex max-w-xl flex-col items-center px-6 text-center">
                     <div className="mb-6 flex items-center gap-5">
                         <div className="flex h-16 w-24 items-center justify-center rounded-2xl bg-white p-2">
-                            <img src={baitLogo} alt="בית בשתי ידיים" className="h-full w-full object-contain" />
+                            <img src={baitLogo} alt="לוגו בית בשתי ידיים" className="h-full w-full object-contain" />
                         </div>
                         <span className="text-white/30">×</span>
                         <div className="flex h-16 w-24 items-center justify-center rounded-2xl bg-white p-2">
-                            <img src={negevLogo} alt="נגב" className="h-8 w-auto object-contain" />
+                            <img src={negevLogo} alt="לוגו נגב" className="h-8 w-auto object-contain" />
                         </div>
                     </div>
 

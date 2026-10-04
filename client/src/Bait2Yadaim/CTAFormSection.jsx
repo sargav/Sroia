@@ -5,6 +5,7 @@ import PrivacyPolicyDialog from "../components/PrivacyPolicyDialog";
 import TermsOfUseDialog from '../components/TermsOfUseDialog';
 import pi4 from './assete/pi4.png'
 const GREEN = '#7CB342';
+const GREEN_TEXT = "#4f722a"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 
 function CTAFormSection() {
     //נוידייט זה דרך ניווט באתר
@@ -89,7 +90,7 @@ function CTAFormSection() {
             <div className="relative mx-auto max-w-md px-6">
                 <img
                     src={pi4}
-                    alt=" מוקאפ"
+                    alt="הקורס בית בשתי ידיים על מסכי מחשב וטלפון"
                     className="mx-auto w-full max-w-xs"
                     style={{ marginBottom: "-2rem" }}
                 />
@@ -98,43 +99,58 @@ function CTAFormSection() {
 
                     <form onSubmit={handleSubmit} className="space-y-4 text-right" noValidate>
                         <div>
-                            <label className="mb-1 block text-sm font-bold text-neutral-700">שם:</label>
+                            <label htmlFor="course-name" className="mb-1 block text-sm font-bold text-neutral-700">שם:</label>
                             <input
+                      id="course-name"
+                      name="name"
+                      autoComplete="name"
+                      aria-invalid={Boolean(errors.name)}
+                      aria-describedby={errors.name ? "course-name-error" : undefined}
                                 type="text"
                                 placeholder="ישראל ישראלי"
                                 value={form.name}
                                 onChange={update("name")}
                                 onBlur={handleBlur("name")}
-                                className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none"
+                                className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none focus-visible:ring-2 focus-visible:ring-[#3f6b1a] focus-visible:ring-offset-1"
                                 style={{ borderColor: errors.name ? "#e05252" : "#ddd" }}
                             />
-                            {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
+                            {errors.name && <p id="course-name-error" role="alert" className="mt-1 text-xs text-red-700">{errors.name}</p>}
                         </div>
                         <div>
-                            <label className="mb-1 block text-sm font-bold text-neutral-700">אימייל:</label>
+                            <label htmlFor="course-email" className="mb-1 block text-sm font-bold text-neutral-700">אימייל:</label>
                             <input
+                      id="course-email"
+                      name="email"
+                      autoComplete="email"
+                      aria-invalid={Boolean(errors.email)}
+                      aria-describedby={errors.email ? "course-email-error" : undefined}
                                 type="email"
                                 placeholder="name@email.com"
                                 value={form.email}
                                 onChange={update("email")}
                                 onBlur={handleBlur("email")}
-                                className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none"
+                                className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none focus-visible:ring-2 focus-visible:ring-[#3f6b1a] focus-visible:ring-offset-1"
                                 style={{ borderColor: errors.email ? "#e05252" : "#ddd" }}
                             />
-                            {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+                            {errors.email && <p id="course-email-error" role="alert" className="mt-1 text-xs text-red-700">{errors.email}</p>}
                         </div>
                         <div>
-                            <label className="mb-1 block text-sm font-bold text-neutral-700">טלפון:</label>
+                            <label htmlFor="course-phone" className="mb-1 block text-sm font-bold text-neutral-700">טלפון:</label>
                             <input
+                      id="course-phone"
+                      name="phone"
+                      autoComplete="tel"
+                      aria-invalid={Boolean(errors.phone)}
+                      aria-describedby={errors.phone ? "course-phone-error" : undefined}
                                 type="tel"
                                 placeholder="050-1234567"
                                 value={form.phone}
                                 onChange={update("phone")}
                                 onBlur={handleBlur("phone")}
-                                className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none"
+                                className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none focus-visible:ring-2 focus-visible:ring-[#3f6b1a] focus-visible:ring-offset-1"
                                 style={{ borderColor: errors.phone ? "#e05252" : "#ddd" }}
                             />
-                            {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
+                            {errors.phone && <p id="course-phone-error" role="alert" className="mt-1 text-xs text-red-700">{errors.phone}</p>}
                         </div>
 
                         <label dir="rtl" className="flex items-center justify-start gap-2 text-sm text-neutral-600">
@@ -144,14 +160,14 @@ function CTAFormSection() {
                                 onChange={(e) => setAgree(e.target.checked)}
                             />
                             אני מאשר/ת קבלת תכנים שיווקיים וכי קראתי ואני מאשר/ת את מדיניות הפרטיות ותקנון אתר                            </label>
-                        {errors.agree && <p className="text-xs text-red-500">{errors.agree}</p>}
-                        {submitError && <p className="text-xs text-red-500">{submitError}</p>}
+                        {errors.agree && <p id="course-agree-error" role="alert" className="text-xs text-red-700">{errors.agree}</p>}
+                        {submitError && <p role="alert" className="text-xs text-red-700">{submitError}</p>}
 
                         <button
                             type="submit"
                             disabled={submitting || !agree}
                             className="w-full rounded-xl py-4 text-lg font-bold text-white shadow-lg transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:hover:scale-100"
-                            style={{ backgroundColor: GREEN, opacity: submitting || !agree ? 0.5 : 1 }}
+                            style={{ backgroundColor: GREEN_TEXT, opacity: submitting || !agree ? 0.5 : 1 }}
                         >
                             {submitting ? "שולח..." : "אני רוצה להצטרף לקורס"}
                         </button>

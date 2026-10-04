@@ -12,6 +12,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import Reveal from "../components/Reveal";
+import useAccessibleDialog from "../../components/useAccessibleDialog";
 import SectionHeading from "../components/SectionHeading";
 import PhotoBackground from "./PhotoBackground";
 
@@ -43,6 +44,7 @@ export default function PricingSection({ photo }) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [paymentUrl, setPaymentUrl] = useState("");
+  const paymentDialogRef = useAccessibleDialog(Boolean(paymentUrl), () => setPaymentUrl(""));
   const [paymentStatus, setPaymentStatus] = useState(null); // null | "success" | "failed"
 
   // כשהתשלום פתוח במסך מלא: לנעול גלילה של הדף ולאפשר סגירה עם Esc
@@ -107,7 +109,7 @@ export default function PricingSection({ photo }) {
 
               {/* מה מקבלים */}
               <div className="p-6 md:p-10">
-                <p className="text-sm font-bold text-[#78965D]">המצפן לבונה — החבילה המלאה</p>
+                <p className="text-sm font-bold text-[#5a7046]">המצפן לבונה — החבילה המלאה</p>
                 <h3 className="mt-2 text-2xl font-black text-[#35402F]">כל המודולים וכל הבונוסים</h3>
 
                 <div className="mt-5">
@@ -117,21 +119,21 @@ export default function PricingSection({ photo }) {
                       className="flex items-center justify-between gap-3 border-b border-dashed border-[#D3DECC] py-3.5 last:border-0"
                     >
                       <span className="flex items-center gap-3 text-sm font-bold text-[#35402F] md:text-base">
-                        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#E8F0DE] text-[#759855]">
+                        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#E8F0DE] text-[#57713f]">
                           <Icon size={17} />
                         </span>
                         {label}
                       </span>
-                      <span className="shrink-0 text-sm text-[#6B7567] line-through">{oldPrice}</span>
+                      <span className="shrink-0 text-sm text-[#626c5f] line-through">{oldPrice}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="mt-6 text-center">
-                  <span className="rounded-full bg-[#E8F0DE] px-4 py-1.5 text-xs font-black text-[#5f8248]">
+                  <span className="rounded-full bg-[#E8F0DE] px-4 py-1.5 text-xs font-black text-[#53723f]">
                     לזמן מוגבל
                   </span>
-                  <p className="mt-4 text-sm font-bold text-[#6B7567]">במקום 938 ₪</p>
+                  <p className="mt-4 text-sm font-bold text-[#626c5f]">במקום 938 ₪</p>
                   <p className="mt-1 text-7xl font-black leading-none text-[#2D382B]">
                     297<span className="mr-2 align-top text-2xl">₪</span>
                   </p>
@@ -153,11 +155,12 @@ export default function PricingSection({ photo }) {
                     <span className="mb-2 block text-sm font-black text-[#35402F]">שם מלא</span>
                     <input
                       id="fullName"
+                      autoComplete="name"
                       value={fullName}
                       onChange={(event) => setFullName(event.target.value)}
                       required
                       placeholder="השם שלך"
-                      className="w-full rounded-2xl border border-[#D3DECC] bg-white px-4 py-3.5 outline-none transition focus:border-[#759855] focus:ring-4 focus:ring-[#759855]/15"
+                      className="w-full rounded-2xl border border-[#D3DECC] bg-white px-4 py-3.5 outline-none transition focus:border-[#759855] focus:ring-4 focus:ring-[#4d7a1f]/50"
                     />
                   </label>
                   <label className="block">
@@ -166,12 +169,13 @@ export default function PricingSection({ photo }) {
                     </span>
                     <input
                       type="email"
+                      autoComplete="email"
                       dir="ltr"
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
                       required
                       placeholder="your@email.com"
-                      className="w-full rounded-2xl border border-[#D3DECC] bg-white px-4 py-3.5 text-left outline-none transition focus:border-[#759855] focus:ring-4 focus:ring-[#759855]/15"
+                      className="w-full rounded-2xl border border-[#D3DECC] bg-white px-4 py-3.5 text-left outline-none transition focus:border-[#759855] focus:ring-4 focus:ring-[#4d7a1f]/50"
                     />
                   </label>
                   <button
@@ -185,8 +189,8 @@ export default function PricingSection({ photo }) {
 
                 <ul className="mt-6 space-y-3 border-t border-dashed border-[#D3DECC] pt-5">
                   {trust.map(([Icon, label]) => (
-                    <li key={label} className="flex items-center gap-3 text-sm font-bold text-[#6B7567]">
-                      <span className="grid h-8 w-8 place-items-center rounded-full border border-[#D3DECC] bg-white text-[#759855]">
+                    <li key={label} className="flex items-center gap-3 text-sm font-bold text-[#626c5f]">
+                      <span className="grid h-8 w-8 place-items-center rounded-full border border-[#D3DECC] bg-white text-[#57713f]">
                         <Icon size={16} />
                       </span>
                       {label}
@@ -226,6 +230,8 @@ export default function PricingSection({ photo }) {
     {/* תשלום במסך מלא */}
     {paymentUrl && (
       <div
+        ref={paymentDialogRef}
+        tabIndex={-1}
         role="dialog"
         aria-modal="true"
         aria-label="תשלום מאובטח"

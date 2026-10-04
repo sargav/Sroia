@@ -1,32 +1,43 @@
 import { useState } from "react";
+import useAccessibleDialog from "../../components/useAccessibleDialog";
 const GREEN = "#8DC63F";
+const GREEN_TEXT = "#517322"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 
 function BenefitTermsDialog() {
     const [isOpen, setIsOpen] = useState(false);
+    const dialogRef = useAccessibleDialog(isOpen, () => setIsOpen(false));
 
     return (
         <>
             <button
+                type="button"
+                aria-haspopup="dialog"
                 onClick={() => setIsOpen(true)}
-                className="underline cursor-pointer" style={{ color: GREEN }}            >
+                className="underline cursor-pointer" style={{ color: GREEN_TEXT }}            >
                 תנאי השימוש
             </button>
 
             {isOpen && (
                 <div className="cursor-default fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
                     <div
+                        ref={dialogRef}
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="benefit-terms-dialog-title"
+                        tabIndex={-1}
                         className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-6 sm:p-8"
                         dir="rtl"
                     >
                         <button
+                            type="button"
                             onClick={() => setIsOpen(false)}
                             className="absolute left-4 top-4 text-2xl font-bold text-neutral-400 hover:text-neutral-700 cursor-pointer"
-                            aria-label="סגור"
+                            aria-label="סגירת החלון"
                         >
-                            ×
+                            <span aria-hidden="true">×</span>
                         </button>
 
-                        <h2 className="mb-1 pr-6 text-xl font-bold text-neutral-800">
+                        <h2 id="benefit-terms-dialog-title" className="mb-1 pr-6 text-xl font-bold text-neutral-800">
                             תנאי שימוש והטבה
                         </h2>
 

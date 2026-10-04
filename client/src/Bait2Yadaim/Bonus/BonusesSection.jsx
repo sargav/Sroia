@@ -104,7 +104,7 @@ function TimelineItem({ bonus, isLast }) {
                     </h3>
                     <span
                         className="flex-shrink-0 rounded-full px-3 py-1 text-sm font-bold"
-                        style={{ backgroundColor: "#E8EFD9", color: "#5C8A2E" }}
+                        style={{ backgroundColor: "#E8EFD9", color: "#4d7326" }}
                     >
                         {bonus.value}
                     </span>
@@ -144,7 +144,7 @@ function BonusesSection() {
             <div className="relative mx-auto max-w-2xl">
                 {/* כותרת עליונה */}
                 <div className="text-center">
-                    <img src={giftHero} alt="בונוסים" className="mx-auto w-50 drop-shadow-lg" />
+                    <img src={giftHero} alt="" className="mx-auto w-50 drop-shadow-lg" />
                     <div
                         className="relative mt-2 inline-block rounded-xl px-6 py-3"
                         style={{ backgroundColor: "#1A1A1A" }}
@@ -169,7 +169,7 @@ function BonusesSection() {
                 {/* סיכום שווי */}
                 <div className="rounded-2xl bg-white p-6 text-center shadow-lg">
                     <p className="text-base font-bold text-neutral-800">סה"כ ערך הבונוסים:</p>
-                    <p className="mt-1 text-2xl font-bold" style={{ color: "#7CB342" }}>
+                    <p className="mt-1 text-2xl font-bold" style={{ color: "#4f722a" }}>
                         מעל 1,400 ₪
                     </p>
                     <p className="mt-2 text-lg font-bold text-neutral-900">

@@ -65,7 +65,7 @@ function ScenarioCard({ number, title, lines, variant, tilt }) {
                     מצב {number}
                 </span>
 
-                <h4 className="mb-4 text-2xl font-bold">{title}</h4>
+                <h3 className="mb-4 text-2xl font-bold">{title}</h3>
 
                 <div className="space-y-1.5">
                     {lines.map((line, i) => (
@@ -157,7 +157,7 @@ function ScenarioComparisonSection() {
                             href="#cta-form"
                             className="mx-auto block w-full max-w-sm rounded-full px-8 py-4 text-center text-lg font-bold text-white transition-transform hover:scale-[1.02]"
                             style={{
-                                backgroundColor: "#7CB342",
+                                backgroundColor: "#4f722a",
                                 boxShadow: "0 8px 20px rgba(124,179,66,0.35)",
                             }}
                         >

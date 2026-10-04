@@ -70,7 +70,7 @@ const BaitCourse = () => {
 
     return (
         <div>
-            <div className="text-center text-white font-bold text-lg bg-[#8BC34A] py-2">
+            <div className="text-center text-white font-bold text-lg bg-[#4f7226] py-2">
                 <span dir="rtl" className="inline-block">
                     <span dir="ltr" className="inline-block">87%</span> מהבונים חורגים בממוצע מהתקציב ב-<span dir="ltr" className="inline-block">200,000</span> ש"ח!
                 </span>
@@ -82,7 +82,7 @@ const BaitCourse = () => {
             >
                 <div className="absolute inset-0 bg-white/3 backdrop-blur-sm" />
 
-                <img src={asaf} alt="Asaf" className="max-w-xl w-full h-auto z-10" />
+                <img src={asaf} alt="אסף סרויה" className="max-w-xl w-full h-auto z-10" />
 
                 <a
                     href="#cta-form"

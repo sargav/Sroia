@@ -71,7 +71,7 @@ const values = [
 
 function MarkIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.8">
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.8">
       <path d="M4 13.5 9 18l11-12" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
@@ -79,7 +79,7 @@ function MarkIcon() {
 
 function ArrowIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M19 12H5M11 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
@@ -90,7 +90,7 @@ export default function ProjectManagement() {
   const navigate = useNavigate();
 
   return (
-    <main dir="rtl" className="overflow-hidden bg-[#FAFCF7] font-['Assistant',sans-serif] text-[#213020]">
+    <div dir="rtl" className="overflow-hidden bg-[#FAFCF7] font-['Assistant',sans-serif] text-[#213020]">
       <Hero />
       {/* <AboutAsaf /> */}
       <WhyUs />
@@ -99,7 +99,7 @@ export default function ProjectManagement() {
           <div className=" flex items-center justify-center gap-4">
             <span className="h-px w-10 bg-gradient-to-l from-[#8EAD70] to-transparent" />
 
-            <h2 className="text-xl font-black tracking-[0.16em] text-[#78965D]">
+            <h2 className="text-xl font-black tracking-[0.16em] text-[#5a7046]">
               ככה זה שמתחילים נכון
             </h2>
 
@@ -141,7 +141,7 @@ export default function ProjectManagement() {
             <div className="mb-5 flex items-center justify-center gap-4">
               <span className="h-px w-10 bg-gradient-to-l from-[#8EAD70] to-transparent" />
 
-              <span className="text-[13px] font-black tracking-[0.16em] text-[#78965D]">
+              <span className="text-[13px] font-black tracking-[0.16em] text-[#5a7046]">
                 הדרך שבה אנחנו עובדים
               </span>
 
@@ -150,7 +150,7 @@ export default function ProjectManagement() {
 
             <h2 className="text-[34px] font-black leading-[1.25] text-[#31382D] md:text-[48px]">
               הערכים שמובילים אותנו
-              <span className="block text-[#7F9F62]">
+              <span className="block text-[#597044]">
                 בכל פרויקט
               </span>
             </h2>
@@ -256,7 +256,7 @@ export default function ProjectManagement() {
           <div className="mx-auto mt-12 flex max-w-[700px] items-center gap-4">
             <span className="h-px flex-1 bg-gradient-to-l from-[#B5C9A1] to-transparent" />
 
-            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#B8CAA7] bg-white/75 text-[#78965D] shadow-sm">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#B8CAA7] bg-white/75 text-[#5a7046] shadow-sm">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -280,7 +280,7 @@ export default function ProjectManagement() {
           <div className=" flex items-center justify-center gap-4">
             <span className="h-px w-10 bg-gradient-to-l from-[#8EAD70] to-transparent" />
 
-            <h2 className="text-xl font-black tracking-[0.16em] text-[#78965D]">
+            <h2 className="text-xl font-black tracking-[0.16em] text-[#5a7046]">
               ככה זה נראה כשגומרים נכון
             </h2>
 
@@ -301,7 +301,7 @@ export default function ProjectManagement() {
           <div className="mb-5 flex items-center justify-center gap-4">
             <span className="h-px w-10 bg-gradient-to-l from-[#8EAD70] to-transparent" />
 
-            <span className="text-[13px] font-black tracking-[0.16em] text-[#78965D]">
+            <span className="text-[13px] font-black tracking-[0.16em] text-[#5a7046]">
               בואו נדבר
             </span>
 
@@ -310,7 +310,7 @@ export default function ProjectManagement() {
 
           <h2 className="text-[32px] font-black leading-[1.25] text-[#31382D] md:text-[42px]">
             מוכנים להתחיל
-            <span className="block text-[#7F9F62]">לבנות נכון?</span>
+            <span className="block text-[#597044]">לבנות נכון?</span>
           </h2>
 
           <p className="mx-auto mt-5 max-w-[560px] text-[16px] font-medium leading-[1.9] text-[#667061]">
@@ -322,7 +322,7 @@ export default function ProjectManagement() {
             onClick={() => navigate("/contact")}
             className="
               group mt-9 inline-flex items-center gap-3
-              rounded-full bg-[#7F9F62] px-9 py-4
+              rounded-full bg-[#597044] px-9 py-4
               text-[16px] font-black text-white
               shadow-[0_14px_35px_rgba(127,159,98,0.28)]
               transition-all duration-300
@@ -340,6 +340,6 @@ export default function ProjectManagement() {
       </section>
 
 
-    </main>
+    </div>
   );
 }

@@ -50,7 +50,7 @@ export default function Services() {
                     <div className="mb-4 flex items-center justify-center gap-3">
                         <span className="h-[2px] w-9 rounded-full bg-[#659B2D]" />
 
-                        <p className="text-[14px] font-medium text-[#659B2D]">
+                        <p className="text-[14px] font-medium text-[#4b7322]">
                             מעטפת השירותים המלאה שלנו
                         </p>
 
@@ -83,18 +83,18 @@ export default function Services() {
                             {/* מספר גדול ברקע */}
                             <span
                                 aria-hidden="true"
-                                className="pointer-events-none absolute -left-2 -top-3 select-none text-[100px] font-bold leading-none text-[#659B2D]/[0.045]"
+                                className="pointer-events-none absolute -left-2 -top-3 select-none text-[100px] font-bold leading-none text-[#4b7322]/[0.045]"
                             >
                                 {service.number}
                             </span>
 
                             {/* מספר ותווית */}
                             <div className="relative z-10 mb-7 flex items-center justify-between">
-                                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#EAF2DF] text-[16px] font-bold text-[#659B2D] transition-colors duration-300 group-hover:bg-[#659B2D] group-hover:text-white">
+                                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#EAF2DF] text-[16px] font-bold text-[#4b7322] transition-colors duration-300 group-hover:bg-[#4b7322] group-hover:text-white">
                                     {service.number}
                                 </span>
 
-                                <span className="rounded-full border border-[#DCE6D1] bg-[#F9FBF6] px-3.5 py-1.5 text-[12px] font-medium text-[#668152]">
+                                <span className="rounded-full border border-[#DCE6D1] bg-[#F9FBF6] px-3.5 py-1.5 text-[12px] font-medium text-[#587047]">
                                     {service.label}
                                 </span>
                             </div>
@@ -111,11 +111,11 @@ export default function Services() {
                             {/* קישור */}
                             <a
                                 href={service.href}
-                                className="relative z-10 flex items-center justify-between border-t border-[#E3E7DE] pt-5 text-[15px] font-semibold text-[#598B2B]"
+                                className="relative z-10 flex items-center justify-between border-t border-[#E3E7DE] pt-5 text-[15px] font-semibold text-[#4a7424]"
                             >
                                 <span>{service.buttonText}</span>
 
-                                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#EDF4E5] text-[17px] transition-all duration-300 group-hover:-translate-x-1 group-hover:bg-[#659B2D] group-hover:text-white">
+                                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#EDF4E5] text-[17px] transition-all duration-300 group-hover:-translate-x-1 group-hover:bg-[#4b7322] group-hover:text-white">
                                     ←
                                 </span>
                             </a>
@@ -126,7 +126,7 @@ export default function Services() {
                 {/* קישור תחתון */}
                 <button
                     onClick={() => navigate("/contact")}
-                    className="mx-auto mt-9 block w-fit cursor-pointer text-center text-[14px] font-normal text-[#737B6E] underline-offset-4 transition-colors duration-300 hover:text-[#659B2D] hover:underline"
+                    className="mx-auto mt-9 block w-fit cursor-pointer text-center text-[14px] font-normal text-[#646b60] underline-offset-4 transition-colors duration-300 hover:text-[#4b7322] hover:underline"
                 >
                     לא בטוחים איזה מסלול מתאים לכם? צרו קשר ונעזור לכם לבחור.
                 </button>

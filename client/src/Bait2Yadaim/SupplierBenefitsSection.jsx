@@ -15,6 +15,7 @@ const getLogo = (filename) => {
 };
 
 const GREEN = "#7CB342";
+const GREEN_TEXT = "#4f722a"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 const DARK = "#1E2A22";
 const CREAM = "#FBF8F2";
 
@@ -80,7 +81,7 @@ function BenefitCard({ supplier }) {
             {/* תג ההנחה - "פאץ'" עגול שיושב על פינת הכרטיס */}
             <div
                 className="absolute -top-4 right-6 z-10 flex h-14 w-14 flex-col items-center justify-center rounded-full text-center shadow-md ring-4 ring-white transition-transform duration-300 group-hover:scale-110"
-                style={{ backgroundColor: GREEN }}
+                style={{ backgroundColor: GREEN_TEXT }}
             >
                 <span className="text-sm font-extrabold leading-none text-white">
                     {discount}
@@ -167,10 +168,10 @@ function SupplierBenefitsSection() {
                         className="mx-auto mb-4 flex w-fit items-center gap-1.5 rounded-full px-4 py-1.5"
                         style={{ backgroundColor: "#EAF2DD" }}
                     >
-                        <Sparkles size={14} style={{ color: GREEN }} />
+                        <Sparkles size={14} style={{ color: GREEN_TEXT }} />
                         <span
                             className="text-xs font-bold uppercase tracking-widest"
-                            style={{ color: GREEN }}
+                            style={{ color: GREEN_TEXT }}
                         >
                             אבל רגע, יש לנו עוד הטבה בשבילכם
                         </span>
@@ -200,7 +201,7 @@ function SupplierBenefitsSection() {
                             >
                                 <div
                                     className="flex h-5 w-5 items-center justify-center rounded-full"
-                                    style={{ backgroundColor: GREEN }}
+                                    style={{ backgroundColor: GREEN_TEXT }}
                                 >
                                     <Check size={11} color="white" strokeWidth={3} />
                                 </div>
@@ -213,7 +214,7 @@ function SupplierBenefitsSection() {
 
                     <p className="mx-auto mt-10 max-w-md text-xl font-bold leading-snug" style={{ color: DARK }}>
                         סה"כ שווי ההטבות:{" "}
-                        <span className="text-3xl font-extrabold" style={{ color: GREEN }}>
+                        <span className="text-3xl font-extrabold" style={{ color: GREEN_TEXT }}>
                             {totalLabel}
                         </span>
                     </p>
@@ -227,7 +228,7 @@ function SupplierBenefitsSection() {
                         <a
                             href="#cta-form"
                             className="inline-flex items-center justify-center gap-2 rounded-full px-10 py-4 text-base font-extrabold text-white shadow-md transition hover:opacity-90"
-                            style={{ backgroundColor: GREEN }}
+                            style={{ backgroundColor: GREEN_TEXT }}
                         >
                             הצטרפו ותתחילו לחסוך עכשיו
                         </a>

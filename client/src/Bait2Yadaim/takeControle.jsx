@@ -94,7 +94,7 @@ function CTASection() {
                         {/* כותרת */}
                         <p
                             className="mb-2 text-sm font-bold uppercase tracking-widest"
-                            style={{ color: "#7CB342" }}
+                            style={{ color: "#4f722a" }}
                         >
                             הזמן שלכם הגיע
                         </p>
@@ -125,7 +125,7 @@ function CTASection() {
                         {/* מחיר */}
                         <p
                             className="mb-1 text-4xl font-bold"
-                            style={{ color: "#7CB342" }}
+                            style={{ color: "#4f722a" }}
                         >
                             רק 1,987 ₪
                         </p>
@@ -139,7 +139,7 @@ function CTASection() {
                             type="button"
                             className="w-full rounded-full px-8 py-4 text-lg font-bold text-white transition-transform hover:scale-[1.02]"
                             style={{
-                                backgroundColor: "#7CB342",
+                                backgroundColor: "#4f722a",
                                 boxShadow: "0 10px 24px rgba(124,179,66,0.35)",
                             }}
                         >

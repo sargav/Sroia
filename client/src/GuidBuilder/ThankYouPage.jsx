@@ -28,7 +28,7 @@ export default function ThankYouPage() {
 
           <div className="rounded-3xl border border-neutral-200 bg-white p-8 text-center shadow-2xl">
             <div className="py-4 text-center">
-              <h3 className="mb-4 text-xl font-bold text-neutral-800">איזה כיף שנרשמתם!</h3>
+              <h1 className="mb-4 text-xl font-bold text-neutral-800">איזה כיף שנרשמתם!</h1>
 
               <img src={todaMockup} alt="המדריך לבונה" className="mx-auto mb-4 w-full" style={{ maxWidth: "260px" }} />
 
@@ -63,7 +63,7 @@ export default function ThankYouPage() {
                 rel="noopener noreferrer"
                 className="mx-auto block w-fit"
               >
-                <img src={todaWhatsappBtn} alt="לחצו כאן להצטרפות" className="mx-auto" style={{ maxWidth: "260px" }} />
+                <img src={todaWhatsappBtn} alt="הצטרפות לקבוצת הוואטסאפ (נפתח בחלון חדש)" className="mx-auto" style={{ maxWidth: "260px" }} />
               </a>
             </div>
           </div>

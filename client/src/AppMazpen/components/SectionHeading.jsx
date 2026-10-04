@@ -27,7 +27,7 @@ export default function SectionHeading({
             <span className="h-px w-10 [background-image:linear-gradient(to_left,#8EAD70,transparent)]" />
             <span
               className={`text-xs font-black tracking-[0.18em] ${
-                light ? "text-[#A9BE98]" : "text-[#78965D]"
+                light ? "text-[#A9BE98]" : "text-[#5a7046]"
               }`}
             >
               {eyebrow}
@@ -43,7 +43,7 @@ export default function SectionHeading({
         >
           {title}
           {accent && (
-            <span className={`mt-2 block ${light ? "text-[#A9BE98]" : "text-[#759855]"}`}>
+            <span className={`mt-2 block ${light ? "text-[#A9BE98]" : "text-[#57713f]"}`}>
               {accent}
             </span>
           )}
@@ -52,7 +52,7 @@ export default function SectionHeading({
         {description && (
           <p
             className={`mx-auto mt-5 max-w-2xl text-base font-medium leading-8 md:text-lg ${
-              light ? "text-white/65" : "text-[#6B7567]"
+              light ? "text-white/65" : "text-[#626c5f]"
             }`}
           >
             {description}
