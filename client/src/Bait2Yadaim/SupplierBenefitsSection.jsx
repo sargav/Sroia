@@ -15,7 +15,7 @@ const getLogo = (filename) => {
 };
 
 const GREEN = "#7CB342";
-const GREEN_TEXT = "#4f722a"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
+const GREEN_TEXT = "#51762b"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 const DARK = "#1E2A22";
 const CREAM = "#FBF8F2";
 
@@ -81,12 +81,12 @@ function BenefitCard({ supplier }) {
             {/* תג ההנחה - "פאץ'" עגול שיושב על פינת הכרטיס */}
             <div
                 className="absolute -top-4 right-6 z-10 flex h-14 w-14 flex-col items-center justify-center rounded-full text-center shadow-md ring-4 ring-white transition-transform duration-300 group-hover:scale-110"
-                style={{ backgroundColor: GREEN_TEXT }}
+                style={{ backgroundColor: GREEN }}
             >
-                <span className="text-sm font-extrabold leading-none text-white">
+                <span className="text-sm font-extrabold leading-none text-[#1a1a1a]">
                     {discount}
                 </span>
-                <span className="text-[8px] font-bold leading-none text-white/90">
+                <span className="text-[0.5rem] font-bold leading-none text-[#1a1a1a]">
                     הנחה
                 </span>
             </div>
@@ -102,14 +102,14 @@ function BenefitCard({ supplier }) {
                                 className="max-h-full max-w-full object-contain"
                             />
                         ) : (
-                            <span className="text-[10px] text-neutral-400">{name}</span>
+                            <span className="text-[0.625rem] text-neutral-400">{name}</span>
                         )}
                     </div>
                     <div className="min-w-0">
                         <p className="truncate text-base font-extrabold" style={{ color: DARK }}>
                             {name}
                         </p>
-                        <div className="mt-0.5 flex items-center gap-1.5 text-[11px] font-bold text-neutral-400">
+                        <div className="mt-0.5 flex items-center gap-1.5 text-[0.6875rem] font-bold text-neutral-400">
                             <Icon size={12} />
                             <span className="truncate">{tag}</span>
                         </div>
@@ -140,12 +140,12 @@ function BenefitCard({ supplier }) {
                         style={{ backgroundColor: CREAM }}
                     >
                         <div>
-                            <p className="text-[11px] font-bold text-neutral-400">שווי החיסכון</p>
+                            <p className="text-[0.6875rem] font-bold text-neutral-400">שווי החיסכון</p>
                             <p className="text-sm font-extrabold" style={{ color: DARK }}>
                                 {savingsValue}
                             </p>
                         </div>
-                        <p className="text-[11px] text-neutral-500">{savingsNote}</p>
+                        <p className="text-[0.6875rem] text-neutral-500">{savingsNote}</p>
                     </div>
                 </div>
             </div>
@@ -201,9 +201,9 @@ function SupplierBenefitsSection() {
                             >
                                 <div
                                     className="flex h-5 w-5 items-center justify-center rounded-full"
-                                    style={{ backgroundColor: GREEN_TEXT }}
+                                    style={{ backgroundColor: GREEN }}
                                 >
-                                    <Check size={11} color="white" strokeWidth={3} />
+                                    <Check size={11} color="#1a1a1a" strokeWidth={3} />
                                 </div>
                                 <span className="text-xs font-bold" style={{ color: DARK }}>
                                     {s.name}
@@ -227,8 +227,8 @@ function SupplierBenefitsSection() {
                     <div className="mt-8">
                         <a
                             href="#cta-form"
-                            className="inline-flex items-center justify-center gap-2 rounded-full px-10 py-4 text-base font-extrabold text-white shadow-md transition hover:opacity-90"
-                            style={{ backgroundColor: GREEN_TEXT }}
+                            className="inline-flex items-center justify-center gap-2 rounded-full px-10 py-4 text-base font-extrabold text-[#1a1a1a] shadow-md transition hover:opacity-90"
+                            style={{ backgroundColor: GREEN }}
                         >
                             הצטרפו ותתחילו לחסוך עכשיו
                         </a>

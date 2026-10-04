@@ -117,12 +117,12 @@ const AddContact = () => {
           >
             <span className="h-px w-10 bg-[#659B2D]" />
 
-            <span className="text-[13px] font-bold tracking-[0.12em] text-[#4b7322]">
+            <span className="text-[0.8125rem] font-bold tracking-[0.12em] text-[#4e7723]">
               אנחנו כאן בשבילכם
             </span>
           </div>
 
-          <h1 className="min-h-[2.4em] text-[36px] font-black leading-[1.2] md:min-h-[2.6em] md:text-[50px]">
+          <h1 className="min-h-[2.4em] text-[2.25rem] font-black leading-[1.2] md:min-h-[2.6em] md:text-[3.125rem]">
             {/* קורא המסך מקבל את הכותרת המלאה מיד, ולא אות-אות */}
             <span className="sr-only">בואו נדבר על הפרויקט שלכם</span>
             <span aria-hidden="true">
@@ -131,14 +131,14 @@ const AddContact = () => {
               speed={90}
               startDelay={350}
               active={visible}
-              lineClassName={(i) => (i === 1 ? "block text-[#4b7322]" : "block")}
+              lineClassName={(i) => (i === 1 ? "block text-[#4e7723]" : "block")}
               onDone={() => setHeadingDone(true)}
             />
             </span>
           </h1>
 
           <p
-            className="mx-auto mt-6 max-w-[480px] text-[17px] font-medium leading-[1.9] text-[#4F594A] lg:mx-0"
+            className="mx-auto mt-6 max-w-[480px] text-[1.0625rem] font-medium leading-[1.9] text-[#4F594A] lg:mx-0"
             style={
               headingDone
                 ? { animation: "fadeInUp 0.7s ease-out both" }
@@ -186,15 +186,15 @@ const AddContact = () => {
             <>
               {/* כותרת הטופס */}
               <div className="relative z-10 mb-7">
-                <span className="mb-2 block text-[12px] font-bold text-[#4b7322]">
+                <span className="mb-2 block text-[0.75rem] font-bold text-[#4e7723]">
                   השאירו פרטים
                 </span>
 
-                <h2 className="text-[25px] font-bold text-[#26321F]">
+                <h2 className="text-[1.5625rem] font-bold text-[#26321F]">
                   נחזור אליכם בהקדם
                 </h2>
 
-                <p className="mt-2 text-[14px] leading-[1.7] text-[#687062]">
+                <p className="mt-2 text-[0.875rem] leading-[1.7] text-[#687062]">
                   מלאו את השדות ונוכל ליצור איתכם קשר.
                 </p>
               </div>
@@ -259,7 +259,7 @@ const AddContact = () => {
                 <div className="flex flex-col gap-2">
                   <label
                     htmlFor="contact-message"
-                    className="pr-1 text-[13px] font-semibold text-[#4F594A]"
+                    className="pr-1 text-[0.8125rem] font-semibold text-[#4F594A]"
                   >
                     הודעה
                   </label>
@@ -274,7 +274,7 @@ const AddContact = () => {
                         w-full resize-none rounded-2xl
                         border border-[#CBD7C0]
                         bg-white/75 py-3.5 pl-4 pr-11
-                        text-[14px] text-[#26321F]
+                        text-[0.875rem] text-[#26321F]
                         placeholder:text-[#8A9184]
                         outline-none transition-all duration-300
                         hover:border-[#9ABA7A]
@@ -306,8 +306,8 @@ const AddContact = () => {
                   className="
                     group mt-1 flex w-full items-center
                     justify-between rounded-2xl
-                    bg-[#517228] px-6 py-4
-                    text-[15px] font-black text-white
+                    bg-[#78A93B] px-6 py-4
+                    text-[0.9375rem] font-black text-[#1a1a1a]
                     shadow-[0_10px_28px_rgba(120,169,59,0.25)]
                     transition-all duration-300
                     hover:-translate-y-1
@@ -330,21 +330,21 @@ const AddContact = () => {
           {submitted && (
             <div role="status" className="relative z-10 flex min-h-[450px] flex-col items-center justify-center text-center">
               <div
-                className="mb-5 flex h-20 w-20 items-center justify-center rounded-full border border-[#78A93B]/30 bg-[#78A93B]/10 text-[38px] font-bold text-[#4b7322]"
+                className="mb-5 flex h-20 w-20 items-center justify-center rounded-full border border-[#78A93B]/30 bg-[#78A93B]/10 text-[2.375rem] font-bold text-[#60942b]"
                 style={{ animation: "popIn 0.6s ease-out both" }}
               >
                 ✓
               </div>
 
               <h3
-                className="text-[27px] font-bold text-[#26321F]"
+                className="text-[1.6875rem] font-bold text-[#26321F]"
                 style={{ animation: "fadeInUp 0.6s ease-out 0.15s both" }}
               >
                 הפרטים התקבלו בהצלחה!
               </h3>
 
               <p
-                className="mt-3 max-w-sm text-[15px] leading-[1.8] text-[#687062]"
+                className="mt-3 max-w-sm text-[0.9375rem] leading-[1.8] text-[#687062]"
                 style={{ animation: "fadeInUp 0.6s ease-out 0.25s both" }}
               >
                 תודה שפניתם אלינו. נציג מטעמנו ייצור איתכם קשר בימים
@@ -481,11 +481,11 @@ const ContactStep = ({ number, text, last = false, visible, delay = 0 }) => {
           : { opacity: 0 }
       }
     >
-      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#659B2D]/30 bg-white/45 text-[12px] font-bold text-[#4b7322] backdrop-blur-sm transition-transform duration-300 hover:scale-110">
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#659B2D]/30 bg-white/45 text-[0.75rem] font-bold text-[#4e7723] backdrop-blur-sm transition-transform duration-300 hover:scale-110">
         {number}
       </span>
 
-      <span className="text-[15px] font-semibold text-[#3F493A]">
+      <span className="text-[0.9375rem] font-semibold text-[#3F493A]">
         {text}
       </span>
     </div>
@@ -504,7 +504,7 @@ const FormField = ({
     <div className="flex w-full flex-col gap-2">
       <label
         htmlFor={`contact-${name}`}
-        className="pr-1 text-[13px] font-semibold text-[#4F594A]"
+        className="pr-1 text-[0.8125rem] font-semibold text-[#4F594A]"
       >
         {label}
       </label>
@@ -521,7 +521,7 @@ const FormField = ({
           className={`
             w-full rounded-2xl border
             bg-white/75 py-3.5 pl-4 pr-11
-            text-[14px] text-[#26321F]
+            text-[0.875rem] text-[#26321F]
             placeholder:text-[#8A9184]
             outline-none transition-all duration-300
             hover:border-[#9ABA7A]
@@ -546,7 +546,7 @@ const FormField = ({
       </div>
 
       {error && (
-        <span id={`contact-${name}-error`} role="alert" className="pr-1 text-[12px] text-red-700">
+        <span id={`contact-${name}-error`} role="alert" className="pr-1 text-[0.75rem] text-red-700">
           {error}
         </span>
       )}
@@ -568,7 +568,7 @@ const SocialLink = ({ href, label, children }) => {
         shadow-sm transition-all duration-300
         hover:-translate-y-1
         hover:border-[#78A93B]
-        hover:bg-[#517228]
+        hover:bg-[#78A93B]
         hover:text-white
       "
     >

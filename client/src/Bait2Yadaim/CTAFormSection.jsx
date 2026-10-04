@@ -5,7 +5,7 @@ import PrivacyPolicyDialog from "../components/PrivacyPolicyDialog";
 import TermsOfUseDialog from '../components/TermsOfUseDialog';
 import pi4 from './assete/pi4.png'
 const GREEN = '#7CB342';
-const GREEN_TEXT = "#4f722a"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
+const GREEN_TEXT = "#51762b"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 
 function CTAFormSection() {
     //נוידייט זה דרך ניווט באתר
@@ -166,8 +166,8 @@ function CTAFormSection() {
                         <button
                             type="submit"
                             disabled={submitting || !agree}
-                            className="w-full rounded-xl py-4 text-lg font-bold text-white shadow-lg transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:hover:scale-100"
-                            style={{ backgroundColor: GREEN_TEXT, opacity: submitting || !agree ? 0.5 : 1 }}
+                            className="w-full rounded-xl py-4 text-lg font-bold text-[#1a1a1a] shadow-lg transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:hover:scale-100"
+                            style={{ backgroundColor: GREEN, opacity: submitting || !agree ? 0.5 : 1 }}
                         >
                             {submitting ? "שולח..." : "אני רוצה להצטרף לקורס"}
                         </button>

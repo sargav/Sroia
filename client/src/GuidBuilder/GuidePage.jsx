@@ -27,7 +27,7 @@ import statMillions from "./assets/stat-millions.png";
 import AboutAsaf from '../components/AboutAsaf';
 
 const GREEN = '#7CB342';
-const GREEN_TEXT = "#4f722a"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
+const GREEN_TEXT = "#51762b"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 const GREEN_DARK = '#5a8a2c';
 const DARK = '#1f1f1f';
 const CREAM = '#faf7ec';
@@ -37,8 +37,8 @@ const OLIVE_BG = '#eef0dd';
 function TopBar() {
   return (
     <div
-      className="px-6 py-3 text-center text-sm font-bold text-white sm:text-base"
-      style={{ backgroundColor: GREEN_TEXT }}
+      className="px-6 py-3 text-center text-sm font-bold text-[#1a1a1a] sm:text-base"
+      style={{ backgroundColor: GREEN }}
     >
       ככה הופכים תהליך בנייה גדול ומפחיד — למשהו ברור ופשוט
     </div>
@@ -71,7 +71,7 @@ function HeroSection({ onCtaClick }) {
             <img
               src={heroLogoBadge}
               alt="בית בשתי ידיים - המדריך לבונה - איך לעשות סדר בכל שלבי הבנייה"
-              className="mb-5 max-w-lg"
+              className="mb-5 max-w-[min(32rem,calc(100vw-2rem))]"
             />
           </h1>
         </Reveal>
@@ -81,12 +81,12 @@ function HeroSection({ onCtaClick }) {
                   onClick={onCtaClick}
                   className="
                     group flex items-center justify-center gap-4
-                    rounded-full bg-[#53732e]
-                    px-7 py-4 text-[15px] font-bold text-white
+                    rounded-full bg-[#86B84D]
+                    px-7 py-4 text-[0.9375rem] font-bold text-[#1a1a1a]
                     shadow-[0_9px_25px_rgba(121,169,66,0.28)]
                     transition-all duration-300
                     hover:-translate-y-1 hover:gap-6
-                    hover:bg-[#46651f]
+                    hover:bg-[#78A63F]
                     hover:shadow-[0_14px_32px_rgba(121,169,66,0.36)]
                   "
                 >
@@ -208,8 +208,8 @@ function StraightTalkSection({ onCtaClick }) {
         <Reveal delay={700}>
           <button
             onClick={onCtaClick}
-            className="rounded-full px-8 py-4 text-lg font-bold text-white shadow-lg transition-transform hover:scale-[1.03]"
-            style={{ backgroundColor: GREEN_TEXT }}
+            className="rounded-full px-8 py-4 text-lg font-bold text-[#1a1a1a] shadow-lg transition-transform hover:scale-[1.03]"
+            style={{ backgroundColor: GREEN }}
           >
             להורדת המדריך בחינם
           </button>
@@ -813,8 +813,8 @@ function CTAFormSection() {
                   <button
                     type="submit"
                     disabled={submitting || !agree}
-                    className="w-full rounded-xl py-4 text-lg font-bold text-white shadow-lg transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:hover:scale-100"
-                    style={{ backgroundColor: GREEN_TEXT, opacity: submitting || !agree ? 0.5 : 1 }}
+                    className="w-full rounded-xl py-4 text-lg font-bold text-[#1a1a1a] shadow-lg transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:hover:scale-100"
+                    style={{ backgroundColor: GREEN, opacity: submitting || !agree ? 0.5 : 1 }}
                   >
                     {submitting ? "שולח..." : "כן שלחו לי את המדריך"}
                   </button>

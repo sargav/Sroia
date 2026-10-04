@@ -40,11 +40,11 @@ export default function AboutAsaf() {
             </div>
 
             <div>
-              <h2 className="text-[19px] font-bold text-[#29352A]">
+              <h2 className="text-[1.1875rem] font-bold text-[#29352A]">
                 אסף סרויה
               </h2>
 
-              <p className="mt-1 text-[14px] font-medium text-[#66943B]">
+              <p className="mt-1 text-[0.875rem] font-medium text-[#66943B]">
                 מייסד ומוביל החברה
               </p>
             </div>
@@ -57,12 +57,12 @@ export default function AboutAsaf() {
               {/* ציטוט פותח */}
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute -right-1 -top-6 select-none font-serif text-[72px] font-black leading-none text-[#67A42D]/40 md:-right-3 md:-top-9 md:text-[110px]"
+                className="pointer-events-none absolute -right-1 -top-6 select-none font-serif text-[4.5rem] font-black leading-none text-[#67A42D]/40 md:-right-3 md:-top-9 md:text-[6.875rem]"
               >
                 “
               </span>
 
-              <p className="relative z-10 text-[23px] font-bold leading-[1.55] text-[#29352A] md:text-[34px]">
+              <p className="relative z-10 text-[1.4375rem] font-bold leading-[1.55] text-[#29352A] md:text-[2.125rem]">
                 כל בית שאני מלווה מרגיש לי כמו הבית שלי.{' '}
 
                 <span className="relative inline-block text-[#579124]">
@@ -77,7 +77,7 @@ export default function AboutAsaf() {
               {/* ציטוט סוגר */}
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute -bottom-10 left-0 select-none font-serif text-[72px] font-black leading-none text-[#67A42D]/40 md:-bottom-14 md:-left-2 md:text-[110px]"
+                className="pointer-events-none absolute -bottom-10 left-0 select-none font-serif text-[4.5rem] font-black leading-none text-[#67A42D]/40 md:-bottom-14 md:-left-2 md:text-[6.875rem]"
               >
                 ”
               </span>
@@ -85,14 +85,14 @@ export default function AboutAsaf() {
 
             {/* פסקאות */}
             <div className="max-w-[680px] border-r-2 border-[#91C755]/40 pr-5">
-              <p className="mb-4 text-[16px] font-normal leading-[1.9] text-[#4E594B]">
+              <p className="mb-4 text-[1rem] font-normal leading-[1.9] text-[#4E594B]">
                 איש בנייה ותיק שהפך תשוקה לבנייה איכותית למקצוע חיים.
                 עם 15 שנות ניסיון ומעל 100 פרויקטים שליווה מהיסוד ועד
                 למפתח, אסף מכיר את כל המהמורות שבדרך — ויודע איך לחסוך
                 לכם אותן.
               </p>
 
-              <p className="text-[16px] font-normal leading-[1.9] text-[#4E594B]">
+              <p className="text-[1rem] font-normal leading-[1.9] text-[#4E594B]">
                 הניסיון הרב שצבר בשטח, לצד היכרות מעמיקה עם קבלני
                 ויועצי הבנייה המובילים באזור, הוא מה שמאפשר לו להבטיח
                 לכם ליווי צמוד, שקוף ואמין — מהרגע הראשון ועד קבלת
@@ -114,11 +114,11 @@ export default function AboutAsaf() {
                     : ''
                 }`}
               >
-                <span className="text-[25px] font-bold text-[#639F2B]">
+                <span className="text-[1.5625rem] font-bold text-[#639F2B]">
                   {item.number}
                 </span>
 
-                <span className="text-[14px] font-medium text-[#465341]">
+                <span className="text-[0.875rem] font-medium text-[#465341]">
                   {item.text}
                 </span>
               </div>

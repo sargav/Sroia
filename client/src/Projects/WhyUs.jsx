@@ -97,7 +97,7 @@ export default function WhyUs() {
         <div className="mx-auto mb-12 max-w-[850px] text-center md:mb-16">
           <h2
             aria-label={mainTitle}
-            className="text-[32px] font-bold leading-tight text-black md:text-[44px]"
+            className="text-[2rem] font-bold leading-tight text-black md:text-[2.75rem]"
           >
             {Array.from(mainTitle).map((letter, index) => (
               <span
@@ -123,7 +123,7 @@ export default function WhyUs() {
           />
 
           <p
-            className={`text-[17px] font-normal leading-[1.9] text-black md:text-[18px] ${isVisible
+            className={`text-[1.0625rem] font-normal leading-[1.9] text-black md:text-[1.125rem] ${isVisible
               ? "why-description-visible"
               : "why-description-hidden"
               }`}
@@ -157,7 +157,7 @@ export default function WhyUs() {
               {/* מספר גדול ברקע */}
               <span
                 aria-hidden="true"
-                className="why-card-number pointer-events-none absolute -left-2 -top-5 select-none text-[92px] font-bold leading-none text-[#4b7322]/[0.06]"
+                className="why-card-number pointer-events-none absolute -left-2 -top-5 select-none text-[5.75rem] font-bold leading-none text-[#60942b]/[0.06]"
               >
                 {item.number}
               </span>
@@ -170,7 +170,7 @@ export default function WhyUs() {
               {/* הכותרת נכתבת מחדש במעבר */}
               <h3
                 aria-label={item.title}
-                className="why-card-title relative z-10 mb-3 text-[21px] font-bold leading-[1.45] text-[#26321F]"
+                className="why-card-title relative z-10 mb-3 text-[1.3125rem] font-bold leading-[1.45] text-[#26321F]"
               >
                 <span className="why-title-original">
                   <bdi>{item.title}</bdi>
@@ -181,7 +181,7 @@ export default function WhyUs() {
                 </span>
               </h3>
 
-              <p className="relative z-10 text-[16px] font-normal leading-[1.85] text-[#596153]">
+              <p className="relative z-10 text-[1rem] font-normal leading-[1.85] text-[#596153]">
                 {item.text}
               </p>
 

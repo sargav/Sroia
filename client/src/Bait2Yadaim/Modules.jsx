@@ -188,18 +188,18 @@ function ModuleTab({ module, isActive, onClick }) {
             aria-pressed={isActive}
             className="flex flex-shrink-0 flex-col items-center gap-1.5 rounded-2xl px-5 py-3 transition-all duration-200"
             style={{
-                backgroundColor: isActive ? "#4f722a" : "#F0F3E8",
+                backgroundColor: isActive ? "#7CB342" : "#F0F3E8",
             }}
         >
             <span
                 className="text-xl font-bold"
-                style={{ color: isActive ? "#ffffff" : "#4f722a" }}
+                style={{ color: isActive ? "#1a1a1a" : "#669336" }}
             >
                 {module.number}
             </span>
             <span
                 className="whitespace-nowrap text-xs font-bold"
-                style={{ color: isActive ? "#ffffff" : "#4d7326" }}
+                style={{ color: isActive ? "#1a1a1a" : "#4e7527" }}
             >
                 {module.title}
             </span>
@@ -211,7 +211,7 @@ function ModuleItem({ name, text }) {
     return (
         <div className="flex items-start gap-3 py-3.5">
             <span
-                className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+                className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-[#1a1a1a]"
                 style={{ backgroundColor: "#7CB342" }}
             >
                 ✓
@@ -237,7 +237,7 @@ function ModuleNavButtons({ activeModule, onChange, total }) {
                 className="flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition-all"
                 style={{
                     backgroundColor: isFirst ? "#F5F5F0" : "#e3edcb",
-                    color: isFirst ? "#C4C4BC" : "#4d7326",
+                    color: isFirst ? "#C4C4BC" : "#4e7527",
                     cursor: isFirst ? "default" : "pointer",
                 }}
             >
@@ -253,9 +253,9 @@ function ModuleNavButtons({ activeModule, onChange, total }) {
                 type="button"
                 onClick={() => !isLast && onChange(activeModule + 1)}
                 disabled={isLast}
-                className="flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold text-white transition-all"
+                className="flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold text-[#1a1a1a] transition-all"
                 style={{
-                    backgroundColor: isLast ? "#D9DED0" : "#4f722a",
+                    backgroundColor: isLast ? "#D9DED0" : "#7CB342",
                     cursor: isLast ? "default" : "pointer",
                 }}
             >
@@ -294,7 +294,7 @@ function CourseModulesSection() {
                 <div className="mb-3 text-center">
                     <p
                         className="text-sm font-bold uppercase tracking-widest"
-                        style={{ color: "#4f722a" }}
+                        style={{ color: "#51762b" }}
                     >
                         מה בדיוק תקבלו?
                     </p>

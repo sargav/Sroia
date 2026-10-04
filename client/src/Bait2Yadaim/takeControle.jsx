@@ -49,7 +49,7 @@ function BenefitRow({ text }) {
     return (
         <div className="flex items-center gap-3">
             <span
-                className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+                className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-[#1a1a1a]"
                 style={{ backgroundColor: "#7CB342" }}
             >
                 ✓
@@ -94,7 +94,7 @@ function CTASection() {
                         {/* כותרת */}
                         <p
                             className="mb-2 text-sm font-bold uppercase tracking-widest"
-                            style={{ color: "#4f722a" }}
+                            style={{ color: "#51762b" }}
                         >
                             הזמן שלכם הגיע
                         </p>
@@ -125,7 +125,7 @@ function CTASection() {
                         {/* מחיר */}
                         <p
                             className="mb-1 text-4xl font-bold"
-                            style={{ color: "#4f722a" }}
+                            style={{ color: "#669336" }}
                         >
                             רק 1,987 ₪
                         </p>
@@ -137,9 +137,9 @@ function CTASection() {
                         <a  
                             href="#cta-form"
                             type="button"
-                            className="w-full rounded-full px-8 py-4 text-lg font-bold text-white transition-transform hover:scale-[1.02]"
+                            className="w-full rounded-full px-8 py-4 text-lg font-bold text-[#1a1a1a] transition-transform hover:scale-[1.02]"
                             style={{
-                                backgroundColor: "#4f722a",
+                                backgroundColor: "#7CB342",
                                 boxShadow: "0 10px 24px rgba(124,179,66,0.35)",
                             }}
                         >

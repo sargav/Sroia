@@ -15,7 +15,7 @@ export default function FaqSection({ faqs }) {
       <div className="pointer-events-none absolute -bottom-28 -left-28 -z-10 h-72 w-72 rounded-full bg-[#EDE6DB]/70 blur-3xl" />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -left-4 top-10 -z-10 hidden select-none text-[260px] font-black leading-none text-[#7E9D65]/[0.07] md:block"
+        className="pointer-events-none absolute -left-4 top-10 -z-10 hidden select-none text-[16.25rem] font-black leading-none text-[#7E9D65]/[0.07] md:block"
       >
         ?
       </span>
@@ -63,8 +63,8 @@ export default function FaqSection({ faqs }) {
                       aria-hidden="true"
                       className={`grid h-10 w-10 shrink-0 place-items-center rounded-full border-2 text-xs font-black transition duration-300 md:h-11 md:w-11 ${
                         open
-                          ? "border-[#759855] bg-[#57713f] text-white"
-                          : "border-[#C6D3BB] bg-[#F5F6F1] text-[#5a7046]"
+                          ? "border-[#759855] bg-[#759855] text-[#1a1a1a]"
+                          : "border-[#C6D3BB] bg-[#F5F6F1] text-[#5f774a]"
                       }`}
                     >
                       {String(index + 1).padStart(2, "0")}
@@ -77,8 +77,8 @@ export default function FaqSection({ faqs }) {
                     <span
                       className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border transition duration-300 ${
                         open
-                          ? "rotate-45 border-[#759855] bg-[#E8F0DE] text-[#53723f]"
-                          : "border-[#D3DECC] bg-white text-[#5a7046]"
+                          ? "rotate-45 border-[#759855] bg-[#E8F0DE] text-[#547340]"
+                          : "border-[#D3DECC] bg-white text-[#5f774a]"
                       }`}
                     >
                       <Plus size={18} strokeWidth={2.2} />
@@ -96,7 +96,7 @@ export default function FaqSection({ faqs }) {
                   >
                     <div className="overflow-hidden">
                       <div className="mx-4 border-t border-dashed border-[#D3DECC] pb-5 pr-[56px] pt-4 md:mx-6 md:pb-6 md:pr-[64px]">
-                        <p className="max-w-2xl text-sm font-medium leading-7 text-[#626c5f] md:text-base md:leading-8">
+                        <p className="max-w-2xl text-sm font-medium leading-7 text-[#677163] md:text-base md:leading-8">
                           {answer}
                         </p>
                       </div>

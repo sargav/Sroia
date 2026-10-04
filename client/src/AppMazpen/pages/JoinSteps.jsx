@@ -9,13 +9,13 @@ const steps = [
     Icon: Mail,
     title: "מקבלים פרטי גישה",
     text: "מיד לאחר התשלום",
-    node: "border-[#C6D3BB] bg-white text-[#5a7046]",
+    node: "border-[#C6D3BB] bg-white text-[#5f774a]",
   },
   {
     Icon: Phone,
     title: "פותחים מהטלפון",
     text: "בלי התקנה מורכבת",
-    node: "border-[#B5C9A4] bg-[#E8F0DE] text-[#53723f]",
+    node: "border-[#B5C9A4] bg-[#E8F0DE] text-[#547340]",
   },
   {
     Icon: Route,
@@ -27,7 +27,7 @@ const steps = [
     Icon: BadgeCheck,
     title: "מסמנים ומתקדמים",
     text: "יודעים מה פתוח ומה הושלם",
-    node: "border-[#57713f] bg-[#57713f] text-white",
+    node: "border-[#759855] bg-[#759855] text-[#1a1a1a]",
   },
 ];
 
@@ -68,11 +68,11 @@ export default function JoinSteps() {
                   <Reveal delay={i * 80} className="flex-1 md:mt-5">
                     <article className="group relative h-full overflow-hidden rounded-[8px_26px_8px_26px] border border-[#D3DECC] bg-white/90 p-5 shadow-[0_12px_35px_rgba(65,83,56,.06)] transition duration-300 hover:-translate-y-1 hover:border-[#A6BC95] hover:shadow-[0_20px_45px_rgba(65,83,56,.11)] md:p-6 md:text-center">
                       <span className="absolute right-0 top-0 h-[3px] w-14 bg-[#91AF76] transition-all duration-500 group-hover:w-full" />
-                      <span className="grid h-11 w-11 place-items-center rounded-full bg-[#E8F0DE] text-[#57713f] md:mx-auto">
+                      <span className="grid h-11 w-11 place-items-center rounded-full bg-[#E8F0DE] text-[#759855] md:mx-auto">
                         <Icon size={22} strokeWidth={1.7} />
                       </span>
                       <h3 className="mt-4 text-lg font-black leading-7 text-[#35402F]">{title}</h3>
-                      <p className="mt-1.5 text-sm font-medium leading-6 text-[#626c5f]">{text}</p>
+                      <p className="mt-1.5 text-sm font-medium leading-6 text-[#677163]">{text}</p>
                     </article>
                   </Reveal>
                 </li>

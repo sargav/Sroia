@@ -43,14 +43,14 @@ export default function ImagineSection({ cta }) {
                   <span className="absolute right-0 top-0 h-[3px] w-14 bg-[#91AF76]" />
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute -bottom-7 left-2 select-none text-[80px] font-black leading-none text-[#7E9D65]/[0.09] md:text-[110px]"
+                    className="pointer-events-none absolute -bottom-7 left-2 select-none text-[5rem] font-black leading-none text-[#7E9D65]/[0.09] md:text-[6.875rem]"
                   >
                     ✓
                   </span>
-                  <span className="relative grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#57713f] text-white md:h-12 md:w-12">
+                  <span className="relative grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#759855] text-[#1a1a1a] md:h-12 md:w-12">
                     <Icon size={22} strokeWidth={1.7} />
                   </span>
-                  <p className="relative text-[15px] font-black leading-6 text-[#35402F] md:text-[17px] md:leading-7">
+                  <p className="relative text-[0.9375rem] font-black leading-6 text-[#35402F] md:text-[1.0625rem] md:leading-7">
                     {text}
                   </p>
                 </div>
@@ -61,12 +61,12 @@ export default function ImagineSection({ cta }) {
           {/* הסיום */}
           <Reveal delay={150}>
             <div className="mx-auto mt-12 flex max-w-2xl flex-col items-center text-center md:mt-14">
-              <span className="grid h-14 w-14 place-items-center rounded-full bg-white text-[#57713f] shadow-[0_0_0_1px_#D3DECC]">
+              <span className="grid h-14 w-14 place-items-center rounded-full bg-white text-[#759855] shadow-[0_0_0_1px_#D3DECC]">
                 <Compass size={28} strokeWidth={1.6} />
               </span>
-              <p className="mt-5 text-xl font-medium text-[#626c5f] md:text-2xl">זה לא בלתי אפשרי.</p>
-              <p className="mt-1 text-2xl font-black leading-snug text-[#35402F] md:text-[32px]">
-                זה בדיוק מה ש<span className="text-[#57713f]">המצפן לבונה</span> עושה.
+              <p className="mt-5 text-xl font-medium text-[#6b7567] md:text-2xl">זה לא בלתי אפשרי.</p>
+              <p className="mt-1 text-2xl font-black leading-snug text-[#35402F] md:text-[2rem]">
+                זה בדיוק מה ש<span className="text-[#759855]">המצפן לבונה</span> עושה.
               </p>
               {cta}
             </div>

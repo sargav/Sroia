@@ -81,7 +81,7 @@ function TimelineItem({ bonus, isLast }) {
 
                 {/* תג המספר */}
                 <span
-                    className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border-2 border-white text-sm font-bold text-white shadow"
+                    className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border-2 border-white text-sm font-bold text-[#1a1a1a] shadow"
                     style={{ backgroundColor: "#7CB342" }}
                 >
                     {bonus.number}
@@ -104,7 +104,7 @@ function TimelineItem({ bonus, isLast }) {
                     </h3>
                     <span
                         className="flex-shrink-0 rounded-full px-3 py-1 text-sm font-bold"
-                        style={{ backgroundColor: "#E8EFD9", color: "#4d7326" }}
+                        style={{ backgroundColor: "#E8EFD9", color: "#4e7527" }}
                     >
                         {bonus.value}
                     </span>
@@ -114,7 +114,7 @@ function TimelineItem({ bonus, isLast }) {
                     {bonus.points.map((point, i) => (
                         <li key={i} className="flex items-center justify-start gap-2.5">
                             <span
-                                className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-[11px] text-white"
+                                className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-[0.6875rem] text-[#1a1a1a]"
                                 style={{ backgroundColor: "#7CB342" }}
                             >
                                 ✓
@@ -169,7 +169,7 @@ function BonusesSection() {
                 {/* סיכום שווי */}
                 <div className="rounded-2xl bg-white p-6 text-center shadow-lg">
                     <p className="text-base font-bold text-neutral-800">סה"כ ערך הבונוסים:</p>
-                    <p className="mt-1 text-2xl font-bold" style={{ color: "#4f722a" }}>
+                    <p className="mt-1 text-2xl font-bold" style={{ color: "#669336" }}>
                         מעל 1,400 ₪
                     </p>
                     <p className="mt-2 text-lg font-bold text-neutral-900">

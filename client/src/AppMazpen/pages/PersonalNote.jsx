@@ -36,17 +36,17 @@ export default function PersonalNote() {
         <Reveal delay={100}>
           <div className="flex items-center gap-4 justify-center  align-center">
             <span className="h-px w-10 [background-image:linear-gradient(to_left,#8EAD70,transparent)]" />
-            <span className=" justufy-center text-xs font-black tracking-[0.18em] text-[#5a7046]">מילה אישית לסיום</span>
+            <span className=" justufy-center text-xs font-black tracking-[0.18em] text-[#5f774a]">מילה אישית לסיום</span>
             <span className="h-px w-10 [background-image:linear-gradient(to_right,#8EAD70,transparent)]" />
           </div>
 
           <h2 className="mt-6 text-3xl font-black leading-[1.25] md:text-4xl">
             “הידע הנכון לא אמור להיות שמור{" "} 
             <br />
-            <span className="text-[#57713f]"> רק לאנשי המקצוע. </span>”
+            <span className="text-[#759855]"> רק לאנשי המקצוע. </span>”
           </h2>
 
-          <div className="mt-6 space-y-4 text-base font-medium leading-8 text-[#626c5f] md:text-lg">
+          <div className="mt-6 space-y-4 text-base font-medium leading-8 text-[#677163] md:text-lg">
             <p>
               המצפן נוצר כדי לתת לכם כלי פרקטי: לפתוח, לבדוק ולהמשיך — בלי לנסות לזכור הכול ובלי לחפש כל תשובה מחדש.
             </p>
@@ -56,7 +56,7 @@ export default function PersonalNote() {
           </div>
 
           <div className="mt-7 flex items-center gap-3">
-            <p className="text-xl font-black text-[#53723f]">אסף סרויה</p>
+            <p className="text-xl font-black text-[#5f8248]">אסף סרויה</p>
           </div>
         </Reveal>
       </div>

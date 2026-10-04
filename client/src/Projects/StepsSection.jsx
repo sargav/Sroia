@@ -63,18 +63,18 @@ const StepsSection = () => {
           <div className=" flex items-center justify-center gap-4">
             <span className="h-px w-12 bg-gradient-to-l from-[#8BB959] to-transparent" />
 
-            <span className="text-[13px] font-black tracking-[0.18em] text-[#76A93C]">
+            <span className="text-[0.8125rem] font-black tracking-[0.18em] text-[#76A93C]">
               מהתוכנית ועד המפתח
             </span>
 
             <span className="h-px w-12 bg-gradient-to-r from-[#8BB959] to-transparent" />
           </div>
 
-          <h2 className="text-[34px] font-black leading-[1.25] text-[#273122] md:text-[50px]">
+          <h2 className="text-[2.125rem] font-black leading-[1.25] text-[#273122] md:text-[3.125rem]">
             4 השלבים לבית המושלם
           </h2>
 
-          <p className="mx-auto mt-6 max-w-[680px] text-[17px] font-medium leading-8 text-[#61705E] md:text-[18px]">
+          <p className="mx-auto mt-6 max-w-[680px] text-[1.0625rem] font-medium leading-8 text-[#61705E] md:text-[1.125rem]">
             תהליך מסודר, שקוף ומתוכנן שמאפשר לכם לדעת בכל רגע איפה
             הפרויקט עומד ומה הצעד הבא.
           </p>
@@ -132,7 +132,7 @@ const StepsSection = () => {
                   {/* מספר גדול ברקע */}
                   <span
                     aria-hidden="true"
-                    className="pointer-events-none absolute -left-2 -top-5 select-none text-[105px] font-black leading-none text-[#8DBB57]/[0.055] transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2 group-hover:scale-105"
+                    className="pointer-events-none absolute -left-2 -top-5 select-none text-[6.5625rem] font-black leading-none text-[#8DBB57]/[0.055] transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2 group-hover:scale-105"
                   >
                     {step.number}
                   </span>
@@ -140,11 +140,11 @@ const StepsSection = () => {
                   {/* פס צדדי */}
                   <div className="absolute bottom-10 right-0 top-24 w-[3px] rounded-l-full bg-gradient-to-b from-[#8DBB57] to-[#C5DDAA]" />
 
-                  <h3 className="relative z-10 text-[22px] font-black leading-[1.4] text-[#293324]">
+                  <h3 className="relative z-10 text-[1.375rem] font-black leading-[1.4] text-[#293324]">
                     {step.title}
                   </h3>
 
-                  <p className="relative z-10 mt-4 text-[15.5px] font-medium leading-[1.85] text-[#667063]">
+                  <p className="relative z-10 mt-4 text-[0.9688rem] font-medium leading-[1.85] text-[#667063]">
                     {step.text}
                   </p>
 

@@ -82,7 +82,7 @@ const questions = [
     Icon: HelpCircle,
     card: "bg-[#203123] text-white",
     ghostColor: "text-white/[.07]",
-    blob: "rounded-[42%_58%_63%_37%/45%_41%_59%_55%] bg-white text-[#57713f]",
+    blob: "rounded-[42%_58%_63%_37%/45%_41%_59%_55%] bg-white text-[#759855]",
   },
   {
     title: "מה צריך לבדוק",
@@ -90,15 +90,15 @@ const questions = [
     Icon: CheckCircle2,
     card: "border border-[#C6D3BB] bg-white/80 text-[#2D382B] backdrop-blur",
     ghostColor: "text-[#dbe6cd]",
-    blob: "rounded-[58%_42%_37%_63%/41%_45%_55%_59%] bg-[#e8f0de] text-[#57713f]",
+    blob: "rounded-[58%_42%_37%_63%/41%_45%_55%_59%] bg-[#e8f0de] text-[#759855]",
   },
   {
     title: "ומה עלול להתפספס בדרך",
     ghost: "!",
     Icon: AlertTriangle,
-    card: "bg-[#577141] text-white",
+    card: "bg-[#789B59] text-[#1a1a1a]",
     ghostColor: "text-white/[.14]",
-    blob: "rounded-[42%_58%_63%_37%/45%_41%_59%_55%] bg-white text-[#53723f]",
+    blob: "rounded-[42%_58%_63%_37%/45%_41%_59%_55%] bg-white text-[#547340]",
   },
 ];
 
@@ -137,7 +137,7 @@ export default function HomeBuildingIntro() {
             <div className="flex items-center justify-center gap-4">
               <span className="h-px w-10 [background-image:linear-gradient(to_left,#8EAD70,transparent)]" />
 
-              <span className="text-xs font-black tracking-[0.18em] text-[#5a7046]">
+              <span className="text-xs font-black tracking-[0.18em] text-[#5f774a]">
                 זה חלום גדול
               </span>
 
@@ -146,10 +146,10 @@ export default function HomeBuildingIntro() {
 
             <h2 className="mt-6 text-4xl font-black leading-[1.2] md:text-5xl">
               רוב האנשים בונים בית
-              <span className="mt-2 block text-[#57713f]">פעם אחת בחיים.</span>
+              <span className="mt-2 block text-[#759855]">פעם אחת בחיים.</span>
             </h2>
 
-            <p className="mx-auto mt-5 max-w-xl text-base font-medium leading-8 text-[#626c5f] md:text-lg">
+            <p className="mx-auto mt-5 max-w-xl text-base font-medium leading-8 text-[#677163] md:text-lg">
               אבל מהר מאוד מגלים משהו שלא תמיד מדברים עליו:
             </p>
             <ArrowDown className="mx-auto mt-3 h-4 w-4 text-[#7da457]" strokeWidth={2} aria-hidden="true" />
@@ -159,9 +159,9 @@ export default function HomeBuildingIntro() {
         <div className="flex flex-col items-center gap-9 md:gap-12">
           {/* ההחלטות */}
           <Reveal className="flex w-full flex-col items-center gap-5 md:gap-6">
-            <h3 className="text-center text-[26px] font-black leading-[1.2] md:text-[36px]">
+            <h3 className="text-center text-[1.625rem] font-black leading-[1.2] md:text-[2.25rem]">
               תהליך הבנייה מלא בהחלטות.{" "}
-              <span className="relative inline-block text-[#57713f]">
+              <span className="relative inline-block text-[#759855]">
                 המון החלטות.
                 <Squiggle className="-bottom-1.5 h-2 md:-bottom-2 md:h-2.5" />
               </span>
@@ -173,16 +173,16 @@ export default function HomeBuildingIntro() {
                   key={label}
                   className="flex items-center gap-2 rounded-full border border-[#C6D3BB] bg-white/80 py-1 pl-4 pr-1 backdrop-blur"
                 >
-                  <span className="grid h-7 w-7 place-items-center rounded-full bg-[#e8f0de] text-[#57713f] md:h-8 md:w-8">
+                  <span className="grid h-7 w-7 place-items-center rounded-full bg-[#e8f0de] text-[#759855] md:h-8 md:w-8">
                     <Icon className="h-4 w-4" strokeWidth={1.8} />
                   </span>
-                  <span className="text-[15px] font-black text-[#35402F] md:text-[17px]">{label}</span>
+                  <span className="text-[0.9375rem] font-black text-[#35402F] md:text-[1.0625rem]">{label}</span>
                 </div>
               ))}
             </div>
 
             <div className="flex w-full flex-col items-center justify-between gap-4 rounded-[18px] border border-[#C6D3BB] bg-white/80 px-5 py-5 backdrop-blur md:flex-row md:gap-8 md:rounded-[20px] md:px-8">
-              <p className="flex-1 text-[18px] font-black leading-[1.4] text-[#35402F] md:text-[22px]">
+              <p className="flex-1 text-[1.125rem] font-black leading-[1.4] text-[#35402F] md:text-[1.375rem]">
                 עשרות פרטים קטנים שכל אחד מהם יכול לעלות ביוקר אם מפספסים אותו.
               </p>
               <DotGrid />
@@ -191,7 +191,7 @@ export default function HomeBuildingIntro() {
 
           {/* ולא תמיד ברור */}
           <Reveal className="flex w-full flex-col items-center gap-3">
-            <p className="text-[15px] font-black text-[#4b5948] md:text-[17px]">ולא תמיד ברור:</p>
+            <p className="text-[0.9375rem] font-black text-[#4b5948] md:text-[1.0625rem]">ולא תמיד ברור:</p>
             <div className="grid w-full grid-cols-1 gap-2.5 sm:grid-cols-3 md:gap-3">
               {questions.map(({ title, ghost, Icon, card, ghostColor, blob }) => (
                 <div
@@ -200,14 +200,14 @@ export default function HomeBuildingIntro() {
                 >
                   <span
                     aria-hidden="true"
-                    className={`pointer-events-none absolute -bottom-4 left-1 select-none text-[76px] font-black leading-none ${ghostColor}`}
+                    className={`pointer-events-none absolute -bottom-4 left-1 select-none text-[4.75rem] font-black leading-none ${ghostColor}`}
                   >
                     {ghost}
                   </span>
                   <span className={`relative grid h-10 w-10 shrink-0 place-items-center md:h-11 md:w-11 ${blob}`}>
                     <Icon className="h-5 w-5" strokeWidth={1.7} />
                   </span>
-                  <span className="relative text-[17px] font-black leading-tight md:text-[19px]">
+                  <span className="relative text-[1.0625rem] font-black leading-tight md:text-[1.1875rem]">
                     {title}
                   </span>
                 </div>
@@ -218,13 +218,13 @@ export default function HomeBuildingIntro() {
           {/* והאמת? */}
           <Reveal className="w-full max-w-[720px]">
             <div className="rounded-[18px] border border-[#C6D3BB] bg-white/70 px-6 py-7 text-center backdrop-blur md:rounded-[22px] md:px-10 md:py-8">
-              <p className="text-[14px] font-black text-[#5a7046] md:text-[16px]">והאמת?</p>
-              <h3 className="mt-2 text-[22px] font-black leading-[1.25] md:text-[30px]">
+              <p className="text-[0.875rem] font-black text-[#5f774a] md:text-[1rem]">והאמת?</p>
+              <h3 className="mt-2 text-[1.375rem] font-black leading-[1.25] md:text-[1.875rem]">
                 רוב הטעויות בבניית בית{" "}
-                <span className="text-[#57713f]">לא קורות בזמן הבנייה.</span>
+                <span className="text-[#759855]">לא קורות בזמן הבנייה.</span>
               </h3>
               <span className="mx-auto mt-4 block h-px w-12 bg-[#9bb681]" />
-              <p className="mx-auto mt-4 max-w-[560px] text-[15px] font-medium leading-[1.7] text-[#626c5f] md:text-[17px]">
+              <p className="mx-auto mt-4 max-w-[560px] text-[0.9375rem] font-medium leading-[1.7] text-[#677163] md:text-[1.0625rem]">
                 הן קורות הרבה קודם — לפעמים פשוט כי לא ידעתם לשאול את השאלה הנכונה בזמן.
               </p>
             </div>
@@ -232,9 +232,9 @@ export default function HomeBuildingIntro() {
 
           {/* מה אנחנו שומעים */}
           <Reveal className="flex w-full flex-col items-center gap-4">
-            <h3 className="text-center text-[22px] font-black md:text-[28px]">
+            <h3 className="text-center text-[1.375rem] font-black md:text-[1.75rem]">
               אנחנו שומעים את זה{" "}
-              <span className="relative inline-block text-[#57713f]">
+              <span className="relative inline-block text-[#759855]">
                 שוב ושוב:
                 <Squiggle className="-bottom-1.5 h-2 md:-bottom-2 md:h-2.5" />
               </span>
@@ -245,11 +245,11 @@ export default function HomeBuildingIntro() {
                   key={text}
                   className={`flex max-w-[94%] items-end gap-2 md:max-w-[500px] ${side}`}
                 >
-                  <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-[#57713f] ${avatar}`}>
+                  <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-[#759855] ${avatar}`}>
                     <User className="h-4 w-4" strokeWidth={1.7} />
                   </span>
                   <blockquote
-                    className={`px-4 py-3 text-[16px] font-black leading-[1.45] text-[#35402F] md:px-5 md:py-3.5 md:text-[19px] ${bubble}`}
+                    className={`px-4 py-3 text-[1rem] font-black leading-[1.45] text-[#35402F] md:px-5 md:py-3.5 md:text-[1.1875rem] ${bubble}`}
                   >
                     {text}
                   </blockquote>
@@ -261,19 +261,19 @@ export default function HomeBuildingIntro() {
           {/* סיום */}
           <Reveal className="flex flex-col items-center gap-6 md:flex-row md:justify-center md:gap-10">
             <div className="flex max-w-[460px] flex-col gap-2">
-              <h3 className="text-[26px] font-black leading-[1.15] md:text-[34px]">
+              <h3 className="text-[1.625rem] font-black leading-[1.15] md:text-[2.125rem]">
                 אתם ממש{" "}
-                <span className="relative inline-block text-[#57713f]">
+                <span className="relative inline-block text-[#759855]">
                   לא היחידים.
                   <Squiggle className="-bottom-1.5 h-2 md:-bottom-2 md:h-2.5" />
                 </span>
               </h3>
-              <p className="mt-1 text-[15px] font-medium leading-[1.55] text-[#626c5f] md:text-[18px]">
+              <p className="mt-1 text-[0.9375rem] font-medium leading-[1.55] text-[#677163] md:text-[1.125rem]">
                 בניית בית היא אחד הפרויקטים המורכבים שאנשים עושים בחיים.
               </p>
               <div className="mt-1 flex items-start gap-2.5 border-t border-[#cbd5c3] pt-3">
                 <CheckCircle2 className="mt-1 h-[17px] w-[17px] shrink-0 text-[#7da457]" aria-hidden="true" />
-                <p className="text-[15px] font-black leading-[1.55] text-[#536052] md:text-[18px]">
+                <p className="text-[0.9375rem] font-black leading-[1.55] text-[#536052] md:text-[1.125rem]">
                   ואני יודע את זה — כי ליוויתי מעל 100 משפחות שעברו בדיוק את זה.
                 </p>
               </div>

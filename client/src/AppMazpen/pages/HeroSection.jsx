@@ -27,7 +27,7 @@ export default function HeroSection() {
               <div className="flex items-start gap-2 md:gap-3">
                 <span
                   aria-hidden="true"
-                  className="-mt-1 select-none font-serif text-[56px] font-black leading-[0.9] text-[#A8CE7A] md:text-[64px]"
+                  className="-mt-1 select-none font-serif text-[3.5rem] font-black leading-[0.9] text-[#A8CE7A] md:text-[4rem]"
                 >
                   “
                 </span>
@@ -38,7 +38,7 @@ export default function HeroSection() {
 
                 <span
                   aria-hidden="true"
-                  className="select-none self-end font-serif text-[56px] font-black leading-[0.5] text-[#A8CE7A] md:text-[64px]"
+                  className="select-none self-end font-serif text-[3.5rem] font-black leading-[0.5] text-[#A8CE7A] md:text-[4rem]"
                 >
                   ”
                 </span>
@@ -46,13 +46,13 @@ export default function HeroSection() {
             </blockquote>
 
             <div className="mt-7">
-              <h1 className="mt-8 text-[2.6rem] font-black leading-[1.05] tracking-[-0.045em] sm:text-6xl lg:text-[68px]">
+              <h1 className="mt-8 text-[2.6rem] font-black leading-[1.05] tracking-[-0.045em] sm:text-6xl lg:text-[4.25rem]">
                 <span className="inline-block [background-image:linear-gradient(to_left,#263A29,#71964F,#B1D384)] bg-clip-text text-transparent">
                   המצפן לבונה
                 </span>
               </h1>
 
-              <p className="mt-3 max-w-xl text-base font-medium leading-8 text-[#626c5f] md:text-lg">
+              <p className="mt-3 max-w-xl text-base font-medium leading-8 text-[#677163] md:text-lg">
                 מערכת חכמה שמלווה אתכם צעד אחר צעד מהיזום ועד המפתח.
               </p>
             </div>
@@ -71,7 +71,7 @@ export default function HeroSection() {
                 איך לבנות בביטחון?
               </p>
 
-              <p className="mt-3 text-base font-medium leading-8 text-[#626c5f] md:text-lg">
+              <p className="mt-3 text-base font-medium leading-8 text-[#677163] md:text-lg">
                 לדעת בכל שלב מה לבדוק
                 , <br />
                 לא לפספס כלום
@@ -136,7 +136,7 @@ export default function HeroSection() {
               <div className="flex min-h-0 flex-col justify-between bg-[#203123] p-3 text-white md:p-5 rounded-xl">
                 <Route size={22} className="text-[#afd180] md:h-7 md:w-7" />
 
-                <p className="text-[11px] font-black leading-4 md:text-sm md:leading-5">
+                <p className="text-[0.6875rem] font-black leading-4 md:text-sm md:leading-5">
                   מסלול
                   <br />
                   ברור
@@ -147,7 +147,7 @@ export default function HeroSection() {
               <div className=" rounded-xl flex min-h-0 flex-col justify-between border border-[#aebda4] bg-white/80 p-3 backdrop-blur md:p-5">
                 <ClipboardCheck size={22} className="text-[#729750] md:h-7 md:w-7" />
 
-                <p className="text-[10px] font-black leading-4 text-[#445143] md:text-xs md:leading-5">
+                <p className="text-[0.625rem] font-black leading-4 text-[#445143] md:text-xs md:leading-5">
                   פותחים
                   <br />
                   בודקים
@@ -157,17 +157,17 @@ export default function HeroSection() {
               </div>
 
               {/* ריבוע שלישי */}
-              <div className="rounded-xl flex min-h-0 flex-col justify-between bg-[#577141] p-3 text-white md:p-5">
+              <div className="rounded-xl flex min-h-0 flex-col justify-between bg-[#789B59] p-3 text-[#1a1a1a] md:p-5">
                 <CheckCircle2 size={22} className="text-[#e3f0d2] md:h-7 md:w-7" />
 
                 <div>
-                  <p className="text-[11px] font-black leading-4 md:text-sm md:leading-5">
+                  <p className="text-[0.6875rem] font-black leading-4 md:text-sm md:leading-5">
                     זמין
                     <br />
                     תמיד
                   </p>
 
-                  <p className="mt-1 hidden text-[10px] font-bold text-white/90 md:block">
+                  <p className="mt-1 hidden text-[0.625rem] font-bold text-[#1a1a1a]/80 md:block">
                     מכל מכשיר
                   </p>
                 </div>

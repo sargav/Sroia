@@ -155,9 +155,9 @@ function ScenarioComparisonSection() {
 
                         <a
                             href="#cta-form"
-                            className="mx-auto block w-full max-w-sm rounded-full px-8 py-4 text-center text-lg font-bold text-white transition-transform hover:scale-[1.02]"
+                            className="mx-auto block w-full max-w-sm rounded-full px-8 py-4 text-center text-lg font-bold text-[#1a1a1a] transition-transform hover:scale-[1.02]"
                             style={{
-                                backgroundColor: "#4f722a",
+                                backgroundColor: "#7CB342",
                                 boxShadow: "0 8px 20px rgba(124,179,66,0.35)",
                             }}
                         >

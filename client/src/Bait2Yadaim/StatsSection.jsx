@@ -71,7 +71,7 @@ function StatsSection() {
                                 </p>
                                 <span
                                     className="flex-shrink-0 text-4xl font-extrabold"
-                                    style={{ color: "#4f722a" }}
+                                    style={{ color: "#669336" }}
                                 >
                                     {stat.number}
                                 </span>

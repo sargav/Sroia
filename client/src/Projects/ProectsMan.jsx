@@ -99,7 +99,7 @@ export default function ProjectManagement() {
           <div className=" flex items-center justify-center gap-4">
             <span className="h-px w-10 bg-gradient-to-l from-[#8EAD70] to-transparent" />
 
-            <h2 className="text-xl font-black tracking-[0.16em] text-[#5a7046]">
+            <h2 className="text-xl font-black tracking-[0.16em] text-[#738f59]">
               ככה זה שמתחילים נכון
             </h2>
 
@@ -141,21 +141,21 @@ export default function ProjectManagement() {
             <div className="mb-5 flex items-center justify-center gap-4">
               <span className="h-px w-10 bg-gradient-to-l from-[#8EAD70] to-transparent" />
 
-              <span className="text-[13px] font-black tracking-[0.16em] text-[#5a7046]">
+              <span className="text-[0.8125rem] font-black tracking-[0.16em] text-[#5f774a]">
                 הדרך שבה אנחנו עובדים
               </span>
 
               <span className="h-px w-10 bg-gradient-to-r from-[#8EAD70] to-transparent" />
             </div>
 
-            <h2 className="text-[34px] font-black leading-[1.25] text-[#31382D] md:text-[48px]">
+            <h2 className="text-[2.125rem] font-black leading-[1.25] text-[#31382D] md:text-[3rem]">
               הערכים שמובילים אותנו
-              <span className="block text-[#597044]">
+              <span className="block text-[#77965c]">
                 בכל פרויקט
               </span>
             </h2>
 
-            <p className="mx-auto mt-6 max-w-[650px] text-[17px] font-medium leading-[1.9] text-[#667061]">
+            <p className="mx-auto mt-6 max-w-[650px] text-[1.0625rem] font-medium leading-[1.9] text-[#667061]">
               כל החלטה שאנחנו מקבלים נשענת על אחריות, תכנון מקצועי ומחויבות
               מלאה לתהליך ולתוצאה.
             </p>
@@ -237,13 +237,13 @@ export default function ProjectManagement() {
                   <div>
 
 
-                    <h3 className="text-[21px] font-black leading-[1.4] text-[#35402F] md:text-[23px]">
+                    <h3 className="text-[1.3125rem] font-black leading-[1.4] text-[#35402F] md:text-[1.4375rem]">
                       {value.title}
                     </h3>
                   </div>
 
                   {/* תיאור */}
-                  <p className="max-w-[600px] text-[15.5px] font-medium leading-[1.85] text-[#687163]">
+                  <p className="max-w-[600px] text-[0.9688rem] font-medium leading-[1.85] text-[#687163]">
                     {value.text}
                   </p>
                 </div>
@@ -256,7 +256,7 @@ export default function ProjectManagement() {
           <div className="mx-auto mt-12 flex max-w-[700px] items-center gap-4">
             <span className="h-px flex-1 bg-gradient-to-l from-[#B5C9A1] to-transparent" />
 
-            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#B8CAA7] bg-white/75 text-[#5a7046] shadow-sm">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#B8CAA7] bg-white/75 text-[#5f774a] shadow-sm">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -280,7 +280,7 @@ export default function ProjectManagement() {
           <div className=" flex items-center justify-center gap-4">
             <span className="h-px w-10 bg-gradient-to-l from-[#8EAD70] to-transparent" />
 
-            <h2 className="text-xl font-black tracking-[0.16em] text-[#5a7046]">
+            <h2 className="text-xl font-black tracking-[0.16em] text-[#738f59]">
               ככה זה נראה כשגומרים נכון
             </h2>
 
@@ -301,19 +301,19 @@ export default function ProjectManagement() {
           <div className="mb-5 flex items-center justify-center gap-4">
             <span className="h-px w-10 bg-gradient-to-l from-[#8EAD70] to-transparent" />
 
-            <span className="text-[13px] font-black tracking-[0.16em] text-[#5a7046]">
+            <span className="text-[0.8125rem] font-black tracking-[0.16em] text-[#5f774a]">
               בואו נדבר
             </span>
 
             <span className="h-px w-10 bg-gradient-to-r from-[#8EAD70] to-transparent" />
           </div>
 
-          <h2 className="text-[32px] font-black leading-[1.25] text-[#31382D] md:text-[42px]">
+          <h2 className="text-[2rem] font-black leading-[1.25] text-[#31382D] md:text-[2.625rem]">
             מוכנים להתחיל
-            <span className="block text-[#597044]">לבנות נכון?</span>
+            <span className="block text-[#77965c]">לבנות נכון?</span>
           </h2>
 
-          <p className="mx-auto mt-5 max-w-[560px] text-[16px] font-medium leading-[1.9] text-[#667061]">
+          <p className="mx-auto mt-5 max-w-[560px] text-[1rem] font-medium leading-[1.9] text-[#667061]">
             השאירו פרטים ונחזור אליכם בהקדם כדי להבין את הצורך שלכם
             ולהתחיל לתכנן יחד את הפרויקט.
           </p>
@@ -322,8 +322,8 @@ export default function ProjectManagement() {
             onClick={() => navigate("/contact")}
             className="
               group mt-9 inline-flex items-center gap-3
-              rounded-full bg-[#597044] px-9 py-4
-              text-[16px] font-black text-white
+              rounded-full bg-[#7F9F62] px-9 py-4
+              text-[1rem] font-black text-[#1a1a1a]
               shadow-[0_14px_35px_rgba(127,159,98,0.28)]
               transition-all duration-300
               hover:-translate-y-1

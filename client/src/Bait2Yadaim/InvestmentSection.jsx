@@ -97,7 +97,7 @@ function InvestmentSection() {
                     <div className="mb-2 text-center">
                         <p
                             className="text-sm font-bold uppercase tracking-widest"
-                            style={{ color: "#4f722a" }}
+                            style={{ color: "#51762b" }}
                         >
                             בואו נדבר על השקעה
                         </p>
@@ -129,7 +129,7 @@ function InvestmentSection() {
                         <p className="text-lg font-bold text-neutral-900">
                             סה"כ: טעויות קטנות
                         </p>
-                        <p className="text-lg font-bold" style={{ color: "#4f722a" }}>
+                        <p className="text-lg font-bold" style={{ color: "#51762b" }}>
                             יכולות לעלות מאות אלפי שקלים.
                         </p>
                     </div>
@@ -158,7 +158,7 @@ function InvestmentSection() {
                             >
                                 <p
                                     className="mb-2 text-2xl font-bold"
-                                    style={{ color: "#4d7326" }}
+                                    style={{ color: "#5c8a2e" }}
                                 >
                                     לפחות 100,000-200,000 ₪
                                 </p>
@@ -184,7 +184,7 @@ function InvestmentSection() {
                                 משלם יותר בטעויות. אבל מי שאין לו מספיק כסף -
                                 לא קונה את הידע.
                             </p>
-                            <p className="mt-4 font-bold" style={{ color: "#4f722a" }}>
+                            <p className="mt-4 font-bold" style={{ color: "#51762b" }}>
                                 אז קיבלנו החלטה עסקית לא שגרתית: להוריד את
                                 המחיר למינימום האפשרי שעדיין מאפשר לנו.
                             </p>
@@ -224,7 +224,7 @@ function InvestmentSection() {
 
                             <p
                                 className="mb-3 text-5xl font-bold"
-                                style={{ color: "#4f722a" }}
+                                style={{ color: "#669336" }}
                             >
                                 1,987 ₪
                             </p>
@@ -233,7 +233,7 @@ function InvestmentSection() {
                                 className="mb-5 inline-block rounded-full px-4 py-1.5 text-sm font-bold"
                                 style={{
                                     backgroundColor: "#F0F7E8",
-                                    color: "#4d7326",
+                                    color: "#4e7527",
                                 }}
                             >
                                 או רק 198 ₪ לחודש ב-10 תשלומים
@@ -270,19 +270,19 @@ function InvestmentSection() {
                             <p className="text-base font-bold text-neutral-900">
                                 היא לא להרוויח הכי הרבה.
                             </p>
-                            <p className="text-base font-bold" style={{ color: "#4f722a" }}>
+                            <p className="text-base font-bold" style={{ color: "#51762b" }}>
                                 המטרה היא שהכי הרבה משפחות
                             </p>
-                            <p className="text-base font-bold" style={{ color: "#4f722a" }}>
+                            <p className="text-base font-bold" style={{ color: "#51762b" }}>
                                 יבנו בית בלי להיהרס כלכלית.
                             </p>
                         </div>
 
                         <a
                             href="#cta-form"
-                            className="mx-auto mt-8 block w-full max-w-sm rounded-full px-8 py-4 text-center text-lg font-bold text-white transition-transform hover:scale-[1.02]"
+                            className="mx-auto mt-8 block w-full max-w-sm rounded-full px-8 py-4 text-center text-lg font-bold text-[#1a1a1a] transition-transform hover:scale-[1.02]"
                             style={{
-                                backgroundColor: "#4f722a",
+                                backgroundColor: "#7CB342",
                                 boxShadow: "0 8px 20px rgba(124,179,66,0.35)",
                             }}
                         >
