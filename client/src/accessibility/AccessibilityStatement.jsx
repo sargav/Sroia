@@ -4,9 +4,9 @@ import { useEffect } from "react";
 // כל מה שמשתנה בהצהרה נמצא כאן, כדי שיהיה קל לעדכן בלי לחפש בתוך הטקסט
 const DETAILS = {
     businessName: 'אסף סרויה ניהול פרויקטים, פיקוח ויזמות בע"מ',
-    coordinatorName: "[שם אחראי/ת הנגישות]",
-    phone: "[טלפון]",
-    email: "[מייל]",
+    coordinatorName: "ליאת סרויה",
+    phone: "050-2201727",
+    email: "liatsroia@gmail.com",
     updatedAt: "05.10.2026",
 };
 
