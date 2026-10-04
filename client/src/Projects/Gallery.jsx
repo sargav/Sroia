@@ -31,6 +31,7 @@ function GallerySection({status}) {
                     <button
                         onClick={() => scroll(1)}
                         type="button"
+                        aria-label="לתמונות הקודמות"
                         className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full p-2.5 shadow-md transition hover:opacity-90"
                         style={{ backgroundColor: "#7CB342" }}
                     >
@@ -39,6 +40,7 @@ function GallerySection({status}) {
                     <button
                         onClick={() => scroll(-1)}
                         type="button"
+                        aria-label="לתמונות הבאות"
                         className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full p-2.5 shadow-md transition hover:opacity-90"
                         style={{ backgroundColor: "#7CB342" }}
                     >

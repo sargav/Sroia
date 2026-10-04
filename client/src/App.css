@@ -419,3 +419,29 @@ html {
   }
 }
 
+
+/* ===== נגישות: מסגרת פוקוס אחידה =====
+   מסגרת ירוקה שמופיעה רק בניווט עם מקלדת (לא בלחיצת עכבר),
+   ובגוון שנראה גם על רקע בהיר וגם על רקע כהה. */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible,
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible {
+  outline: 3px solid #4f8a1c;
+  outline-offset: 2px;
+}
+
+/* ===== נגישות: מי שביקש במחשב "להפחית תנועה" =====
+   כל האנימציות באתר נעצרות ומוצגות מיד במצב הסופי. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -117,21 +117,25 @@ const AddContact = () => {
           >
             <span className="h-px w-10 bg-[#659B2D]" />
 
-            <span className="text-[13px] font-bold tracking-[0.12em] text-[#659B2D]">
+            <span className="text-[13px] font-bold tracking-[0.12em] text-[#4b7322]">
               אנחנו כאן בשבילכם
             </span>
           </div>
 
-          <h2 className="min-h-[2.4em] text-[36px] font-black leading-[1.2] md:min-h-[2.6em] md:text-[50px]">
+          <h1 className="min-h-[2.4em] text-[36px] font-black leading-[1.2] md:min-h-[2.6em] md:text-[50px]">
+            {/* קורא המסך מקבל את הכותרת המלאה מיד, ולא אות-אות */}
+            <span className="sr-only">בואו נדבר על הפרויקט שלכם</span>
+            <span aria-hidden="true">
             <Typewriter
               lines={["בואו נדבר על", "הפרויקט שלכם"]}
               speed={90}
               startDelay={350}
               active={visible}
-              lineClassName={(i) => (i === 1 ? "block text-[#659B2D]" : "block")}
+              lineClassName={(i) => (i === 1 ? "block text-[#4b7322]" : "block")}
               onDone={() => setHeadingDone(true)}
             />
-          </h2>
+            </span>
+          </h1>
 
           <p
             className="mx-auto mt-6 max-w-[480px] text-[17px] font-medium leading-[1.9] text-[#4F594A] lg:mx-0"
@@ -182,13 +186,13 @@ const AddContact = () => {
             <>
               {/* כותרת הטופס */}
               <div className="relative z-10 mb-7">
-                <span className="mb-2 block text-[12px] font-bold text-[#659B2D]">
+                <span className="mb-2 block text-[12px] font-bold text-[#4b7322]">
                   השאירו פרטים
                 </span>
 
-                <h3 className="text-[25px] font-bold text-[#26321F]">
+                <h2 className="text-[25px] font-bold text-[#26321F]">
                   נחזור אליכם בהקדם
-                </h3>
+                </h2>
 
                 <p className="mt-2 text-[14px] leading-[1.7] text-[#687062]">
                   מלאו את השדות ונוכל ליצור איתכם קשר.
@@ -276,11 +280,11 @@ const AddContact = () => {
                         hover:border-[#9ABA7A]
                         focus:border-[#78A93B]
                         focus:bg-white
-                        focus:ring-4 focus:ring-[#78A93B]/10
+                        focus:ring-4 focus:ring-[#4d7a1f]/50
                       "
                     />
 
-                    <svg
+                    <svg aria-hidden="true"
                       className="pointer-events-none absolute right-4 top-4 h-[18px] w-[18px] text-[#778170]"
                       fill="none"
                       stroke="currentColor"
@@ -302,7 +306,7 @@ const AddContact = () => {
                   className="
                     group mt-1 flex w-full items-center
                     justify-between rounded-2xl
-                    bg-[#78A93B] px-6 py-4
+                    bg-[#517228] px-6 py-4
                     text-[15px] font-black text-white
                     shadow-[0_10px_28px_rgba(120,169,59,0.25)]
                     transition-all duration-300
@@ -324,9 +328,9 @@ const AddContact = () => {
 
           {/* הודעת הצלחה */}
           {submitted && (
-            <div className="relative z-10 flex min-h-[450px] flex-col items-center justify-center text-center">
+            <div role="status" className="relative z-10 flex min-h-[450px] flex-col items-center justify-center text-center">
               <div
-                className="mb-5 flex h-20 w-20 items-center justify-center rounded-full border border-[#78A93B]/30 bg-[#78A93B]/10 text-[38px] font-bold text-[#659B2D]"
+                className="mb-5 flex h-20 w-20 items-center justify-center rounded-full border border-[#78A93B]/30 bg-[#78A93B]/10 text-[38px] font-bold text-[#4b7322]"
                 style={{ animation: "popIn 0.6s ease-out both" }}
               >
                 ✓
@@ -477,7 +481,7 @@ const ContactStep = ({ number, text, last = false, visible, delay = 0 }) => {
           : { opacity: 0 }
       }
     >
-      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#659B2D]/30 bg-white/45 text-[12px] font-bold text-[#659B2D] backdrop-blur-sm transition-transform duration-300 hover:scale-110">
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#659B2D]/30 bg-white/45 text-[12px] font-bold text-[#4b7322] backdrop-blur-sm transition-transform duration-300 hover:scale-110">
         {number}
       </span>
 
@@ -510,6 +514,9 @@ const FormField = ({
           id={`contact-${name}`}
           type={type}
           name={name}
+          autoComplete={{ name: "name", phone: "tel", email: "email" }[name]}
+          aria-invalid={Boolean(error)}
+          aria-describedby={error ? `contact-${name}-error` : undefined}
           placeholder={placeholder}
           className={`
             w-full rounded-2xl border
@@ -521,14 +528,14 @@ const FormField = ({
             focus:bg-white focus:ring-4
             ${
               error
-                ? "border-red-400 focus:border-red-400 focus:ring-red-400/10"
-                : "border-[#CBD7C0] focus:border-[#78A93B] focus:ring-[#78A93B]/10"
+                ? "border-red-400 focus:border-red-400 focus:ring-red-400/50"
+                : "border-[#CBD7C0] focus:border-[#78A93B] focus:ring-[#4d7a1f]/50"
             }
           `}
           style={error ? { animation: "shake 0.4s ease-in-out" } : undefined}
         />
 
-        <svg
+        <svg aria-hidden="true"
           className="pointer-events-none absolute right-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-[#778170]"
           fill="none"
           stroke="currentColor"
@@ -539,7 +546,7 @@ const FormField = ({
       </div>
 
       {error && (
-        <span className="pr-1 text-[12px] text-red-500">
+        <span id={`contact-${name}-error`} role="alert" className="pr-1 text-[12px] text-red-700">
           {error}
         </span>
       )}
@@ -553,7 +560,7 @@ const SocialLink = ({ href, label, children }) => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={label}
+      aria-label={`${label} (נפתח בחלון חדש)`}
       className="
         flex h-11 w-11 items-center justify-center
         rounded-full border border-[#659B2D]/20
@@ -561,7 +568,7 @@ const SocialLink = ({ href, label, children }) => {
         shadow-sm transition-all duration-300
         hover:-translate-y-1
         hover:border-[#78A93B]
-        hover:bg-[#78A93B]
+        hover:bg-[#517228]
         hover:text-white
       "
     >

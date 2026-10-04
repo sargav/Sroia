@@ -152,12 +152,12 @@ export default function Hero() {
               }}
               className="
                 group flex items-center justify-center gap-4
-                rounded-full bg-[#86B84D]
+                rounded-full bg-[#53732e]
                 px-7 py-4 text-[15px] font-bold text-white
                 shadow-[0_9px_25px_rgba(121,169,66,0.28)]
                 transition-all duration-300
                 hover:-translate-y-1 hover:gap-6
-                hover:bg-[#78A63F]
+                hover:bg-[#46651f]
                 hover:shadow-[0_14px_32px_rgba(121,169,66,0.36)]
               "
             >

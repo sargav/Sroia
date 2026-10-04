@@ -78,9 +78,9 @@ function DifferenceRow({ number, title, text, delay }) {
                         {number}
                     </span>
                     <div className="flex-1 text-right">
-                        <h4 className="mb-1 text-lg font-bold text-white">
+                        <h3 className="mb-1 text-lg font-bold text-white">
                             {title}
-                        </h4>
+                        </h3>
                         <p className="text-base leading-relaxed text-white/75">
                             {text}
                         </p>
@@ -147,7 +147,7 @@ function WhyDifferentSection() {
                             href="#cta-form"
                             className="mx-auto block w-full max-w-sm rounded-full px-8 py-4 text-center text-lg font-bold text-white transition-transform hover:scale-[1.02]"
                             style={{
-                                backgroundColor: "#7CB342",
+                                backgroundColor: "#4f722a",
                                 boxShadow: "0 8px 20px rgba(124,179,66,0.35)",
                             }}
                         >

@@ -46,13 +46,13 @@ export default function HeroSection() {
             </blockquote>
 
             <div className="mt-7">
-              <h2 className="mt-8 text-[2.6rem] font-black leading-[1.05] tracking-[-0.045em] sm:text-6xl lg:text-[68px]">
+              <h1 className="mt-8 text-[2.6rem] font-black leading-[1.05] tracking-[-0.045em] sm:text-6xl lg:text-[68px]">
                 <span className="inline-block [background-image:linear-gradient(to_left,#263A29,#71964F,#B1D384)] bg-clip-text text-transparent">
                   המצפן לבונה
                 </span>
-              </h2>
+              </h1>
 
-              <p className="mt-3 max-w-xl text-base font-medium leading-8 text-[#6B7567] md:text-lg">
+              <p className="mt-3 max-w-xl text-base font-medium leading-8 text-[#626c5f] md:text-lg">
                 מערכת חכמה שמלווה אתכם צעד אחר צעד מהיזום ועד המפתח.
               </p>
             </div>
@@ -71,7 +71,7 @@ export default function HeroSection() {
                 איך לבנות בביטחון?
               </p>
 
-              <p className="mt-3 text-base font-medium leading-8 text-[#6B7567] md:text-lg">
+              <p className="mt-3 text-base font-medium leading-8 text-[#626c5f] md:text-lg">
                 לדעת בכל שלב מה לבדוק
                 , <br />
                 לא לפספס כלום
@@ -157,7 +157,7 @@ export default function HeroSection() {
               </div>
 
               {/* ריבוע שלישי */}
-              <div className="rounded-xl flex min-h-0 flex-col justify-between bg-[#789b59] p-3 text-white md:p-5">
+              <div className="rounded-xl flex min-h-0 flex-col justify-between bg-[#577141] p-3 text-white md:p-5">
                 <CheckCircle2 size={22} className="text-[#e3f0d2] md:h-7 md:w-7" />
 
                 <div>
@@ -167,7 +167,7 @@ export default function HeroSection() {
                     תמיד
                   </p>
 
-                  <p className="mt-1 hidden text-[10px] font-bold text-white/65 md:block">
+                  <p className="mt-1 hidden text-[10px] font-bold text-white/90 md:block">
                     מכל מכשיר
                   </p>
                 </div>

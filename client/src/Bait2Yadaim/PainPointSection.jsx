@@ -1,6 +1,7 @@
 import { HardHat, AlertTriangle, Clock3 } from "lucide-react";
 
 const GREEN = "#7CB342";
+const GREEN_TEXT = "#4f722a"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 const DARK = "#1E2A22";
 const CREAM = "#FBF8F2";
 
@@ -11,12 +12,12 @@ function Beat({ Icon, label, text }) {
                 className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full"
                 style={{ backgroundColor: "#EAF2DD" }}
             >
-                <Icon size={16} style={{ color: GREEN }} />
+                <Icon size={16} style={{ color: GREEN_TEXT }} />
             </div>
             <div>
                 <p
                     className="mb-0.5 text-xs font-bold uppercase tracking-wide"
-                    style={{ color: GREEN }}
+                    style={{ color: GREEN_TEXT }}
                 >
                     {label}
                 </p>
@@ -38,12 +39,12 @@ function PainPointSection() {
             }}
         >
             <div className="mx-auto max-w-lg rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
-                <h3
+                <h2
                     className="mb-2 text-lg font-extrabold leading-snug"
                     style={{ color: DARK }}
                 >
                     אתם מרגישים שאתם הולכים עם עיניים עצומות
-                </h3>
+                </h2>
 
                 <div className="divide-y" style={{ borderColor: "#EFEAE0" }}>
                     <Beat

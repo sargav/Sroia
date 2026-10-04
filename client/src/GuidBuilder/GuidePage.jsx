@@ -27,6 +27,7 @@ import statMillions from "./assets/stat-millions.png";
 import AboutAsaf from '../components/AboutAsaf';
 
 const GREEN = '#7CB342';
+const GREEN_TEXT = "#4f722a"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 const GREEN_DARK = '#5a8a2c';
 const DARK = '#1f1f1f';
 const CREAM = '#faf7ec';
@@ -37,7 +38,7 @@ function TopBar() {
   return (
     <div
       className="px-6 py-3 text-center text-sm font-bold text-white sm:text-base"
-      style={{ backgroundColor: GREEN }}
+      style={{ backgroundColor: GREEN_TEXT }}
     >
       ככה הופכים תהליך בנייה גדול ומפחיד — למשהו ברור ופשוט
     </div>
@@ -66,11 +67,13 @@ function HeroSection({ onCtaClick }) {
 
       <div className="relative flex flex-col items-center px-0 pb-24 pt-14 text-center sm:pb-32 sm:pt-20">
         <Reveal>
-          <img
-            src={heroLogoBadge}
-            alt="בית בשתי ידיים - המדריך לבונה - איך לעשות סדר בכל שלבי הבנייה"
-            className="mb-5 max-w-lg"
-          />
+          <h1>
+            <img
+              src={heroLogoBadge}
+              alt="בית בשתי ידיים - המדריך לבונה - איך לעשות סדר בכל שלבי הבנייה"
+              className="mb-5 max-w-lg"
+            />
+          </h1>
         </Reveal>
         <Reveal delay={150}>
           <button
@@ -78,12 +81,12 @@ function HeroSection({ onCtaClick }) {
                   onClick={onCtaClick}
                   className="
                     group flex items-center justify-center gap-4
-                    rounded-full bg-[#86B84D]
+                    rounded-full bg-[#53732e]
                     px-7 py-4 text-[15px] font-bold text-white
                     shadow-[0_9px_25px_rgba(121,169,66,0.28)]
                     transition-all duration-300
                     hover:-translate-y-1 hover:gap-6
-                    hover:bg-[#78A63F]
+                    hover:bg-[#46651f]
                     hover:shadow-[0_14px_32px_rgba(121,169,66,0.36)]
                   "
                 >
@@ -134,7 +137,7 @@ function VideoSection() {
 function WaveDivider({ topColor = "#faf7ec", bottomColor = "#eef0dd" }) {
   return (
     <div style={{ backgroundColor: bottomColor }}>
-      <svg
+      <svg aria-hidden="true"
         viewBox="0 0 1440 120"
         preserveAspectRatio="none"
         className="block h-14 w-full sm:h-20"
@@ -150,7 +153,7 @@ function StraightTalkSection({ onCtaClick }) {
     <section className="px-6 py-6" style={{ backgroundColor: OLIVE_BG }}>
       <div className="mx-auto max-w-2xl text-center">
         <Reveal>
-          <h2 className="mb-2 text-3xl font-black" style={{ color: GREEN }}>
+          <h2 className="mb-2 text-3xl font-black" style={{ color: GREEN_TEXT }}>
             בוא נדבר רגע דוגרי
           </h2>
         </Reveal>
@@ -206,7 +209,7 @@ function StraightTalkSection({ onCtaClick }) {
           <button
             onClick={onCtaClick}
             className="rounded-full px-8 py-4 text-lg font-bold text-white shadow-lg transition-transform hover:scale-[1.03]"
-            style={{ backgroundColor: GREEN }}
+            style={{ backgroundColor: GREEN_TEXT }}
           >
             להורדת המדריך בחינם
           </button>
@@ -232,7 +235,7 @@ function ProductShowcase() {
         <div className="absolute inset-0" style={{ backgroundColor: "rgba(255,255,255,0.3)" }} />
 
         {/* משולש עליון */}
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none"
+        <svg aria-hidden="true" viewBox="0 0 1440 80" preserveAspectRatio="none"
           className="absolute top-0 left-0 w-full h-10 sm:h-16" style={{ zIndex: 5 }}>
           <path d="M0,0 L1440,0 L720,80 L0,0 Z" fill="#eef0dd" />
         </svg>
@@ -253,12 +256,12 @@ function ProductShowcase() {
           style={{ position: "relative", overflow: "visible", zIndex: 6, marginBottom: "-56px" }}
         >
           <Reveal delay={150}>
-            <img src={badgeWhatYouFind} alt="מה תמצאו במדריך?" className="mx-auto w-full max-w-sm" />
+            <h2><img src={badgeWhatYouFind} alt="מה תמצאו במדריך?" className="mx-auto w-full max-w-sm" /></h2>
           </Reveal>
         </div>
 
         {/* משולש קטן בדיוק על קו התפר, מאחורי הבאדג' */}
-        <svg
+        <svg aria-hidden="true"
           viewBox="0 0 200 36"
           preserveAspectRatio="none"
           className="mx-auto"
@@ -276,14 +279,14 @@ function ProductShowcase() {
               לא חפירות.<br />
               לא תיאוריה.<br />
               לא &quot;מאמרים&quot;.<br />
-              <span style={{ color: GREEN }}>אלא מידע פרקטי, קצר, מסודר וחד</span>{" "}
+              <span style={{ color: GREEN_TEXT }}>אלא מידע פרקטי, קצר, מסודר וחד</span>{" "}
               שמגיע מ-15+ שנות ניסיון בליווי עשרות משפחות בתהליכי בנייה.
             </p>
           </Reveal>
         </div>
 
         {/* משולש קטן - לקו התחתון של הקטע, לקראת קטע 5 השלבים */}
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" className="block w-full h-6 sm:h-8">
+        <svg aria-hidden="true" viewBox="0 0 1440 60" preserveAspectRatio="none" className="block w-full h-6 sm:h-8">
           <path d="M0,0 L1440,0 L720,60 L0,0 Z" fill="#eef0dd" />
         </svg>
       </section>
@@ -319,7 +322,7 @@ function StagesSection() {
         className="mx-auto max-w-lg px-6 text-center"
         style={{ position: "relative", overflow: "visible", zIndex: 6, marginTop: "-72px", marginBottom: "12px" }}
       >
-        <img src={badge5Stages} alt="5 השלבים שכל בונה חייב להכיר" className="mx-auto w-full max-w-sm" />
+        <h2><img src={badge5Stages} alt="5 השלבים שכל בונה חייב להכיר" className="mx-auto w-full max-w-sm" /></h2>
       </div>
 
       <div className="relative mx-auto max-w-lg px-6 text-center">
@@ -339,7 +342,7 @@ function StagesSection() {
       </div>
 
       {/* שיפוע אלכסוני עדין בתחתית הקטע, לקראת הקטע הבא */}
-      <svg
+      <svg aria-hidden="true"
         viewBox="0 0 1440 50"
         preserveAspectRatio="none"
         className="absolute bottom-0 left-0 block w-full h-6 sm:h-10"
@@ -503,7 +506,7 @@ function BenefitsSection() {
           className="mx-auto max-w-xs px-6 text-center"
           style={{ position: "relative", overflow: "visible", zIndex: 6, marginTop: "-40px", marginBottom: "8px" }}
         >
-          <img src={badgeHowHelps} alt="איך המדריך יעזור לכם בפועל" className="mx-auto w-full" />
+          <h2><img src={badgeHowHelps} alt="איך המדריך יעזור לכם בפועל" className="mx-auto w-full" /></h2>
         </div>
 
         <div className="relative mx-auto max-w-lg px-6">
@@ -527,7 +530,7 @@ function BenefitsSection() {
           className="mx-auto max-w-xs px-6 text-center"
           style={{ position: "relative", overflow: "visible", zIndex: 6, marginTop: "-40px", marginBottom: "8px" }}
         >
-          <img src={badgeWhoFor} alt="למי זה מתאים?" className="mx-auto w-full" />
+          <h2><img src={badgeWhoFor} alt="למי זה מתאים?" className="mx-auto w-full" /></h2>
         </div>
 
         <div className="relative mx-auto max-w-lg px-6 pb-10">
@@ -627,7 +630,7 @@ function AboutSection() {
             <br />
             המדריך שאתם מקבלים עכשיו הוא בדיוק הדברים שאני מעביר למשפחות
             שמרוויחות תהליך בנייה{" "}
-            <span className="font-bold" style={{ color: GREEN }}>
+            <span className="font-bold" style={{ color: GREEN_TEXT }}>
               רגוע, מדויק וחסכוני.
             </span>
           </p>
@@ -741,44 +744,59 @@ function CTAFormSection() {
 
                 <form onSubmit={handleSubmit} className="space-y-4 text-right" noValidate>
                   <div>
-                    <label className="mb-1 block text-sm font-bold text-neutral-700">שם:</label>
+                    <label htmlFor="guide-name" className="mb-1 block text-sm font-bold text-neutral-700">שם:</label>
                     <input
+                      id="guide-name"
+                      name="name"
+                      autoComplete="name"
+                      aria-invalid={Boolean(errors.name)}
+                      aria-describedby={errors.name ? "guide-name-error" : undefined}
                       type="text"
                       placeholder="ישראל ישראלי"
                       value={form.name}
                       onChange={update("name")}
                       onBlur={handleBlur("name")}
-                      className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none"
+                      className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none focus-visible:ring-2 focus-visible:ring-[#3f6b1a] focus-visible:ring-offset-1"
                       style={{ borderColor: errors.name ? "#e05252" : "#ddd" }}
                     />
-                    {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
+                    {errors.name && <p id="guide-name-error" role="alert" className="mt-1 text-xs text-red-700">{errors.name}</p>}
                   </div>
                   <div>
-                    <label className="mb-1 block text-sm font-bold text-neutral-700">אימייל:</label>
+                    <label htmlFor="guide-email" className="mb-1 block text-sm font-bold text-neutral-700">אימייל:</label>
                     <input
+                      id="guide-email"
+                      name="email"
+                      autoComplete="email"
+                      aria-invalid={Boolean(errors.email)}
+                      aria-describedby={errors.email ? "guide-email-error" : undefined}
                       type="email"
                       placeholder="name@email.com"
                       value={form.email}
                       onChange={update("email")}
                       onBlur={handleBlur("email")}
-                      className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none"
+                      className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none focus-visible:ring-2 focus-visible:ring-[#3f6b1a] focus-visible:ring-offset-1"
                       style={{ borderColor: errors.email ? "#e05252" : "#ddd" }}
                     />
-                    {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+                    {errors.email && <p id="guide-email-error" role="alert" className="mt-1 text-xs text-red-700">{errors.email}</p>}
                   </div>
                   <div>
-                    <label className="mb-1 block text-sm font-bold text-neutral-700" >טלפון:</label>
+                    <label htmlFor="guide-phone" className="mb-1 block text-sm font-bold text-neutral-700">טלפון:</label>
                     <input
+                      id="guide-phone"
+                      name="phone"
+                      autoComplete="tel"
+                      aria-invalid={Boolean(errors.phone)}
+                      aria-describedby={errors.phone ? "guide-phone-error" : undefined}
                     dir="rtl"
                       type="tel"
                       placeholder="050-1234567"
                       value={form.phone}
                       onChange={update("phone")}
                       onBlur={handleBlur("phone")}
-                      className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none"
+                      className="w-full rounded-xl border px-4 py-3 text-neutral-800 outline-none focus-visible:ring-2 focus-visible:ring-[#3f6b1a] focus-visible:ring-offset-1"
                       style={{ borderColor: errors.phone ? "#e05252" : "#ddd" }}
                     />
-                    {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
+                    {errors.phone && <p id="guide-phone-error" role="alert" className="mt-1 text-xs text-red-700">{errors.phone}</p>}
                   </div>
 
                   <label className="flex items-center justify-start gap-2 text-sm text-neutral-600">
@@ -789,14 +807,14 @@ function CTAFormSection() {
                     />
                     אני מאשר/ת קבלת תכנים שיווקיים
                   </label>
-                  {errors.agree && <p className="text-xs text-red-500">{errors.agree}</p>}
-                  {submitError && <p className="text-xs text-red-500">{submitError}</p>}
+                  {errors.agree && <p id="guide-agree-error" role="alert" className="text-xs text-red-700">{errors.agree}</p>}
+                  {submitError && <p role="alert" className="text-xs text-red-700">{submitError}</p>}
 
                   <button
                     type="submit"
                     disabled={submitting || !agree}
                     className="w-full rounded-xl py-4 text-lg font-bold text-white shadow-lg transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:hover:scale-100"
-                    style={{ backgroundColor: GREEN, opacity: submitting || !agree ? 0.5 : 1 }}
+                    style={{ backgroundColor: GREEN_TEXT, opacity: submitting || !agree ? 0.5 : 1 }}
                   >
                     {submitting ? "שולח..." : "כן שלחו לי את המדריך"}
                   </button>

@@ -50,7 +50,7 @@ function StatsSection() {
             <div
                 className="absolute right-1/2 -top-10 z-20 flex h-20 w-20 translate-x-1/2 items-center justify-center rounded-2xl bg-white shadow-lg"
             >
-                <img src={statsIcon} alt="נתונים" className="h-20 w-20 object-contain" />
+                <img src={statsIcon} alt="" className="h-20 w-20 object-contain" />
             </div>
 
             {/* התוכן */}
@@ -71,7 +71,7 @@ function StatsSection() {
                                 </p>
                                 <span
                                     className="flex-shrink-0 text-4xl font-extrabold"
-                                    style={{ color: "#7CB342" }}
+                                    style={{ color: "#4f722a" }}
                                 >
                                     {stat.number}
                                 </span>

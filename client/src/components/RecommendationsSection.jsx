@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { MessageSquareQuote, X, ZoomIn } from "lucide-react";
 import { Compass } from "lucide-react";
 import api from "../api-config";
+import useAccessibleDialog from "./useAccessibleDialog";
 
 const GREEN = "#7CB342";
+const GREEN_TEXT = "#4f722a"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 const DARK = "#1E2A22";
 const CREAM = "#FBF8F2";
 const BLACK = "#1A1A1A";
@@ -13,6 +15,7 @@ function RecommendationsSection() {
     const [recommendationImages, setRecommendationImages] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const lightboxRef = useAccessibleDialog(Boolean(selectedImage), () => setSelectedImage(null));
 
     useEffect(() => {
         const getRecommendationImages = async () => {
@@ -83,7 +86,7 @@ function RecommendationsSection() {
                                     "polygon(3% 0%, 97% 0%, 100% 50%, 97% 100%, 3% 100%, 0% 50%)",
                             }}
                         >
-                            <Compass size={20} style={{ color: GREEN }} className="flex-shrink-0" />
+                            <Compass size={20} style={{ color: GREEN_TEXT }} className="flex-shrink-0" />
                             <p
                                 className="text-base font-bold leading-snug md:text-lg"
                                 style={{ color: CREAM }}
@@ -146,8 +149,8 @@ function RecommendationsSection() {
                                         />
 
                                         <div className="absolute inset-0 flex items-center justify-center bg-[#17210F]/0 transition duration-300 group-hover:bg-[#17210F]/15">
-                                            <span className="scale-75 rounded-full bg-white/95 p-3 text-[#5F922E] opacity-0 shadow-lg transition duration-300 group-hover:scale-100 group-hover:opacity-100">
-                                                <ZoomIn size={23} />
+                                            <span className="scale-75 rounded-full bg-white/95 p-3 text-[#5F922E] opacity-0 shadow-lg transition duration-300 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100">
+                                                <ZoomIn size={23} aria-hidden="true" />
                                             </span>
                                         </div>
                                     </div>
@@ -177,6 +180,8 @@ function RecommendationsSection() {
             {/* פתיחת התמונה בגודל גדול */}
             {selectedImage && (
                 <div
+                    ref={lightboxRef}
+                    tabIndex={-1}
                     className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm"
                     onClick={() => setSelectedImage(null)}
                     role="dialog"
@@ -189,7 +194,7 @@ function RecommendationsSection() {
                         className="absolute right-5 top-5 rounded-full bg-white p-3 text-[#26331F] shadow-lg transition hover:bg-[#EEF5E5]"
                         aria-label="סגירת התמונה"
                     >
-                        <X size={24} />
+                        <X size={24} aria-hidden="true" />
                     </button>
 
                     <img

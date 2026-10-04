@@ -59,7 +59,7 @@ function IconCheck() {
             className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full"
             style={{ backgroundColor: "#7CB342" }}
         >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path
                     d="M3 8.5L6.2 11.5L13 4.5"
                     stroke="white"
@@ -78,7 +78,7 @@ function IconX() {
             className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full"
             style={{ backgroundColor: "#0d0d0d" }}
         >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path
                     d="M2 2L12 12M12 2L2 12"
                     stroke="white"
@@ -135,7 +135,7 @@ function FitSection() {
                 <div className="mb-14 text-center">
                     <p
                         className="text-sm font-bold uppercase tracking-widest"
-                        style={{ color: "#7CB342" }}
+                        style={{ color: "#4f722a" }}
                     >
                         לפני שממשיכים
                     </p>

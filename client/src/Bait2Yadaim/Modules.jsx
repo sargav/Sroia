@@ -185,20 +185,21 @@ function ModuleTab({ module, isActive, onClick }) {
         <button
             type="button"
             onClick={onClick}
+            aria-pressed={isActive}
             className="flex flex-shrink-0 flex-col items-center gap-1.5 rounded-2xl px-5 py-3 transition-all duration-200"
             style={{
-                backgroundColor: isActive ? "#7CB342" : "#F0F3E8",
+                backgroundColor: isActive ? "#4f722a" : "#F0F3E8",
             }}
         >
             <span
                 className="text-xl font-bold"
-                style={{ color: isActive ? "#ffffff" : "#7CB342" }}
+                style={{ color: isActive ? "#ffffff" : "#4f722a" }}
             >
                 {module.number}
             </span>
             <span
                 className="whitespace-nowrap text-xs font-bold"
-                style={{ color: isActive ? "#ffffff" : "#5C8A2E" }}
+                style={{ color: isActive ? "#ffffff" : "#4d7326" }}
             >
                 {module.title}
             </span>
@@ -236,11 +237,11 @@ function ModuleNavButtons({ activeModule, onChange, total }) {
                 className="flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition-all"
                 style={{
                     backgroundColor: isFirst ? "#F5F5F0" : "#e3edcb",
-                    color: isFirst ? "#C4C4BC" : "#5C8A2E",
+                    color: isFirst ? "#C4C4BC" : "#4d7326",
                     cursor: isFirst ? "default" : "pointer",
                 }}
             >
-                <span>→</span>
+                <span aria-hidden="true">→</span>
                 <span>מודול קודם</span>
             </button>
 
@@ -254,12 +255,12 @@ function ModuleNavButtons({ activeModule, onChange, total }) {
                 disabled={isLast}
                 className="flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold text-white transition-all"
                 style={{
-                    backgroundColor: isLast ? "#D9DED0" : "#7CB342",
+                    backgroundColor: isLast ? "#D9DED0" : "#4f722a",
                     cursor: isLast ? "default" : "pointer",
                 }}
             >
                 <span>מודול הבא</span>
-                <span>←</span>
+                <span aria-hidden="true">←</span>
             </button>
         </div>
     );
@@ -293,7 +294,7 @@ function CourseModulesSection() {
                 <div className="mb-3 text-center">
                     <p
                         className="text-sm font-bold uppercase tracking-widest"
-                        style={{ color: "#7CB342" }}
+                        style={{ color: "#4f722a" }}
                     >
                         מה בדיוק תקבלו?
                     </p>
@@ -319,6 +320,7 @@ function CourseModulesSection() {
                     {/* תמונת המחשב הנייד - יושבת חצי מעל גבול הכרטיס, קטנה יותר */}
                     <div
                         key={current.number}
+                        aria-live="polite"
                         className="relative z-10 mx-auto -mb-10 w-full max-w-[220px]"
                         style={{ animation: "fadeInModule 0.4s ease" }}
                     >

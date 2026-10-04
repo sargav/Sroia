@@ -138,7 +138,7 @@ export default function WhyUs() {
               {/* מספר גדול ברקע */}
               <span
                 aria-hidden="true"
-                className="why-card-number pointer-events-none absolute -left-2 -top-5 select-none text-[92px] font-bold leading-none text-[#659B2D]/[0.06]"
+                className="why-card-number pointer-events-none absolute -left-2 -top-5 select-none text-[92px] font-bold leading-none text-[#4b7322]/[0.06]"
               >
                 {item.number}
               </span>

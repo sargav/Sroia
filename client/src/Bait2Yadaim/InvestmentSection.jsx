@@ -71,7 +71,7 @@ function MistakeCard({ title, cost, delay }) {
                     className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl text-lg font-bold"
                     style={{ backgroundColor: "#f4f9ed", color: "#dcf3c6" }}
                 >
-                    <img src={moneyIcon} alt="icon" />
+                    <img src={moneyIcon} alt="" />
                 </span>
                 <div className="flex-1 text-right">
                     <p className="font-bold text-neutral-900">{title}</p>
@@ -97,7 +97,7 @@ function InvestmentSection() {
                     <div className="mb-2 text-center">
                         <p
                             className="text-sm font-bold uppercase tracking-widest"
-                            style={{ color: "#7CB342" }}
+                            style={{ color: "#4f722a" }}
                         >
                             בואו נדבר על השקעה
                         </p>
@@ -129,7 +129,7 @@ function InvestmentSection() {
                         <p className="text-lg font-bold text-neutral-900">
                             סה"כ: טעויות קטנות
                         </p>
-                        <p className="text-lg font-bold" style={{ color: "#7CB342" }}>
+                        <p className="text-lg font-bold" style={{ color: "#4f722a" }}>
                             יכולות לעלות מאות אלפי שקלים.
                         </p>
                     </div>
@@ -158,7 +158,7 @@ function InvestmentSection() {
                             >
                                 <p
                                     className="mb-2 text-2xl font-bold"
-                                    style={{ color: "#5C8A2E" }}
+                                    style={{ color: "#4d7326" }}
                                 >
                                     לפחות 100,000-200,000 ₪
                                 </p>
@@ -184,7 +184,7 @@ function InvestmentSection() {
                                 משלם יותר בטעויות. אבל מי שאין לו מספיק כסף -
                                 לא קונה את הידע.
                             </p>
-                            <p className="mt-4 font-bold" style={{ color: "#7CB342" }}>
+                            <p className="mt-4 font-bold" style={{ color: "#4f722a" }}>
                                 אז קיבלנו החלטה עסקית לא שגרתית: להוריד את
                                 המחיר למינימום האפשרי שעדיין מאפשר לנו.
                             </p>
@@ -224,7 +224,7 @@ function InvestmentSection() {
 
                             <p
                                 className="mb-3 text-5xl font-bold"
-                                style={{ color: "#7CB342" }}
+                                style={{ color: "#4f722a" }}
                             >
                                 1,987 ₪
                             </p>
@@ -233,7 +233,7 @@ function InvestmentSection() {
                                 className="mb-5 inline-block rounded-full px-4 py-1.5 text-sm font-bold"
                                 style={{
                                     backgroundColor: "#F0F7E8",
-                                    color: "#5C8A2E",
+                                    color: "#4d7326",
                                 }}
                             >
                                 או רק 198 ₪ לחודש ב-10 תשלומים
@@ -270,10 +270,10 @@ function InvestmentSection() {
                             <p className="text-base font-bold text-neutral-900">
                                 היא לא להרוויח הכי הרבה.
                             </p>
-                            <p className="text-base font-bold" style={{ color: "#7CB342" }}>
+                            <p className="text-base font-bold" style={{ color: "#4f722a" }}>
                                 המטרה היא שהכי הרבה משפחות
                             </p>
-                            <p className="text-base font-bold" style={{ color: "#7CB342" }}>
+                            <p className="text-base font-bold" style={{ color: "#4f722a" }}>
                                 יבנו בית בלי להיהרס כלכלית.
                             </p>
                         </div>
@@ -282,7 +282,7 @@ function InvestmentSection() {
                             href="#cta-form"
                             className="mx-auto mt-8 block w-full max-w-sm rounded-full px-8 py-4 text-center text-lg font-bold text-white transition-transform hover:scale-[1.02]"
                             style={{
-                                backgroundColor: "#7CB342",
+                                backgroundColor: "#4f722a",
                                 boxShadow: "0 8px 20px rgba(124,179,66,0.35)",
                             }}
                         >

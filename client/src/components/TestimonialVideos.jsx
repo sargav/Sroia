@@ -6,6 +6,7 @@ import {
 import api from "../api-config";
 
 const GREEN = "#7CB342";
+const GREEN_TEXT = "#4f722a"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 const DARK = "#1E2A22";
 const CREAM = "#FBF8F2";
 const BLACK = "#1A1A1A";
@@ -167,7 +168,7 @@ function TestimonialVideos({ type }) {
                         >
                             <MessageSquareQuote
                                 size={20}
-                                style={{ color: GREEN }}
+                                style={{ color: GREEN_TEXT }}
                                 className="shrink-0"
                             />
 
@@ -279,8 +280,8 @@ function TestimonialVideos({ type }) {
                                                         item.embedUrl
                                                     }
                                                     title={
-                                                        item.name ||
-                                                        `המלצה ${
+                                                        item.name ? `סרטון המלצה של ${item.name}` :
+                                                        `סרטון המלצה ${
                                                             index +
                                                             1
                                                         }`
@@ -345,7 +346,7 @@ function TestimonialVideos({ type }) {
                                             style={{
                                                 backgroundColor:
                                                     "#EAF4DD",
-                                                color: GREEN,
+                                                color: GREEN_TEXT,
                                             }}
                                         >
                                             <ChevronDown

@@ -14,7 +14,7 @@ export default function BlueprintBackground({ className = "" }) {
       className={`pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-[#F4F1E8] [background-image:linear-gradient(rgba(126,157,101,.10)_1px,transparent_1px),linear-gradient(90deg,rgba(126,157,101,.10)_1px,transparent_1px),linear-gradient(rgba(126,157,101,.05)_1px,transparent_1px),linear-gradient(90deg,rgba(126,157,101,.05)_1px,transparent_1px)] [background-size:120px_120px,120px_120px,24px_24px,24px_24px] ${className}`}
     >
       {/* עגורן, למעלה בפינה */}
-      <svg
+      <svg aria-hidden="true"
         viewBox="0 0 220 320"
         className="absolute -top-2 left-2 hidden h-[300px] w-auto opacity-[.32] md:block"
         fill="none"
@@ -38,7 +38,7 @@ export default function BlueprintBackground({ className = "" }) {
       </svg>
 
       {/* חזית בית עם קווי מידה, למטה בפינה */}
-      <svg
+      <svg aria-hidden="true"
         viewBox="0 0 420 320"
         className="absolute -bottom-2 -right-6 w-[170px] opacity-[.22] sm:-right-4 sm:w-[250px] sm:opacity-[.30] md:w-[420px]"
         fill="none"

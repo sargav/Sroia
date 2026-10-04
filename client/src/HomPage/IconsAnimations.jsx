@@ -63,7 +63,7 @@ export default function AnimatedIcon({
       <span className="animated-icon__ring animated-icon__ring--outer" />
       <span className="animated-icon__ring animated-icon__ring--inner" />
 
-      <svg
+      <svg aria-hidden="true"
         viewBox="0 0 24 24"
         className="animated-icon__svg"
         fill="none"

@@ -12,6 +12,7 @@ import {
 import StatsSection from "./StatsSection";
 
 const GREEN = "#7CB342";
+const GREEN_TEXT = "#4f722a"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 const DARK = "#1E2A22";
 const CREAM = "#FBF8F2";
 const BLACK = "#1A1A1A";
@@ -19,7 +20,7 @@ const BLACK = "#1A1A1A";
 function SourcePill({ Icon, label }) {
     return (
         <div className="flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 shadow-sm ring-1 ring-black/5">
-            <Icon size={13} style={{ color: GREEN }} />
+            <Icon size={13} style={{ color: GREEN_TEXT }} />
             <span className="text-xs font-bold text-neutral-600">{label}</span>
         </div>
     );
@@ -51,7 +52,7 @@ function VsDivider() {
             <div className="h-px flex-1" style={{ backgroundColor: "#E5E9DA" }} />
             <span
                 className="text-[10px] font-extrabold tracking-widest"
-                style={{ color: "#C7CBB8" }}
+                style={{ color: "#656b4e" }}
             >
                 מול
             </span>
@@ -97,7 +98,7 @@ function RealProblemBox() {
                     className="flex h-12 w-12 items-center justify-center rounded-full"
                     style={{ backgroundColor: "#EAF2DD" }}
                 >
-                    <Lightbulb size={22} style={{ color: GREEN }} strokeWidth={1.75} />
+                    <Lightbulb size={22} style={{ color: GREEN_TEXT }} strokeWidth={1.75} />
                 </div>
             </div>
 
@@ -117,7 +118,7 @@ function ProblemPoint({ Icon, number, text, isLast }) {
     return (
         <div className="relative flex flex-1 flex-col items-center gap-3 text-center">
             <div className="flex items-center gap-2">
-                <span className="text-xs font-extrabold" style={{ color: GREEN }}>
+                <span className="text-xs font-extrabold" style={{ color: GREEN_TEXT }}>
                     {number}
                 </span>
                 {/* עיגול מקווקו וריק + קו חוצה = "זה לא קיים" */}
@@ -169,7 +170,7 @@ function ProblemNarrativeSection() {
                             "polygon(3% 0%, 97% 0%, 100% 50%, 97% 100%, 3% 100%, 0% 50%)",
                     }}
                 >
-                    <Compass size={20} style={{ color: GREEN }} className="flex-shrink-0" />
+                    <Compass size={20} style={{ color: GREEN_TEXT }} className="flex-shrink-0" />
                     <p
                         className="text-base font-bold leading-snug md:text-lg"
                         style={{ color: CREAM }}
@@ -235,7 +236,7 @@ function ProblemNarrativeSection() {
                     </div>
 
                     <div className="mt-10 flex flex-col items-center gap-2">
-                        <ArrowDown size={18} style={{ color: GREEN }} />
+                        <ArrowDown size={18} style={{ color: GREEN_TEXT }} />
                         <p className="text-2xl font-extrabold" style={{ color: DARK }}>
                             עד עכשיו.
                         </p>

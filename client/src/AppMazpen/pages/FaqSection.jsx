@@ -60,10 +60,11 @@ export default function FaqSection({ faqs }) {
                     className="flex w-full items-center gap-4 p-4 text-right md:gap-5 md:p-6"
                   >
                     <span
+                      aria-hidden="true"
                       className={`grid h-10 w-10 shrink-0 place-items-center rounded-full border-2 text-xs font-black transition duration-300 md:h-11 md:w-11 ${
                         open
-                          ? "border-[#759855] bg-[#759855] text-white"
-                          : "border-[#C6D3BB] bg-[#F5F6F1] text-[#78965D]"
+                          ? "border-[#759855] bg-[#57713f] text-white"
+                          : "border-[#C6D3BB] bg-[#F5F6F1] text-[#5a7046]"
                       }`}
                     >
                       {String(index + 1).padStart(2, "0")}
@@ -76,8 +77,8 @@ export default function FaqSection({ faqs }) {
                     <span
                       className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border transition duration-300 ${
                         open
-                          ? "rotate-45 border-[#759855] bg-[#E8F0DE] text-[#5f8248]"
-                          : "border-[#D3DECC] bg-white text-[#78965D]"
+                          ? "rotate-45 border-[#759855] bg-[#E8F0DE] text-[#53723f]"
+                          : "border-[#D3DECC] bg-white text-[#5a7046]"
                       }`}
                     >
                       <Plus size={18} strokeWidth={2.2} />
@@ -88,13 +89,14 @@ export default function FaqSection({ faqs }) {
                     id={`faq-a-${index}`}
                     role="region"
                     aria-labelledby={`faq-q-${index}`}
+                    aria-hidden={!open}
                     className={`grid transition-all duration-300 ease-out ${
                       open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                     }`}
                   >
                     <div className="overflow-hidden">
                       <div className="mx-4 border-t border-dashed border-[#D3DECC] pb-5 pr-[56px] pt-4 md:mx-6 md:pb-6 md:pr-[64px]">
-                        <p className="max-w-2xl text-sm font-medium leading-7 text-[#6B7567] md:text-base md:leading-8">
+                        <p className="max-w-2xl text-sm font-medium leading-7 text-[#626c5f] md:text-base md:leading-8">
                           {answer}
                         </p>
                       </div>
