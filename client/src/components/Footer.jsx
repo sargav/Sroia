@@ -64,7 +64,7 @@ const Footer = () => {
 
         {/* זכויות יוצרים */}
         <div className="mt-5 pt-4 border-t border-neutral-800 text-center text-xs text-gray-400">
-          כל הזכויות שמורות לסרויה ניהול פרויקטים © {new Date().getFullYear()} | GreenCode בניה
+          כל הזכויות שמורות לסרויה ניהול פרויקטים © {new Date().getFullYear()} | sara.code() בניה
         </div>
 
       </div>
