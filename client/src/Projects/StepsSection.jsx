@@ -1,7 +1,7 @@
-import planningIcon from "./assetes/step-planning.png";
-import executionIcon from "./assetes/step-execution.png";
-import qualityIcon from "./assetes/step-quality.png";
-import deliveryIcon from "./assetes/step-delivery.png";
+import planningIcon from "./assetes/step-planning.webp";
+import executionIcon from "./assetes/step-execution.webp";
+import qualityIcon from "./assetes/step-quality.webp";
+import deliveryIcon from "./assetes/step-delivery.webp";
 
 
 const StepsSection = () => {

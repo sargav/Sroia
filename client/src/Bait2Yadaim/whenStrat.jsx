@@ -1,6 +1,6 @@
 import { YEARS_OF_EXPERIENCE } from "../utils/experience";
 import { useEffect, useRef, useState } from "react";
-import asafPhoto from "./assete/psd_asaf.png";
+import asafPhoto from "./assete/psd_asaf.webp";
 import {
     Search,
     Video,

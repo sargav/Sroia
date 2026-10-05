@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
-import heroImage from "./assetes/project-management-hero.png";
-import planningIcon from "./assetes/step-planning.png";
-import executionIcon from "./assetes/step-execution.png";
-import qualityIcon from "./assetes/step-quality.png";
-import deliveryIcon from "./assetes/step-delivery.png";
+import heroImage from "./assetes/project-management-hero.webp";
+import planningIcon from "./assetes/step-planning.webp";
+import executionIcon from "./assetes/step-execution.webp";
+import qualityIcon from "./assetes/step-quality.webp";
+import deliveryIcon from "./assetes/step-delivery.webp";
 import GallerySection from "./Gallery";
 
 import Hero from "./Hero";
@@ -12,10 +12,10 @@ import AboutAsaf from "./AboutAsaf";
 import WhyUs from "./WhyUs";
 import StepsSection from "./StepsSection";
 
-import projectManagementIcon from "./assetes/project-management.png";
-import hardHatIcon from "./assetes/hard-hat.png";
-import shieldIcon from "./assetes/shield-check.png";
-import asafPortrait from "./assetes/view.png";
+import projectManagementIcon from "./assetes/project-management.webp";
+import hardHatIcon from "./assetes/hard-hat.webp";
+import shieldIcon from "./assetes/shield-check.webp";
+import asafPortrait from "./assetes/view.webp";
 
 // אייקונים קטנים בעיגול - נשארים כמו שהיו
 const valueIcons = [

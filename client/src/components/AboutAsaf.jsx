@@ -1,7 +1,7 @@
 import { YEARS_OF_EXPERIENCE } from "../utils/experience";
 import ExperienceYearsBadge from "./ExperienceYearsBadge";
 // src/components/AboutAsaf.jsx
-import asafPhoto from '../GuidBuilder/assets/asaf-arms-crossed.png';
+import asafPhoto from '../GuidBuilder/assets/asaf-arms-crossed.webp';
 import asafBgPhoto from '../GuidBuilder/assets/asaf-about-bg.jpg';
 import statFamilies from '../GuidBuilder/assets/stat-100families.png';
 import statMillions from '../GuidBuilder/assets/stat-millions.png';

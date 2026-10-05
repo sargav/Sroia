@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import heroBathroom from "./assets/hero-bathroom.png";
-import heroTiles from "./assets/hero-tiles.jpg";
+import heroBathroom from "./assets/hero-bathroom.webp";
+import heroTiles from "./assets/hero-tiles.webp";
 import baitLogo from "./assets/bait-logo.png";
 import negevLogo from "./assets/negev-logo-heart.jpg";
-import giftBox from "./assets/gift-box.png";
+import giftBox from "./assets/gift-box.webp";
 import BenefitTermsDialog from "./component/BenefitTermsDialog";
 
 function SparkleIcon({ className = "", style = {} }) {

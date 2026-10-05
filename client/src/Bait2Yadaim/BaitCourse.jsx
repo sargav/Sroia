@@ -1,15 +1,15 @@
 import React, { useRef, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import asaf from './assete/asaf-02.png'
-import view1 from './assete/viewStatic.jpg'
+import asaf from './assete/asaf-02.webp'
+import view1 from './assete/viewStatic.webp'
 import lev from './assete/l.webp'
 import qu from './assete/qu.webp'
 import cumpIcon from './assete/cump.webp'
 import x from './assete/towhands-11.png'
 import asafNaim from './assete/asafnaim.webp'
 import AboutAsaf from '../components/AboutAsaf'
-import pi4 from './assete/pi4.png'
+import pi4 from './assete/pi4.webp'
 import PSSection from './PSSection';
 import CTAFormSection from './CTAFormSection'
 import FaqSection from "./FaqSection";

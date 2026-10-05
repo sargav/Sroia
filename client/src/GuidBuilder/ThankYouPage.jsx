@@ -1,9 +1,9 @@
 import React from 'react';
-import mockupDevices from "./assets/mockup-devices-real.png";
-import todaMockup from "./assets/toda-mockup.png";
+import mockupDevices from "./assets/mockup-devices-real.webp";
+import todaMockup from "./assets/toda-mockup.webp";
 import todaCelebrateGif from "./assets/toda-celebrate.gif";
-import todaWhatsappBtn from "./assets/toda-whatsapp-button.png";
-import todaSketchBg from "./assets/sketch-warm-wide.jpg";
+import todaWhatsappBtn from "./assets/toda-whatsapp-button.webp";
+import todaSketchBg from "./assets/sketch-warm-wide.webp";
 
 /**
  * דף התודה - עמוד עצמאי לגמרי (לא מקונן בתוך GuidePage).

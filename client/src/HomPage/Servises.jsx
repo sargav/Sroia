@@ -1,6 +1,6 @@
 import AnimatedIcon from './IconsAnimations'
 import { useNavigate } from "react-router-dom";
-import servicesBg from './assetes/v2.png'
+import servicesBg from './assetes/v2.webp'
 export default function Services() {
     const navigate = useNavigate();
     const services = [
