@@ -121,7 +121,7 @@ export default function MistakesCompass({ mistakes }) {
 
               <div className="relative z-10 flex min-h-[200px] flex-col">
                 <h3 className="text-xl font-black leading-8 text-[#35402F] md:text-2xl">{title}</h3>
-                <p className="mt-3 text-sm font-medium leading-7 text-[#677163] md:text-base md:leading-8">
+                <p className="mt-3 text-sm font-medium leading-7 text-[#656f62] md:text-base md:leading-8">
                   {text}
                 </p>
 

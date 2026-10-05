@@ -46,7 +46,7 @@ export default function PersonalNote() {
             <span className="text-[#759855]"> רק לאנשי המקצוע. </span>”
           </h2>
 
-          <div className="mt-6 space-y-4 text-base font-medium leading-8 text-[#677163] md:text-lg">
+          <div className="mt-6 space-y-4 text-base font-medium leading-8 text-[#656f62] md:text-lg">
             <p>
               המצפן נוצר כדי לתת לכם כלי פרקטי: לפתוח, לבדוק ולהמשיך — בלי לנסות לזכור הכול ובלי לחפש כל תשובה מחדש.
             </p>

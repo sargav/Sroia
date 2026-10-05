@@ -519,10 +519,11 @@ export default function Benefit() {
                                     שליחה וקבלת ההטבה
                                 </button>
 
-                                <p className="text-center text-xs text-white/40">
+                                {/* div ולא p: בתוך התקנון יש חלון עם כותרות ורשימות, ו-p לא יכול להכיל אותם */}
+                                <div className="text-center text-xs text-white/60">
                                     בלחיצה על שליחה אני מאשר/ת את{" "}
                                     <BenefitTermsDialog/>
-                                </p>
+                                </div>
                             </form>
                         )}
                         </div>

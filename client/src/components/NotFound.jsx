@@ -10,12 +10,11 @@ export default function NotFound() {
         className="flex min-h-[70vh] items-center justify-center bg-[#FAFCF7] px-6 py-16 font-['Heebo',sans-serif]"
       >
         <div className="mx-auto max-w-[560px] text-center">
+          {/* 404 קישוטי: מוצג דרך CSS כדי שלא ייחשב טקסט (הכותרת למטה אומרת את זה במילים) */}
           <p
-            className="mb-2 text-[5.5rem] font-black leading-none tracking-tight text-[#7CB342]/25 md:text-[7rem]"
+            className="mb-2 text-[5.5rem] font-black leading-none tracking-tight text-[#7CB342]/25 before:content-['404'] md:text-[7rem]"
             aria-hidden="true"
-          >
-            404
-          </p>
+          />
 
           <div className="mb-4 flex items-center justify-center gap-4">
             <span className="h-px w-10 bg-gradient-to-l from-[#8EAD70] to-transparent" aria-hidden="true" />

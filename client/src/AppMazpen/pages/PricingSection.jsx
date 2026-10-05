@@ -124,7 +124,7 @@ export default function PricingSection({ photo }) {
                         </span>
                         {label}
                       </span>
-                      <span className="shrink-0 text-sm text-[#677163] line-through">{oldPrice}</span>
+                      <span className="shrink-0 text-sm text-[#656f62] line-through">{oldPrice}</span>
                     </div>
                   ))}
                 </div>
@@ -133,7 +133,7 @@ export default function PricingSection({ photo }) {
                   <span className="rounded-full bg-[#E8F0DE] px-4 py-1.5 text-xs font-black text-[#547340]">
                     לזמן מוגבל
                   </span>
-                  <p className="mt-4 text-sm font-bold text-[#677163]">במקום 938 ₪</p>
+                  <p className="mt-4 text-sm font-bold text-[#656f62]">במקום 938 ₪</p>
                   <p className="mt-1 text-7xl font-black leading-none text-[#2D382B]">
                     297<span className="mr-2 align-top text-2xl">₪</span>
                   </p>
@@ -189,7 +189,7 @@ export default function PricingSection({ photo }) {
 
                 <ul className="mt-6 space-y-3 border-t border-dashed border-[#D3DECC] pt-5">
                   {trust.map(([Icon, label]) => (
-                    <li key={label} className="flex items-center gap-3 text-sm font-bold text-[#677163]">
+                    <li key={label} className="flex items-center gap-3 text-sm font-bold text-[#656f62]">
                       <span className="grid h-8 w-8 place-items-center rounded-full border border-[#D3DECC] bg-white text-[#759855]">
                         <Icon size={16} />
                       </span>
