@@ -114,7 +114,7 @@ export default function AccessibilityMenu() {
                     <div className="a11y-panel-body">
                         <div className="a11y-size" role="group" aria-labelledby="a11y-size-label">
                             <span id="a11y-size-label" className="a11y-size-label">
-                                <span aria-hidden="true" className="a11y-size-icon">אA</span>
+                                <span aria-hidden="true" className="a11y-size-icon">A<span className="a11y-size-icon-text">A</span></span>
                                 גודל טקסט
                             </span>
                             <div className="a11y-size-controls">
