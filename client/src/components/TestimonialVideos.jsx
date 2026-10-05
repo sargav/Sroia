@@ -28,16 +28,6 @@ function TestimonialVideos({ type }) {
                     `/api/testi-urls/${type}`
                 );
 
-                console.log(
-                    "הנתונים שהתקבלו:",
-                    response.data
-                );
-
-                console.log(
-                    "כמות:",
-                    response.data.length
-                );
-
                 setItems(response.data);
             } catch (err) {
                 console.error(

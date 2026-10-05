@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import api from "../api-config";
 import myBgImage from "./assets/v2.webp";
 import checking from "../functionChecking/functionChecking";
@@ -444,7 +444,6 @@ const Typewriter = ({
         const start = offset;
         offset += line.length;
         const shown = Math.max(0, Math.min(line.length, revealCount - start));
-        const isCurrentLine = !finished && shown > 0 && shown < line.length;
         const isLastTypedChar =
           !finished && !cursorPlaced && shown === Math.max(0, revealCount - start) && revealCount > start && revealCount <= offset;
 

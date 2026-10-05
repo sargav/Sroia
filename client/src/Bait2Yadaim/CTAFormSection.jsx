@@ -1,11 +1,10 @@
-import React, { useRef, useState } from 'react'
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import footerBg from './assete/footerBg.webp'
 import PrivacyPolicyDialog from "../components/PrivacyPolicyDialog";
 import TermsOfUseDialog from '../components/TermsOfUseDialog';
 import pi4 from './assete/pi4.webp'
 const GREEN = '#7CB342';
-const GREEN_TEXT = "#51762b"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 
 function CTAFormSection() {
     //נוידייט זה דרך ניווט באתר

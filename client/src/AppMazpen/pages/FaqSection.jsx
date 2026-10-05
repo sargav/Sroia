@@ -6,7 +6,6 @@ import SectionHeading from "../components/SectionHeading";
 
 export default function FaqSection({ faqs }) {
   const [openIndex, setOpenIndex] = useState(0);
-  const total = String(faqs.length).padStart(2, "0");
 
   return (
     <section className="py-20 md:py-28 relative isolate overflow-hidden bg-[#EEF2E9] text-[#2D382B]">

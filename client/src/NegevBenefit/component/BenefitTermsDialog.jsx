@@ -1,6 +1,5 @@
 import { useState } from "react";
 import useAccessibleDialog from "../../components/useAccessibleDialog";
-const GREEN = "#8DC63F";
 const GREEN_TEXT = "#8DC63F"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 
 function BenefitTermsDialog() {

@@ -1,4 +1,3 @@
-import React from "react";
 import { AlertTriangle } from "lucide-react";
 
 import BACKGROUND_IMAGE_URL from './assete/vieww.webp';

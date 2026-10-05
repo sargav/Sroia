@@ -5,17 +5,6 @@ import heroImg from "./assetes/hero.webp";
 export default function Hero() {
   const navigate = useNavigate();
 
-  const scrollToContact = () => {
-    const contactSection = document.getElementById("contact");
-
-    if (contactSection) {
-      contactSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
-
   return (
     <section
       dir="rtl"

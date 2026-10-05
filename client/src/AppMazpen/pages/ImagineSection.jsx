@@ -1,14 +1,7 @@
-import { ArrowDown, Compass, DoorOpen, HardHat, Moon } from "lucide-react";
+import { Compass, DoorOpen, HardHat, Moon } from "lucide-react";
 import Reveal from "../components/Reveal";
 import SectionHeading from "../components/SectionHeading";
 import BlueprintBackground from "./BlueprintBackground";
-
-/* שלוש הרגעים, פעם בלי המצפן ופעם איתו. אותו סדר בשתי השורות: אתר, פגישה, לילה */
-const before = [
-  { Icon: HardHat, text: "אתם עומדים באתר, הקבלן שואל — ואתם מנחשים את התשובה." },
-  { Icon: DoorOpen, text: "יוצאים מהפגישה ותוהים אם פספסתם משהו." },
-  { Icon: Moon, text: "שוכבים בלילה וחושבים על מה שעוד לא סגרתם." },
-];
 
 const after = [
   { Icon: HardHat, text: "אתם מגיעים לאתר עם רשימה ברורה — ויודעים בדיוק מה לשאול." },
