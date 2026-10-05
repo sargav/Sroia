@@ -1,3 +1,4 @@
+import { YEARS_OF_EXPERIENCE } from "../../../utils/experience";
 import asafImg from '../../public/assets/asaf-site.png'
 
 export default function AboutAsaf() {
@@ -21,7 +22,7 @@ export default function AboutAsaf() {
             בטוח שהמשפחה מקבלת בדיוק את מה שהיא חלמה עליו."
           </p>
           <p className="text-[#C9C6B8] text-[15.5px] leading-[1.8] mb-3.5 max-w-[620px]">
-            איש בנייה ותיק שהפך תשוקה לבנייה איכותית למקצוע חיים. עם 15 שנות ניסיון ומעל 100 פרויקטים שליווה מהיסוד
+            איש בנייה ותיק שהפך תשוקה לבנייה איכותית למקצוע חיים. עם {YEARS_OF_EXPERIENCE} שנות ניסיון ומעל 100 פרויקטים שליווה מהיסוד
             ועד למפתח, אסף מכיר את כל המהמורות שבדרך — ויודע איך לחסוך לכם מהן.
           </p>
           <p className="text-[#C9C6B8] text-[15.5px] leading-[1.8] max-w-[620px]">
