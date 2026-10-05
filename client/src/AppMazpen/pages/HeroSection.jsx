@@ -5,7 +5,7 @@ import {
   Route,
 } from "lucide-react";
 import Reveal from "../components/Reveal";
-import heroModelV2 from "../assets/images/hero-mosaic-v2.png";
+import heroModelV2 from "../assets/images/hero-mosaic-v2.webp";
 
 /**
  * הכותרת המקורית, בדיוק באותו מבנה ובאותן צורות.

@@ -1,9 +1,9 @@
-import giftHero from "./bonus_gift_hero.png";
-import roadmapIcon from "./bonus_roadmap.png";
-import excelIcon from "./bonus_excel.png";
-import checklistIcon from "./bonus_checklist.png";
-import whatsappIcon from "./bonus_whatsapp_house.png";
-import villaSketchBlurred from "./villa_sketch_blurred.png";
+import giftHero from "./bonus_gift_hero.webp";
+import roadmapIcon from "./bonus_roadmap.webp";
+import excelIcon from "./bonus_excel.webp";
+import checklistIcon from "./bonus_checklist.webp";
+import whatsappIcon from "./bonus_whatsapp_house.webp";
+import villaSketchBlurred from "./villa_sketch_blurred.webp";
 
 const BONUSES = [
     {

@@ -10,19 +10,19 @@ import HeroSection from "./HeroSection";
 import Reveal from "../components/Reveal";
 import SectionHeading from "../components/SectionHeading";
 import logo from "../assets/logo.svg";
-import screen1 from "../assets/images/screen1.jpeg";
+import screen1 from "../assets/images/screen1.webp";
 import screen2 from "../assets/images/screen2.jpeg";
-import screen3 from "../assets/images/screen3.jpeg";
+import screen3 from "../assets/images/screen3.webp";
 import module1Icon from "../assets/icons/module1-initiation.png";
 import module2Icon from "../assets/icons/module2-planning.png";
 import module3Icon from "../assets/icons/module3-structure.png";
 import module4Icon from "../assets/icons/module4-finishing.png";
 import module5Icon from "../assets/icons/module5-occupancy.png";
-import glossaryIcon from "../assets/icons/bonus-glossary.png";
-import procurementIcon from "../assets/icons/bonus-procurement.png";
-import kitchenIcon from "../assets/icons/bonus-kitchen.png";
-import testimonialsBackground from "../assets/backgrounds/testimonials-architectural.png";
-import pricingPhoto from "../assets/backgrounds/pricing-photo.jpg";
+import glossaryIcon from "../assets/icons/bonus-glossary.webp";
+import procurementIcon from "../assets/icons/bonus-procurement.webp";
+import kitchenIcon from "../assets/icons/bonus-kitchen.webp";
+import testimonialsBackground from "../assets/backgrounds/testimonials-architectural.webp";
+import pricingPhoto from "../assets/backgrounds/pricing-photo.webp";
 
 
 const mistakes = [

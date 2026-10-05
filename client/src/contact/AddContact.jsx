@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import api from "../api-config";
-import myBgImage from "./assets/v2.png";
+import myBgImage from "./assets/v2.webp";
 import checking from "../functionChecking/functionChecking";
 import {
   FaInstagram,
