@@ -16,6 +16,7 @@ const Pay = lazy(() => import('./Bait2Yadaim/pay'))
 const ProjectManagement = lazy(() => import('./Projects/ProectsMan'))
 const AppMazpen = lazy(() => import('./AppMazpen/pages/AppMazpen'))
 const AccessibilityStatement = lazy(() => import('./accessibility/AccessibilityStatement'))
+const PaymentResult = lazy(() => import('./AppMazpen/pages/PaymentResult'))
 
 function App() {
 
@@ -34,6 +35,8 @@ function App() {
             <Route path='/contact' element={<PageTitle title="צרו קשר"><div><Contact /></div></PageTitle>} />
             <Route path='/pay' element={<PageTitle title="תשלום עבור הקורס"><div><Pay /></div></PageTitle>} />
             <Route path='/accessibility' element={<AccessibilityStatement />} />
+            {/* לכאן Cardcom מחזירה את הלקוח אחרי התשלום: ?status=success או ?status=failed */}
+            <Route path='/payment-result' element={<PaymentResult />} />
             {/* כל כתובת שלא קיימת באתר */}
             <Route path='*' element={<NotFound />} />
 
