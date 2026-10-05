@@ -1,7 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 const returnImage=async (req, res) => {
-    const folderName = req.params.folderName;
+    const folderName = String(req.params.folderName);
+
+    const allowedFolders = ['finish', 'start', 'Testimonials'];
+    if (!allowedFolders.includes(folderName)) {
+        return res.status(400).json({ error: 'תיקייה לא חוקית' });
+    }
+    
     const dir = path.join(__dirname, '..', 'public', folderName);
 
     fs.readdir(dir, (err, files) => {
