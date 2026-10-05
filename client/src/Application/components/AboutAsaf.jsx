@@ -1,7 +1,8 @@
+import { YEARS_OF_EXPERIENCE } from "../../utils/experience";
+import ExperienceYearsBadge from "../../components/ExperienceYearsBadge";
 // src/components/AboutAsaf.jsx
 import asafPhoto from '../GuidBuilder/assets/asaf-arms-crossed.png';
 import asafBgPhoto from '../GuidBuilder/assets/asaf-about-bg.jpg';
-import statYears from '../GuidBuilder/assets/stat-15years.png';
 import statFamilies from '../GuidBuilder/assets/stat-100families.png';
 import statMillions from '../GuidBuilder/assets/stat-millions.png';
 
@@ -48,13 +49,13 @@ const AboutAsaf = () => {
         </p>
 
         <div className="mb-2 grid grid-cols-1 gap-3 sm:grid-cols-3">
-          <img src={statYears} alt="15 שנות ניסיון" className="mx-auto h-24 w-auto" />
+          <ExperienceYearsBadge />
           <img src={statFamilies} alt="100+ משפחות" className="mx-auto h-24 w-auto" />
           <img src={statMillions} alt="מיליוני שקלים שנחסכו" className="mx-auto h-24 w-auto" />
         </div>
 
         <p className="max-w-xl text-lg leading-snug text-neutral-700">
-          ב-15 השנים האחרונות ליוויתי מעל 100 משפחות בבניית הבית שלהן.
+          ב-{YEARS_OF_EXPERIENCE} השנים האחרונות ליוויתי מעל 100 משפחות בבניית הבית שלהן.
           <br />
           <br />
           המדריך שאתם מקבלים עכשיו הוא בדיוק הדברים שאני מעביר למשפחות

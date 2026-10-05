@@ -1,3 +1,4 @@
+import { YEARS_OF_EXPERIENCE } from "../utils/experience";
 import { useEffect, useRef, useState } from "react";
 import bgImage from "./assete/villa_bg.png"; // תחליפי לשם הקובץ שלך
 
@@ -51,7 +52,7 @@ const DIFFERENCE_ITEMS = [
     },
     {
         title: "מבוסס על ניסיון בשטח",
-        text: "15 שנות ניסיון. לא תיאוריה. לא מה שכתוב באינטרנט. מה שעובד בפועל במאות פרויקטים.",
+        text: `${YEARS_OF_EXPERIENCE} שנות ניסיון. לא תיאוריה. לא מה שכתוב באינטרנט. מה שעובד בפועל במאות פרויקטים.`,
     },
     {
         title: "נבנה בשבילכם",

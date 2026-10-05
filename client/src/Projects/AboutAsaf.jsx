@@ -1,9 +1,10 @@
+import { YEARS_OF_EXPERIENCE } from "../utils/experience";
 import asafImg from './assetes/asaf-site.png'
 
 export default function AboutAsaf() {
   const stats = [
     {
-      number: '15+',
+      number: `${YEARS_OF_EXPERIENCE}+`,
       text: 'שנות ניסיון בשטח',
     },
     {
@@ -87,7 +88,7 @@ export default function AboutAsaf() {
             <div className="max-w-[680px] border-r-2 border-[#91C755]/40 pr-5">
               <p className="mb-4 text-[1rem] font-normal leading-[1.9] text-[#4E594B]">
                 איש בנייה ותיק שהפך תשוקה לבנייה איכותית למקצוע חיים.
-                עם 15 שנות ניסיון ומעל 100 פרויקטים שליווה מהיסוד ועד
+                עם {YEARS_OF_EXPERIENCE} שנות ניסיון ומעל 100 פרויקטים שליווה מהיסוד ועד
                 למפתח, אסף מכיר את כל המהמורות שבדרך — ויודע איך לחסוך
                 לכם מהן.
               </p>
