@@ -1,9 +1,9 @@
 import { AlertTriangle } from "lucide-react";
 
-import BACKGROUND_IMAGE_URL from './assete/vieww.webp';
-import num1 from './assete/1.webp';
-import num2 from './assete/2.webp';
-import num3 from './assete/3.webp';
+import BACKGROUND_IMAGE_URL from './assets/vieww.webp';
+import num1 from './assets/1.webp';
+import num2 from './assets/2.webp';
+import num3 from './assets/3.webp';
 
 const reasons = [
   {

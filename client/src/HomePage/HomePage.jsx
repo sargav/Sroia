@@ -1,6 +1,6 @@
-import AboutAsaf from './AboutAsaf'
-import Hero from './Hero'
-import Servises from './Servises'
+import AboutAsaf from './HomeAboutAsaf'
+import Hero from './HomeHero'
+import Services from './Services'
 import GiftsCommunity from './GiftsCommunity'
 import GallerySection from '../Projects/Gallery'
 export const HomePage = () => {
@@ -9,7 +9,7 @@ export const HomePage = () => {
         <Hero/>
         <AboutAsaf />
         {/* <WhyUs /> */}
-        <Servises/>
+        <Services/>
         <GiftsCommunity />
         {/*לקחות ממליצים */}
         <GallerySection status="finish" />

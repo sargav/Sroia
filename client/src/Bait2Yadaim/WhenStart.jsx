@@ -1,6 +1,6 @@
 import { YEARS_OF_EXPERIENCE } from "../utils/experience";
 import { useEffect, useRef, useState } from "react";
-import asafPhoto from "./assete/psd_asaf.webp";
+import asafPhoto from "./assets/psd_asaf.webp";
 import { Compass } from "lucide-react";
 
 const GREEN_TEXT = "#51762b"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)

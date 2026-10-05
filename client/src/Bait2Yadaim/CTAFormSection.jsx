@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import footerBg from './assete/footerBg.webp'
+import footerBg from './assets/footerBg.webp'
 import PrivacyPolicyDialog from "../components/PrivacyPolicyDialog";
 import TermsOfUseDialog from '../components/TermsOfUseDialog';
-import pi4 from './assete/pi4.webp'
+import pi4 from './assets/pi4.webp'
 const GREEN = '#7CB342';
 
 function CTAFormSection() {

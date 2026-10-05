@@ -3,7 +3,7 @@ import { PanelsTopLeft, Calculator, Flame, Waves, Percent, Check, Sparkles } fro
 
 // טוען אוטומטית את כל הלוגואים מהתיקייה join_logo
 const logoModules = import.meta.glob(
-    "./assete/join_logo/*.{png,jpg,jpeg,webp}",
+    "./assets/join_logo/*.{png,jpg,jpeg,webp}",
     { eager: true, import: "default" }
 );
 

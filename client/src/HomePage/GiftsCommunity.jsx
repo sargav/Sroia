@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import bgImage from "./assetes/v000.webp";
+import bgImage from "./assets/v000.webp";
 
 export default function GiftsCommunity() {
   const navigate = useNavigate();

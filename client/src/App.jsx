@@ -2,18 +2,18 @@ import { lazy } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import './App.css'
 import Layout from './components/Layout'
-import HomePage from './HomPage/HomePage'
+import HomePage from './HomePage/HomePage'
 import PageTitle from './components/PageTitle'
 import NotFound from './components/NotFound'
 
 // כל עמוד חוץ מדף הבית נטען רק כשנכנסים אליו, כדי שדף הבית ייפתח מהר
 const Contact = lazy(() => import('./contact/Contact'))
 const Benefit = lazy(() => import('./NegevBenefit/Benefit'))
-const GuidePage = lazy(() => import('./GuidBuilder/GuidePage'))
-const ThankYouPage = lazy(() => import('./GuidBuilder/ThankYouPage'))
+const GuidePage = lazy(() => import('./GuideBuilder/GuidePage'))
+const ThankYouPage = lazy(() => import('./GuideBuilder/ThankYouPage'))
 const BaitCourse = lazy(() => import('./Bait2Yadaim/BaitCourse'))
-const Pay = lazy(() => import('./Bait2Yadaim/pay'))
-const ProjectManagement = lazy(() => import('./Projects/ProectsMan'))
+const Pay = lazy(() => import('./Bait2Yadaim/PayPage'))
+const ProjectManagement = lazy(() => import('./Projects/ProjectsPage'))
 const AppMazpen = lazy(() => import('./AppMazpen/pages/AppMazpen'))
 const AccessibilityStatement = lazy(() => import('./accessibility/AccessibilityStatement'))
 const PaymentResult = lazy(() => import('./AppMazpen/pages/PaymentResult'))

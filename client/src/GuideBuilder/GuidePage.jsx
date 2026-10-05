@@ -1,7 +1,7 @@
 import { YEARS_OF_EXPERIENCE } from "../utils/experience";
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
-import api from "./api";
+import api from "../api-config";
 import heroBg from "./assets/hero-blueprint-bg.webp";
 import footerBg from "./assets/footerBg.webp";
 import heroLogoBadge from "./assets/hero-logo-badge.png";

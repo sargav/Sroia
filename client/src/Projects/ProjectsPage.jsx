@@ -2,14 +2,14 @@ import { useNavigate } from "react-router-dom";
 
 import GallerySection from "./Gallery";
 
-import Hero from "./Hero";
-import WhyUs from "./WhyUs";
+import Hero from "./ProjectsHero";
+import WhyUs from "./ProjectsWhyUs";
 import StepsSection from "./StepsSection";
 
-import projectManagementIcon from "./assetes/project-management.webp";
-import hardHatIcon from "./assetes/hard-hat.webp";
-import shieldIcon from "./assetes/shield-check.webp";
-import asafPortrait from "./assetes/view.webp";
+import projectManagementIcon from "./assets/project-management.webp";
+import hardHatIcon from "./assets/hard-hat.webp";
+import shieldIcon from "./assets/shield-check.webp";
+import asafPortrait from "./assets/view.webp";
 
 // אייקונים קטנים בעיגול - נשארים כמו שהיו
 const valueIcons = [

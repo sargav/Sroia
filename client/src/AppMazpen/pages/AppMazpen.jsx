@@ -2,7 +2,7 @@ import { ArrowLeft, Compass, Quote } from "lucide-react";
 import HomeBuildingIntro from "./HomeBuildingIntro";
 import MistakesCompass from "./MistakesCompass";
 import JoinSteps from "./JoinSteps";
-import FaqSection from "./FaqSection"
+import FaqSection from "./CompassFaq"
 import PersonalNote from "./PersonalNote";
 import ImagineSection from "./ImagineSection"
 import PricingSection from "./PricingSection";

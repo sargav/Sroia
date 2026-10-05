@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import moneyIcon from "./assete/pay.webp";
-import handHouse from './assete/handHouse.webp'
+import moneyIcon from "./assets/pay.webp";
+import handHouse from './assets/handHouse.webp'
 
 // אנימציית כניסה עדינה
 function Reveal({ children, delay = 0 }) {

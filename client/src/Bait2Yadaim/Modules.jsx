@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
-import m1 from "./assete/m1.webp";
-import m2 from "./assete/m2.webp";
-import m3 from "./assete/m3.webp";
-import m4 from "./assete/m4.webp";
-import m5 from "./assete/m5.webp";
+import m1 from "./assets/m1.webp";
+import m2 from "./assets/m2.webp";
+import m3 from "./assets/m3.webp";
+import m4 from "./assets/m4.webp";
+import m5 from "./assets/m5.webp";
 
 const MODULES = [
     {

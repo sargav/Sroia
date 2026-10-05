@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import heroImg from "./assetes/hero.webp";
+import heroImg from "./assets/hero.webp";
 
 
 export default function Hero() {
