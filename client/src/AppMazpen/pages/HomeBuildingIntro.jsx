@@ -149,7 +149,7 @@ export default function HomeBuildingIntro() {
               <span className="mt-2 block text-[#759855]">פעם אחת בחיים.</span>
             </h2>
 
-            <p className="mx-auto mt-5 max-w-xl text-base font-medium leading-8 text-[#677163] md:text-lg">
+            <p className="mx-auto mt-5 max-w-xl text-base font-medium leading-8 text-[#656f62] md:text-lg">
               אבל מהר מאוד מגלים משהו שלא תמיד מדברים עליו:
             </p>
             <ArrowDown className="mx-auto mt-3 h-4 w-4 text-[#7da457]" strokeWidth={2} aria-hidden="true" />
@@ -224,7 +224,7 @@ export default function HomeBuildingIntro() {
                 <span className="text-[#759855]">לא קורות בזמן הבנייה.</span>
               </h3>
               <span className="mx-auto mt-4 block h-px w-12 bg-[#9bb681]" />
-              <p className="mx-auto mt-4 max-w-[560px] text-[0.9375rem] font-medium leading-[1.7] text-[#677163] md:text-[1.0625rem]">
+              <p className="mx-auto mt-4 max-w-[560px] text-[0.9375rem] font-medium leading-[1.7] text-[#656f62] md:text-[1.0625rem]">
                 הן קורות הרבה קודם — לפעמים פשוט כי לא ידעתם לשאול את השאלה הנכונה בזמן.
               </p>
             </div>
@@ -268,7 +268,7 @@ export default function HomeBuildingIntro() {
                   <Squiggle className="-bottom-1.5 h-2 md:-bottom-2 md:h-2.5" />
                 </span>
               </h3>
-              <p className="mt-1 text-[0.9375rem] font-medium leading-[1.55] text-[#677163] md:text-[1.125rem]">
+              <p className="mt-1 text-[0.9375rem] font-medium leading-[1.55] text-[#656f62] md:text-[1.125rem]">
                 בניית בית היא אחד הפרויקטים המורכבים שאנשים עושים בחיים.
               </p>
               <div className="mt-1 flex items-start gap-2.5 border-t border-[#cbd5c3] pt-3">

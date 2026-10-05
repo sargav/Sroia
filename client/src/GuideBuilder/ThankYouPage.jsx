@@ -1,5 +1,3 @@
-import React from 'react';
-import mockupDevices from "./assets/mockup-devices-real.webp";
 import todaMockup from "./assets/toda-mockup.webp";
 import todaCelebrateGif from "./assets/toda-celebrate.gif";
 import todaWhatsappBtn from "./assets/toda-whatsapp-button.webp";

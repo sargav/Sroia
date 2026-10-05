@@ -1,72 +1,28 @@
-import React, { useRef, useState } from 'react'
-import { useNavigate } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import asaf from './assete/asaf-02.webp'
-import view1 from './assete/viewStatic.webp'
-import lev from './assete/l.webp'
-import qu from './assete/qu.webp'
-import cumpIcon from './assete/cump.webp'
-import x from './assete/towhands-11.png'
-import asafNaim from './assete/asafnaim.webp'
-import AboutAsaf from '../components/AboutAsaf'
-import pi4 from './assete/pi4.webp'
+import asaf from './assets/asaf-02.webp'
+import view1 from './assets/viewStatic.webp'
 import PSSection from './PSSection';
 import CTAFormSection from './CTAFormSection'
-import FaqSection from "./FaqSection";
+import FaqSection from "./CourseFaq";
 import FitSection from './FitSection';
 import ScenarioComparisonSection from './ScenarioCard';
 // import GalleriesSection from './GalleriesSection';
 import SupplierBenefitsSection from './SupplierBenefitsSection';
-import GuaranteeSection from './Guarnat';
+import GuaranteeSection from './Guarantee';
 import FixedBackgroundUrgencySection from './FixedBackgroundUrgencySection'
-import CTASection from './takeControle'
+import CTASection from './TakeControl'
 import BonusesSection from './Bonus/BonusesSection'
-import StatsSection from './StatsSection'
-import WhyDifferentSection from './WhyDiferent';
+import WhyDifferentSection from './WhyDifferent';
 import HardTruthSection from './HardTruthSection'
 import CourseModulesSection from './Modules';
 import InvestmentSection from './InvestmentSection';
 import PainPointSection from './PainPointSection';
 import ProblemNarrativeSection from './ProblemNarrativeSection';
 import RecognitionSection from './RecognitionSection';
-import PersonalStorySection from './whenStrat';
+import PersonalStorySection from './WhenStart';
 import RecommendationsSection from '../components/RecommendationsSection';
 import TestimonialVideos from '../components/TestimonialVideos';
 
 const BaitCourse = () => {
-    const GREEN = '#7CB342';
-    const GREEN_DARK = '#5a8a2c';
-    const DARK = '#1f1f1f';
-    const CREAM = '#faf7ec';
-    const OLIVE_BG = '#eef0dd';
-
-    // טוען אוטומטית את כל התמונות מהתיקייה
-    const galleryModules = import.meta.glob('./assete/galary_shetach/*.{jpg,jpeg,png,webp}', {
-        eager: true,
-        import: 'default',
-    });
-
-    const galleryImages = Object.values(galleryModules);
-
-    const scrollRef = useRef(null);
-    const scroll = (direction) => {
-        const container = scrollRef.current;
-        if (!container) return;
-
-        const maxScroll = container.scrollWidth - container.clientWidth;
-        const isAtStart = container.scrollLeft <= 0;
-        const isAtEnd = container.scrollLeft >= maxScroll - 10; // 10px טולרנס
-
-        if (direction === 1 && isAtEnd) {
-            // הגענו לסוף, קפיצה בחזרה להתחלה
-            container.scrollTo({ left: 0, behavior: 'smooth' });
-        } else if (direction === -1 && isAtStart) {
-            // הגענו להתחלה, קפיצה לסוף
-            container.scrollTo({ left: maxScroll, behavior: 'smooth' });
-        } else {
-            container.scrollBy({ left: direction * 300, behavior: 'smooth' });
-        }
-    };
 
     return (
         <div>

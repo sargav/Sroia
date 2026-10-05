@@ -1,4 +1,3 @@
-import React from 'react'
 import AddContact from './AddContact'
 
 const Contact = () => {

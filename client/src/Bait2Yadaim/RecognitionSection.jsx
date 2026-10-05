@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { HelpCircle } from "lucide-react";
-import lev from './assete/l.webp'
+import lev from './assets/l.webp'
 
 const GREEN = "#7CB342";
 const GREEN_TEXT = "#51762b"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)

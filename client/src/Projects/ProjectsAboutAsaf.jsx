@@ -1,5 +1,5 @@
 import { YEARS_OF_EXPERIENCE } from "../utils/experience";
-import asafImg from './assetes/asaf-site.webp'
+import asafImg from './assets/asaf-site.webp'
 
 export default function AboutAsaf() {
   const stats = [

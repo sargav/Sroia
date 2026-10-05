@@ -1,7 +1,7 @@
-import planningIcon from "./assetes/step-planning.webp";
-import executionIcon from "./assetes/step-execution.webp";
-import qualityIcon from "./assetes/step-quality.webp";
-import deliveryIcon from "./assetes/step-delivery.webp";
+import planningIcon from "./assets/step-planning.webp";
+import executionIcon from "./assets/step-execution.webp";
+import qualityIcon from "./assets/step-quality.webp";
+import deliveryIcon from "./assets/step-delivery.webp";
 
 
 const StepsSection = () => {
@@ -33,20 +33,6 @@ const StepsSection = () => {
     },
   ];
 
-  const values = [
-    {
-      title: "תכנון מדויק",
-      text: "כל החלטה מתקבלת מתוך ראייה מלאה של התקציב, לוחות הזמנים והתוצאה הסופית.",
-    },
-    {
-      title: "שליטה מלאה בשטח",
-      text: "תיאום ופיקוח שוטפים שמונעים טעויות, עיכובים והוצאות מיותרות לאורך הדרך.",
-    },
-    {
-      title: "כתובת מקצועית אחת",
-      text: "גורם אחד שמרכז את אנשי המקצוע, מנהל את התהליך ומעדכן אתכם בשקיפות.",
-    },
-  ];
   return (
     <section
       dir="rtl"

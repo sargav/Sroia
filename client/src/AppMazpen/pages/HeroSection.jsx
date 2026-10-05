@@ -52,7 +52,7 @@ export default function HeroSection() {
                 </span>
               </h1>
 
-              <p className="mt-3 max-w-xl text-base font-medium leading-8 text-[#677163] md:text-lg">
+              <p className="mt-3 max-w-xl text-base font-medium leading-8 text-[#656f62] md:text-lg">
                 מערכת חכמה שמלווה אתכם צעד אחר צעד מהיזום ועד המפתח.
               </p>
             </div>
@@ -71,7 +71,7 @@ export default function HeroSection() {
                 איך לבנות בביטחון?
               </p>
 
-              <p className="mt-3 text-base font-medium leading-8 text-[#677163] md:text-lg">
+              <p className="mt-3 text-base font-medium leading-8 text-[#656f62] md:text-lg">
                 לדעת בכל שלב מה לבדוק
                 , <br />
                 לא לפספס כלום
@@ -167,7 +167,7 @@ export default function HeroSection() {
                     תמיד
                   </p>
 
-                  <p className="mt-1 hidden text-[0.625rem] font-bold text-[#1a1a1a]/80 md:block">
+                  <p className="mt-1 hidden text-[0.625rem] font-bold text-[#1a1a1a] md:block">
                     מכל מכשיר
                   </p>
                 </div>

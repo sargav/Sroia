@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import handHouseIcon from "./assete/handHouse.webp";
+import handHouseIcon from "./assets/handHouse.webp";
 
 // אנימציית כניסה עדינה
 function Reveal({ children, delay = 0 }) {

@@ -2,7 +2,7 @@ import { ArrowLeft, Compass, Quote } from "lucide-react";
 import HomeBuildingIntro from "./HomeBuildingIntro";
 import MistakesCompass from "./MistakesCompass";
 import JoinSteps from "./JoinSteps";
-import FaqSection from "./FaqSection"
+import FaqSection from "./CompassFaq"
 import PersonalNote from "./PersonalNote";
 import ImagineSection from "./ImagineSection"
 import PricingSection from "./PricingSection";
@@ -115,10 +115,11 @@ function CompassPage() {
             {modules.map((item, index) => (
               <Reveal key={item.title} delay={index * 70} className={item.featured ? "lg:-translate-y-4" : ""}>
                 <article className={`relative h-full overflow-hidden rounded-[2rem] border p-6 transition duration-300 hover:-translate-y-2 hover:shadow-2xl ${item.featured ? "border-[#697949] bg-[#232A19] text-white shadow-xl" : "border-[#CACFB9] bg-[#FBFBF8]"}`}>
-                  <span className={`absolute left-3 top-1 text-7xl font-black ${item.featured ? "text-white/[.05]" : "text-[#697949]/[.06]"}`}>0{index + 1}</span>
+                  {/* מספר קישוטי ברקע: מוצג דרך CSS כדי שלא ייחשב טקסט (לא נקרא ולא נבדק לניגודיות) */}
+                  <span aria-hidden="true" data-n={`0${index + 1}`} className={`absolute left-3 top-1 text-7xl font-black before:content-[attr(data-n)] ${item.featured ? "text-white/[.05]" : "text-[#697949]/[.06]"}`} />
                   <img src={item.icon} alt="" className="relative h-16 w-16 object-contain" />
                   <div className="relative mt-6">
-                    <span className={`rounded-full px-3 py-1 text-xs font-bold ${item.featured ? "bg-white/10 text-[#c6e3a0]" : "bg-[#E2E6D6] text-[#697949]"}`}>{item.count}</span>
+                    <span className={`rounded-full px-3 py-1 text-xs font-bold ${item.featured ? "bg-white/10 text-[#c6e3a0]" : "bg-[#E2E6D6] text-[#5c6a40]"}`}>{item.count}</span>
                     <h3 className="mt-4 text-2xl font-black">{item.title}</h3>
                     <p className={`mt-3 text-sm font-medium leading-7 ${item.featured ? "text-white/65" : "text-[#6B705C]"}`}>{item.text}</p>
                   </div>
@@ -148,7 +149,7 @@ function CompassPage() {
               <Reveal key={item.title} delay={index * 100}>
                 <article className="relative overflow-hidden rounded-[1.25rem] border border-[#CACFB9] bg-[#FBFBF8] shadow-[0_14px_40px_rgba(50,65,43,.06)] transition duration-300 hover:-translate-y-1 hover:border-[#697949]/40 hover:shadow-[0_20px_55px_rgba(50,65,43,.12)] group h-full p-7 text-center">
                   <img src={item.icon} alt="" className="mx-auto h-36 w-36 object-contain transition duration-500 group-hover:scale-105" />
-                  <span className="mt-4 inline-block rounded-full bg-[#E2E6D6] px-3 py-1 text-xs font-bold text-[#697949]">בונוס #{index + 1}</span>
+                  <span className="mt-4 inline-block rounded-full bg-[#E2E6D6] px-3 py-1 text-xs font-bold text-[#5c6a40]">בונוס #{index + 1}</span>
                   <h3 className="mt-4 text-xl font-black">{item.title}</h3>
                   <p className="mt-3 text-sm font-medium leading-7 text-[#6B705C]">{item.text}</p>
                   <p className="mt-5 text-sm font-bold text-[#6B705C] line-through">שווי {item.value}</p>

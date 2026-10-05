@@ -8,7 +8,7 @@ const connectDB = require('./config/dbConn')
 const corsOptions = require('./config/corsOptions')
 
 const app = express()
-const PORT = process.env.PORT || 9540
+const PORT = process.env.PORT || 7500 // אותו פורט שהריאקט מחפש כברירת מחדל
 
 const cookieParser = require('cookie-parser');
 

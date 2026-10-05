@@ -1,5 +1,5 @@
 import { useState } from "react";
-import villaSketchBg from "./assete/villa_bg.webp";
+import villaSketchBg from "./assets/villa_bg.webp";
 
 const FAQ_ITEMS = [
     {

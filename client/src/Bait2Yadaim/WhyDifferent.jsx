@@ -1,6 +1,6 @@
 import { YEARS_OF_EXPERIENCE } from "../utils/experience";
 import { useEffect, useRef, useState } from "react";
-import bgImage from "./assete/villa_bg.webp"; // תחליפי לשם הקובץ שלך
+import bgImage from "./assets/villa_bg.webp"; // תחליפי לשם הקובץ שלך
 
 // אנימציית כניסה עדינה
 function Reveal({ children, delay = 0 }) {

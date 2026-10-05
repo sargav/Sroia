@@ -3,7 +3,7 @@ import { PanelsTopLeft, Calculator, Flame, Waves, Percent, Check, Sparkles } fro
 
 // טוען אוטומטית את כל הלוגואים מהתיקייה join_logo
 const logoModules = import.meta.glob(
-    "./assete/join_logo/*.{png,jpg,jpeg,webp}",
+    "./assets/join_logo/*.{png,jpg,jpeg,webp}",
     { eager: true, import: "default" }
 );
 
@@ -109,7 +109,7 @@ function BenefitCard({ supplier }) {
                         <p className="truncate text-base font-extrabold" style={{ color: DARK }}>
                             {name}
                         </p>
-                        <div className="mt-0.5 flex items-center gap-1.5 text-[0.6875rem] font-bold text-neutral-400">
+                        <div className="mt-0.5 flex items-center gap-1.5 text-[0.6875rem] font-bold text-[#6b6b6b]">
                             <Icon size={12} />
                             <span className="truncate">{tag}</span>
                         </div>
@@ -140,12 +140,12 @@ function BenefitCard({ supplier }) {
                         style={{ backgroundColor: CREAM }}
                     >
                         <div>
-                            <p className="text-[0.6875rem] font-bold text-neutral-400">שווי החיסכון</p>
+                            <p className="text-[0.6875rem] font-bold text-[#6b6b6b]">שווי החיסכון</p>
                             <p className="text-sm font-extrabold" style={{ color: DARK }}>
                                 {savingsValue}
                             </p>
                         </div>
-                        <p className="text-[0.6875rem] text-neutral-500">{savingsNote}</p>
+                        <p className="text-[0.6875rem] text-[#6b6b6b]">{savingsNote}</p>
                     </div>
                 </div>
             </div>
@@ -179,7 +179,7 @@ function SupplierBenefitsSection() {
                     <h2 className="text-3xl font-extrabold md:text-4xl" style={{ color: DARK }}>
                         הטבות בלעדיות מספקים מובילים
                     </h2>
-                    <p className="mt-3 text-base text-neutral-500">
+                    <p className="mt-3 text-base text-[#6b6b6b]">
                         בנוסף לכל הכלים הדיגיטליים — סגרנו לכם הטבות אמיתיות עם ספקים שאנחנו
                         סומכים עליהם.
                     </p>
@@ -219,7 +219,7 @@ function SupplierBenefitsSection() {
                         </span>
                     </p>
 
-                    <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-neutral-500">
+                    <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-[#6b6b6b]">
                         רק מההטבות של הספקים תחזירו את ההשקעה בקורס פי 15–25! כל ההטבות תקפות
                         למשך שנה מיום ההצטרפות לקורס.
                     </p>

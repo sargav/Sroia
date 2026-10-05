@@ -1,5 +1,5 @@
-import statsIcon from "./assete/cump.webp";
-import view from './assete/viewStatic.webp'
+import statsIcon from "./assets/cump.webp";
+import view from './assets/viewStatic.webp'
 
 const STATS = [
     {

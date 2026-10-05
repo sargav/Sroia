@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import heroBathroom from "./assets/hero-bathroom.webp";
 import heroTiles from "./assets/hero-tiles.webp";
 import baitLogo from "./assets/bait-logo.png";
 import negevLogo from "./assets/negev-logo-heart.jpg";
 import giftBox from "./assets/gift-box.webp";
-import BenefitTermsDialog from "./component/BenefitTermsDialog";
+import BenefitTermsDialog from "./components/BenefitTermsDialog";
 
 function SparkleIcon({ className = "", style = {} }) {
     return (
@@ -91,30 +91,6 @@ function Reveal({ children, delay = 0, as: Tag = "div", className = "" }) {
         >
             {children}
         </Tag>
-    );
-}
-
-function HeartIcon({ className = "" }) {
-    return (
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className={className}>
-            <path
-                d="M12 20.5s-7.5-4.6-10-9.2C.5 8.1 2 4.5 5.6 3.8c2-.4 3.9.4 5 2 .5.7 1 .9 1.4.9s.9-.2 1.4-.9c1.1-1.6 3-2.4 5-2 3.6.7 5.1 4.3 3.6 7.5-2.5 4.6-10 9.2-10 9.2z"
-                fill={GREEN}
-            />
-        </svg>
-    );
-}
-
-function SocialIcon({ children }) {
-    return (
-        <a
-            href="#"
-            className="flex h-11 w-11 items-center justify-center rounded-full transition-transform hover:scale-105"
-            style={{ backgroundColor: GREEN }}
-            onClick={(e) => e.preventDefault()}
-        >
-            {children}
-        </a>
     );
 }
 
@@ -543,10 +519,11 @@ export default function Benefit() {
                                     שליחה וקבלת ההטבה
                                 </button>
 
-                                <p className="text-center text-xs text-white/40">
+                                {/* div ולא p: בתוך התקנון יש חלון עם כותרות ורשימות, ו-p לא יכול להכיל אותם */}
+                                <div className="text-center text-xs text-white/60">
                                     בלחיצה על שליחה אני מאשר/ת את{" "}
                                     <BenefitTermsDialog/>
-                                </p>
+                                </div>
                             </form>
                         )}
                         </div>

@@ -72,7 +72,7 @@ export default function JoinSteps() {
                         <Icon size={22} strokeWidth={1.7} />
                       </span>
                       <h3 className="mt-4 text-lg font-black leading-7 text-[#35402F]">{title}</h3>
-                      <p className="mt-1.5 text-sm font-medium leading-6 text-[#677163]">{text}</p>
+                      <p className="mt-1.5 text-sm font-medium leading-6 text-[#656f62]">{text}</p>
                     </article>
                   </Reveal>
                 </li>

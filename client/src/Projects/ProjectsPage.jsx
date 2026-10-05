@@ -1,54 +1,21 @@
 import { useNavigate } from "react-router-dom";
 
-import heroImage from "./assetes/project-management-hero.webp";
-import planningIcon from "./assetes/step-planning.webp";
-import executionIcon from "./assetes/step-execution.webp";
-import qualityIcon from "./assetes/step-quality.webp";
-import deliveryIcon from "./assetes/step-delivery.webp";
 import GallerySection from "./Gallery";
 
-import Hero from "./Hero";
-import AboutAsaf from "./AboutAsaf";
-import WhyUs from "./WhyUs";
+import Hero from "./ProjectsHero";
+import WhyUs from "./ProjectsWhyUs";
 import StepsSection from "./StepsSection";
 
-import projectManagementIcon from "./assetes/project-management.webp";
-import hardHatIcon from "./assetes/hard-hat.webp";
-import shieldIcon from "./assetes/shield-check.webp";
-import asafPortrait from "./assetes/view.webp";
+import projectManagementIcon from "./assets/project-management.webp";
+import hardHatIcon from "./assets/hard-hat.webp";
+import shieldIcon from "./assets/shield-check.webp";
+import asafPortrait from "./assets/view.webp";
 
 // אייקונים קטנים בעיגול - נשארים כמו שהיו
 const valueIcons = [
   shieldIcon,             // יושרה ואמינות
   projectManagementIcon,  // יסודיות ושיטתיות
   hardHatIcon,            // מקצוענות ללא פשרות
-];
-
-const steps = [
-  {
-    number: "01",
-    icon: planningIcon,
-    title: "תכנון וגיבוש תשתית",
-    text: "בחירת אדריכל, יועצים ובעלי מקצוע מתאימים, תיאום התכנון, גיבוש תקציב מפורט, לוחות זמנים, קבלת היתרים ועריכת מכרזי קבלנים.",
-  },
-  {
-    number: "02",
-    icon: executionIcon,
-    title: "ניהול הביצוע והמשאבים",
-    text: "תזמון מחושב של עבודות הקבלנים, תיאום בין הגורמים וניהול רציף של כוח האדם, החומרים והמשאבים בשטח.",
-  },
-  {
-    number: "03",
-    icon: qualityIcon,
-    title: "פיקוח ובקרת איכות",
-    text: "נוכחות מקצועית בשטח, בדיקת איכות הביצוע והתאמה לתוכניות, למפרטים ולתקנים בכל שלב בפרויקט.",
-  },
-  {
-    number: "04",
-    icon: deliveryIcon,
-    title: "מסירה וסיום מושלם",
-    text: "בקרה סופית, טיפול בליקויים, ריכוז האישורים ומסירת בית מוכן ומדויק — בהתאם לתכנון, לתקציב ולציפיות.",
-  },
 ];
 
 const values = [
@@ -68,14 +35,6 @@ const values = [
     text: "פיתוח ושימור הידע המקצועי באמצעות למידה מתמדת של שיטות ביצוע, טכנולוגיות ומתודולוגיות חדשות בתחום הבנייה.",
   },
 ];
-
-function MarkIcon() {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <path d="M4 13.5 9 18l11-12" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
 
 function ArrowIcon() {
   return (

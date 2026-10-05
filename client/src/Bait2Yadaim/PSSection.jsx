@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import villaBg from './assete/vila.webp'
+import villaBg from './assets/vila.webp'
 
 // אנימציית כניסה עדינה לכל אלמנט - fade + עלייה קלה
 function Reveal({ children, delay = 0 }) {

@@ -1,4 +1,3 @@
-import React from "react";
 
 // Card-style guarantee badge, built the same way as the "מצב 1 / מצב 2"
 // cards: dark rounded card, a big faded number bleeding off the top corner,

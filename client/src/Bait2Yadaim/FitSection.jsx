@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import checkIcon from "./assete/icon-check-circle-v2.png";
 
 
 // אנימציית כניסה עדינה - נניח שכבר יש לך Reveal בפרויקט, זו גרסה עצמאית למקרה שאין

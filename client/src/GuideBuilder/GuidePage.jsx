@@ -1,8 +1,7 @@
 import { YEARS_OF_EXPERIENCE } from "../utils/experience";
-import ExperienceYearsBadge from "../components/ExperienceYearsBadge";
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
-import api from "./api";
+import api from "../api-config";
 import heroBg from "./assets/hero-blueprint-bg.webp";
 import footerBg from "./assets/footerBg.webp";
 import heroLogoBadge from "./assets/hero-logo-badge.png";
@@ -21,16 +20,9 @@ import iconOccupancy from "./assets/icon-stage5-occupancy-v2.png";
 import checkIcon from "./assets/icon-check-circle-v2.png";
 import badgeHowHelps from "./assets/badge-how-helps-title.png";
 import badgeWhoFor from "./assets/badge-who-for.png";
-import asafPhoto from "./assets/asaf-arms-crossed.webp";
-import asafBgPhoto from "./assets/asaf-about-bg.jpg";
-import statFamilies from "./assets/stat-100families.png";
-import statMillions from "./assets/stat-millions.png";
-import AboutAsaf from '../components/AboutAsaf';
 
 const GREEN = '#7CB342';
 const GREEN_TEXT = "#51762b"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
-const GREEN_DARK = '#5a8a2c';
-const DARK = '#1f1f1f';
 const CREAM = '#faf7ec';
 const OLIVE_BG = '#eef0dd';
 
@@ -572,75 +564,6 @@ function BenefitsSection() {
   );
 }
 
-function AboutSection() {
-  return (
-    <section
-      className="relative px-6 py-6"
-      style={{
-        backgroundImage: `url(${asafBgPhoto})`,
-        backgroundSize: "160%",
-        backgroundPosition: "center 15%",
-        backgroundRepeat: "no-repeat",
-        overflow: "visible",
-      }}
-    >
-      <div
-        className="absolute inset-0"
-        style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.75) 100%)" }}
-      />
-      <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-        <Reveal>
-          <div className="relative mb-3" style={{ marginTop: "-90px", zIndex: 6 }}>
-            <div
-              className="flex h-56 w-56 items-center justify-center rounded-full sm:h-64 sm:w-64"
-              style={{ backgroundColor: "#d7e6b8" }}
-            >
-              <img
-                src={asafPhoto}
-                alt="אסף סרויה"
-                className="h-full w-full object-contain object-bottom"
-              />
-            </div>
-            <div
-              className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-xl px-6 py-2 text-lg font-bold text-white"
-              style={{ backgroundColor: "#1f1f1f" }}
-            >
-              נעים להכיר
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal delay={150}>
-          <p className="mb-2 text-2xl font-bold text-neutral-800">
-            נעים מאוד, אני אסף סרויה
-          </p>
-        </Reveal>
-
-        <Reveal delay={280}>
-          <div className="mb-2 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            <ExperienceYearsBadge />
-            <img src={statFamilies} alt="100+ משפחות" className="mx-auto h-24 w-auto" />
-            <img src={statMillions} alt="מיליוני שקלים שנחסכו" className="mx-auto h-24 w-auto" />
-          </div>
-        </Reveal>
-
-        <Reveal delay={400}>
-          <p className="max-w-xl text-lg leading-snug text-neutral-700">
-            ב-{YEARS_OF_EXPERIENCE} השנים האחרונות ליוויתי מעל 100 משפחות בבניית הבית שלהן.
-            <br />
-            <br />
-            המדריך שאתם מקבלים עכשיו הוא בדיוק הדברים שאני מעביר למשפחות
-            שמרוויחות תהליך בנייה{" "}
-            <span className="font-bold" style={{ color: GREEN_TEXT }}>
-              רגוע, מדויק וחסכוני.
-            </span>
-          </p>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
 function CTAFormSection() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: "", name: "", phone: "" });
@@ -710,7 +633,7 @@ function CTAFormSection() {
       // עברנו לניווט לעמוד תודה נפרד (route) במקום להחליף state באותו עמוד -
       // זה פותר בעיות של תוכן שמופיע במקום הלא נכון בתוך העמוד.
       navigate("/thank-you");
-    } catch (err) {
+    } catch {
       setSubmitError("משהו השתבש בשליחה, נסו שוב בעוד רגע.");
     } finally {
       setSubmitting(false);
