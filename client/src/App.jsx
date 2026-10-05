@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import './App.css'
 import Layout from './components/Layout'
 import HomePage from './HomPage/HomePage'
+import PageTitle from './components/PageTitle'
+import NotFound from './components/NotFound'
 
 // כל עמוד חוץ מדף הבית נטען רק כשנכנסים אליו, כדי שדף הבית ייפתח מהר
 const Contact = lazy(() => import('./contact/Contact'))
@@ -22,17 +24,19 @@ function App() {
       <Router basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route path='/' element={<Layout />}>
-            <Route index element={<div><HomePage /></div>} />
+            <Route index element={<PageTitle title="ניהול ופיקוח בבנייה פרטית"><div><HomePage /></div></PageTitle>} />
             <Route path='/about' element={<>אודות</>}/>
-            <Route path='/projects' element={<ProjectManagement />} />
-            <Route path='/courses' element={<div><BaitCourse /></div>} />
-            <Route path='/application' element={<div><AppMazpen/></div>} />
-            <Route path='/guid-to-builder' element={<div><GuidePage /></div>} />
-            <Route path='/thank-you' element={<div><ThankYouPage /></div>} />
-            <Route path='/benefit' element={<div><Benefit /></div>} />
-            <Route path='/contact' element={<div><Contact /></div>} />
-            <Route path='/pay' element={<div><Pay /></div>} />
+            <Route path='/projects' element={<PageTitle title="ניהול ופיקוח פרויקטים"><ProjectManagement /></PageTitle>} />
+            <Route path='/courses' element={<PageTitle title="קורס בית בשתי ידיים"><div><BaitCourse /></div></PageTitle>} />
+            <Route path='/application' element={<PageTitle title="המצפן לבונה"><div><AppMazpen/></div></PageTitle>} />
+            <Route path='/guid-to-builder' element={<PageTitle title="המדריך לבונה"><div><GuidePage /></div></PageTitle>} />
+            <Route path='/thank-you' element={<PageTitle title="תודה שנרשמתם"><div><ThankYouPage /></div></PageTitle>} />
+            <Route path='/benefit' element={<PageTitle title="הטבה לבוני בתים"><div><Benefit /></div></PageTitle>} />
+            <Route path='/contact' element={<PageTitle title="צרו קשר"><div><Contact /></div></PageTitle>} />
+            <Route path='/pay' element={<PageTitle title="תשלום עבור הקורס"><div><Pay /></div></PageTitle>} />
             <Route path='/accessibility' element={<AccessibilityStatement />} />
+            {/* כל כתובת שלא קיימת באתר */}
+            <Route path='*' element={<NotFound />} />
 
           </Route>
         </Routes>
