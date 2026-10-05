@@ -23,7 +23,6 @@ function App() {
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<div><HomePage /></div>} />
-            <Route path='/about' element={<>אודות</>}/>
             <Route path='/projects' element={<ProjectManagement />} />
             <Route path='/courses' element={<div><BaitCourse /></div>} />
             <Route path='/application' element={<div><AppMazpen/></div>} />
