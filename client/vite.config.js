@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
 export default defineConfig({
-  base: '/',
+  base: '/Sroia/',
   plugins: [
     react(),
     tailwindcss(),
