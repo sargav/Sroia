@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import AnimatedIcon from "./IconsAnimations";
-import bgImage from "./assetes/newView2.png";
+import bgImage from "./assetes/newView2.webp";
 
 export default function WhyUs() {
   const sectionRef = useRef(null);

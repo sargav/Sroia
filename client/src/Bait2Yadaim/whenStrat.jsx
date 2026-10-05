@@ -1,5 +1,6 @@
+import { YEARS_OF_EXPERIENCE } from "../utils/experience";
 import { useEffect, useRef, useState } from "react";
-import asafPhoto from "./assete/psd_asaf.png";
+import asafPhoto from "./assete/psd_asaf.webp";
 import {
     Search,
     Video,
@@ -86,7 +87,7 @@ function PersonalStorySection() {
                                 לפני 3 שנים, החלטתי לעשות משהו בנידון.
                             </p>
                             <p className="text-lg leading-relaxed text-neutral-700">
-                                לקחתי את כל מה שלמדתי ב-15 שנות עבודה בשטח,
+                                לקחתי את כל מה שלמדתי ב-{YEARS_OF_EXPERIENCE} שנות עבודה בשטח,
                             </p>
                             <p className="text-lg leading-relaxed text-neutral-700">
                                 את כל הטעויות שראיתי משפחות עושות שוב ושוב,

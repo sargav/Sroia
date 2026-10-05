@@ -1,15 +1,17 @@
+import { YEARS_OF_EXPERIENCE } from "../utils/experience";
+import ExperienceYearsBadge from "../components/ExperienceYearsBadge";
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import api from "./api";
-import heroBg from "./assets/hero-blueprint-bg.png";
-import footerBg from "./assets/footerBg.png";
+import heroBg from "./assets/hero-blueprint-bg.webp";
+import footerBg from "./assets/footerBg.webp";
 import heroLogoBadge from "./assets/hero-logo-badge.png";
-import questionsCluster from "./assets/questions-cluster.png";
+import questionsCluster from "./assets/questions-cluster.webp";
 import checklistSafety from "./assets/checklist-safety.png";
-import mockupDevices from "./assets/mockup-devices-real.png";
+import mockupDevices from "./assets/mockup-devices-real.webp";
 import badgeWhatYouFind from "./assets/badge-what-you-find.png";
-import sketchBg from "./assets/sketch-warm-wide.jpg";
-import houseBg from "./assets/house-bg-photo.jpg";
+import sketchBg from "./assets/sketch-warm-wide.webp";
+import houseBg from "./assets/house-bg-photo.webp";
 import badge5Stages from "./assets/badge-5-stages-title.png";
 import iconIdea from "./assets/icon-stage1-idea-v2.png";
 import iconPlan from "./assets/icon-stage2-plan-v2.png";
@@ -19,9 +21,8 @@ import iconOccupancy from "./assets/icon-stage5-occupancy-v2.png";
 import checkIcon from "./assets/icon-check-circle-v2.png";
 import badgeHowHelps from "./assets/badge-how-helps-title.png";
 import badgeWhoFor from "./assets/badge-who-for.png";
-import asafPhoto from "./assets/asaf-arms-crossed.png";
+import asafPhoto from "./assets/asaf-arms-crossed.webp";
 import asafBgPhoto from "./assets/asaf-about-bg.jpg";
-import statYears from "./assets/stat-15years.png";
 import statFamilies from "./assets/stat-100families.png";
 import statMillions from "./assets/stat-millions.png";
 import AboutAsaf from '../components/AboutAsaf';
@@ -280,7 +281,7 @@ function ProductShowcase() {
               לא תיאוריה.<br />
               לא &quot;מאמרים&quot;.<br />
               <span style={{ color: GREEN_TEXT }}>אלא מידע פרקטי, קצר, מסודר וחד</span>{" "}
-              שמגיע מ-15+ שנות ניסיון בליווי עשרות משפחות בתהליכי בנייה.
+              שמגיע מ-{YEARS_OF_EXPERIENCE}+ שנות ניסיון בליווי עשרות משפחות בתהליכי בנייה.
             </p>
           </Reveal>
         </div>
@@ -617,7 +618,7 @@ function AboutSection() {
 
         <Reveal delay={280}>
           <div className="mb-2 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            <img src={statYears} alt="15 שנות ניסיון" className="mx-auto h-24 w-auto" />
+            <ExperienceYearsBadge />
             <img src={statFamilies} alt="100+ משפחות" className="mx-auto h-24 w-auto" />
             <img src={statMillions} alt="מיליוני שקלים שנחסכו" className="mx-auto h-24 w-auto" />
           </div>
@@ -625,7 +626,7 @@ function AboutSection() {
 
         <Reveal delay={400}>
           <p className="max-w-xl text-lg leading-snug text-neutral-700">
-            ב-15 השנים האחרונות ליוויתי מעל 100 משפחות בבניית הבית שלהן.
+            ב-{YEARS_OF_EXPERIENCE} השנים האחרונות ליוויתי מעל 100 משפחות בבניית הבית שלהן.
             <br />
             <br />
             המדריך שאתם מקבלים עכשיו הוא בדיוק הדברים שאני מעביר למשפחות

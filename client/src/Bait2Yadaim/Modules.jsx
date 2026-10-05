@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import m1 from "./assete/m1.png";
-import m2 from "./assete/m2.png";
+import m1 from "./assete/m1.webp";
+import m2 from "./assete/m2.webp";
 import m3 from "./assete/m3.webp";
 import m4 from "./assete/m4.webp";
 import m5 from "./assete/m5.webp";
