@@ -96,7 +96,7 @@ function CTAFormSection() {
 
                 <div className="rounded-3xl border border-neutral-200 bg-white p-8 text-center shadow-2xl">
 
-                    <form onSubmit={handleSubmit} className="space-y-4 text-right" noValidate>
+                    <form onSubmit={handleSubmit} className="space-y-4 text-right" noValidate dir="rtl">
                         <div>
                             <label htmlFor="course-name" className="mb-1 block text-sm font-bold text-neutral-700">שם:</label>
                             <input
