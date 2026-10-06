@@ -4,8 +4,9 @@ import tailwindcss from '@tailwindcss/vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import { YEARS_OF_EXPERIENCE } from './src/utils/experience.js'
 
-// הכתובת המלאה של האתר. כשעוברים לדומיין אחר, משנים כאן או מגדירים SITE_URL בשרת ההעלאה
-const SITE_URL = (process.env.SITE_URL || 'https://sargav.github.io/Sroia').replace(/\/$/, '')
+// הכתובת המלאה של האתר (בשביל sitemap.xml ו-robots.txt).
+// ב-Render מגדירים SITE_URL במשתני הסביבה. כשהדומיין יחובר, משנים שם לכתובת הדומיין
+const SITE_URL = (process.env.SITE_URL || 'https://sroia.onrender.com').replace(/\/$/, '')
 
 // העמודים שגוגל צריך להכיר (בלי עמודי תודה ותשלום)
 const PUBLIC_PAGES = ['/', '/projects', '/courses', '/application', '/guid-to-builder', '/benefit', '/contact', '/accessibility']
@@ -41,7 +42,7 @@ const seoFiles = {
 }
 
 export default defineConfig({
-  base: '/Sroia/',
+  base: '/',
   plugins: [
     react(),
     tailwindcss(),
