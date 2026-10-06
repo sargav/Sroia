@@ -1,0 +1,22 @@
+# הגדרות ההעלאה ל-Render (Blueprint).
+# ב-Render: New > Blueprint, בוחרים את הריפו, ו-Render יוצר את האתר לפי הקובץ הזה.
+services:
+  - type: web
+    runtime: static
+    name: sroia
+    rootDir: client
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    autoDeploy: true
+    # כל כתובת באתר נטענת דרך index.html, כדי שרענון בעמוד פנימי לא ייתן 404
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      # הכתובת של האתר. כשהדומיין יחובר, משנים לכתובת הדומיין
+      - key: SITE_URL
+        value: https://sroia.onrender.com
+      # הכתובת של השרת. ממלאים כשהשרת יעלה ל-Render
+      - key: VITE_API_URL
+        sync: false
