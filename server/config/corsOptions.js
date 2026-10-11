@@ -1,7 +1,12 @@
 const allowedOrigins = [
 'http://localhost:5173',
 'http://localhost:5500',
-'https://sargav.github.io' // בלי / בסוף: הדפדפן שולח את הכתובת בלי לוכסן
+'https://sargav.github.io',
+'https://sroia.onrender.com',
+'https://sroia.co.il',
+'https://www.sroia.co.il'
+
+
 ]
 const corsOptions = {
 origin: (origin, callback) => {
