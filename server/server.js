@@ -10,15 +10,12 @@ const corsOptions = require('./config/corsOptions')
 const app = express()
 const PORT = process.env.PORT || 7500 // אותו פורט שהריאקט מחפש כברירת מחדל
 
-const cookieParser = require('cookie-parser');
-
 connectDB()
 
 //middleware
 
 app.use(cors(corsOptions))
 app.use(express.json())
-app.use(cookieParser());
 app.use(express.static('public'))
 
 //routes
