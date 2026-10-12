@@ -21,6 +21,9 @@ app.use('/api/payment', (req, res, next) => {
         contentType: req.headers['content-type'] || '(אין)',
         origin: req.headers.origin || '(אין)',
         hasKey: 'key' in req.query,
+        // שמות הפרמטרים בכתובת (בלי הערכים), ומי שלח את הבקשה
+        queryFields: Object.keys(req.query).join(',') || '(אין)',
+        userAgent: req.headers['user-agent'] || '(אין)',
     })
     next()
 })
