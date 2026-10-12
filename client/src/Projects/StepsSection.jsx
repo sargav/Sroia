@@ -106,14 +106,6 @@ const StepsSection = () => {
                     }}
                   />
 
-                  {/* מספר גדול ברקע */}
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute -bottom-4 left-3 select-none text-[5.5rem] font-black leading-none text-[#8FC24B]/[0.10] transition-transform duration-500 group-hover:-translate-y-1"
-                  >
-                    {step.number}
-                  </span>
-
                   <div className="relative mb-4 flex items-center gap-4">
                     <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-md border border-[#E2E6DE] bg-[#F4F6F2] transition-colors duration-500 group-hover:border-[#8FC24B] group-hover:bg-[#EEF6E3]">
                       <img
