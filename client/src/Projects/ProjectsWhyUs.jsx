@@ -60,44 +60,22 @@ export default function WhyUs() {
       ref={sectionRef}
       id="why-us"
       dir="rtl"
-      className="relative overflow-hidden bg-[#FBF8F2] py-16 font-['Heebo',sans-serif] md:py-20"
+      className="relative overflow-hidden bg-white py-16 font-['Heebo',sans-serif] md:py-20"
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      {/* שכבה בהירה מעל התמונה */}
-      <div className="pointer-events-none absolute inset-0 bg-white/60" />
-
-
-      {/* טשטוש לתמונת הרקע, מרוכז בפינה הימנית-עליונה ודועך שמאלה-למטה */}
-      <div
-        className="pointer-events-none absolute inset-0 backdrop-blur-2xl"
-        style={{
-          WebkitMaskImage:
-            "radial-gradient(ellipse 120% 120% at 100% 0%, black 0%, black 30%, transparent 65%)",
-          maskImage:
-            "radial-gradient(ellipse 120% 120% at 100% 0%, black 0%, black 30%, transparent 65%)",
-        }}
-      />
-
-      {/* זוהר גדול כמו ירח - חזק בפינה הימנית-עליונה, דועך לכיוון שמאל-למטה */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 120% 120% at 100% 0%, #F5F1E8 0%, #F5F1E8 15%, rgba(245,241,232,0.5) 35%, transparent 65%)",
-        }}
-      />
-
+      {/* שכבה לבנה מעל התמונה - בלי טשטוש וזוהר, כדי שייראה נקי ומקצועי */}
+      <div className="pointer-events-none absolute inset-0 bg-white/85" />
 
       <div className="relative z-10 mx-auto max-w-[1180px] px-6">
         {/* אזור הכותרת */}
         <div className="mx-auto mb-12 max-w-[850px] text-center md:mb-16">
           <h2
             aria-label={mainTitle}
-            className="text-[2rem] font-bold leading-tight text-black md:text-[2.75rem]"
+            className="text-[2rem] font-bold leading-tight text-[#1C2418] md:text-[2.75rem]"
           >
             {Array.from(mainTitle).map((letter, index) => (
               <span
@@ -118,12 +96,12 @@ export default function WhyUs() {
           </h2>
 
           <div
-            className={`mx-auto my-5 h-[3px] rounded-full bg-[#78A93B] ${isVisible ? "why-line-visible" : "why-line-hidden"
+            className={`mx-auto my-5 h-[3px] bg-[#8FC24B] ${isVisible ? "why-line-visible" : "why-line-hidden"
               }`}
           />
 
           <p
-            className={`text-[1.0625rem] font-normal leading-[1.9] text-black md:text-[1.125rem] ${isVisible
+            className={`text-[1.0625rem] font-normal leading-[1.9] text-[#2E3629] md:text-[1.125rem] ${isVisible
               ? "why-description-visible"
               : "why-description-hidden"
               }`}
@@ -145,7 +123,7 @@ export default function WhyUs() {
                   ? `${950 + index * 180}ms`
                   : "0ms",
               }}
-              className={`why-card group relative overflow-hidden rounded-2xl border border-[#DDE5D4] bg-white/85 p-7 shadow-[0_10px_35px_rgba(48,67,38,0.07)] backdrop-blur-sm md:p-8 ${isVisible ? "why-card-visible" : "why-card-hidden"
+              className={`why-card group relative overflow-hidden rounded-lg border border-[#E2E6DE] border-t-4 border-t-[#8FC24B] bg-white p-7 shadow-[0_6px_20px_rgba(28,36,24,0.06)] md:p-8 ${isVisible ? "why-card-visible" : "why-card-hidden"
                 }`}
             >
               {/* שכבה עדינה בתוך הכרטיס */}
@@ -157,7 +135,7 @@ export default function WhyUs() {
               {/* מספר גדול ברקע */}
               <span
                 aria-hidden="true"
-                className="why-card-number pointer-events-none absolute -left-2 -top-5 select-none text-[5.75rem] font-bold leading-none text-[#60942b]/[0.06]"
+                className="why-card-number pointer-events-none absolute -left-2 -top-5 select-none text-[5.75rem] font-black leading-none text-[#8FC24B]/[0.12]"
               >
                 {item.number}
               </span>
@@ -170,7 +148,7 @@ export default function WhyUs() {
               {/* הכותרת נכתבת מחדש במעבר */}
               <h3
                 aria-label={item.title}
-                className="why-card-title relative z-10 mb-3 text-[1.3125rem] font-bold leading-[1.45] text-[#26321F]"
+                className="why-card-title relative z-10 mb-3 text-[1.3125rem] font-black leading-[1.45] text-[#1C2418]"
               >
                 <span className="why-title-original">
                   <bdi>{item.title}</bdi>
@@ -181,11 +159,11 @@ export default function WhyUs() {
                 </span>
               </h3>
 
-              <p className="relative z-10 text-[1rem] font-normal leading-[1.85] text-[#596153]">
+              <p className="relative z-10 text-[1rem] font-normal leading-[1.85] text-[#4E5749]">
                 {item.text}
               </p>
 
-              <div className="why-card-line relative z-10 mt-7 h-[3px] w-10 rounded-full bg-[#78A93B]" />
+              <div className="why-card-line relative z-10 mt-7 h-[3px] w-10 bg-[#8FC24B]" />
             </article>
           ))}
         </div>

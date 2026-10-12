@@ -33,18 +33,18 @@ function GallerySection({status}) {
                         type="button"
                         aria-label="לתמונות הקודמות"
                         className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full p-2.5 shadow-md transition hover:opacity-90"
-                        style={{ backgroundColor: "#7CB342" }}
+                        style={{ backgroundColor: "#8FC24B" }}
                     >
-                        <ChevronRight size={24} color="white" />
+                        <ChevronRight size={24} color="#132009" />
                     </button>
                     <button
                         onClick={() => scroll(-1)}
                         type="button"
                         aria-label="לתמונות הבאות"
                         className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full p-2.5 shadow-md transition hover:opacity-90"
-                        style={{ backgroundColor: "#7CB342" }}
+                        style={{ backgroundColor: "#8FC24B" }}
                     >
-                        <ChevronLeft size={24} color="white" />
+                        <ChevronLeft size={24} color="#132009" />
                     </button>
 
                     <div
@@ -56,7 +56,7 @@ function GallerySection({status}) {
                                 key={i}
                                 src={src}
                                 alt={`תמונת סיום בנייה ${i + 1}`}
-                                className="h-65 w-auto flex-shrink-0 rounded-2xl object-cover shadow-lg ring-2 ring-[#DCEAC7]"
+                                className="h-65 w-auto flex-shrink-0 rounded-md object-cover shadow-lg"
                             />
                         ))}
                     </div>
