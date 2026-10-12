@@ -234,16 +234,16 @@ export default function ProjectManagement() {
           </div>
         </div>
       </section>
-      <div>
-        <div className="text-center mt-6 font-['Heebo',sans-serif]">
+      <div className="bg-[#F4F6F2] pb-4">
+        <div className="text-center pt-10 font-['Heebo',sans-serif]">
           <div className=" flex items-center justify-center gap-4">
-            <span className="h-px w-10 bg-gradient-to-l from-[#8EAD70] to-transparent" />
+            <span className="h-[2px] w-10 bg-[#8FC24B]" />
 
-            <h2 className="text-xl font-black tracking-[0.16em] text-[#738f59]">
+            <h2 className="text-xl font-black tracking-[0.16em] text-[#4A7F14]">
               ככה זה נראה כשגומרים נכון
             </h2>
 
-            <span className="h-px w-10 bg-gradient-to-r from-[#8EAD70] to-transparent" />
+            <span className="h-[2px] w-10 bg-[#8FC24B]" />
           </div>
 
         </div>
@@ -252,27 +252,26 @@ export default function ProjectManagement() {
 
       <section
         dir="rtl"
-        className="relative overflow-hidden bg-[#F7F5EF] py-20 font-['Heebo',sans-serif] md:py-12"
+        className="relative overflow-hidden bg-[#1F2E18] py-20 font-['Heebo',sans-serif] md:py-12"
       >
-        <div className="pointer-events-none absolute -bottom-40 -left-32 h-[380px] w-[380px] rounded-full bg-[#EDE4D6]/60 blur-3xl" />
 
         <div className="relative mx-auto max-w-[760px] px-5 text-center">
           <div className="mb-5 flex items-center justify-center gap-4">
-            <span className="h-px w-10 bg-gradient-to-l from-[#8EAD70] to-transparent" />
+            <span className="h-[2px] w-10 bg-[#8FC24B]" />
 
-            <span className="text-[0.8125rem] font-black tracking-[0.16em] text-[#5f774a]">
+            <span className="text-[0.8125rem] font-black tracking-[0.16em] text-[#9ED164]">
               בואו נדבר
             </span>
 
-            <span className="h-px w-10 bg-gradient-to-r from-[#8EAD70] to-transparent" />
+            <span className="h-[2px] w-10 bg-[#8FC24B]" />
           </div>
 
-          <h2 className="text-[2rem] font-black leading-[1.25] text-[#31382D] md:text-[2.625rem]">
+          <h2 className="text-[2rem] font-black leading-[1.25] text-white md:text-[2.625rem]">
             מוכנים להתחיל
-            <span className="block text-[#77965c]">לבנות נכון?</span>
+            <span className="block text-[#9ED164]">לבנות נכון?</span>
           </h2>
 
-          <p className="mx-auto mt-5 max-w-[560px] text-[1rem] font-medium leading-[1.9] text-[#667061]">
+          <p className="mx-auto mt-5 max-w-[560px] text-[1rem] font-medium leading-[1.9] text-white/75">
             השאירו פרטים ונחזור אליכם בהקדם כדי להבין את הצורך שלכם
             ולהתחיל לתכנן יחד את הפרויקט.
           </p>
@@ -281,13 +280,13 @@ export default function ProjectManagement() {
             onClick={() => navigate("/contact")}
             className="
               group mt-9 inline-flex items-center gap-3
-              rounded-full bg-[#7F9F62] px-9 py-4
-              text-[1rem] font-black text-[#1a1a1a]
-              shadow-[0_14px_35px_rgba(127,159,98,0.28)]
+              rounded-full bg-[#8FC24B] px-9 py-4
+              text-[1rem] font-black text-[#132009]
+              shadow-[0_9px_25px_rgba(143,194,75,0.3)]
               transition-all duration-300
               hover:-translate-y-1
-              hover:bg-[#6E8C54]
-              hover:shadow-[0_18px_42px_rgba(127,159,98,0.36)]
+              hover:bg-[#9ED164]
+              hover:shadow-[0_14px_32px_rgba(143,194,75,0.4)]
             "
           >
             <span>ליצירת קשר</span>

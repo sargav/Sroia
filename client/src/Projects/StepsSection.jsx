@@ -36,31 +36,26 @@ const StepsSection = () => {
   return (
     <section
       dir="rtl"
-      className="relative overflow-hidden bg-gradient-to-b from-[#FBFCF8] via-white to-[#F4F8EF] py-20 font-['Heebo',sans-serif] md:py-28"
+      className="relative overflow-hidden bg-[#F4F6F2] py-16 font-['Heebo',sans-serif] md:py-20"
     >
-      {/* עיטורי רקע */}
-      <div className="pointer-events-none absolute -right-40 top-10 h-[430px] w-[430px] rounded-full bg-[#DDEECD]/50 blur-3xl" />
-
-      <div className="pointer-events-none absolute -bottom-48 -left-32 h-[430px] w-[430px] rounded-full bg-[#EAF3DF]/70 blur-3xl" />
-
-      <div className="relative mx-auto max-w-[1450px] px-5 md:px-10 lg:px-14">
+      <div className="relative mx-auto max-w-[1300px] px-5 md:px-10 lg:px-14">
         {/* כותרת */}
-        <div className="mx-auto mb-10 max-w-[760px] text-center">
-          <div className=" flex items-center justify-center gap-4">
-            <span className="h-px w-12 bg-gradient-to-l from-[#8BB959] to-transparent" />
+        <div className="mx-auto mb-12 max-w-[760px] text-center">
+          <div className="mb-5 flex items-center justify-center gap-4">
+            <span className="h-[2px] w-10 bg-[#8FC24B]" />
 
-            <span className="text-[0.8125rem] font-black tracking-[0.18em] text-[#76A93C]">
+            <span className="text-[0.8125rem] font-black tracking-[0.16em] text-[#4A7F14]">
               מהתוכנית ועד המפתח
             </span>
 
-            <span className="h-px w-12 bg-gradient-to-r from-[#8BB959] to-transparent" />
+            <span className="h-[2px] w-10 bg-[#8FC24B]" />
           </div>
 
-          <h2 className="text-[2.125rem] font-black leading-[1.25] text-[#273122] md:text-[3.125rem]">
+          <h2 className="text-[2.125rem] font-black leading-[1.2] text-[#1C2418] md:text-[2.75rem]">
             4 השלבים לבית המושלם
           </h2>
 
-          <p className="mx-auto mt-6 max-w-[680px] text-[1.0625rem] font-medium leading-8 text-[#61705E] md:text-[1.125rem]">
+          <p className="mx-auto mt-5 max-w-[680px] text-[1.0625rem] font-medium leading-8 text-[#4E5749] md:text-[1.125rem]">
             תהליך מסודר, שקוף ומתוכנן שמאפשר לכם לדעת בכל רגע איפה
             הפרויקט עומד ומה הצעד הבא.
           </p>
@@ -68,108 +63,51 @@ const StepsSection = () => {
 
         {/* אזור השלבים */}
         <div className="relative">
-          {/* קו המחבר בין השלבים */}
-          <div className="pointer-events-none absolute left-[8%] right-[8%] top-[54px] hidden lg:block">
-            <div className="relative border-t-2 border-dashed border-[#BCD69F]">
-              <span className="absolute -top-[5px] left-0 h-2 w-2 rounded-full bg-[#91BC5F]" />
-
-              <span className="absolute -top-[5px] right-0 h-2 w-2 rounded-full bg-[#91BC5F]" />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 gap-x-7 gap-y-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">
+          <ol className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step, index) => (
-              <article
+              <li
                 key={step.number}
-                className={`
-              group relative z-10
-              ${index % 2 === 1 ? "lg:mt-14" : ""}
-            `}
+                className={`group relative z-10 flex flex-col ${index % 2 === 1 ? "lg:mt-14" : ""}`}
               >
-                {/* עיגול האייקון */}
-                <div className="relative z-20 mx-auto mb-[-44px] flex h-[108px] w-[108px] items-center justify-center rounded-full border-[7px] border-[#F8FAF5] bg-white shadow-[0_12px_32px_rgba(67,93,52,0.14)] transition-all duration-500 group-hover:-translate-y-2 group-hover:scale-105">
-                  <div className="absolute inset-[7px] rounded-full border border-dashed border-[#B9D49B]" />
-
-                  <img
-                    src={step.icon}
-                    alt=""
-                    className="relative z-10 h-[76px] w-[76px] object-contain transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3"
-                  />
-
-
+                {/* מספר השלב על הציר */}
+                <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#8FC24B] text-[1.25rem] font-black text-[#132009] ring-[6px] ring-[#F4F6F2] transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-110">
+                  {step.number}
                 </div>
 
                 {/* תוכן השלב */}
                 <div
                   className="
-                relative min-h-[300px] overflow-hidden
-                rounded-[36px_12px_36px_12px]
-                border border-[#D8E6CB]
-                bg-white/90 px-7 pb-8 pt-[68px]
-                text-center
-                shadow-[0_18px_50px_rgba(54,78,42,0.08)]
-                backdrop-blur-sm
-                transition-all duration-500
-                group-hover:-translate-y-2
-                group-hover:border-[#A9CB84]
-                group-hover:shadow-[0_28px_65px_rgba(54,78,42,0.15)]
-              "
+                    relative flex flex-1 flex-col
+                    rounded-lg border border-[#E2E6DE]
+                    bg-white px-6 py-7
+                    shadow-[0_6px_20px_rgba(28,36,24,0.06)]
+                    transition-all duration-500
+                    group-hover:-translate-y-2
+                    group-hover:border-[#8FC24B]
+                    group-hover:shadow-[0_14px_32px_rgba(28,36,24,0.12)]
+                  "
                 >
-                  {/* מספר גדול ברקע */}
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute -left-2 -top-5 select-none text-[6.5625rem] font-black leading-none text-[#8DBB57]/[0.055] transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2 group-hover:scale-105"
-                  >
-                    {step.number}
-                  </span>
-
-                  {/* פס צדדי */}
-                  <div className="absolute bottom-10 right-0 top-24 w-[3px] rounded-l-full bg-gradient-to-b from-[#8DBB57] to-[#C5DDAA]" />
-
-                  <h3 className="relative z-10 text-[1.375rem] font-black leading-[1.4] text-[#293324]">
-                    {step.title}
-                  </h3>
-
-                  <p className="relative z-10 mt-4 text-[0.9688rem] font-medium leading-[1.85] text-[#667063]">
-                    {step.text}
-                  </p>
-
-                  {/* פס תחתון */}
-                  <div className="relative z-10 mx-auto mt-7 flex items-center justify-center">
-                    <span className="h-[3px] w-10 rounded-full bg-[#91BC5F] transition-all duration-500 group-hover:w-20" />
+                  <div className="mb-5 flex items-center gap-4">
+                    <img
+                      src={step.icon}
+                      alt=""
+                      className="h-14 w-14 flex-shrink-0 object-contain transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3"
+                    />
+                    <h3 className="text-[1.25rem] font-black leading-[1.35] text-[#1C2418]">
+                      {step.title}
+                    </h3>
                   </div>
 
-                  {/* עיגול דקורטיבי */}
+                  <p className="text-[0.9688rem] font-medium leading-[1.8] text-[#4E5749]">
+                    {step.text}
+                  </p>
                 </div>
-              </article>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
-
-        {/* שורה תחתונה
-        <div className="mx-auto mt-10 flex max-w-[850px] items-center gap-5">
-          <span className="h-px flex-1 bg-gradient-to-l from-[#BDD5A4] to-transparent" />
-
-          <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#B9D49B] bg-white text-[#79A846] shadow-sm">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-5 w-5"
-              aria-hidden="true"
-            >
-              <path d="m5 12 4 4L19 6" />
-            </svg>
-          </div>
-
-          <span className="h-px flex-1 bg-gradient-to-r from-[#BDD5A4] to-transparent" />
-        </div> */}
       </div>
     </section>
-
   );
 };
 
