@@ -26,6 +26,8 @@ const pick = (body, name) => {
 const cardcomNotify = async (req, res) => {
     const { CARDCOM_TERMINAL, CARDCOM_API_NAME, CARDCOM_API_PASSWORD, CARDCOM_NOTIFY_KEY } = process.env
 
+    // מילת הקוד יכולה להגיע אחרי ?key= או בתוך הכתובת: /cardcom-notify/<מילת הקוד>
+    const givenKey = req.params.key || req.query.key
     const body = { ...req.query, ...(req.body || {}) }
     const dealNumber = pick(body, 'internaldealnumber')
     // שורה בלוג על כל הודעה שמגיעה, כדי שאפשר יהיה לראות ב-Render שההודעה הגיעה
@@ -33,11 +35,11 @@ const cardcomNotify = async (req, res) => {
         deal: dealNumber || '(אין)',
         responsecode: pick(body, 'responsecode') || '(אין)',
         product: pick(body, 'ProdName') || '(אין)',
-        keyOk: !CARDCOM_NOTIFY_KEY || req.query.key === CARDCOM_NOTIFY_KEY,
+        keyOk: !CARDCOM_NOTIFY_KEY || givenKey === CARDCOM_NOTIFY_KEY,
     })
 
     // מילת הקוד בכתובת
-    if (CARDCOM_NOTIFY_KEY && req.query.key !== CARDCOM_NOTIFY_KEY) {
+    if (CARDCOM_NOTIFY_KEY && givenKey !== CARDCOM_NOTIFY_KEY) {
         console.warn('Cardcom notify: מילת הקוד בכתובת לא תואמת ל-CARDCOM_NOTIFY_KEY')
         return res.sendStatus(403)
     }
