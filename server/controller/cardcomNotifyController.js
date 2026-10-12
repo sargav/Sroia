@@ -26,13 +26,21 @@ const pick = (body, name) => {
 const cardcomNotify = async (req, res) => {
     const { CARDCOM_TERMINAL, CARDCOM_API_NAME, CARDCOM_API_PASSWORD, CARDCOM_NOTIFY_KEY } = process.env
 
-    // מילת הקוד בכתובת
-    if (CARDCOM_NOTIFY_KEY && req.query.key !== CARDCOM_NOTIFY_KEY) {
-        return res.sendStatus(403)
-    }
-
     const body = { ...req.query, ...(req.body || {}) }
     const dealNumber = pick(body, 'internaldealnumber')
+    // שורה בלוג על כל הודעה שמגיעה, כדי שאפשר יהיה לראות ב-Render שההודעה הגיעה
+    console.log('Cardcom notify התקבל:', {
+        deal: dealNumber || '(אין)',
+        responsecode: pick(body, 'responsecode') || '(אין)',
+        product: pick(body, 'ProdName') || '(אין)',
+        keyOk: !CARDCOM_NOTIFY_KEY || req.query.key === CARDCOM_NOTIFY_KEY,
+    })
+
+    // מילת הקוד בכתובת
+    if (CARDCOM_NOTIFY_KEY && req.query.key !== CARDCOM_NOTIFY_KEY) {
+        console.warn('Cardcom notify: מילת הקוד בכתובת לא תואמת ל-CARDCOM_NOTIFY_KEY')
+        return res.sendStatus(403)
+    }
 
     // הודעה בלי מספר עסקה, או עסקה שנכשלה - אין מה לשמור. מחזירים 200 כדי ש-Cardcom לא ינסו שוב
     if (!dealNumber || pick(body, 'responsecode') !== '0') {
@@ -68,6 +76,7 @@ const cardcomNotify = async (req, res) => {
             return res.sendStatus(200)
         }
 
+        console.log('Cardcom notify: עסקה אומתה ונשמרת', dealNumber)
         await Payment.create({
             internalDealNumber: dealNumber,
             productName: pick(body, 'ProdName') || pick(body, 'GroupDescription'),
