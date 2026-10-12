@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { ArrowLeft, Compass, Quote } from "lucide-react";
 import HomeBuildingIntro from "./HomeBuildingIntro";
 import MistakesCompass from "./MistakesCompass";
@@ -98,6 +99,13 @@ function PhoneMockup({ src, alt, className = "" }) {
 }
 
 function CompassPage() {
+  // כשמגיעים עם #pricing בכתובת (למשל מכפתור "לנסות שוב" בדף התוצאה), גוללים ישר לטופס התשלום
+  useEffect(() => {
+    if (window.location.hash !== "#pricing") return undefined;
+    const timer = setTimeout(scrollToPricing, 300);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div dir="rtl" className="min-h-screen overflow-hidden bg-[#F6F5EF] font-['Heebo',sans-serif] text-[#2E3423]">
       <PageStyles />
