@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { CheckCircle2, AlertCircle, ArrowRight } from "lucide-react";
 
 /**
- * דף התוצאה של התשלום. את הכתובת שלו מגדירים בחברת האשראי:
- *   כתובת הצלחה:  https://הדומיין-שלך/payment-result?status=success
- *   כתובת כישלון:  https://הדומיין-שלך/payment-result?status=failed
+ * דף התוצאה של התשלום. השרת שולח את הכתובת שלו ל-Cardcom בכל תשלום (לפי SITE_URL):
+ *   כתובת הצלחה:  https://הדומיין-שלך/payment-result?status=success&order=...
+ *   כתובת כישלון:  https://הדומיין-שלך/payment-result?status=failed&order=...
  *
  * מה הוא עושה:
  * 1. אם נטען בתוך חלון התשלום (iframe): שולח את התוצאה לדף הראשי וסוגר את החלון.

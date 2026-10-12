@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import footerBg from './assets/footerBg.webp'
 import PrivacyPolicyDialog from "../components/PrivacyPolicyDialog";
 import TermsOfUseDialog from '../components/TermsOfUseDialog';
+import api from '../api-config';
 import pi4 from './assets/pi4.webp'
 const GREEN = '#7CB342';
 
@@ -64,15 +65,20 @@ function CTAFormSection() {
 
         setSubmitError("");
         setSubmitting(true);
-        navigate("/pay"); // ניווט לעמוד התשלום
-        // try {
-        //     // כאן תוכל להוסיף את הלוגיקה לשליחת הנתונים לשרת בנוסף
-        //     navigate("/thank-you");
-        // } catch (err) {
-        //     setSubmitError("משהו השתבש בשליחה, נסו שוב בעוד רגע.");
-        // } finally {
-        //     setSubmitting(false);
-        // }
+        try {
+            // השרת קובע את המחיר ויוצר דף תשלום חד-פעמי ב-Cardcom. מכאן נשלח רק המוצר ופרטי הלקוח
+            const { data } = await api.post("/api/payment/create", {
+                product: "course",
+                name: form.name.trim(),
+                email: form.email.trim(),
+                phone: form.phone.replace(/[\s-]/g, ""),
+            });
+            navigate("/pay", { state: { paymentUrl: data.paymentUrl } }); // ניווט לעמוד התשלום
+        } catch {
+            setSubmitError("משהו השתבש ביצירת דף התשלום, נסו שוב בעוד רגע.");
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (

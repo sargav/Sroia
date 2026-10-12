@@ -15,8 +15,7 @@ import Reveal from "../components/Reveal";
 import useAccessibleDialog from "../../components/useAccessibleDialog";
 import SectionHeading from "../components/SectionHeading";
 import PhotoBackground from "./PhotoBackground";
-
-const PAYMENT_BASE = "https://secure.cardcom.solutions/EA/EA5/aZoY90GJgke3fTZVlqxFnQ/PaymentSP";
+import api from "../../api-config";
 
 const pricingItems = [
   [MonitorSmartphone, "המצפן הדיגיטלי — 5 מודולים, 34 פרקים", "497 ₪"],
@@ -46,6 +45,8 @@ export default function PricingSection({ photo }) {
   const [paymentUrl, setPaymentUrl] = useState("");
   const paymentDialogRef = useAccessibleDialog(Boolean(paymentUrl), () => setPaymentUrl(""));
   const [paymentStatus, setPaymentStatus] = useState(null); // null | "success" | "failed"
+  const [creating, setCreating] = useState(false);
+  const [createError, setCreateError] = useState("");
 
   // כשהתשלום פתוח במסך מלא: לנעול גלילה של הדף ולאפשר סגירה עם Esc
   useEffect(() => {
@@ -72,14 +73,25 @@ export default function PricingSection({ photo }) {
     return () => window.removeEventListener("message", onMessage);
   }, []);
 
-  function handlePayment(event) {
+  // השרת קובע את המחיר ויוצר דף תשלום חד-פעמי ב-Cardcom. מכאן נשלח רק המוצר ופרטי הלקוח
+  async function handlePayment(event) {
     event.preventDefault();
-    if (!fullName.trim() || !email.trim()) return;
-    const url = `${PAYMENT_BASE}?subscribers_email=${encodeURIComponent(
-      email.trim()
-    )}&subscribers_name=${encodeURIComponent(fullName.trim())}`;
+    if (!fullName.trim() || !email.trim() || creating) return;
     setPaymentStatus(null);
-    setPaymentUrl(url);
+    setCreateError("");
+    setCreating(true);
+    try {
+      const { data } = await api.post("/api/payment/create", {
+        product: "mazpen",
+        name: fullName.trim(),
+        email: email.trim(),
+      });
+      setPaymentUrl(data.paymentUrl);
+    } catch {
+      setCreateError("משהו השתבש ביצירת דף התשלום. נסו שוב בעוד רגע.");
+    } finally {
+      setCreating(false);
+    }
   }
 
   return (
@@ -178,12 +190,16 @@ export default function PricingSection({ photo }) {
                       className="w-full rounded-2xl border border-[#D3DECC] bg-white px-4 py-3.5 text-left outline-none transition focus:border-[#759855] focus:ring-4 focus:ring-[#4d7a1f]/50"
                     />
                   </label>
+                  {createError && (
+                    <p role="alert" className="text-sm font-bold text-[#B5563A]">{createError}</p>
+                  )}
                   <button
                     type="submit"
-                    className="mt-2 flex w-full items-center justify-center gap-2 rounded-2xl bg-[#5A7F43] px-6 py-4 text-lg font-black text-white shadow-[0_14px_35px_rgba(90,127,67,.28)] transition hover:-translate-y-1 hover:bg-[#4F7239]"
+                    disabled={creating}
+                    className="mt-2 disabled:opacity-60 flex w-full items-center justify-center gap-2 rounded-2xl bg-[#5A7F43] px-6 py-4 text-lg font-black text-white shadow-[0_14px_35px_rgba(90,127,67,.28)] transition hover:-translate-y-1 hover:bg-[#4F7239]"
                   >
                     <KeyRound size={20} />
-                    אני רוצה להצטרף עכשיו
+                    {creating ? "פותח את דף התשלום..." : "אני רוצה להצטרף עכשיו"}
                   </button>
                 </form>
 
