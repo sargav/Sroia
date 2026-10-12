@@ -1,5 +1,6 @@
 const Contact = require('../models/Contact');
 const checking = require('../functionChecking/functionChecking')
+const sendContactEmail = require('../utils/sendContactEmail')
 const sources = [
     'main_contact',    // טופס צור קשר מהאתר הראשי
     'builder_guide',  // טופס הורדת המדריך לבונה
@@ -33,6 +34,13 @@ const addContact = async (req, res) => {
                 source,
                 message
             });
+
+            // שליחת מייל התראה. לא מחכים לו, כדי שהגולש יקבל תשובה מיד,
+            // ואם המייל נכשל - הפנייה כבר שמורה במסד הנתונים ורק נרשמת שגיאה בלוג
+            sendContactEmail(newContact).catch((err) =>
+                console.error('שגיאה בשליחת מייל התראה:', err.message)
+            )
+
             return res.status(201).json({ message: "Contact added successfully", data: newContact });
         }
 
