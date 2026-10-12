@@ -14,6 +14,17 @@ connectDB()
 
 //middleware
 
+// כל בקשה לנתיבי התשלום נרשמת בלוג עוד לפני כל עיבוד,
+// כדי לראות ב-Render אם Cardcom בכלל הגיעו לשרת (גם אם משהו נכשל אחר כך)
+app.use('/api/payment', (req, res, next) => {
+    console.log('בקשת תשלום נכנסה:', req.method, req.path, {
+        contentType: req.headers['content-type'] || '(אין)',
+        origin: req.headers.origin || '(אין)',
+        hasKey: 'key' in req.query,
+    })
+    next()
+})
+
 app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.static('public'))
@@ -27,6 +38,12 @@ app.use('/api/testi-urls', require('./routes/TestiUrlRoute')) //נתיב להח�
 app.use('/api/payment', require('./routes/paymentRoute')) // נתיב ליצירת תשלום   
 app.get('/', (req, res) => {
     res.send('hello from server')
+})
+
+// שגיאות שקרו לפני שהבקשה הגיעה לנתיב (JSON לא תקין, CORS וכו')
+app.use((err, req, res, next) => {
+    console.error('שגיאה בבקשה', req.method, req.originalUrl, '-', err.message)
+    res.status(err.status || 500).json({ message: 'Server error' })
 })
 
 //DB conection
