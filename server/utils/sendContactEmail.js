@@ -1,6 +1,6 @@
 // שליחת מייל התראה על כל פנייה חדשה מהאתר, דרך Resend (שליחה ב-HTTPS, בלי SMTP)
 // משתני סביבה נדרשים (בקובץ .env מקומית, וב-Render תחת Environment):
-//   RESEND_API_KEY - המפתח מ-Resend
+//   WEB_SROIA - המפתח מ-Resend
 //   MAIL_FROM      - הכתובת שממנה נשלח המייל, על הדומיין המאומת. לדוגמה: אתר סרויה <noreply@your-domain.co.il>
 //   MAIL_TO        - לאן לשלוח את ההתראה. אפשר כמה כתובות מופרדות בפסיק
 
@@ -28,11 +28,11 @@ const row = (label, value) => `
     </tr>`
 
 const sendContactEmail = async (contact) => {
-    const { RESEND_API_KEY, MAIL_FROM, MAIL_TO } = process.env
+    const { WEB_SROIA, MAIL_FROM, MAIL_TO } = process.env
 
     // אם ההגדרות חסרות, לא מפילים את השרת - רק כותבים ללוג
-    if (!RESEND_API_KEY || !MAIL_FROM || !MAIL_TO) {
-        console.warn('שליחת מייל דולגה: חסרים RESEND_API_KEY / MAIL_FROM / MAIL_TO')
+    if (!WEB_SROIA || !MAIL_FROM || !MAIL_TO) {
+        console.warn('שליחת מייל דולגה: חסרים WEB_SROIA / MAIL_FROM / MAIL_TO')
         return
     }
 
@@ -58,7 +58,7 @@ const sendContactEmail = async (contact) => {
     const response = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
-            Authorization: `Bearer ${RESEND_API_KEY}`,
+            Authorization: `Bearer ${WEB_SROIA}`,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
