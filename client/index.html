@@ -8,6 +8,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>סרויה ניהול פרויקטים</title>
   <meta name="description" content="ליווי, ניהול ופיקוח מקצועי לבנייה פרטית מהמגרש ועד המפתח. %YEARS_OF_EXPERIENCE% שנות ניסיון ומעל 100 משפחות שבנו בית בלי הפתעות ובלי חריגות בתקציב." />
+  <!--
+    יציאה מחלון התשלום:
+    התשלום של Cardcom נפתח בתוך iframe באתר. בסוף התשלום Cardcom מעבירים את ה-iframe לכתובת באתר,
+    ובלי זה האתר כולו היה נטען בתוך החלון הקטן ("אתר בתוך אתר").
+    האתר אף פעם לא מציג את עצמו בתוך iframe, אז אם זה קורה: מעבירים את החלון הראשי לאותה כתובת
+    ולא טוענים כלום בתוך ה-iframe. זה רץ לפני React, כדי שלא יהיה הבהוב.
+  -->
+  <script>
+    (function () {
+      try {
+        if (window.self === window.top) return;
+        // גישה לכתובת של החלון הראשי עובדת רק אם הוא האתר שלנו. אחרת נזרקת שגיאה ולא עושים כלום
+        if (window.top.location.origin !== window.location.origin) return;
+        window.__FRAME_BREAKOUT__ = true;
+        document.documentElement.style.display = "none";
+        window.top.location.replace(window.location.href);
+      } catch (e) { /* חלון ראשי מאתר אחר - לא נוגעים */ }
+    })();
+  </script>
 </head>
 
 <body>

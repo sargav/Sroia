@@ -27,8 +27,12 @@
 ## תשלום (Cardcom)
 
 בהגדרות דף התשלום ב-Cardcom:
-- כתובת הצלחה:  `https://הדומיין-שלך/payment-result?status=success`
-- כתובת כישלון: `https://הדומיין-שלך/payment-result?status=failed`
+- כתובת הצלחה:  `https://הדומיין-שלך/payment-result?status=success&product=mazpen`
+- כתובת כישלון: `https://הדומיין-שלך/payment-result?status=failed&product=mazpen`
+- (בדף התשלום של הקורס: אותו דבר עם `product=course`)
+
+התשלום נפתח בתוך iframe. כש-Cardcom מעבירים את ה-iframe לאתר, סקריפט קטן ב-`index.html` מעביר את החלון הראשי לאותה כתובת,
+כך שהאתר לא נטען "בתוך עצמו". זה עובד לכל כתובת באתר, אבל כדאי להפנות לדף התוצאה כדי שהלקוח יראה הודעת תודה או כישלון.
 
 הכתובות חייבות להיות ציבוריות (לא localhost). דף התוצאה מדפיס לקונסולה את כל הפרמטרים ש-Cardcom החזירה.
 אל תשחררו גישה למוצר על סמך הפרמטר status בכתובת (אפשר לזייף אותו). אישור אמיתי מגיע מה-webhook של Cardcom.

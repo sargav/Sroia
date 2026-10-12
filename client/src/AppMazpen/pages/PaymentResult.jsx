@@ -11,7 +11,7 @@ import { CheckCircle2, AlertCircle, ArrowLeft, RotateCcw, MessageCircle } from "
  *   (לקורס: product=course)
  *
  * התשלום עצמו נפתח בתוך חלון (iframe) באתר. כש-Cardcom מעבירים את החלון לדף הזה,
- * הדף "יוצא" מהחלון ונטען על כל המסך, כדי שהלקוח יראה דף תודה מלא ולא מסך אפור בתוך החלון.
+ * הסקריפט ב-index.html מזהה את זה ומעביר את החלון הראשי לכאן, כך שהדף נטען על כל המסך.
  *
  * חשוב: את status בכתובת אפשר לזייף, ולכן הדף רק מציג הודעה.
  * אישור התשלום האמיתי מגיע לשרת ישירות מ-Cardcom (cardcom-notify), ושם הוא נשמר.
@@ -27,20 +27,10 @@ export default function PaymentResult() {
   const params = new URLSearchParams(window.location.search);
   const ok = params.get("status") === "success";
   const product = PRODUCTS[params.get("product")] || null;
-  const insideFrame = window.self !== window.top;
 
   useEffect(() => {
     // כל מה ש-Cardcom הוסיפו לכתובת (מספר עסקה וכו'), כדי שאפשר יהיה לראות בקונסולה
     console.log("תשובה מחברת האשראי:", Object.fromEntries(params));
-
-    // בתוך חלון התשלום: טוענים את אותו דף על כל המסך
-    if (insideFrame) {
-      try {
-        window.top.location.replace(window.location.href);
-      } catch {
-        // אם הדפדפן חוסם, הדף פשוט יוצג בתוך החלון
-      }
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
