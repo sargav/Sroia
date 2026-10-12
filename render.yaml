@@ -13,6 +13,28 @@ services:
       - type: rewrite
         source: /*
         destination: /index.html
+    # כותרות אבטחה שהדפדפן מקבל עם כל דף באתר
+    headers:
+      # אתרים אחרים לא יכולים להציג את האתר בתוך iframe שלהם (הגנה מפני clickjacking).
+      # האתר עצמו כן יכול, וזה מה שמאפשר לדף התוצאה להיטען בתוך חלון התשלום של Cardcom
+      - path: /*
+        name: Content-Security-Policy
+        value: "frame-ancestors 'self'"
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      # הדפדפן ייכנס לאתר רק ב-https
+      - path: /*
+        name: Strict-Transport-Security
+        value: max-age=31536000; includeSubDomains
+      # הדפדפן לא ינחש סוגי קבצים
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      # אתרים חיצוניים (כולל Cardcom) מקבלים רק את כתובת האתר, בלי הנתיב והפרמטרים
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
     envVars:
       # הכתובת של האתר. כשהדומיין יחובר, משנים לכתובת הדומיין
       - key: SITE_URL

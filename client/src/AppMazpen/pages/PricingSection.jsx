@@ -252,6 +252,7 @@ export default function PricingSection({ photo }) {
           src={paymentUrl}
           title="תשלום מאובטח"
           allow="payment"
+          referrerPolicy="strict-origin-when-cross-origin"
           className="w-full flex-1 border-0 bg-white"
         />
       </div>
