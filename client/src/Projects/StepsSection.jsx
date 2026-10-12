@@ -77,28 +77,65 @@ const StepsSection = () => {
                 {/* תוכן השלב */}
                 <div
                   className="
-                    relative flex flex-1 flex-col
+                    relative flex flex-1 flex-col overflow-hidden
                     rounded-lg border border-[#E2E6DE]
-                    bg-white px-6 py-7
+                    bg-white px-6 pb-6 pt-8
                     shadow-[0_6px_20px_rgba(28,36,24,0.06)]
                     transition-all duration-500
                     group-hover:-translate-y-2
                     group-hover:border-[#8FC24B]
-                    group-hover:shadow-[0_14px_32px_rgba(28,36,24,0.12)]
+                    group-hover:shadow-[0_18px_40px_rgba(28,36,24,0.14)]
                   "
                 >
-                  <div className="mb-5 flex items-center gap-4">
-                    <img
-                      src={step.icon}
-                      alt=""
-                      className="h-14 w-14 flex-shrink-0 object-contain transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3"
-                    />
-                    <h3 className="text-[1.25rem] font-black leading-[1.35] text-[#1C2418]">
-                      {step.title}
-                    </h3>
+                  {/* פס ירוק עליון שמתמלא במעבר עכבר */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute right-0 top-0 h-1 w-1/3 bg-[#8FC24B] transition-all duration-500 group-hover:w-full"
+                  />
+
+                  {/* רשת שרטוט עדינה בפינה, כמו נייר תוכניות */}
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute left-0 top-0 h-28 w-28 opacity-60"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(#E3EBD9 1px, transparent 1px), linear-gradient(90deg, #E3EBD9 1px, transparent 1px)",
+                      backgroundSize: "14px 14px",
+                      WebkitMaskImage: "linear-gradient(to bottom right, black, transparent 75%)",
+                      maskImage: "linear-gradient(to bottom right, black, transparent 75%)",
+                    }}
+                  />
+
+                  {/* מספר גדול ברקע */}
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -bottom-4 left-3 select-none text-[5.5rem] font-black leading-none text-[#8FC24B]/[0.10] transition-transform duration-500 group-hover:-translate-y-1"
+                  >
+                    {step.number}
+                  </span>
+
+                  <div className="relative mb-4 flex items-center gap-4">
+                    <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-md border border-[#E2E6DE] bg-[#F4F6F2] transition-colors duration-500 group-hover:border-[#8FC24B] group-hover:bg-[#EEF6E3]">
+                      <img
+                        src={step.icon}
+                        alt=""
+                        className="h-12 w-12 object-contain transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3"
+                      />
+                    </div>
+                    <div>
+                      <span className="mb-1 block text-[0.75rem] font-black tracking-[0.14em] text-[#4A7F14]">
+                        שלב {step.number}
+                      </span>
+                      <h3 className="text-[1.25rem] font-black leading-[1.3] text-[#1C2418]">
+                        {step.title}
+                      </h3>
+                    </div>
                   </div>
 
-                  <p className="text-[0.9688rem] font-medium leading-[1.8] text-[#4E5749]">
+                  {/* קו הפרדה */}
+                  <span aria-hidden="true" className="relative mb-4 block h-px w-full bg-[#E2E6DE]" />
+
+                  <p className="relative text-[0.9688rem] font-medium leading-[1.8] text-[#4E5749]">
                     {step.text}
                   </p>
                 </div>
