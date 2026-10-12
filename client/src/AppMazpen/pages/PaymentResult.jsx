@@ -1,68 +1,125 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { CheckCircle2, AlertCircle, ArrowRight } from "lucide-react";
+import { CheckCircle2, AlertCircle, ArrowLeft, RotateCcw, MessageCircle } from "lucide-react";
 
 /**
- * דף התוצאה של התשלום. את הכתובת שלו מגדירים בחברת האשראי:
- *   כתובת הצלחה:  https://הדומיין-שלך/payment-result?status=success
- *   כתובת כישלון:  https://הדומיין-שלך/payment-result?status=failed
+ * דף התוצאה של התשלום (תודה / כישלון).
  *
- * מה הוא עושה:
- * 1. אם נטען בתוך חלון התשלום (iframe): שולח את התוצאה לדף הראשי וסוגר את החלון.
- * 2. אם נפתח כדף רגיל: מציג הודעה ללקוח.
- * 3. תמיד מדפיס לקונסולה את כל הפרמטרים שחברת האשראי החזירה, כדי שתוכלי לראות אותם.
+ * את הכתובות מגדירים ב-Cardcom, בהגדרות של כל דף תשלום:
+ *   הצלחה:  https://<האתר>/payment-result?status=success&product=mazpen
+ *   כישלון: https://<האתר>/payment-result?status=failed&product=mazpen
+ *   (לקורס: product=course)
  *
- * חשוב: הפרמטר status ב-URL אפשר לזייף. אל תשחררו גישה למוצר על סמך הדף הזה.
- * את אישור התשלום האמיתי מקבלים מהודעת השרת (webhook) של חברת האשראי.
+ * התשלום עצמו נפתח בתוך חלון (iframe) באתר. כש-Cardcom מעבירים את החלון לדף הזה,
+ * הדף "יוצא" מהחלון ונטען על כל המסך, כדי שהלקוח יראה דף תודה מלא ולא מסך אפור בתוך החלון.
+ *
+ * חשוב: את status בכתובת אפשר לזייף, ולכן הדף רק מציג הודעה.
+ * אישור התשלום האמיתי מגיע לשרת ישירות מ-Cardcom (cardcom-notify), ושם הוא נשמר.
  */
+
+// לאן חוזרים כדי לנסות לשלם שוב, ואיך קוראים למוצר
+const PRODUCTS = {
+  mazpen: { name: "המצפן לבונה", retry: "/application#pricing" },
+  course: { name: "קורס בית בשתי ידיים", retry: "/pay" },
+};
+
 export default function PaymentResult() {
   const params = new URLSearchParams(window.location.search);
-  const status = params.get("status") === "success" ? "success" : "failed";
+  const ok = params.get("status") === "success";
+  const product = PRODUCTS[params.get("product")] || null;
   const insideFrame = window.self !== window.top;
 
   useEffect(() => {
-    // כל מה שחברת האשראי הוסיפה לכתובת (קוד תשובה, מספר עסקה וכו')
+    // כל מה ש-Cardcom הוסיפו לכתובת (מספר עסקה וכו'), כדי שאפשר יהיה לראות בקונסולה
     console.log("תשובה מחברת האשראי:", Object.fromEntries(params));
 
+    // בתוך חלון התשלום: טוענים את אותו דף על כל המסך
     if (insideFrame) {
-      window.parent.postMessage({ type: "payment-result", status }, window.location.origin);
+      try {
+        window.top.location.replace(window.location.href);
+      } catch {
+        // אם הדפדפן חוסם, הדף פשוט יוצג בתוך החלון
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // בתוך החלון: הדף הראשי מטפל בתוצאה, אין מה להציג
-  if (insideFrame) return null;
-
-  const ok = status === "success";
+  useEffect(() => {
+    document.title = ok ? "תודה על הרכישה | סרויה" : "התשלום לא הושלם | סרויה";
+  }, [ok]);
 
   return (
     <div
       dir="rtl"
-      className="grid min-h-[70vh] place-items-center py-16 bg-[#F5F6F1] px-5 font-['Heebo',sans-serif] text-[#2D382B]"
+      className="grid min-h-[75vh] place-items-center bg-[#F5F6F1] px-5 py-14 font-['Heebo',sans-serif] text-[#2D382B]"
     >
-      <div className="w-full max-w-md rounded-[8px_36px_8px_36px] border border-[#D3DECC] bg-white p-8 text-center shadow-[0_30px_80px_rgba(50,65,43,.12)] md:p-10">
+      <div className="w-full max-w-lg rounded-[8px_36px_8px_36px] border border-[#D3DECC] bg-white px-6 py-10 text-center shadow-[0_30px_80px_rgba(50,65,43,.12)] md:px-10">
         <span
           className={`mx-auto grid h-16 w-16 place-items-center rounded-full ${
-            ok ? "bg-[#E8F0DE] text-[#5A7F43]" : "bg-[#FBF1EC] text-[#B5563A]"
+            ok ? "bg-[#E8F0DE] text-[#5A7F43]" : "bg-[#F6ECEC] text-[#A33A3A]"
           }`}
         >
           {ok ? <CheckCircle2 size={32} aria-hidden="true" /> : <AlertCircle size={32} aria-hidden="true" />}
         </span>
 
-        <h1 className="mt-6 text-2xl font-black text-[#35402F]">
-          {ok ? "התשלום התקבל בהצלחה" : "התשלום לא הושלם"}
-        </h1>
-        <p className="mt-3 text-base font-medium leading-7 text-[#6B7567]">
-          {ok ? "פרטי הגישה נשלחים אלייך למייל." : "לא בוצע חיוב. אפשר לחזור ולנסות שוב."}
-        </p>
+        {/* תווית קטנה עם קווים דקים מכל צד */}
+        <div className="mt-6 flex items-center justify-center gap-4">
+          <span className="h-px w-10 [background-image:linear-gradient(to_left,#8EAD70,transparent)]" />
+          <span className="text-xs font-black tracking-[0.18em] text-[#5c7347]">
+            {product ? product.name : ok ? "רכישה הושלמה" : "תשלום"}
+          </span>
+          <span className="h-px w-10 [background-image:linear-gradient(to_right,#8EAD70,transparent)]" />
+        </div>
 
-        <Link
-          to="/"
-          className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#5A7F43] px-7 py-3 font-black text-white transition hover:bg-[#4F7239]"
-        >
-          חזרה לאתר
-          <ArrowRight size={18} aria-hidden="true" />
-        </Link>
+        {/* כותרת בשתי שורות: כהה ואז ירוק */}
+        <h1 className="mt-4 text-3xl font-black leading-[1.25] md:text-4xl">
+          {ok ? "תודה רבה!" : "התשלום לא הושלם"}
+          <span className="mt-1 block text-[#709151]">
+            {ok ? "הרכישה התקבלה." : "אפשר לנסות שוב."}
+          </span>
+        </h1>
+
+        {ok ? (
+          <>
+            <p className="mx-auto mt-5 max-w-sm text-base font-medium leading-7 text-[#656f62]">
+              פרטי הגישה וחשבונית נשלחים אלייך למייל. אם לא הגיעו תוך כמה דקות, כדאי להציץ גם בתיקיית הספאם.
+            </p>
+            <div className="mt-8 flex flex-col items-center gap-3">
+              <Link
+                to="/"
+                className="inline-flex items-center gap-2 rounded-full bg-[#5A7F43] px-7 py-3 font-black text-white transition hover:bg-[#4F7239]"
+              >
+                חזרה לאתר
+                <ArrowLeft size={18} aria-hidden="true" />
+              </Link>
+              <Link to="/contact" className="text-sm font-bold text-[#5c7347] underline-offset-4 hover:underline">
+                משהו לא הגיע? צרו קשר
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <p className="mx-auto mt-5 max-w-sm text-base font-medium leading-7 text-[#656f62]">
+              לא בוצע חיוב. ייתכן שהכרטיס נדחה או שהתשלום בוטל, ואפשר לנסות שוב עם אותו כרטיס או עם כרטיס אחר.
+            </p>
+            <div className="mt-8 flex flex-col items-center gap-3">
+              <Link
+                to={product ? product.retry : "/"}
+                className="inline-flex items-center gap-2 rounded-full bg-[#5A7F43] px-7 py-3 font-black text-white transition hover:bg-[#4F7239]"
+              >
+                <RotateCcw size={18} aria-hidden="true" />
+                {product ? "לנסות לשלם שוב" : "חזרה לאתר"}
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-1.5 text-sm font-bold text-[#5c7347] underline-offset-4 hover:underline"
+              >
+                <MessageCircle size={16} aria-hidden="true" />
+                צריכים עזרה בתשלום? צרו קשר
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
