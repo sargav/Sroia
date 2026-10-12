@@ -135,18 +135,19 @@ export default function Hero() {
 
       <div className="grid h-full grid-cols-1 md:grid-cols-[1fr_0.95fr]">
         {/* פאנל טקסט - ירוק כהה מלא */}
-        <div className="order-2 relative flex items-center overflow-hidden px-6 py-16 md:order-1 md:px-12 md:py-0 lg:px-16">
+        <div className="order-2 relative flex items-center justify-center overflow-hidden px-6 py-16 md:order-1 md:px-12 md:py-0 lg:px-16">
           {/* עיטור רקע עדין */}
           <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#3A5A28]/50 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-[#3A5A28]/40 blur-3xl" />
 
-          <div className="relative max-w-[560px]">
+          <div className="relative mx-auto w-full max-w-[560px] text-center">
             {/* תווית עליונה */}
-            <div className="hero-tag-in mb-5 flex items-center gap-3">
+            <div className="hero-tag-in mb-5 flex items-center justify-center gap-3">
               <span className="hero-line-open h-px bg-[#8FC24B]" />
               <span className="text-[0.8125rem] font-bold uppercase tracking-[0.2em] text-[#9ED164]">
                 בוטיק לניהול בנייה
               </span>
+              <span className="hero-line-open h-px bg-[#8FC24B]" />
             </div>
 
             {/* כותרת - נכתבת אות-אות */}
@@ -170,7 +171,7 @@ export default function Hero() {
 
             {/* תיאור + כפתור - נכנסים יחד, אחרי שהכותרת מסיימת להיכתב */}
             <div className="hero-rest-in">
-              <p className="mb-7 max-w-[500px] text-[0.9375rem] font-medium leading-[1.8] text-white/70 md:text-[1rem]">
+              <p className="mx-auto mb-7 max-w-[500px] text-[0.9375rem] font-medium leading-[1.8] text-white/70 md:text-[1rem]">
                 חברת בוטיק לניהול ופיקוח בנייה, המתמחה בליווי משפחות הבונות
                 את ביתן הפרטי. אנו מספקים מעטפת מעשית ומקצועית המבטיחה
                 חיסכון כספי ניכר, שמירה על לוחות זמנים ושקט נפשי מוחלט.
@@ -182,7 +183,7 @@ export default function Hero() {
                   navigate("/contact");
                 }}
                 className="
-                  group flex items-center justify-center gap-4
+                  group mx-auto flex items-center justify-center gap-4
                   rounded-full bg-[#8FC24B]
                   px-7 py-4 text-[0.9375rem] font-bold text-[#132009]
                   shadow-[0_9px_25px_rgba(143,194,75,0.3)]
