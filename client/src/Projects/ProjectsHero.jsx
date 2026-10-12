@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import heroImg from "./assets/hero.webp";
 
@@ -31,8 +31,12 @@ function AnimatedText({
 
 export default function Hero() {
   const navigate = useNavigate();
-
- 
+  // התמונה מופיעה רק אחרי שנטענה כולה, כדי שלא ייראה שהיא "יורדת" מלמעלה בהדרגה
+  const imgRef = useRef(null);
+  const [imgLoaded, setImgLoaded] = useState(false);
+  useEffect(() => {
+    if (imgRef.current?.complete) setImgLoaded(true); // כבר בזיכרון של הדפדפן
+  }, []);
 
   return (
     <section
@@ -206,11 +210,17 @@ export default function Hero() {
         </div>
 
         {/* פאנל תמונה */}
-        <div className="hero-image-fade order-1 relative h-[320px] overflow-hidden md:order-2 md:h-full">
+        <div className="order-1 relative h-[320px] overflow-hidden md:order-2 md:h-full">
           <img
+            ref={imgRef}
             src={heroImg}
             alt="בית פרטי"
-            className="absolute inset-0 h-full w-full object-cover"
+            fetchPriority="high"
+            decoding="async"
+            onLoad={() => setImgLoaded(true)}
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-out motion-reduce:transition-none ${
+              imgLoaded ? "opacity-100" : "opacity-0"
+            }`}
           />
           {/* גוון עדין על התמונה, לשמירה על התאמה לפלטה */}
           <div className="pointer-events-none absolute inset-0 bg-[#1F2E18]/10" />
