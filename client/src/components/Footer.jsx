@@ -1,5 +1,9 @@
 import { FaInstagram, FaFacebookF, FaWhatsapp } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import PrivacyPolicyDialog from './PrivacyPolicyDialog'
+import TermsOfUseDialog from './TermsOfUseDialog'
+
+const footerLinkClass = "text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors"
 
 const Footer = () => {
   return (
@@ -43,10 +47,10 @@ const Footer = () => {
           </div></div>
 
         {/* <div className="flex flex-col md:flex-col items-center justify-between gap-6"> */}
-        <div className="flex flex-col items-end justify-between gap-6 dir-rtl ">
+        <div dir="rtl" className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
 
-          {/* קישורים בין העמודים */}
-          <nav aria-label="ניווט תחתון" className="flex flex-wrap justify-center flex-col gap-6 items-end">
+          {/* קישורים בין העמודים - צד ימין */}
+          <nav aria-label="ניווט תחתון" className="flex flex-col gap-6 items-center md:items-start">
             <Link to="/" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > דף הבית </Link>
             {/* <Link to="/about" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > אודות</Link> */}
             <Link to="/projects" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > ניהול פרויקטים </Link>
@@ -55,6 +59,13 @@ const Footer = () => {
             <Link to="/guid-to-builder" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > המדריך לבונה </Link>
             <Link to="/benefit" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > הטבות </Link>
             <Link to="/contact" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > צור קשר </Link>
+          </nav>
+
+          {/* מידע משפטי - צד שמאל */}
+          <nav aria-label="מידע משפטי" className="flex flex-col gap-6 items-center md:items-end">
+            <Link to="/accessibility" className={footerLinkClass}>הצהרת נגישות</Link>
+            <PrivacyPolicyDialog label="מדיניות פרטיות" className={footerLinkClass} />
+            <TermsOfUseDialog label="תקנון האתר" className={footerLinkClass} />
           </nav>
 
 

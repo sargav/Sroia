@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useAccessibleDialog from "./useAccessibleDialog";
 
-function PrivacyPolicyDialog() {
+function PrivacyPolicyDialog({ label = "מדיניות פרטיות ותקנון", className = "underline text-sm text-neutral-600" }) {
     const [isOpen, setIsOpen] = useState(false);
     const dialogRef = useAccessibleDialog(isOpen, () => setIsOpen(false));
 
@@ -11,9 +11,9 @@ function PrivacyPolicyDialog() {
                 type="button"
                 aria-haspopup="dialog"
                 onClick={() => setIsOpen(true)}
-                className="underline text-sm text-neutral-600"
+                className={className}
             >
-                מדיניות פרטיות ותקנון
+                {label}
             </button>
 
             {isOpen && (

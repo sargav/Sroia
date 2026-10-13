@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useAccessibleDialog from "./useAccessibleDialog";
 
-const  TermsOfUseDialog=()=> {
+const  TermsOfUseDialog=({ label = "תקנון שימוש", className = "underline text-sm text-neutral-600" })=> {
     const [isOpen, setIsOpen] = useState(false);
     const dialogRef = useAccessibleDialog(isOpen, () => setIsOpen(false));
 
@@ -11,9 +11,9 @@ const  TermsOfUseDialog=()=> {
                 type="button"
                 aria-haspopup="dialog"
                 onClick={() => setIsOpen(true)}
-                className="underline text-sm text-neutral-600"
+                className={className}
             >
-                תקנון שימוש
+                {label}
             </button>
 
             {isOpen && (
