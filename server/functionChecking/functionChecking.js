@@ -17,7 +17,7 @@ const isValidName = (name) => {
 //בדיקת תקינות טלפון
 const isValidPhone = (phone) => {
         const cleanPhone = phone.replace(/\D/g, "");
-        const phoneRegex = /^0\d{9}$/;
+        const phoneRegex = /^(?:0\d{9}|972\d{9})$/;
         return phoneRegex.test(cleanPhone);
 }
 module.exports = {
