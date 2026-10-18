@@ -28,15 +28,22 @@ const contactSchema = new mongoose.Schema({
         type: String
     },
     //הגדרת שדות נוספים למעקב אחרי הפניות
+    
     // האם הפנייה נקראה     
-    readed:{
+     isRead: {
         type: Boolean,
         default: false
     },
     // האם הפנייה נענתה
-    hasBeenReplied: {
+    isReplied: {
         type: Boolean,
         default: false
+    },
+        // הערות מנהל על הפנייה
+            adminNote: {
+        type: String,
+        trim: true,
+        maxlength: 2000
     }
 }, {
     timestamps: true
