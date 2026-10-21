@@ -14,7 +14,7 @@ const AddContact = () => {
     name: null,
     phone: null,
   });
-//שרהלה המהממת אין עליך!!! תודה על העזרה!!!
+
   const [submitted, setSubmitted] = useState(false);
   const [visible, setVisible] = useState(false);
   const [headingDone, setHeadingDone] = useState(false);
