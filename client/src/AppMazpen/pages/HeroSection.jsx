@@ -21,7 +21,7 @@ export default function HeroSection() {
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[.92fr_1.08fr] lg:gap-20">
         {/* התוכן */}
         <Reveal className="order-2 lg:order-1">
-          <div className="max-w-[620px]">
+          <div className="max-w-[38.75rem]">
             {/* ציטוט: גרשיים גדולים משני הצדדים ופס קצר מתחת */}
             <blockquote>
               <div className="flex items-start gap-2 md:gap-3">
@@ -113,7 +113,7 @@ export default function HeroSection() {
         {/* התמונה */}
         <Reveal
           delay={130}
-          className="relative order-1 mx-auto w-full max-w-[620px] lg:order-2 lg:mx-0"
+          className="relative order-1 mx-auto w-full max-w-[38.75rem] lg:order-2 lg:mx-0"
         >
           {/* המסגרות בפינות */}
           <div className="rounded-xl pointer-events-none absolute -left-3 -top-3 h-20 w-20 border-l border-t border-[#8da678] md:-left-5 md:-top-5 md:h-28 md:w-28" />
@@ -126,7 +126,7 @@ export default function HeroSection() {
               <img
                 src={heroModelV2}
                 alt="מודל של בית פרטי על גבי תכניות"
-                className="h-full min-h-[310px] w-full object-cover sm:min-h-[400px] md:min-h-[470px]"
+                className="h-full min-h-[19.375rem] w-full object-cover sm:min-h-[25rem] md:min-h-[29.375rem]"
               />
             </div>
 

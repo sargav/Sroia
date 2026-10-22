@@ -41,7 +41,7 @@ export default function Hero() {
   return (
     <section
       dir="rtl"
-      className="relative overflow-hidden bg-[#1F2E18] font-['Heebo',sans-serif] md:h-[680px]"
+      className="relative overflow-hidden bg-[#1F2E18] font-['Heebo',sans-serif] md:h-[42.5rem]"
     >
       <style>{`
         @keyframes hero-letter-in {
@@ -144,7 +144,7 @@ export default function Hero() {
           <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#3A5A28]/50 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-[#3A5A28]/40 blur-3xl" />
 
-          <div className="relative mx-auto w-full max-w-[560px] text-center">
+          <div className="relative mx-auto w-full max-w-[35rem] text-center">
             {/* תווית עליונה */}
             <div className="hero-tag-in mb-5 flex items-center justify-center gap-3">
               <span className="hero-line-open h-px bg-[#8FC24B]" />
@@ -175,7 +175,7 @@ export default function Hero() {
 
             {/* תיאור + כפתור - נכנסים יחד, אחרי שהכותרת מסיימת להיכתב */}
             <div className="hero-rest-in">
-              <p className="mx-auto mb-7 max-w-[500px] text-[0.9375rem] font-medium leading-[1.8] text-white/70 md:text-[1rem]">
+              <p className="mx-auto mb-7 max-w-[31.25rem] text-[0.9375rem] font-medium leading-[1.8] text-white/70 md:text-[1rem]">
                 חברת בוטיק לניהול ופיקוח בנייה, המתמחה בליווי משפחות הבונות
                 את ביתן הפרטי. אנו מספקים מעטפת מעשית ומקצועית המבטיחה
                 חיסכון כספי ניכר, שמירה על לוחות זמנים ושקט נפשי מוחלט.
@@ -210,7 +210,7 @@ export default function Hero() {
         </div>
 
         {/* פאנל תמונה */}
-        <div className="order-1 relative h-[320px] overflow-hidden md:order-2 md:h-full">
+        <div className="order-1 relative h-[20rem] overflow-hidden md:order-2 md:h-full">
           <img
             ref={imgRef}
             src={heroImg}

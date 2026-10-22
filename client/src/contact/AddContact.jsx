@@ -68,7 +68,7 @@ const AddContact = () => {
     <section
       id="contact"
       dir="rtl"
-      className="relative isolate min-h-[680px] overflow-hidden bg-[#EDE8DC] py-16 font-['Heebo',sans-serif] md:py-24"
+      className="relative isolate min-h-[42.5rem] overflow-hidden bg-[#EDE8DC] py-16 font-['Heebo',sans-serif] md:py-24"
       style={{
         backgroundImage: `url(${myBgImage})`,
         backgroundPosition: "center",
@@ -104,7 +104,7 @@ const AddContact = () => {
       {/* שכבה תחתונה */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-[#E5DFD1]/25 to-transparent" />
 
-      <div className="mx-auto grid max-w-[1180px] items-center gap-12 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+      <div className="mx-auto grid max-w-[73.75rem] items-center gap-12 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         {/* תוכן צדדי */}
         <div className="text-center text-[#26321F] lg:text-right">
           <div
@@ -138,7 +138,7 @@ const AddContact = () => {
           </h1>
 
           <p
-            className="mx-auto mt-6 max-w-[480px] text-[1.0625rem] font-medium leading-[1.9] text-[#4F594A] lg:mx-0"
+            className="mx-auto mt-6 max-w-[30rem] text-[1.0625rem] font-medium leading-[1.9] text-[#4F594A] lg:mx-0"
             style={
               headingDone
                 ? { animation: "fadeInUp 0.7s ease-out both" }
@@ -150,7 +150,7 @@ const AddContact = () => {
           </p>
 
           {/* שלבים */}
-          <div className="mx-auto mt-9 max-w-[450px] lg:mx-0 text-black/99">
+          <div className="mx-auto mt-9 max-w-[28.125rem] lg:mx-0 text-black/99">
             <ContactStep number="01" text="ממלאים פרטים קצרים" visible={headingDone} delay={150} />
             <ContactStep number="02" text="אנחנו עוברים על הפנייה" visible={headingDone} delay={300} />
             <ContactStep
@@ -328,7 +328,7 @@ const AddContact = () => {
 
           {/* הודעת הצלחה */}
           {submitted && (
-            <div role="status" className="relative z-10 flex min-h-[450px] flex-col items-center justify-center text-center">
+            <div role="status" className="relative z-10 flex min-h-[28.125rem] flex-col items-center justify-center text-center">
               <div
                 className="mb-5 flex h-20 w-20 items-center justify-center rounded-full border border-[#78A93B]/30 bg-[#78A93B]/10 text-[2.375rem] font-bold text-[#60942b]"
                 style={{ animation: "popIn 0.6s ease-out both" }}

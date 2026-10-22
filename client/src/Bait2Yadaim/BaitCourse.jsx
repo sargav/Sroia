@@ -33,7 +33,7 @@ const BaitCourse = () => {
             </div>
 
             <div
-                className="relative bg-cover bg-center bg-no-repeat min-h-[500px] w-full flex flex-col items-center justify-end"
+                className="relative bg-cover bg-center bg-no-repeat min-h-[31.25rem] w-full flex flex-col items-center justify-end"
                 style={{ backgroundImage: `url(${view1})` }}
             >
                 <div className="absolute inset-0 bg-white/3 backdrop-blur-sm" />

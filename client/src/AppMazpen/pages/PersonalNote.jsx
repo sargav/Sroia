@@ -22,7 +22,7 @@ export default function PersonalNote() {
           {/* טבעת לבנה חיצונית + צל רך */}
           <div className="rounded-full bg-white p-2 shadow-[0_16px_40px_rgba(50,65,43,.18)] md:p-2.5">
             {/* טבעת ירוקה */}
-            <div className="h-[150px] w-[150px] overflow-hidden rounded-full border-4 border-[#7DB847] bg-[#EEF3E6] sm:h-[170px] sm:w-[170px] md:h-[190px] md:w-[190px]">
+            <div className="h-[9.375rem] w-[9.375rem] overflow-hidden rounded-full border-4 border-[#7DB847] bg-[#EEF3E6] sm:h-[10.625rem] sm:w-[10.625rem] md:h-[11.875rem] md:w-[11.875rem]">
               <img
                 src={asafPersonal}
                 alt="אסף סרויה"

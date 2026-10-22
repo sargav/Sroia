@@ -38,9 +38,9 @@ const StepsSection = () => {
       dir="rtl"
       className="relative overflow-hidden bg-[#F4F6F2] py-16 font-['Heebo',sans-serif] md:py-20"
     >
-      <div className="relative mx-auto max-w-[1300px] px-5 md:px-10 lg:px-14">
+      <div className="relative mx-auto max-w-[81.25rem] px-5 md:px-10 lg:px-14">
         {/* כותרת */}
-        <div className="mx-auto mb-12 max-w-[760px] text-center">
+        <div className="mx-auto mb-12 max-w-[47.5rem] text-center">
           <div className="mb-5 flex items-center justify-center gap-4">
             <span className="h-[2px] w-10 bg-[#8FC24B]" />
 
@@ -55,7 +55,7 @@ const StepsSection = () => {
             4 השלבים לבית המושלם
           </h2>
 
-          <p className="mx-auto mt-5 max-w-[680px] text-[1.0625rem] font-medium leading-8 text-[#4E5749] md:text-[1.125rem]">
+          <p className="mx-auto mt-5 max-w-[42.5rem] text-[1.0625rem] font-medium leading-8 text-[#4E5749] md:text-[1.125rem]">
             תהליך מסודר, שקוף ומתוכנן שמאפשר לכם לדעת בכל רגע איפה
             הפרויקט עומד ומה הצעד הבא.
           </p>

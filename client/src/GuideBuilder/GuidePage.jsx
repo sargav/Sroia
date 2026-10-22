@@ -446,7 +446,7 @@ function CenteredChecklist({ items }) {
   return (
     <div
       className="mx-auto w-full space-y-2.5 p-5 text-center"
-      style={{ border: "15px solid rgba(255,255,255,0.75)", borderRadius: "24px 24px 48px 48px", maxWidth: "400px" }}
+      style={{ border: "15px solid rgba(255,255,255,0.75)", borderRadius: "24px 24px 48px 48px", maxWidth: "25rem" }}
     >
       {items.map((item, i) => (
         <Reveal key={i} delay={i * 120}>

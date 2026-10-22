@@ -41,9 +41,9 @@ export default function Services() {
             {/* שכבה בהירה כדי שהטקסט יהיה ברור */}
             <div className="absolute inset-0 bg-[#FBF8F2]/75" />
 
-            <div className="relative z-10 mx-auto max-w-[1180px] px-6">
+            <div className="relative z-10 mx-auto max-w-[73.75rem] px-6">
                 {/* אזור הכותרת */}
-                <div className="mx-auto mb-12 flex max-w-[750px] flex-col items-center text-center md:mb-14">
+                <div className="mx-auto mb-12 flex max-w-[46.875rem] flex-col items-center text-center md:mb-14">
                     {/* כותרת קטנה */}
                     <div className="mb-4 flex items-center justify-center gap-3">
                         <span className="h-[2px] w-9 rounded-full bg-[#659B2D]" />
@@ -61,7 +61,7 @@ export default function Services() {
                     </h2>
 
                     {/* טקסט הסבר */}
-                    <p className="mt-5 max-w-[600px] text-[1rem] font-normal leading-[1.8] text-[#626A5D]">
+                    <p className="mt-5 max-w-[37.5rem] text-[1rem] font-normal leading-[1.8] text-[#626A5D]">
                         בחרו את רמת הליווי שמתאימה לכם וקבלו את הכלים הדרושים
                         לתהליך מסודר, ברור ומדויק.
                     </p>

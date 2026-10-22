@@ -61,7 +61,7 @@ export default function FixedBackgroundUrgencySection() {
           padding: "90px 24px",
         }}
       >
-        <div style={{ maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
+        <div style={{ maxWidth: "40rem", margin: "0 auto", textAlign: "center" }}>
           <h2
             style={{
               fontSize: "1.5rem",

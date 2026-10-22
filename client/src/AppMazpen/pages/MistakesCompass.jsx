@@ -53,7 +53,7 @@ export default function MistakesCompass({ mistakes }) {
         <div className="mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-2 md:gap-14">
           {/* המצפן: שבע תחנות על טבעת, והמחט מצביעה על התחנה הפעילה */}
           <Reveal>
-            <div className="relative mx-auto aspect-square w-full max-w-[300px] sm:max-w-[380px] md:max-w-[440px]">
+            <div className="relative mx-auto aspect-square w-full max-w-[18.75rem] sm:max-w-[23.75rem] md:max-w-[27.5rem]">
               <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden="true">
                 <circle cx="50" cy="50" r={RADIUS} fill="none" stroke="#D3DECC" strokeWidth="0.6" strokeDasharray="1.2 1.6" />
                 <circle
@@ -110,7 +110,7 @@ export default function MistakesCompass({ mistakes }) {
 
           {/* התוכן של התחנה הפעילה */}
           <Reveal delay={100}>
-            <article aria-live="polite" className="group relative min-h-[250px] overflow-hidden rounded-[8px_30px_8px_30px] border border-[#D3DECC] bg-white/85 p-6 shadow-[0_12px_35px_rgba(65,83,56,.06)] backdrop-blur-sm md:p-8">
+            <article aria-live="polite" className="group relative min-h-[15.625rem] overflow-hidden rounded-[8px_30px_8px_30px] border border-[#D3DECC] bg-white/85 p-6 shadow-[0_12px_35px_rgba(65,83,56,.06)] backdrop-blur-sm md:p-8">
               <span
                 aria-hidden="true"
                 className="pointer-events-none absolute -left-2 -top-6 select-none text-[7.5rem] font-black leading-none text-[#7E9D65]/[0.07]"
@@ -119,7 +119,7 @@ export default function MistakesCompass({ mistakes }) {
               </span>
               <span className="absolute right-0 top-0 h-[3px] w-16 bg-[#91AF76]" />
 
-              <div className="relative z-10 flex min-h-[200px] flex-col">
+              <div className="relative z-10 flex min-h-[12.5rem] flex-col">
                 <h3 className="text-xl font-black leading-8 text-[#35402F] md:text-2xl">{title}</h3>
                 <p className="mt-3 text-sm font-medium leading-7 text-[#656f62] md:text-base md:leading-8">
                   {text}

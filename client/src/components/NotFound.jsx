@@ -9,7 +9,7 @@ export default function NotFound() {
         dir="rtl"
         className="flex min-h-[70vh] items-center justify-center bg-[#FAFCF7] px-6 py-16 font-['Heebo',sans-serif]"
       >
-        <div className="mx-auto max-w-[560px] text-center">
+        <div className="mx-auto max-w-[35rem] text-center">
           {/* 404 קישוטי: מוצג דרך CSS כדי שלא ייחשב טקסט (הכותרת למטה אומרת את זה במילים) */}
           <p
             className="mb-2 text-[5.5rem] font-black leading-none tracking-tight text-[#7CB342]/25 before:content-['404'] md:text-[7rem]"
@@ -29,7 +29,7 @@ export default function NotFound() {
             <span className="block text-[#77965c]">בלי דלת</span>
           </h1>
 
-          <p className="mx-auto mt-5 max-w-[440px] text-[1.0625rem] font-medium leading-[1.8] text-[#667061]">
+          <p className="mx-auto mt-5 max-w-[27.5rem] text-[1.0625rem] font-medium leading-[1.8] text-[#667061]">
             הכתובת שחיפשתם לא קיימת או שהעמוד הועבר. אפשר לחזור לדף הבית,
             או לדבר איתנו ישירות.
           </p>

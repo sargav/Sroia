@@ -321,7 +321,7 @@ function CourseModulesSection() {
                     <div
                         key={current.number}
                         aria-live="polite"
-                        className="relative z-10 mx-auto -mb-10 w-full max-w-[220px]"
+                        className="relative z-10 mx-auto -mb-10 w-full max-w-[13.75rem]"
                         style={{ animation: "fadeInModule 0.4s ease" }}
                     >
                         <img

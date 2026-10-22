@@ -195,7 +195,7 @@ function TestimonialVideos({ type }) {
                         {[1, 2].map((item) => (
                             <div
                                 key={item}
-                                className="w-full max-w-[350px] overflow-hidden rounded-3xl bg-white p-3"
+                                className="w-full max-w-[21.875rem] overflow-hidden rounded-3xl bg-white p-3"
                                 style={{
                                     boxShadow:
                                         "0 16px 40px rgba(0,0,0,0.07)",
@@ -257,7 +257,7 @@ function TestimonialVideos({ type }) {
                                                 item._id ||
                                                 index
                                             }
-                                            className="group w-full max-w-[350px] overflow-hidden rounded-3xl bg-white p-3 transition duration-300 hover:-translate-y-1"
+                                            className="group w-full max-w-[21.875rem] overflow-hidden rounded-3xl bg-white p-3 transition duration-300 hover:-translate-y-1"
                                             style={{
                                                 boxShadow:
                                                     "0 16px 40px rgba(0,0,0,0.07)",

@@ -59,7 +59,7 @@ function DotGrid() {
     <svg
       viewBox="0 0 336 120"
       aria-hidden="true"
-      className="h-auto w-full max-w-[210px] shrink-0 md:max-w-[220px]"
+      className="h-auto w-full max-w-[13.125rem] shrink-0 md:max-w-[13.75rem]"
     >
       {dots}
     </svg>
@@ -196,7 +196,7 @@ export default function HomeBuildingIntro() {
               {questions.map(({ title, ghost, Icon, card, ghostColor, blob }) => (
                 <div
                   key={title}
-                  className={`relative flex items-center gap-3 overflow-hidden rounded-[18px] px-4 py-3.5 sm:min-h-[104px] sm:flex-col sm:items-start sm:justify-between sm:gap-3 md:rounded-[20px] md:p-4 ${card}`}
+                  className={`relative flex items-center gap-3 overflow-hidden rounded-[18px] px-4 py-3.5 sm:min-h-[6.5rem] sm:flex-col sm:items-start sm:justify-between sm:gap-3 md:rounded-[20px] md:p-4 ${card}`}
                 >
                   <span
                     aria-hidden="true"
@@ -216,7 +216,7 @@ export default function HomeBuildingIntro() {
           </Reveal>
 
           {/* והאמת? */}
-          <Reveal className="w-full max-w-[720px]">
+          <Reveal className="w-full max-w-[45rem]">
             <div className="rounded-[18px] border border-[#C6D3BB] bg-white/70 px-6 py-7 text-center backdrop-blur md:rounded-[22px] md:px-10 md:py-8">
               <p className="text-[0.875rem] font-black text-[#5f774a] md:text-[1rem]">והאמת?</p>
               <h3 className="mt-2 text-[1.375rem] font-black leading-[1.25] md:text-[1.875rem]">
@@ -224,7 +224,7 @@ export default function HomeBuildingIntro() {
                 <span className="text-[#759855]">לא קורות בזמן הבנייה.</span>
               </h3>
               <span className="mx-auto mt-4 block h-px w-12 bg-[#9bb681]" />
-              <p className="mx-auto mt-4 max-w-[560px] text-[0.9375rem] font-medium leading-[1.7] text-[#656f62] md:text-[1.0625rem]">
+              <p className="mx-auto mt-4 max-w-[35rem] text-[0.9375rem] font-medium leading-[1.7] text-[#656f62] md:text-[1.0625rem]">
                 הן קורות הרבה קודם — לפעמים פשוט כי לא ידעתם לשאול את השאלה הנכונה בזמן.
               </p>
             </div>
@@ -243,7 +243,7 @@ export default function HomeBuildingIntro() {
               {quotes.map(({ text, side, bubble, avatar }) => (
                 <figure
                   key={text}
-                  className={`flex max-w-[94%] items-end gap-2 md:max-w-[500px] ${side}`}
+                  className={`flex max-w-[94%] items-end gap-2 md:max-w-[31.25rem] ${side}`}
                 >
                   <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-[#759855] ${avatar}`}>
                     <User className="h-4 w-4" strokeWidth={1.7} />
@@ -260,7 +260,7 @@ export default function HomeBuildingIntro() {
 
           {/* סיום */}
           <Reveal className="flex flex-col items-center gap-6 md:flex-row md:justify-center md:gap-10">
-            <div className="flex max-w-[460px] flex-col gap-2">
+            <div className="flex max-w-[28.75rem] flex-col gap-2">
               <h3 className="text-[1.625rem] font-black leading-[1.15] md:text-[2.125rem]">
                 אתם ממש{" "}
                 <span className="relative inline-block text-[#759855]">
