@@ -36,7 +36,8 @@ export function AccessibilityProvider({ children }) {
     // מחילים את ההגדרות על תגית <html>, כך שכל האתר מגיב להן
     useEffect(() => {
         const root = document.documentElement;
-        root.style.fontSize = settings.textScale ? `${100 + settings.textScale * 10}%` : "";
+        // הגדלת הטקסט נשמרת במשתנה, כדי שתתחבר להגדלה האוטומטית במסכים גדולים (ב-App.css)
+        root.style.setProperty("--text-scale", String(1 + settings.textScale * 0.1));
 
         const classes = {
             "a11y-contrast-dark": settings.contrast === 1,

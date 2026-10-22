@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section
       dir="rtl"
-      className="relative isolate flex min-h-[680px] items-center overflow-hidden bg-[#F7F5EF] font-['Heebo',sans-serif] md:min-h-[750px]"
+      className="relative isolate flex min-h-[42.5rem] items-center overflow-hidden bg-[#F7F5EF] font-['Heebo',sans-serif] md:min-h-[46.875rem]"
     >
       <style>{`
         @keyframes hero-image-in {
@@ -106,13 +106,13 @@ export default function Hero() {
       {/* פס ירוק אנכי דק */}
       <div className="hero-stripe-grow pointer-events-none absolute right-6 top-1/2 -z-10 hidden h-[55%] w-[3px] -translate-y-1/2 rounded-full bg-gradient-to-b from-transparent via-[#78A93B]/70 to-transparent md:right-10 lg:block" />
 
-      <div className="relative mx-auto w-full max-w-[1280px] px-6 py-20 md:px-12 lg:px-20">
-        <div className="max-w-[640px]">
+      <div className="relative mx-auto w-full max-w-[80rem] px-6 py-20 md:px-12 lg:px-20">
+        <div className="max-w-[40rem]">
 
           {/* אזור הטקסט - שכבה אחת שעוברת מטושטשת לחדה */}
           <div className="hero-text-focus">
             {/* <div className="mb-6 flex items-center gap-3">
-              <span className="h-px w-[54px] bg-[#78A93B]" />
+              <span className="h-px w-[3.375rem] bg-[#78A93B]" />
               <span className="text-[0.8125rem] font-bold uppercase tracking-[0.2em] text-[#628E32]">
                 ליווי בנייה פרטית
               </span>
@@ -126,7 +126,7 @@ export default function Hero() {
 
             <div className="mb-8 mt-6 h-px w-24 bg-gradient-to-l from-[#78A93B]/60 to-transparent" />
 
-            <p className="mb-9 max-w-[540px] text-[1rem] font-medium leading-[1.9] text-[#51594C] md:text-[1.125rem]">
+            <p className="mb-9 max-w-[33.75rem] text-[1rem] font-medium leading-[1.9] text-[#51594C] md:text-[1.125rem]">
               ליווי יד ביד משלב רכישת המגרש ועד קבלת המפתח — ללא חריגות
               תקציב, ללא טעויות יקרות ובסטנדרט הגבוה ביותר.
             </p>

@@ -23,11 +23,11 @@ export default function AboutAsaf() {
       className="relative overflow-hidden bg-gradient-to-br from-[#FAFBF7] via-[#F6F8F1] to-[#F0F3E8] py-16 font-['Heebo',sans-serif] md:py-24"
     >
       {/* כתמי רקע עדינים */}
-      <div className="pointer-events-none absolute -right-24 -top-24 h-[340px] w-[340px] rounded-full bg-white/70 blur-3xl" />
+      <div className="pointer-events-none absolute -right-24 -top-24 h-[21.25rem] w-[21.25rem] rounded-full bg-white/70 blur-3xl" />
 
-      <div className="pointer-events-none absolute -bottom-28 left-[5%] h-[370px] w-[370px] rounded-full bg-[#E5EBDD]/50 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-28 left-[5%] h-[23.125rem] w-[23.125rem] rounded-full bg-[#E5EBDD]/50 blur-3xl" />
 
-      <div className="relative z-10 mx-auto max-w-[1180px] px-6">
+      <div className="relative z-10 mx-auto max-w-[73.75rem] px-6">
         {/* התוכן הראשי */}
         <div className="grid grid-cols-1 items-start gap-9 md:grid-cols-[auto_1fr] md:gap-16">
           {/* תמונה ופרטים */}
@@ -36,7 +36,7 @@ export default function AboutAsaf() {
               <img
                 src={asafImg}
                 alt="אסף סרויה"
-                className="h-[88px] w-[88px] rounded-full border-[3px] border-[#82BC3F] bg-[#F0F3E8] object-cover md:h-[140px] md:w-[140px]"
+                className="h-[5.5rem] w-[5.5rem] rounded-full border-[3px] border-[#82BC3F] bg-[#F0F3E8] object-cover md:h-[8.75rem] md:w-[8.75rem]"
               />
             </div>
 
@@ -85,7 +85,7 @@ export default function AboutAsaf() {
             </div>
 
             {/* פסקאות */}
-            <div className="max-w-[680px] border-r-2 border-[#91C755]/40 pr-5">
+            <div className="max-w-[42.5rem] border-r-2 border-[#91C755]/40 pr-5">
               <p className="mb-4 text-[1rem] font-normal leading-[1.9] text-[#4E594B]">
                 איש בנייה ותיק שהפך תשוקה לבנייה איכותית למקצוע חיים.
                 עם {YEARS_OF_EXPERIENCE} שנות ניסיון ומעל 100 פרויקטים שליווה מהיסוד ועד

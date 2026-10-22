@@ -90,13 +90,13 @@ export default function ProjectManagement() {
         />
 
         {/* עיטורי רקע עדינים */}
-        {/* <div className="pointer-events-none absolute -right-36 -top-36 h-[420px] w-[420px] rounded-full bg-[#DCEACF]/55 blur-3xl" /> */}
+        {/* <div className="pointer-events-none absolute -right-36 -top-36 h-[26.25rem] w-[26.25rem] rounded-full bg-[#DCEACF]/55 blur-3xl" /> */}
 
-        <div className="pointer-events-none absolute -bottom-44 -left-36 h-[420px] w-[420px] rounded-full bg-[#EDE4D6]/65 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-44 -left-36 h-[26.25rem] w-[26.25rem] rounded-full bg-[#EDE4D6]/65 blur-3xl" />
 
-        <div className="relative mx-auto max-w-[1250px] px-5 md:px-10 lg:px-16">
+        <div className="relative mx-auto max-w-[78.125rem] px-5 md:px-10 lg:px-16">
           {/* כותרת */}
-          <header className="mx-auto mb-16 max-w-[760px] text-center">
+          <header className="mx-auto mb-16 max-w-[47.5rem] text-center">
             <div className="mb-5 flex items-center justify-center gap-4">
               <span className="h-px w-10 bg-gradient-to-l from-[#8EAD70] to-transparent" />
 
@@ -114,14 +114,14 @@ export default function ProjectManagement() {
               </span>
             </h2>
 
-            <p className="mx-auto mt-6 max-w-[650px] text-[1.0625rem] font-medium leading-[1.9] text-[#667061]">
+            <p className="mx-auto mt-6 max-w-[40.625rem] text-[1.0625rem] font-medium leading-[1.9] text-[#667061]">
               כל החלטה שאנחנו מקבלים נשענת על אחריות, תכנון מקצועי ומחויבות
               מלאה לתהליך ולתוצאה.
             </p>
           </header>
 
           {/* הערכים */}
-          <div className="mx-auto max-w-[1050px]">
+          <div className="mx-auto max-w-[65.625rem]">
             {values.map((value, index) => (
               <article
                 key={value.title}
@@ -148,7 +148,7 @@ export default function ProjectManagement() {
                 <div
                   aria-hidden="true"
                   className="
-                      pointer-events-none absolute -left-10 -top-10 h-[180px] w-[180px]
+                      pointer-events-none absolute -left-10 -top-10 h-[11.25rem] w-[11.25rem]
                       transition-all duration-500
                       group-hover:translate-x-2
                       group-hover:translate-y-1
@@ -156,11 +156,11 @@ export default function ProjectManagement() {
                   "
                 >
                   <div
-                    className="absolute h-[140px] w-[140px] rounded-full"
+                    className="absolute h-[8.75rem] w-[8.75rem] rounded-full"
                     style={{ backgroundColor: "#8FAA74", opacity: 0.035, top: 0, left: 0 }}
                   />
                   <div
-                    className="absolute h-[90px] w-[90px] rounded-full"
+                    className="absolute h-[5.625rem] w-[5.625rem] rounded-full"
                     style={{ backgroundColor: "#8FAA74", opacity: 0.05, top: 70, left: 70 }}
                   />
                 </div>
@@ -169,7 +169,7 @@ export default function ProjectManagement() {
                   {/* אייקון */}
                   <div
                     className="
-        flex h-[82px] w-[82px] items-center justify-center
+        flex h-[5.125rem] w-[5.125rem] items-center justify-center
         rounded-full border border-[#BDCFAC]
         bg-[#F8FAF5]
         p-2
@@ -202,7 +202,7 @@ export default function ProjectManagement() {
                   </div>
 
                   {/* תיאור */}
-                  <p className="max-w-[600px] text-[0.9688rem] font-medium leading-[1.85] text-[#687163]">
+                  <p className="max-w-[37.5rem] text-[0.9688rem] font-medium leading-[1.85] text-[#687163]">
                     {value.text}
                   </p>
                 </div>
@@ -212,7 +212,7 @@ export default function ProjectManagement() {
           </div>
 
           {/* משפט סיום */}
-          <div className="mx-auto mt-12 flex max-w-[700px] items-center gap-4">
+          <div className="mx-auto mt-12 flex max-w-[43.75rem] items-center gap-4">
             <span className="h-px flex-1 bg-gradient-to-l from-[#B5C9A1] to-transparent" />
 
             <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#B8CAA7] bg-white/75 text-[#5f774a] shadow-sm">
@@ -255,7 +255,7 @@ export default function ProjectManagement() {
         className="relative overflow-hidden bg-[#1F2E18] py-20 font-['Heebo',sans-serif] md:py-12"
       >
 
-        <div className="relative mx-auto max-w-[760px] px-5 text-center">
+        <div className="relative mx-auto max-w-[47.5rem] px-5 text-center">
           <div className="mb-5 flex items-center justify-center gap-4">
             <span className="h-[2px] w-10 bg-[#8FC24B]" />
 
@@ -271,7 +271,7 @@ export default function ProjectManagement() {
             <span className="block text-[#9ED164]">לבנות נכון?</span>
           </h2>
 
-          <p className="mx-auto mt-5 max-w-[560px] text-[1rem] font-medium leading-[1.9] text-white/75">
+          <p className="mx-auto mt-5 max-w-[35rem] text-[1rem] font-medium leading-[1.9] text-white/75">
             השאירו פרטים ונחזור אליכם בהקדם כדי להבין את הצורך שלכם
             ולהתחיל לתכנן יחד את הפרויקט.
           </p>

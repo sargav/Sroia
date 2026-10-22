@@ -49,10 +49,10 @@ export default function GiftsCommunity() {
 
       <div className="pointer-events-none absolute -bottom-32 left-0 h-80 w-80 rounded-full bg-[#DCEACD]/50 blur-3xl" />
 
-      <div className="relative z-10 mx-auto max-w-[1100px] px-6">
+      <div className="relative z-10 mx-auto max-w-[68.75rem] px-6">
         {/* כותרת */}
         <header
-          className={`mx-auto mb-16 max-w-[680px] text-center transition-all duration-1000 ${isVisible
+          className={`mx-auto mb-16 max-w-[42.5rem] text-center transition-all duration-1000 ${isVisible
             ? "translate-y-0 opacity-100"
             : "translate-y-6 opacity-0"
             }`}
@@ -71,14 +71,14 @@ export default function GiftsCommunity() {
             מתנות וכלים לבנייה נכונה
           </h2>
 
-          <p className="mx-auto mt-4 max-w-[580px] text-[1rem] font-medium leading-[1.85] text-[#4F594A]">
+          <p className="mx-auto mt-4 max-w-[36.25rem] text-[1rem] font-medium leading-[1.85] text-[#4F594A]">
             מידע מקצועי וכלים שיעזרו לכם להתנהל בצורה מסודרת לאורך
             תהליך הבנייה.
           </p>
         </header>
 
         {/* המסלול */}
-        <div className="relative mx-auto max-w-[980px]">
+        <div className="relative mx-auto max-w-[61.25rem]">
           {/* המסלול המעוגל – מחשב */}
           <svg
             aria-hidden="true"
@@ -108,7 +108,7 @@ export default function GiftsCommunity() {
           <div className="absolute bottom-12 right-[25px] top-12 w-px border-r border-dashed border-[#659B2D]/35 md:hidden" />
 
           {/* פריט ראשון */}
-          <div className="relative mb-14 grid items-center md:min-h-[230px] md:grid-cols-[1fr_115px_1fr]">
+          <div className="relative mb-14 grid items-center md:min-h-[14.375rem] md:grid-cols-[1fr_115px_1fr]">
             {/* אזור תוכן */}
             <div
               className={`order-2 pr-16 transition-all duration-1000 md:order-1 md:pr-0 ${isVisible
@@ -184,7 +184,7 @@ export default function GiftsCommunity() {
                 }`}
               style={{ transitionDelay: "500ms" }}
             >
-              <div className="group/icon relative flex h-[52px] w-[52px] items-center justify-center rounded-full border-[5px] border-[#F8F7F1] bg-[#659B2D]/85 text-[#1a1a1a] shadow-[0_6px_18px_rgba(101,155,45,0.28)] md:h-[72px] md:w-[72px]">
+              <div className="group/icon relative flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-full border-[5px] border-[#F8F7F1] bg-[#659B2D]/85 text-[#1a1a1a] shadow-[0_6px_18px_rgba(101,155,45,0.28)] md:h-[4.5rem] md:w-[4.5rem]">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -215,14 +215,14 @@ export default function GiftsCommunity() {
                 }`}
               style={{ transitionDelay: "650ms" }}
             >
-              <p className="max-w-[210px] text-[0.8125rem] font-medium leading-[1.7] text-[#596153]">
+              <p className="max-w-[13.125rem] text-[0.8125rem] font-medium leading-[1.7] text-[#596153]">
                 מתחילים עם בסיס ברור ומסודר לפני קבלת החלטות.
               </p>
             </div>
           </div>
 
           {/* פריט שני */}
-          <div className="relative grid items-center md:min-h-[230px] md:grid-cols-[1fr_115px_1fr]">
+          <div className="relative grid items-center md:min-h-[14.375rem] md:grid-cols-[1fr_115px_1fr]">
             {/* טקסט קטן בצד הראשון */}
             <div
               className={`order-3 hidden pl-8 text-left transition-all duration-1000 md:order-1 md:block ${isVisible
@@ -231,7 +231,7 @@ export default function GiftsCommunity() {
                 }`}
               style={{ transitionDelay: "850ms" }}
             >
-              <p className="mr-auto max-w-[210px] text-right text-[0.8125rem] font-medium leading-[1.7] text-[#596153]">
+              <p className="mr-auto max-w-[13.125rem] text-right text-[0.8125rem] font-medium leading-[1.7] text-[#596153]">
                 ממשיכים עם מידע שימושי ומענה לאורך הדרך.
               </p>
             </div>
@@ -244,7 +244,7 @@ export default function GiftsCommunity() {
                 }`}
               style={{ transitionDelay: "900ms" }}
             >
-              <div className="group/icon relative flex h-[52px] w-[52px] items-center justify-center rounded-full border-[5px] border-[#F8F7F1] bg-[#293126] text-[#A5D76D] shadow-[0_6px_18px_rgba(38,49,31,0.25)] md:h-[72px] md:w-[72px]">
+              <div className="group/icon relative flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-full border-[5px] border-[#F8F7F1] bg-[#293126] text-[#A5D76D] shadow-[0_6px_18px_rgba(38,49,31,0.25)] md:h-[4.5rem] md:w-[4.5rem]">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"

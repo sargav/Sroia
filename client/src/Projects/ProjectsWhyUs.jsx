@@ -92,9 +92,9 @@ export default function WhyUs() {
       />
 
 
-      <div className="relative z-10 mx-auto max-w-[1180px] px-6">
+      <div className="relative z-10 mx-auto max-w-[73.75rem] px-6">
         {/* אזור הכותרת */}
-        <div className="mx-auto mb-12 max-w-[850px] text-center md:mb-16">
+        <div className="mx-auto mb-12 max-w-[53.125rem] text-center md:mb-16">
           <h2
             aria-label={mainTitle}
             className="text-[2rem] font-bold leading-tight text-black md:text-[2.75rem]"
