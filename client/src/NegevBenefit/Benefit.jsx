@@ -146,6 +146,7 @@ export default function Benefit() {
     const [form, setForm] = useState({ name: "", phone: "", email: "", stage: "" });
     const [errors, setErrors] = useState({});
     const [submitted, setSubmitted] = useState(false);
+    const [sending, setSending] = useState(false);
     const [heroVisible, setHeroVisible] = useState(false);
 
     useEffect(() => {
@@ -158,7 +159,7 @@ export default function Benefit() {
         document.getElementById("offer-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit =async (e) => {
         e.preventDefault();
         const next = {};
         if (!form.name.trim()) next.name = "נא למלא שם מלא";
@@ -167,10 +168,23 @@ export default function Benefit() {
         if (!form.email.trim() || !/^\S+@\S+\.\S+$/.test(form.email)) next.email = "נא למלא אימייל תקין";
         if (!form.stage) next.stage = "נא לבחור שלב בנייה";
         setErrors(next);
-        if (Object.keys(next).length === 0)
-         { setSubmitted(true);
-            axios.post()
-         }
+        if (Object.keys(next).length > 0) return;
+
+        setSending(true);
+        try {
+            await api.post("/api/benefits", {
+                name: form.name.trim(),
+                phone: form.phone,
+                email: form.email.trim(),
+                levelOfBuilder: form.stage,
+                benefits: [NEGEV_BENEFIT_ID],
+            });
+            setSubmitted(true);
+        } catch (err) {
+            setErrors({ form: err.response?.status === 409 ? "כבר שלחת בקשה הזו" : "משהו השתבש, נסו שוב" });
+        } finally {
+            setSending(false);
+        }
 
     };
 
@@ -242,10 +256,10 @@ export default function Benefit() {
                         שיתוף פעולה בלעדי עם חברת נגב מהמובילות בישראל בקרמיקה, סניטריה וריצוף.
                     </p>
 
-                       <button
-                type="button"
-                onClick={scrollToForm}
-                className="
+                    <button
+                        type="button"
+                        onClick={scrollToForm}
+                        className="
                   group flex items-center justify-center gap-4
                   rounded-full bg-[#86B84D]
                   px-7 py-4 text-[0.9375rem] font-bold text-[#1a1a1a]
@@ -256,16 +270,16 @@ export default function Benefit() {
                   hover:shadow-[0_14px_32px_rgba(121,169,66,0.36)]
                   mb-6
                 "
-              >
-                <span>אני רוצה את ההטבה</span>
+                    >
+                        <span>אני רוצה את ההטבה</span>
 
-                <span
-                  className="transition-transform duration-300 group-hover:-translate-x-1"
-                  aria-hidden="true"
-                >
-                  ←
-                </span>
-              </button>
+                        <span
+                            className="transition-transform duration-300 group-hover:-translate-x-1"
+                            aria-hidden="true"
+                        >
+                            ←
+                        </span>
+                    </button>
 
                     {/* benefit cards */}
                     <div
@@ -391,141 +405,141 @@ export default function Benefit() {
 
                     <Reveal delay={350} className="rounded-3xl p-6 text-right sm:p-8">
                         <div style={{ backgroundColor: CARD }} className="rounded-3xl p-6 -m-6 sm:p-8 sm:-m-8">
-                        {submitted ? (
-                            <div role="status" className="py-10 text-center">
-                                <div
-                                    className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full text-3xl"
-                                    style={{
-                                        backgroundColor: "rgba(141,198,63,0.15)",
-                                        color: GREEN,
-                                        animation: "popIn 0.6s ease-out both",
-                                    }}
-                                >
-                                    ✓
-                                </div>
-                                <h3
-                                    className="mb-2 text-xl font-bold"
-                                    style={{ animation: "fadeInUp 0.6s ease-out 150ms both" }}
-                                >
-                                    הפרטים נשלחו בהצלחה!
-                                </h3>
-                                <p
-                                    className="text-white/60"
-                                    style={{ animation: "fadeInUp 0.6s ease-out 250ms both" }}
-                                >
-                                    נציג מטעם חברת נגב יצור איתכם קשר בקרוב.
-                                </p>
-                            </div>
-                        ) : (
-                            <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-                                <div>
-                                    <label htmlFor="benefit-name" className="mb-1.5 block text-sm text-white/60">שם מלא</label>
-                                    <input
-                      id="benefit-name"
-                      name="name"
-                      autoComplete="name"
-                      aria-invalid={Boolean(errors.name)}
-                      aria-describedby={errors.name ? "benefit-name-error" : undefined}
-                                        type="text"
-                                        value={form.name}
-                                        onChange={update("name")}
-                                        placeholder="הקלידו שם מלא"
-                                        className="w-full rounded-xl border px-4 py-3 text-white placeholder-white/30 outline-none focus-visible:ring-2 focus-visible:ring-[#b5df7f] transition-colors focus:border-[color:var(--g)]"
+                            {submitted ? (
+                                <div role="status" className="py-10 text-center">
+                                    <div
+                                        className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full text-3xl"
                                         style={{
-                                            backgroundColor: "#1b1b1b",
-                                            borderColor: errors.name ? "#e05252" : "rgba(255,255,255,0.1)",
-                                            ...(errors.name ? { animation: "shake 0.4s ease-in-out" } : {}),
-                                        }}
-                                    />
-                                    {errors.name && <p id="benefit-name-error" role="alert" className="mt-1 text-xs text-red-400">{errors.name}</p>}
-                                </div>
-
-                                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                                    <div>
-                                        <label htmlFor="benefit-phone" className="mb-1.5 block text-sm text-white/60">טלפון</label>
-                                        <input
-                      id="benefit-phone"
-                      name="phone"
-                      autoComplete="tel"
-                      aria-invalid={Boolean(errors.phone)}
-                      aria-describedby={errors.phone ? "benefit-phone-error" : undefined}
-                                            type="tel"
-                                            value={form.phone}
-                                            onChange={update("phone")}
-                                            placeholder="050-0000000"
-                                            className="w-full rounded-xl border px-4 py-3 text-white placeholder-white/30 outline-none focus-visible:ring-2 focus-visible:ring-[#b5df7f]"
-                                            style={{
-                                                backgroundColor: "#1b1b1b",
-                                                borderColor: errors.phone ? "#e05252" : "rgba(255,255,255,0.1)",
-                                                ...(errors.phone ? { animation: "shake 0.4s ease-in-out" } : {}),
-                                            }}
-                                        />
-                                        {errors.phone && <p id="benefit-phone-error" role="alert" className="mt-1 text-xs text-red-400">{errors.phone}</p>}
-                                    </div>
-                                    <div>
-                                        <label htmlFor="benefit-email" className="mb-1.5 block text-sm text-white/60">אימייל</label>
-                                        <input
-                      id="benefit-email"
-                      name="email"
-                      autoComplete="email"
-                      aria-invalid={Boolean(errors.email)}
-                      aria-describedby={errors.email ? "benefit-email-error" : undefined}
-                                            type="email"
-                                            value={form.email}
-                                            onChange={update("email")}
-                                            placeholder="name@mail.com"
-                                            className="w-full rounded-xl border px-4 py-3 text-white placeholder-white/30 outline-none focus-visible:ring-2 focus-visible:ring-[#b5df7f]"
-                                            style={{
-                                                backgroundColor: "#1b1b1b",
-                                                borderColor: errors.email ? "#e05252" : "rgba(255,255,255,0.1)",
-                                                ...(errors.email ? { animation: "shake 0.4s ease-in-out" } : {}),
-                                            }}
-                                        />
-                                        {errors.email && <p id="benefit-email-error" role="alert" className="mt-1 text-xs text-red-400">{errors.email}</p>}
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label htmlFor="benefit-stage" className="mb-1.5 block text-sm text-white/60">שלב הבנייה</label>
-                                    <select
-                      id="benefit-stage"
-                      name="stage"
-                      aria-invalid={Boolean(errors.stage)}
-                      aria-describedby={errors.stage ? "benefit-stage-error" : undefined}
-                                        value={form.stage}
-                                        onChange={update("stage")}
-                                        className="w-full appearance-none rounded-xl border px-4 py-3 text-white outline-none focus-visible:ring-2 focus-visible:ring-[#b5df7f]"
-                                        style={{
-                                            backgroundColor: "#1b1b1b",
-                                            borderColor: errors.stage ? "#e05252" : "rgba(255,255,255,0.1)",
-                                            ...(errors.stage ? { animation: "shake 0.4s ease-in-out" } : {}),
+                                            backgroundColor: "rgba(141,198,63,0.15)",
+                                            color: GREEN,
+                                            animation: "popIn 0.6s ease-out both",
                                         }}
                                     >
-                                        <option value="">בחרו שלב בנייה</option>
-                                        {BUILD_STAGES.map((s) => (
-                                            <option key={s} value={s}>
-                                                {s}
-                                            </option>
-                                        ))}
-                                    </select>
-                                    {errors.stage && <p id="benefit-stage-error" role="alert" className="mt-1 text-xs text-red-400">{errors.stage}</p>}
+                                        ✓
+                                    </div>
+                                    <h3
+                                        className="mb-2 text-xl font-bold"
+                                        style={{ animation: "fadeInUp 0.6s ease-out 150ms both" }}
+                                    >
+                                        הפרטים נשלחו בהצלחה!
+                                    </h3>
+                                    <p
+                                        className="text-white/60"
+                                        style={{ animation: "fadeInUp 0.6s ease-out 250ms both" }}
+                                    >
+                                        נציג מטעם חברת נגב יצור איתכם קשר בקרוב.
+                                    </p>
                                 </div>
+                            ) : (
+                                <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+                                    <div>
+                                        <label htmlFor="benefit-name" className="mb-1.5 block text-sm text-white/60">שם מלא</label>
+                                        <input
+                                            id="benefit-name"
+                                            name="name"
+                                            autoComplete="name"
+                                            aria-invalid={Boolean(errors.name)}
+                                            aria-describedby={errors.name ? "benefit-name-error" : undefined}
+                                            type="text"
+                                            value={form.name}
+                                            onChange={update("name")}
+                                            placeholder="הקלידו שם מלא"
+                                            className="w-full rounded-xl border px-4 py-3 text-white placeholder-white/30 outline-none focus-visible:ring-2 focus-visible:ring-[#b5df7f] transition-colors focus:border-[color:var(--g)]"
+                                            style={{
+                                                backgroundColor: "#1b1b1b",
+                                                borderColor: errors.name ? "#e05252" : "rgba(255,255,255,0.1)",
+                                                ...(errors.name ? { animation: "shake 0.4s ease-in-out" } : {}),
+                                            }}
+                                        />
+                                        {errors.name && <p id="benefit-name-error" role="alert" className="mt-1 text-xs text-red-400">{errors.name}</p>}
+                                    </div>
 
-                                <button
-                                    type="submit"
-                                    className="w-full rounded-xl py-4 text-lg font-bold text-black transition-transform hover:scale-[1.01]"
-                                    style={{ backgroundColor: GREEN }}
-                                >
-                                    שליחה וקבלת ההטבה
-                                </button>
+                                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                        <div>
+                                            <label htmlFor="benefit-phone" className="mb-1.5 block text-sm text-white/60">טלפון</label>
+                                            <input
+                                                id="benefit-phone"
+                                                name="phone"
+                                                autoComplete="tel"
+                                                aria-invalid={Boolean(errors.phone)}
+                                                aria-describedby={errors.phone ? "benefit-phone-error" : undefined}
+                                                type="tel"
+                                                value={form.phone}
+                                                onChange={update("phone")}
+                                                placeholder="050-0000000"
+                                                className="w-full rounded-xl border px-4 py-3 text-white placeholder-white/30 outline-none focus-visible:ring-2 focus-visible:ring-[#b5df7f]"
+                                                style={{
+                                                    backgroundColor: "#1b1b1b",
+                                                    borderColor: errors.phone ? "#e05252" : "rgba(255,255,255,0.1)",
+                                                    ...(errors.phone ? { animation: "shake 0.4s ease-in-out" } : {}),
+                                                }}
+                                            />
+                                            {errors.phone && <p id="benefit-phone-error" role="alert" className="mt-1 text-xs text-red-400">{errors.phone}</p>}
+                                        </div>
+                                        <div>
+                                            <label htmlFor="benefit-email" className="mb-1.5 block text-sm text-white/60">אימייל</label>
+                                            <input
+                                                id="benefit-email"
+                                                name="email"
+                                                autoComplete="email"
+                                                aria-invalid={Boolean(errors.email)}
+                                                aria-describedby={errors.email ? "benefit-email-error" : undefined}
+                                                type="email"
+                                                value={form.email}
+                                                onChange={update("email")}
+                                                placeholder="name@mail.com"
+                                                className="w-full rounded-xl border px-4 py-3 text-white placeholder-white/30 outline-none focus-visible:ring-2 focus-visible:ring-[#b5df7f]"
+                                                style={{
+                                                    backgroundColor: "#1b1b1b",
+                                                    borderColor: errors.email ? "#e05252" : "rgba(255,255,255,0.1)",
+                                                    ...(errors.email ? { animation: "shake 0.4s ease-in-out" } : {}),
+                                                }}
+                                            />
+                                            {errors.email && <p id="benefit-email-error" role="alert" className="mt-1 text-xs text-red-400">{errors.email}</p>}
+                                        </div>
+                                    </div>
 
-                                {/* div ולא p: בתוך התקנון יש חלון עם כותרות ורשימות, ו-p לא יכול להכיל אותם */}
-                                <div className="text-center text-xs text-white/60">
-                                    בלחיצה על שליחה אני מאשר/ת את{" "}
-                                    <BenefitTermsDialog/>
-                                </div>
-                            </form>
-                        )}
+                                    <div>
+                                        <label htmlFor="benefit-stage" className="mb-1.5 block text-sm text-white/60">שלב הבנייה</label>
+                                        <select
+                                            id="benefit-stage"
+                                            name="stage"
+                                            aria-invalid={Boolean(errors.stage)}
+                                            aria-describedby={errors.stage ? "benefit-stage-error" : undefined}
+                                            value={form.stage}
+                                            onChange={update("stage")}
+                                            className="w-full appearance-none rounded-xl border px-4 py-3 text-white outline-none focus-visible:ring-2 focus-visible:ring-[#b5df7f]"
+                                            style={{
+                                                backgroundColor: "#1b1b1b",
+                                                borderColor: errors.stage ? "#e05252" : "rgba(255,255,255,0.1)",
+                                                ...(errors.stage ? { animation: "shake 0.4s ease-in-out" } : {}),
+                                            }}
+                                        >
+                                            <option value="">בחרו שלב בנייה</option>
+                                            {BUILD_STAGES.map((s) => (
+                                                <option key={s} value={s}>
+                                                    {s}
+                                                </option>
+                                            ))}
+                                        </select>
+                                        {errors.stage && <p id="benefit-stage-error" role="alert" className="mt-1 text-xs text-red-400">{errors.stage}</p>}
+                                    </div>
+
+                                    <button
+                                        type="submit"
+                                        className="w-full rounded-xl py-4 text-lg font-bold text-black transition-transform hover:scale-[1.01]"
+                                        style={{ backgroundColor: GREEN }}
+                                    >
+                                        שליחה וקבלת ההטבה
+                                    </button>
+
+                                    {/* div ולא p: בתוך התקנון יש חלון עם כותרות ורשימות, ו-p לא יכול להכיל אותם */}
+                                    <div className="text-center text-xs text-white/60">
+                                        בלחיצה על שליחה אני מאשר/ת את{" "}
+                                        <BenefitTermsDialog />
+                                    </div>
+                                </form>
+                            )}
                         </div>
                     </Reveal>
                 </div>
