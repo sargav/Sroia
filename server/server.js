@@ -35,7 +35,9 @@ app.use('/api/testimonials', require('./routes/testimonialRoute'))
 app.use('/api/submit-lead', require('./routes/submitLeadRoute'))//השרת ששןלח אחכ את כל המידע לרב מסר
 app.use('/api/images', require('./routes/imagesRoute')) //נתיב להחזרת התמונות  
 app.use('/api/testi-urls', require('./routes/TestiUrlRoute')) //נתיב להחזרת כתובות הוידאו של העדויות
-app.use('/api/payment', require('./routes/paymentRoute')) // נתיב ליצירת תשלום   
+app.use('/api/payment', require('./routes/paymentRoute')) // נתיב ליצירת תשלום
+app.use('/api/benefit-notifications', require('./routes/benefitNotificationRoute')) //ניהול רשימות המיילים של ההטבות
+
 app.get('/', (req, res) => {
     res.send('hello from server')
 })
