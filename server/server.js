@@ -6,6 +6,7 @@ const  mongoose  = require('mongoose')
 
 const connectDB = require('./config/dbConn')
 const corsOptions = require('./config/corsOptions')
+const { ensureDefaultBenefits } = require('./config/defaultBenefits')
 
 const app = express()
 const PORT = process.env.PORT || 7500 // אותו פורט שהריאקט מחפש כברירת מחדל
@@ -50,6 +51,7 @@ app.use((err, req, res, next) => {
 //DB conection
 mongoose.connection.once('open', () => {
     console.log('connect to mongoDB')
+    ensureDefaultBenefits() // מוודא שהטבת נגב (וכל הטבת ברירת מחדל) קיימת בקטלוג
     app.listen(PORT, () => {
         console.log(`Server running on port ${PORT}`)
     })
