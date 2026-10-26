@@ -2,6 +2,27 @@ const CustomerBenefit = require('../models/CustomerBenefit');
 const BenefitDefi = require('../models/BenefitDefi');
 const { BUILD_LEVELS } = require('../models/benefitSchema');
 const checking = require('../functionChecking/functionChecking');
+const sendBenefitEmail = require('../utils/sendBenefitEmail');
+
+// שליחת מייל התראה בלי לחכות לו, כדי שהגולש יקבל תשובה מיד.
+// אם המייל נכשל - הבקשה כבר שמורה במסד הנתונים ורק נרשמת שגיאה בלוג
+const notify = (customer, addedBenefits) => {
+    sendBenefitEmail(customer, addedBenefits).catch((err) =>
+        console.error('שגיאה בשליחת מייל הטבה:', err.message)
+    );
+};
+
+// החזרת קטלוג ההטבות לאתר, כדי שהאתר יידע אילו מזהים לשלוח
+const getCatalog = async (req, res) => {
+    try {
+        const catalog = await BenefitDefi.find({}, 'IDBenefit nameCompany levelOfBuilder -_id').lean();
+        return res.status(200).json(catalog);
+    }
+    catch (error) {
+        console.error('שגיאה בקבלת קטלוג ההטבות:', error.message);
+        return res.status(500).json({ message: 'An error occurred while getting the benefits' });
+    }
+};
 
 // הוספת הטבות ללקוח.
 // גוף הבקשה: { name, phone, email, levelOfBuilder, benefits }
@@ -57,6 +78,7 @@ const addBenefit = async (req, res) => {
                 email: cleanEmail,
                 benefits: newBenefits
             });
+            notify(newCustomer, newBenefits);
             return res.status(201).json({ message: 'Benefits added successfully', data: newCustomer });
         }
 
@@ -68,6 +90,7 @@ const addBenefit = async (req, res) => {
         }
         customer.benefits.push(...toAdd);
         await customer.save();
+        notify(customer, toAdd);
         return res.status(200).json({ message: 'Benefits added successfully', data: customer });
     }
     catch (error) {
@@ -76,4 +99,4 @@ const addBenefit = async (req, res) => {
     }
 };
 
-module.exports = { addBenefit };
+module.exports = { addBenefit, getCatalog };
