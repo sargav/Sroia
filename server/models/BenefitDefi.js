@@ -1,18 +1,6 @@
 const mongoose = require('mongoose');
-//הטבה בשבילהלקוח פירוט על כל ההטבות והן יהיו כמערך  של הטבות מתי שהלקוח רוצה הטבות
-const benefitSchema = new mongoose.Schema({
-        nameCompany: {
-            type: String,
-            required: true
-        },
-        IDBenefit: {
-            type: String,
-            required: true
-        },
-        levelOfBuilder: {
-            type: String,
-            required: true,
-            enum: ["תכנון ורישוי", "ביצוע שלד", "ביצוע גמרים", "לקראת אכלוס"]
-        }
-    }, { timestamps: true });
+const { benefitSchema } = require('./benefitSchema');
+
+// קטלוג ההטבות הקיימות: כל מסמך הוא הטבה אחת שלקוח יכול לבחור.
+// הקונטרולר בודק מול הקטלוג הזה שההטבה שהלקוח שלח באמת קיימת.
 module.exports = mongoose.model('BenefitDefi', benefitSchema);
