@@ -70,7 +70,7 @@ const AddContact = () => {
     } catch (error) {
       console.error("שגיאה בשליחת הנתונים:", error);
       // הפרטים נשארים בשדות, כדי שאפשר יהיה פשוט ללחוץ שוב
-      setSubmitError("משהו השתבש בשליחה. נסו שוב בעוד רגע, או כתבו לנו ישירות למייל.");
+      setSubmitError("משהו השתבש בשליחה, נסו שוב בעוד מספר דקות.");
     } finally {
       setSubmitting(false);
     }
@@ -347,12 +347,7 @@ const AddContact = () => {
                     className="flex items-start gap-3 rounded-2xl border border-[#E2B9A8] bg-[#FBF1EC] px-4 py-3.5 text-[#6B3F2E]"
                   >
                     <AlertCircle size={20} aria-hidden="true" className="mt-0.5 shrink-0 text-[#B5563A]" />
-                    <p className="text-sm font-bold leading-6">
-                      {submitError}{" "}
-                      <a href="mailto:baitb2yadayim@gmail.com" className="underline">
-                        baitb2yadayim@gmail.com
-                      </a>
-                    </p>
+                    <p className="text-sm font-bold leading-6">{submitError}</p>
                   </div>
                 )}
               </form>
