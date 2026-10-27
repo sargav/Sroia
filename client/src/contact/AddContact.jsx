@@ -7,6 +7,7 @@ import {
   FaFacebookF,
   FaWhatsapp,
 } from "react-icons/fa";
+import { AlertCircle } from "lucide-react";
 
 const AddContact = () => {
   const [errors, setErrors] = useState({
@@ -16,6 +17,10 @@ const AddContact = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  // בזמן השליחה הכפתור נעול, כדי שלא יישלחו הודעות כפולות
+  const [submitting, setSubmitting] = useState(false);
+  // הודעה לגולש כשהשליחה לשרת נכשלה
+  const [submitError, setSubmitError] = useState("");
   const [visible, setVisible] = useState(false);
   const [headingDone, setHeadingDone] = useState(false);
 
@@ -47,7 +52,10 @@ const AddContact = () => {
     );
 
     if (hasErrors) return;
+    if (submitting) return;
 
+    setSubmitError("");
+    setSubmitting(true);
     try {
       await api.post("api/contacts", {
         name,
@@ -61,6 +69,10 @@ const AddContact = () => {
       form.reset();
     } catch (error) {
       console.error("שגיאה בשליחת הנתונים:", error);
+      // הפרטים נשארים בשדות, כדי שאפשר יהיה פשוט ללחוץ שוב
+      setSubmitError("משהו השתבש בשליחה, נסו שוב בעוד מספר דקות.");
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -303,7 +315,11 @@ const AddContact = () => {
                 {/* כפתור שליחה */}
                 <button
                   type="submit"
+                  disabled={submitting}
+                  aria-busy={submitting}
                   className="
+                    disabled:cursor-wait disabled:opacity-60
+                    disabled:hover:translate-y-0 disabled:hover:bg-[#78A93B]
                     group mt-1 flex w-full items-center
                     justify-between rounded-2xl
                     bg-[#78A93B] px-6 py-4
@@ -316,12 +332,24 @@ const AddContact = () => {
                     active:translate-y-0 active:scale-[0.99]
                   "
                 >
-                  <span>שליחת הודעה</span>
+                  <span>{submitting ? "שולח..." : "שליחת הודעה"}</span>
 
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 transition-transform duration-300 group-hover:-translate-x-1.5 group-hover:scale-110">
                     ←
                   </span>
                 </button>
+
+                {/* הודעה כשהשליחה נכשלה */}
+                {/* אותם צבעים כמו הודעת "התשלום לא הושלם" במצפן */}
+                {submitError && (
+                  <div
+                    role="alert"
+                    className="flex items-start gap-3 rounded-2xl border border-[#E2B9A8] bg-[#FBF1EC] px-4 py-3.5 text-[#6B3F2E]"
+                  >
+                    <AlertCircle size={20} aria-hidden="true" className="mt-0.5 shrink-0 text-[#B5563A]" />
+                    <p className="text-sm font-bold leading-6">{submitError}</p>
+                  </div>
+                )}
               </form>
             </>
           )}
