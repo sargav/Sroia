@@ -7,12 +7,14 @@ import TermsOfUseDialog from '../components/TermsOfUseDialog';
 import pi4 from './assets/pi4.webp'
 const GREEN = '#7CB342';
 // דף התשלום של הקורס ב-Cardcom (נפתח בחלון מעל הדף, כמו במצפן)
-const PAYMENT_URL = "https://secure.cardcom.solutions/e/nLaM8Ld8qU6GjHF85jqFQ";
+const PAYMENT_BASE = "https://secure.cardcom.solutions/e/nLaM8Ld8qU6GjHF85jqFQ";
 
 function CTAFormSection() {
     // האם חלון התשלום פתוח
-    const [paymentOpen, setPaymentOpen] = useState(false);
-    const paymentDialogRef = useAccessibleDialog(paymentOpen, () => setPaymentOpen(false));
+    // כתובת התשלום, עם השם והאימייל שמולאו בטופס (ריקה = החלון סגור)
+    const [paymentUrl, setPaymentUrl] = useState("");
+    const paymentOpen = Boolean(paymentUrl);
+    const paymentDialogRef = useAccessibleDialog(paymentOpen, () => setPaymentUrl(""));
 
     // כשהתשלום פתוח: נועלים את הגלילה של הדף שמאחור
     useEffect(() => {
@@ -85,7 +87,11 @@ function CTAFormSection() {
         if (Object.keys(next).length > 0) return;
 
         setSubmitError("");
-        setPaymentOpen(true); // פותחים את התשלום בחלון מעל הדף
+        // פותחים את התשלום בחלון מעל הדף, ומעבירים ל-Cardcom את השם והאימייל (כמו במצפן)
+        const url = `${PAYMENT_BASE}?subscribers_email=${encodeURIComponent(
+            form.email.trim()
+        )}&subscribers_name=${encodeURIComponent(form.name.trim())}`;
+        setPaymentUrl(url);
         // try {
         //     // כאן תוכל להוסיף את הלוגיקה לשליחת הנתונים לשרת בנוסף
         //     navigate("/thank-you");
@@ -230,7 +236,7 @@ function CTAFormSection() {
                     <p className="font-black text-[#35402F]">השלמת התשלום</p>
                     <button
                         type="button"
-                        onClick={() => setPaymentOpen(false)}
+                        onClick={() => setPaymentUrl("")}
                         className="flex items-center gap-2 rounded-full border border-[#C6D3BB] bg-white px-4 py-2 text-sm font-black text-[#35402F] transition hover:border-[#A6BC95]"
                     >
                         <X size={16} />
@@ -238,7 +244,7 @@ function CTAFormSection() {
                     </button>
                 </div>
                 <iframe
-                    src={PAYMENT_URL}
+                    src={paymentUrl}
                     title="תשלום מאובטח"
                     allow="payment"
                     referrerPolicy="strict-origin-when-cross-origin"
