@@ -7,6 +7,7 @@ import {
   FaFacebookF,
   FaWhatsapp,
 } from "react-icons/fa";
+import { AlertCircle } from "lucide-react";
 
 const AddContact = () => {
   const [errors, setErrors] = useState({
@@ -339,13 +340,20 @@ const AddContact = () => {
                 </button>
 
                 {/* הודעה כשהשליחה נכשלה */}
+                {/* אותם צבעים כמו הודעת "התשלום לא הושלם" במצפן */}
                 {submitError && (
-                  <p role="alert" className="text-center text-sm font-bold leading-6 text-red-700">
-                    {submitError}{" "}
-                    <a href="mailto:baitb2yadayim@gmail.com" className="underline">
-                      baitb2yadayim@gmail.com
-                    </a>
-                  </p>
+                  <div
+                    role="alert"
+                    className="flex items-start gap-3 rounded-2xl border border-[#E2B9A8] bg-[#FBF1EC] px-4 py-3.5 text-[#6B3F2E]"
+                  >
+                    <AlertCircle size={20} aria-hidden="true" className="mt-0.5 shrink-0 text-[#B5563A]" />
+                    <p className="text-sm font-bold leading-6">
+                      {submitError}{" "}
+                      <a href="mailto:baitb2yadayim@gmail.com" className="underline">
+                        baitb2yadayim@gmail.com
+                      </a>
+                    </p>
+                  </div>
                 )}
               </form>
             </>
