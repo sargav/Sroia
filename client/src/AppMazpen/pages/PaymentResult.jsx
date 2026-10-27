@@ -20,7 +20,7 @@ import { CheckCircle2, AlertCircle, ArrowLeft, RotateCcw, MessageCircle } from "
 // לאן חוזרים כדי לנסות לשלם שוב, ואיך קוראים למוצר
 const PRODUCTS = {
   mazpen: { name: "המצפן לבונה", retry: "/application#pricing" },
-  course: { name: "קורס בית בשתי ידיים", retry: "/pay" },
+  course: { name: "קורס בית בשתי ידיים", retry: "/courses#cta-form" },
 };
 
 export default function PaymentResult() {
