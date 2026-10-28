@@ -38,6 +38,7 @@ app.use('/api/images', require('./routes/imagesRoute')) //נתיב להחזרת 
 app.use('/api/testi-urls', require('./routes/TestiUrlRoute')) //נתיב להחזרת כתובות הוידאו של העדויות
 app.use('/api/payment', require('./routes/paymentRoute')) // נתיב ליצירת תשלום
 app.use('/api/benefits', require('./routes/benefitRoute')) // נתיב לשמירת לקוח וההטבות שבחר
+app.use('/api/benefit-notifications', require('./routes/benefitNotificationRoute')) // ניהול רשימות המיילים של ההטבות (מוגן במפתח מנהל)
 app.get('/', (req, res) => {
     res.send('hello from server')
 })

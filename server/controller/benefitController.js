@@ -2,13 +2,15 @@ const CustomerBenefit = require('../models/CustomerBenefit');
 const BenefitDefi = require('../models/BenefitDefi');
 const { BUILD_LEVELS } = require('../models/benefitSchema');
 const checking = require('../functionChecking/functionChecking');
-const sendBenefitEmail = require('../utils/sendBenefitEmail');
+const sendBenefitEmails = require('../utils/sendBenefitEmails');
 
-// שליחת מייל התראה בלי לחכות לו, כדי שהגולש יקבל תשובה מיד.
-// אם המייל נכשל - הבקשה כבר שמורה במסד הנתונים ורק נרשמת שגיאה בלוג
-const notify = (customer, addedBenefits) => {
-    sendBenefitEmail(customer, addedBenefits).catch((err) =>
-        console.error('שגיאה בשליחת מייל הטבה:', err.message)
+// שליחת המיילים (למנהל האתר ולמנהלי החנות של כל הטבה) בלי לחכות להם,
+// כדי שהגולש יקבל תשובה מיד. אם המייל נכשל - הבקשה כבר שמורה במסד ורק נרשמת שגיאה בלוג.
+// catalog = מסמכי ההטבות מהקטלוג, addedIds = הקודים של ההטבות שנוספו בבקשה הזו בלבד
+const notify = (customerInfo, catalog, addedIds) => {
+    const addedBenefits = catalog.filter(b => addedIds.includes(b.IDBenefit));
+    sendBenefitEmails(customerInfo, addedBenefits).catch((err) =>
+        console.error('שגיאה בשליחת מיילי הטבה:', err.message)
     );
 };
 
@@ -68,6 +70,7 @@ const addBenefit = async (req, res) => {
 
         const cleanPhone = String(phone).replace(/\D/g, '');
         const cleanEmail = String(email).trim().toLowerCase();
+        const customerInfo = { name: String(name).trim(), phone: cleanPhone, email: cleanEmail, levelOfBuilder };
 
         // לקוח חדש - יוצרים אותו יחד עם ההטבות
         const customer = await CustomerBenefit.findOne({ $or: [{ Phone: cleanPhone }, { email: cleanEmail }] });
@@ -78,7 +81,7 @@ const addBenefit = async (req, res) => {
                 email: cleanEmail,
                 benefits: newBenefits
             });
-            notify(newCustomer, newBenefits);
+            notify(customerInfo, catalog, newBenefits.map(b => b.IDBenefit));
             return res.status(201).json({ message: 'Benefits added successfully', data: newCustomer });
         }
 
@@ -90,7 +93,7 @@ const addBenefit = async (req, res) => {
         }
         customer.benefits.push(...toAdd);
         await customer.save();
-        notify(customer, toAdd);
+        notify(customerInfo, catalog, toAdd.map(b => b.IDBenefit));
         return res.status(200).json({ message: 'Benefits added successfully', data: customer });
     }
     catch (error) {
