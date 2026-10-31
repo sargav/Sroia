@@ -1,9 +1,7 @@
-const express=require('express')
-const router=express.Router()
-const Contact=require('../models/Contact')
-const contactController=require('../controller/contactController')
+const express = require('express')
+const router = express.Router()
+const controller = require('../controller/contactController')
 
-router.post('/',contactController.addContact)
+router.post('/',controller.addContact)
 
-module.exports =router
-
+module.exports = router

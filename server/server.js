@@ -34,6 +34,7 @@ app.use(express.static('public'))
 
 //routes
 app.use('/api/auth', require('./routes/authRoute')) // התחברות, רענון, התנתקות והוספת מנהל
+app.use('/api/manager/contacts', require('./routes/ManContactRoute')) // ניהול פניות (עבור המנהל)
 app.use('/api/contacts', require('./routes/contactRoute'))
 app.use('/api/testimonials', require('./routes/testimonialRoute'))
 app.use('/api/submit-lead', require('./routes/submitLeadRoute'))//השרת ששןלח אחכ את כל המידע לרב מסר
