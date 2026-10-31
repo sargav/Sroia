@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const controller = require('../controller/managerControllers/ManBenefitNotificationController.js')
-const requireAdminKey = require('../middleware/requireAdminKey')
+const verifyJWT = require('../middleware/verifyJWT.js')
 
 // כל הנתיבים כאן לניהול בלבד
-router.use(requireAdminKey)
+router.use(verifyJWT)
 
 router.get('/', controller.getAllNotifications)
 router.get('/:id', controller.getOneNotification)
