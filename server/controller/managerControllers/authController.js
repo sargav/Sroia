@@ -158,4 +158,38 @@ const register = async (req, res) => {
     }
 }
 
-module.exports = { register, login, refresh, logout }
+const getAllManagers = async (req, res) => {
+    try {
+        const managers = await Manager.find({}, { password: 0 }).lean()
+        res.json(managers)
+    } catch (error) {
+        console.error('getAllManagers:', error.message)
+        res.status(500).json({ message: 'Server error' })
+    }
+}
+const deleteManager = async (req, res) => {
+    try {
+        const { id } = req.params
+
+        if (!mongoose.isValidObjectId(id)) {
+            return res.status(400).json({ message: 'Invalid id' })
+        }
+        if (String(id) === req.manager._id) {
+            return res.status(400).json({ message: 'You cannot delete yourself' })
+        }
+        const manager = await Manager.findById(id)
+        if (!manager) {
+            return res.status(404).json({ message: 'Manager not found' })
+        }
+        await manager.deleteOne()
+        console.log(`מנהל נמחק: ${manager.manName}, על ידי: ${req.manager.manName}`)
+        res.json({ message: `Manager ${manager.manName} deleted` })
+    }
+    catch (error) {
+        console.error('deleteManager:', error.message)
+        res.status(500).json({ message: 'Server error' })
+    }
+
+}
+
+module.exports = { getAllManagers,deleteManager, register, login, refresh, logout }
