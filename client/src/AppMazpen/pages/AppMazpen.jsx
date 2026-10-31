@@ -90,7 +90,7 @@ function CTAButton({ children = "אני רוצה את המצפן לבונה", cl
 function PhoneMockup({ src, alt, className = "" }) {
   return (
     <div className={`relative rounded-[2.5rem] bg-[#171b18] p-[6px] shadow-[0_25px_70px_rgba(31,43,34,.25)] ${className}`}>
-      <div className="absolute left-1/2 top-3 z-10 h-5 w-[72px] -translate-x-1/2 rounded-full bg-[#171b18]" />
+      <div className="absolute left-1/2 top-3 z-10 h-5 w-[4.5rem] -translate-x-1/2 rounded-full bg-[#171b18]" />
       <div className="overflow-hidden rounded-[2.15rem] bg-white">
         <img src={src} alt={alt} className="block h-auto w-full" />
       </div>
@@ -142,9 +142,9 @@ function CompassPage() {
         <div className="mx-auto w-full px-5 md:px-10 max-w-7xl">
           <SectionHeading eyebrow="כך זה נראה" title="המצפן הולך איתכם" accent="ישר מהטלפון" description="שלושה מסכים, מאות החלטות, מקום אחד מסודר." />
           <div className="flex items-end justify-center gap-3 px-2 sm:gap-6 md:gap-10">
-            <PhoneMockup src={screen3} alt="מסך מודולים" className="w-[27%] max-w-[220px] translate-y-8 -rotate-3" />
-            <PhoneMockup src={screen2} alt="מסך רשימת משימות" className="z-10 w-[31%] max-w-[250px]" />
-            <PhoneMockup src={screen1} alt="מסך מילון מושגים" className="w-[27%] max-w-[220px] translate-y-8 rotate-3" />
+            <PhoneMockup src={screen3} alt="מסך מודולים" className="w-[27%] max-w-[13.75rem] translate-y-8 -rotate-3" />
+            <PhoneMockup src={screen2} alt="מסך רשימת משימות" className="z-10 w-[31%] max-w-[15.625rem]" />
+            <PhoneMockup src={screen1} alt="מסך מילון מושגים" className="w-[27%] max-w-[13.75rem] translate-y-8 rotate-3" />
           </div>
         </div>
       </section>
@@ -178,7 +178,7 @@ function CompassPage() {
           <div className="grid gap-5 md:grid-cols-3">
             {testimonials.map(([quote, name, stage], index) => (
               <Reveal key={name} delay={index * 90}>
-                <figure className="after:absolute after:-bottom-[19px] after:left-7 after:h-7 after:w-[34px] after:bg-[#334235] after:content-[''] after:[clip-path:polygon(0_0,100%_0,0_100%)] relative h-full rounded-[2rem] border border-white/10 bg-[#334235]/90 p-7 shadow-[0_22px_55px_rgba(7,16,9,.20)] backdrop-blur-md">
+                <figure className="after:absolute after:-bottom-[19px] after:left-7 after:h-7 after:w-[2.125rem] after:bg-[#334235] after:content-[''] after:[clip-path:polygon(0_0,100%_0,0_100%)] relative h-full rounded-[2rem] border border-white/10 bg-[#334235]/90 p-7 shadow-[0_22px_55px_rgba(7,16,9,.20)] backdrop-blur-md">
                   <Quote size={32} className="text-[#b7da86]" />
                   <blockquote className="mt-6 text-base font-medium leading-8 text-white/78">“{quote}”</blockquote>
                   <figcaption className="mt-6 border-t border-white/10 pt-4">

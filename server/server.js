@@ -6,6 +6,7 @@ const  mongoose  = require('mongoose')
 
 const connectDB = require('./config/dbConn')
 const corsOptions = require('./config/corsOptions')
+const { ensureDefaultBenefits } = require('./config/defaultBenefits')
 
 const app = express()
 const PORT = process.env.PORT || 7500 // אותו פורט שהריאקט מחפש כברירת מחדל
@@ -35,7 +36,9 @@ app.use('/api/testimonials', require('./routes/testimonialRoute'))
 app.use('/api/submit-lead', require('./routes/submitLeadRoute'))//השרת ששןלח אחכ את כל המידע לרב מסר
 app.use('/api/images', require('./routes/imagesRoute')) //נתיב להחזרת התמונות  
 app.use('/api/testi-urls', require('./routes/TestiUrlRoute')) //נתיב להחזרת כתובות הוידאו של העדויות
-app.use('/api/payment', require('./routes/paymentRoute')) // נתיב ליצירת תשלום   
+app.use('/api/payment', require('./routes/paymentRoute')) // נתיב ליצירת תשלום
+app.use('/api/benefits', require('./routes/benefitRoute')) // נתיב לשמירת לקוח וההטבות שבחר
+app.use('/api/benefit-notifications', require('./routes/benefitNotificationRoute')) // ניהול רשימות המיילים של ההטבות (מוגן במפתח מנהל)
 app.get('/', (req, res) => {
     res.send('hello from server')
 })
@@ -49,6 +52,7 @@ app.use((err, req, res, next) => {
 //DB conection
 mongoose.connection.once('open', () => {
     console.log('connect to mongoDB')
+    ensureDefaultBenefits() // מוודא שהטבת נגב (וכל הטבת ברירת מחדל) קיימת בקטלוג
     app.listen(PORT, () => {
         console.log(`Server running on port ${PORT}`)
     })

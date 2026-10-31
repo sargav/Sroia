@@ -446,7 +446,7 @@ function CenteredChecklist({ items }) {
   return (
     <div
       className="mx-auto w-full space-y-2.5 p-5 text-center"
-      style={{ border: "15px solid rgba(255,255,255,0.75)", borderRadius: "24px 24px 48px 48px", maxWidth: "400px" }}
+      style={{ border: "15px solid rgba(255,255,255,0.75)", borderRadius: "24px 24px 48px 48px", maxWidth: "25rem" }}
     >
       {items.map((item, i) => (
         <Reveal key={i} delay={i * 120}>
@@ -601,6 +601,11 @@ function CTAFormSection() {
     return "";
   };
 
+  // הטופס מוכן לשליחה רק כשכל השדות תקינים וגם סומנה ההסכמה.
+  // מחושב מחדש בכל רינדור, כך שהכפתור נפתח ברגע שהשדה האחרון תקין
+  const isFormValid =
+    agree && ["name", "email", "phone"].every((key) => !validateField(key, form[key]));
+
   const handleBlur = (key) => () => {
     const msg = validateField(key, form[key]);
     setErrors((prev) => ({ ...prev, [key]: msg || undefined }));
@@ -736,12 +741,19 @@ function CTAFormSection() {
 
                   <button
                     type="submit"
-                    disabled={submitting || !agree}
+                    disabled={submitting || !isFormValid}
+                    aria-describedby={!isFormValid ? "guide-submit-hint" : undefined}
                     className="w-full rounded-xl py-4 text-lg font-bold text-[#1a1a1a] shadow-lg transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:hover:scale-100"
-                    style={{ backgroundColor: GREEN, opacity: submitting || !agree ? 0.5 : 1 }}
+                    style={{ backgroundColor: GREEN, opacity: submitting || !isFormValid ? 0.5 : 1 }}
                   >
                     {submitting ? "שולח..." : "כן שלחו לי את המדריך"}
                   </button>
+                  {/* הסבר למה הכפתור לא פעיל - חשוב גם לנגישות (קורא מסך מקריא אותו יחד עם הכפתור) */}
+                  {!isFormValid && (
+                    <p id="guide-submit-hint" className="text-center text-xs text-neutral-500">
+                      יש למלא שם, אימייל וטלפון תקינים ולאשר קבלת תכנים כדי לשלוח
+                    </p>
+                  )}
                 </form>
 
                 <p className="mt-6 text-sm text-neutral-500">

@@ -1,21 +1,45 @@
-import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { X } from "lucide-react";
+import useAccessibleDialog from "../components/useAccessibleDialog";
 import footerBg from './assets/footerBg.webp'
 import PrivacyPolicyDialog from "../components/PrivacyPolicyDialog";
 import TermsOfUseDialog from '../components/TermsOfUseDialog';
 import pi4 from './assets/pi4.webp'
 const GREEN = '#7CB342';
+// דף התשלום של הקורס ב-Cardcom (נפתח בחלון מעל הדף, כמו במצפן)
+const PAYMENT_BASE = "https://secure.cardcom.solutions/e/nLaM8Ld8qU6GjHF85jqFQ";
 
 function CTAFormSection() {
-    //נוידייט זה דרך ניווט באתר
-    const navigate = useNavigate();
+    // האם חלון התשלום פתוח
+    // כתובת התשלום, עם השם והאימייל שמולאו בטופס (ריקה = החלון סגור)
+    const [paymentUrl, setPaymentUrl] = useState("");
+    const paymentOpen = Boolean(paymentUrl);
+    const paymentDialogRef = useAccessibleDialog(paymentOpen, () => setPaymentUrl(""));
+
+    // כשהתשלום פתוח: נועלים את הגלילה של הדף שמאחור
+    useEffect(() => {
+        if (!paymentOpen) return undefined;
+        const previous = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = previous;
+        };
+    }, [paymentOpen]);
+
+    // כשמגיעים עם #cta-form בכתובת (למשל מכפתור "לנסות שוב" בדף התוצאה), גוללים ישר לטופס
+    useEffect(() => {
+        if (window.location.hash !== "#cta-form") return undefined;
+        const timer = setTimeout(() => {
+            document.getElementById("cta-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 300);
+        return () => clearTimeout(timer);
+    }, []);
     const [form, setForm] = useState({ email: "", name: "", phone: "" });
     const [agree, setAgree] = useState(false);
     const [errors, setErrors] = useState({});
 
     const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
 
-    const [submitting, setSubmitting] = useState(false);
     const [submitError, setSubmitError] = useState("");
 
     // אימייל: תבנית סטנדרטית - שם@דומיין.סיומת (לפחות 2 תווים בסיומת)
@@ -63,8 +87,11 @@ function CTAFormSection() {
         if (Object.keys(next).length > 0) return;
 
         setSubmitError("");
-        setSubmitting(true);
-        navigate("/pay"); // ניווט לעמוד התשלום
+        // פותחים את התשלום בחלון מעל הדף, ומעבירים ל-Cardcom את השם והאימייל (כמו במצפן)
+        const url = `${PAYMENT_BASE}?subscribers_email=${encodeURIComponent(
+            form.email.trim()
+        )}&subscribers_name=${encodeURIComponent(form.name.trim())}`;
+        setPaymentUrl(url);
         // try {
         //     // כאן תוכל להוסיף את הלוגיקה לשליחת הנתונים לשרת בנוסף
         //     navigate("/thank-you");
@@ -76,6 +103,7 @@ function CTAFormSection() {
     };
 
     return (
+        <>
         <section id="cta-form" className="relative overflow-hidden py-6" 
         style={{ backgroundImage: `url(${footerBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
         >
@@ -164,11 +192,11 @@ function CTAFormSection() {
 
                         <button
                             type="submit"
-                            disabled={submitting || !agree}
+                            disabled={!agree}
                             className="w-full rounded-xl py-4 text-lg font-bold text-[#1a1a1a] shadow-lg transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:hover:scale-100"
-                            style={{ backgroundColor: GREEN, opacity: submitting || !agree ? 0.5 : 1 }}
+                            style={{ backgroundColor: GREEN, opacity: !agree ? 0.5 : 1 }}
                         >
-                            {submitting ? "שולח..." : "אני רוצה להצטרף לקורס"}
+                            אני רוצה להצטרף לקורס
                         </button>
 
                     </form>
@@ -192,6 +220,40 @@ function CTAFormSection() {
                 </div>
             </div>
         </section>
+
+        {/* תשלום במסך מלא, עם כפתור סגירה (כמו במצפן) */}
+        {paymentOpen && (
+            <div
+                ref={paymentDialogRef}
+                tabIndex={-1}
+                role="dialog"
+                aria-modal="true"
+                aria-label="תשלום מאובטח"
+                dir="rtl"
+                className="fixed inset-0 z-[100] flex flex-col bg-white"
+            >
+                <div className="flex items-center justify-between border-b border-[#D3DECC] bg-[#F5F6F1] px-4 py-3 md:px-6">
+                    <p className="font-black text-[#35402F]">השלמת התשלום</p>
+                    <button
+                        type="button"
+                        onClick={() => setPaymentUrl("")}
+                        className="flex items-center gap-2 rounded-full border border-[#C6D3BB] bg-white px-4 py-2 text-sm font-black text-[#35402F] transition hover:border-[#A6BC95]"
+                    >
+                        <X size={16} />
+                        סגירה
+                    </button>
+                </div>
+                <iframe
+                    src={paymentUrl}
+                    title="תשלום מאובטח"
+                    allow="payment"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    className="w-full flex-1 border-0 bg-white"
+                />
+            </div>
+        )}
+        </>
     );
 }
+
 export default CTAFormSection;

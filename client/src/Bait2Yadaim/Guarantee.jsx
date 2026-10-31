@@ -16,7 +16,7 @@ function GuaranteeCard() {
                 marginTop:30,
                 padding: "38px 64px 38px",
                 textAlign: "right",
-                maxWidth: 520,
+                maxWidth: "32.5rem",
                 margin: "0 auto",
                 transform: "rotate(-2.5deg)",
                 boxShadow: "0 18px 34px rgba(0,0,0,0.18)",
@@ -123,7 +123,7 @@ export default function Guarant() {
                 הערבות שלנו:
                 <br />
                 30 יום החזר כספי מלא</p>
-            <div style={{ maxWidth: 620, margin: "0 auto" }}>
+            <div style={{ maxWidth: "38.75rem", margin: "0 auto" }}>
                 <div style={{ textAlign: "center", marginBottom: 28 }}>
                     <div style={{ display: "flex", justifyContent: "center", marginBottom: 22 }}>
                         <GuaranteeCard />

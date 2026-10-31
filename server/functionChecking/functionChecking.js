@@ -17,7 +17,8 @@ const isValidName = (name) => {
 //בדיקת תקינות טלפון
 const isValidPhone = (phone) => {
         const cleanPhone = phone.replace(/\D/g, "");
-        const phoneRegex = /^(?:0\d{9}|972\d{9})$/;
+        // נייד (10 ספרות, 05X) או נייח (9 ספרות, למשל 02/03/04/08/09), גם עם 972 בהתחלה
+        const phoneRegex = /^(?:0\d{8,9}|972\d{8,9})$/;
         return phoneRegex.test(cleanPhone);
 }
 module.exports = {
