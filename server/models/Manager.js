@@ -9,13 +9,17 @@ const managerSchema = new mongoose.Schema({
     manName: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        trim: true
+
     },
     email: {
         type: String,
         required: true,
         lowercase: true,
-        unique: true
+        unique: true,
+        trim: true
+
     },
     phone: {
         type: String,
