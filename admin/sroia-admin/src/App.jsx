@@ -18,8 +18,12 @@ function App() {
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth />}>
             <Route element={<Layout />}>
-              {/* זמני: כאן ייכנסו המסכים (פניות, תמונות...) */}
               <Route index element={<p>התחברת בהצלחה. כאן יופיעו הפניות</p>} />
+              <Route path='/contacts' element={<p>כאן יופיעו הפניות</p>} />
+              <Route path='/managers' element={<p>כאן יופיעו המנהלים</p>} />
+              <Route path='/images' element={<p>כאן יופיעו התמונות</p>} />
+              <Route path='/videos' element={<p>כאן יופיעו סרטוני ההמלצות</p>} />
+              <Route path='/me' element={<p>כאן יופיעו פרטי המנהל כרגע</p>} />
             </Route>
           </Route>
         </Route>
