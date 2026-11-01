@@ -111,12 +111,17 @@ const TasksPanel = () => {
             {isError && <p role="alert" className="text-sm">לא הצלחנו לטעון את המשימות</p>}
             {!isLoading && tasks.length === 0 && <p className="text-sm text-[#565f52]">אין משימות 🎉</p>}
 
-            {open.length > 0 && <ul>{open.map(renderTask)}</ul>}
-            {done.length > 0 && (
-                <details>
-                    <summary className="text-sm text-[#565f52] cursor-pointer min-h-9 flex items-center">בוצעו ({done.length})</summary>
-                    <ul>{done.map(renderTask)}</ul>
-                </details>
+            {/* גובה מוגבל - אם יש הרבה משימות, גוללים בתוך הקופסה */}
+            {(open.length > 0 || done.length > 0) && (
+                <div className="max-h-72 overflow-y-auto overscroll-contain -mx-1 px-1">
+                    {open.length > 0 && <ul>{open.map(renderTask)}</ul>}
+                    {done.length > 0 && (
+                        <details>
+                            <summary className="text-sm text-[#565f52] cursor-pointer min-h-9 flex items-center">בוצעו ({done.length})</summary>
+                            <ul>{done.map(renderTask)}</ul>
+                        </details>
+                    )}
+                </div>
             )}
 
             <ConfirmDialog
