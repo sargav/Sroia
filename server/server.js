@@ -35,6 +35,8 @@ app.use(express.static('public'))
 //routes
 app.use('/api/auth', require('./routes/authRoute')) // התחברות, רענון, התנתקות והוספת מנהל
 app.use('/api/manager/contacts', require('./routes/ManContactRoute')) // ניהול פניות (עבור המנהל)
+app.use('/api/benefit-notifications', require('./routes/benefitNotificationRoute')) // ניהול רשימות המיילים של ההטבות (מוגן במפתח מנהל)
+app.use('/api/manager/images', require('./routes/ManImageRoute')) // ניהול התמונות (עבור המנהל)
 app.use('/api/contacts', require('./routes/contactRoute'))
 app.use('/api/testimonials', require('./routes/testimonialRoute'))
 app.use('/api/submit-lead', require('./routes/submitLeadRoute'))//השרת ששןלח אחכ את כל המידע לרב מסר
@@ -43,7 +45,6 @@ app.use('/api/testi-urls', require('./routes/TestiUrlRoute')) //נתיב להח�
 app.use('/api/manager/testi-urls', require('./routes/ManTestiUrlRoute')) // ניהול סרטוני ההמלצות (עבור המנהל)
 app.use('/api/payment', require('./routes/paymentRoute')) // נתיב ליצירת תשלום
 app.use('/api/benefits', require('./routes/benefitRoute')) // נתיב לשמירת לקוח וההטבות שבחר
-app.use('/api/benefit-notifications', require('./routes/benefitNotificationRoute')) // ניהול רשימות המיילים של ההטבות (מוגן במפתח מנהל)
 app.get('/', (req, res) => {
     res.send('hello from server')
 })
