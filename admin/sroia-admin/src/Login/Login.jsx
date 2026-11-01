@@ -4,6 +4,9 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const data = new FormData(e.target)
+        //בדיקות תקינות לשם ולסיסמא
+        //אם הכל תקין שליחה דרך הAPI לשרת
+        
         
 
 
@@ -14,8 +17,8 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
 
                 <div className='formInput'>
-                    <label for="name"> Name</label>
-                    <input type="text" name='name' id='name' placeholder='Name' />
+                    <label for="manName"> manName</label>
+                    <input type="text" name='manName' id='manName' placeholder='Name' />
 
                 </div>
                 <div className='formInput'>
