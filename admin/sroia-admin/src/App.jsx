@@ -5,6 +5,10 @@ import PersistLogin from './features/auth/PersistLogin.jsx'
 import RequireAuth from './features/auth/RequireAuth.jsx'
 import Layout from './components/Layout.jsx'
 import ContactsList from './features/contacts/ContactList.jsx'
+import HomePage from './features/home/HomePage.jsx'
+import ImagesPage from './features/images/ImagesPage.jsx'
+import VideosPage from './features/videos/VideosPage.jsx'
+import ManagersPage from './features/managers/ManagersPage.jsx'
 
 function App() {
   return (
@@ -19,11 +23,11 @@ function App() {
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth />}>
             <Route element={<Layout />}>
-              <Route index element={<p>התחברת בהצלחה. כאן יופיעו הפניות</p>} />
+              <Route index element={<HomePage />} />
               <Route path='/contacts' element={<ContactsList/>} />
-              <Route path='/managers' element={<p>כאן יופיעו המנהלים</p>} />
-              <Route path='/images' element={<p>כאן יופיעו התמונות</p>} />
-              <Route path='/videos' element={<p>כאן יופיעו סרטוני ההמלצות</p>} />
+              <Route path='/managers' element={<ManagersPage />} />
+              <Route path='/images' element={<ImagesPage />} />
+              <Route path='/videos' element={<VideosPage />} />
               <Route path='/me' element={<p>כאן יופיעו פרטי המנהל כרגע</p>} />
             </Route>
           </Route>
