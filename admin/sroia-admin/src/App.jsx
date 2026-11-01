@@ -9,6 +9,7 @@ import HomePage from './features/home/HomePage.jsx'
 import ImagesPage from './features/images/ImagesPage.jsx'
 import VideosPage from './features/videos/VideosPage.jsx'
 import ManagersPage from './features/managers/ManagersPage.jsx'
+import CalendarPage from './features/calendar/CalendarPage.jsx'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route element={<Layout />}>
               <Route index element={<HomePage />} />
               <Route path='/contacts' element={<ContactsList/>} />
+              <Route path='/calendar' element={<CalendarPage />} />
               <Route path='/managers' element={<ManagersPage />} />
               <Route path='/images' element={<ImagesPage />} />
               <Route path='/videos' element={<VideosPage />} />

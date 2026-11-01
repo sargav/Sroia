@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom'
-import { House, Inbox, Users, Image, Video, UserRound } from 'lucide-react'
+import { House, Inbox, CalendarDays, Users, Image, Video, UserRound } from 'lucide-react'
 
 const menuLinks = [
     { to: '/', label: 'דף הבית', icon: House },
     { to: '/contacts', label: 'פניות', icon: Inbox },
+    { to: '/calendar', label: 'יומן ומשימות', icon: CalendarDays },
     { to: '/managers', label: 'מנהלים', icon: Users },
     { to: '/images', label: 'תמונות', icon: Image },
     { to: '/videos', label: 'סרטוני המלצות', icon: Video },
