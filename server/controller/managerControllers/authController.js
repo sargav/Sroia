@@ -1,3 +1,4 @@
+const mongoose = require('mongoose')      // בשביל isValidObjectId במחיקת מנהל
 const bcrypt = require('bcrypt')          // השוואת סיסמה מול הסיסמה המוצפנת
 const jwt = require('jsonwebtoken')       // יצירת טוקנים ובדיקתם
 const Manager = require('../../models/Manager')
@@ -192,4 +193,76 @@ const deleteManager = async (req, res) => {
 
 }
 
-module.exports = { getAllManagers,deleteManager, register, login, refresh, logout }
+// ===== עדכון הפרטים של המנהל המחובר =====
+// כל מנהל מעדכן רק את עצמו (ה-id מגיע מהטוקן, לא מהכתובת).
+// אפשר לעדכן: name, email, phone, ואת הסיסמה - רק עם הסיסמה הנוכחית.
+// את manName לא משנים: טוקן הרענון שומר אותו, ושינוי שלו ינתק את המנהל
+const updateMe = async (req, res) => {
+    try {
+        const { name, email, phone, currentPassword, newPassword } = req.body
+
+        // המנהל המחובר - req.manager מגיע מ-verifyJWT
+        const manager = await Manager.findById(req.manager._id)
+        if (!manager) {
+            return res.status(401).json({ message: 'Unauthorized' })
+        }
+
+        if (name !== undefined) {
+            if (!checking.isValidName(String(name))) {
+                return res.status(400).json({ message: 'Invalid name' })
+            }
+            manager.name = String(name).trim()
+        }
+
+        if (email !== undefined) {
+            if (!checking.isValidEmail(String(email))) {
+                return res.status(400).json({ message: 'Invalid email' })
+            }
+            // מייל שתפוס על ידי מנהל אחר ($ne = "לא שווה" - חוץ ממני)
+            const duplicate = await Manager.findOne({
+                email: String(email).toLowerCase().trim(),
+                _id: { $ne: manager._id }
+            }).lean()
+            if (duplicate) {
+                return res.status(409).json({ message: 'Email already exists' })
+            }
+            manager.email = email
+        }
+
+        if (phone !== undefined) {
+            if (!checking.isValidPhone(String(phone))) {
+                return res.status(400).json({ message: 'Invalid phone' })
+            }
+            manager.phone = String(phone).trim()
+        }
+
+        // שינוי סיסמה - רק עם הסיסמה הנוכחית, כדי שמי שניגש למחשב של מנהל מחובר
+        // לא יוכל לשנות לו את הסיסמה ולנעול אותו בחוץ
+        if (newPassword !== undefined) {
+            if (!currentPassword) {
+                return res.status(400).json({ message: 'Current password is required' })
+            }
+            const match = await bcrypt.compare(String(currentPassword), manager.password)
+            if (!match) {
+                console.warn('שינוי סיסמה נכשל - סיסמה נוכחית שגויה:', manager.manName)
+                return res.status(401).json({ message: 'Current password is incorrect' })
+            }
+            if (!checking.isValidPassword(String(newPassword))) {
+                return res.status(400).json({ message: 'Password must be at least 6 characters with letters and numbers' })
+            }
+            manager.password = await bcrypt.hash(String(newPassword), 10)
+        }
+
+        await manager.save()
+        console.log(`מנהל עדכן את הפרטים שלו: ${manager.manName}${newPassword !== undefined ? ' (כולל סיסמה)' : ''}`)
+
+        // מחזירים את הפרטים המעודכנים בלי הסיסמה
+        const { password, ...managerData } = manager.toObject()
+        res.json(managerData)
+    } catch (error) {
+        console.error('updateMe:', error.message)
+        res.status(500).json({ message: 'Server error' })
+    }
+}
+
+module.exports = { getAllManagers, deleteManager, register, login, refresh, logout, updateMe }
