@@ -8,7 +8,7 @@ router.get('/refresh', controller.refresh)
 router.post('/logout', controller.logout)
 
 router.post('/register', verifyJWT, controller.register)
-router.delete('/delete', verifyJWT,controller.deleteManager)
+router.delete('/:id', verifyJWT,controller.deleteManager)
 router.get('/', verifyJWT,controller.getAllManagers)
 
 module.exports = router
