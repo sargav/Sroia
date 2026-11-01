@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
-import Login from './Login/Login.jsx'
+import Login from './features/auth/Login.jsx'
 import { Outlet } from 'react-router-dom'
 
 function App() {
