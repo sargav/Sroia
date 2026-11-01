@@ -43,6 +43,8 @@ app.use('/api/submit-lead', require('./routes/submitLeadRoute'))//השרת שש�
 app.use('/api/images', require('./routes/imagesRoute')) //נתיב להחזרת התמונות  
 app.use('/api/testi-urls', require('./routes/TestiUrlRoute')) //נתיב להחזרת כתובות הוידאו של העדויות
 app.use('/api/manager/testi-urls', require('./routes/ManTestiUrlRoute')) // ניהול סרטוני ההמלצות (עבור המנהל)
+app.use('/api/manager/events', require('./routes/ManEventRoute')) // יומן: פגישות, ביקורים ושיחות (עבור המנהל)
+app.use('/api/manager/tasks', require('./routes/ManTaskRoute')) // משימות (עבור המנהל)
 app.use('/api/payment', require('./routes/paymentRoute')) // נתיב ליצירת תשלום
 app.use('/api/benefits', require('./routes/benefitRoute')) // נתיב לשמירת לקוח וההטבות שבחר
 app.get('/', (req, res) => {
