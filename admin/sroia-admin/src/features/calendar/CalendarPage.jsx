@@ -13,7 +13,8 @@ const CalendarPage = () => {
 
     const [month, setMonth] = useState(new Date(today.getFullYear(), today.getMonth(), 1))
     const [selectedDay, setSelectedDay] = useState(null)   // היום שהחלון שלו פתוח
-    const [formDate, setFormDate] = useState(null)         // "2026-11-12" כשטופס האירוע פתוח
+    const [formDate, setFormDate] = useState(null)         // "2026-11-12" כשטופס אירוע חדש פתוח
+    const [editing, setEditing] = useState(null)           // האירוע שעורכים (אם יש)
     const [onlyMine, setOnlyMine] = useState(false)
 
     // הימים בלוח, והטווח שמבקשים מהשרת
@@ -166,8 +167,14 @@ const CalendarPage = () => {
                 events={selectedDay ? (byDay[dayKey(selectedDay)] || []) : []}
                 onClose={() => setSelectedDay(null)}
                 onAdd={() => setFormDate(dayKey(selectedDay))}
+                onEdit={(ev) => setEditing(ev)}
             />
-            <EventFormDialog open={formDate !== null} date={formDate || ''} onClose={() => setFormDate(null)} />
+            <EventFormDialog
+                open={formDate !== null || editing !== null}
+                date={formDate || ''}
+                event={editing}
+                onClose={() => { setFormDate(null); setEditing(null) }}
+            />
         </div>
     )
 }
