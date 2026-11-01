@@ -16,12 +16,14 @@ const isCloudinaryConfigured = () =>
 // התיקייה ב-Cloudinary לכל קטגוריה, למשל sroia/start
 const cloudinaryFolder = (category) => `sroia/${category}`
 
-// כתובת מותאמת להצגה באתר: פורמט ואיכות אוטומטיים (webp/avif כשהדפדפן תומך),
-// ורוחב מקסימלי 1600 - כך שתמונה של 5MB מהטלפון לא תאט את האתר
+// כתובת מותאמת להצגה באתר: JPG, איכות אוטומטית, ורוחב מקסימלי 1600 -
+// כך שתמונה של 5MB מהטלפון לא תאט את האתר.
+// לא משתמשים ב-f_auto (WebP/AVIF): סינוני אינטרנט (כמו נטפרי) מחליפים תמונות כאלה בפיקסל ריק.
+// JPG מוצג בכל דפדפן ועובר דרך כל סינון, וגם ממיר תמונות HEIC מאייפון לפורמט שהדפדפן מכיר
 const optimizedUrl = (publicId) =>
     cloudinary.url(publicId, {
         secure: true,
-        fetch_format: 'auto',
+        fetch_format: 'jpg',
         quality: 'auto',
         width: 1600,
         crop: 'limit'
