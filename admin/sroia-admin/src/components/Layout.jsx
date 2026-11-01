@@ -58,11 +58,11 @@ const Layout = () => {
             <aside
                 id="side-menu"
                 className={`
-                    fixed inset-y-0 right-0 z-40 w-72 transition-transform duration-200
-                    ${menuOpen ? 'translate-x-0' : 'translate-x-full'}
-                    md:static md:translate-x-0 md:w-64 md:shrink-0 md:min-h-screen
-                    bg-sroia-dark text-white p-4 flex flex-col gap-8 overflow-y-auto
-                `}
+            fixed inset-y-0 right-0 z-40 w-72 transition-transform duration-200
+            ${menuOpen ? 'translate-x-0' : 'translate-x-full'}
+            md:sticky md:top-0 md:h-screen md:translate-x-0 md:w-64 md:shrink-0
+            bg-sroia-dark text-white p-4 flex flex-col gap-8 overflow-y-auto
+        `}
             >
                 <div className="flex items-start justify-between px-2 pt-3">
                     <div className="flex flex-col gap-1">
