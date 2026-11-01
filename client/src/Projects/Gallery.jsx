@@ -10,7 +10,11 @@ function GallerySection({status}) {
         api
             .get(`/api/images/${status}`) // בקשה לשרת לקבלת התמונות מהתיקייה המתאימה
             .then((res) => {
-                const fullUrls = res.data.map((url) => `${api.defaults.baseURL}${url}`);
+                // תמונות מ-Cloudinary מגיעות ככתובת מלאה (https://...).
+                // תמונות ישנות מהתיקייה בשרת מגיעות כנתיב (/start/...) וצריך להוסיף להן את כתובת השרת
+                const fullUrls = res.data.map((url) =>
+                    url.startsWith("http") ? url : `${api.defaults.baseURL}${url}`
+                );
                 setFinishedGalleryImages(fullUrls);
             })
             .catch((err) => console.error("שגיאה בטעינת תמונות:", err));
