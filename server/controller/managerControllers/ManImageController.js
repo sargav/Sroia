@@ -5,11 +5,18 @@ const Image = require('../../models/Image')
 const { IMAGE_CATEGORIES } = require('../../models/Image')
 const { cloudinary, isCloudinaryConfigured, cloudinaryFolder } = require('../../config/cloudinary')
 
+// פורמטים שדפדפנים לא תמיד מציגים (HEIC מאייפון) או שסינוני אינטרנט חוסמים (AVIF) -
+// נשמרים ב-Cloudinary כ-JPG כבר בהעלאה
+const CONVERT_TO_JPG = ['image/heic', 'image/heif', 'image/avif']
+
 // שולח קובץ מהזיכרון (buffer מ-multer) ל-Cloudinary ומחזיר את התשובה שלו
-const uploadBuffer = (buffer, folder) =>
+const uploadBuffer = (buffer, folder, mimetype) =>
     new Promise((resolve, reject) => {
+        const options = { folder, resource_type: 'image' }
+        if (CONVERT_TO_JPG.includes(mimetype)) options.format = 'jpg'
+
         const stream = cloudinary.uploader.upload_stream(
-            { folder, resource_type: 'image' },
+            options,
             (error, result) => (error ? reject(error) : resolve(result))
         )
         stream.end(buffer)
@@ -60,7 +67,7 @@ const uploadImages = async (req, res) => {
         // אחת אחרי השנייה, כדי ששגיאה בתמונה אחת לא תפיל את כל השאר
         for (const file of req.files) {
             try {
-                const result = await uploadBuffer(file.buffer, cloudinaryFolder(category))
+                const result = await uploadBuffer(file.buffer, cloudinaryFolder(category), file.mimetype)
                 const image = await Image.create({
                     url: result.secure_url,
                     publicId: result.public_id,
