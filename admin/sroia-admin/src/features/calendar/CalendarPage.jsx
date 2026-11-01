@@ -140,7 +140,8 @@ const CalendarPage = () => {
                         {todayEvents.length === 0
                             ? <p className="text-sm text-[#565f52]">אין אירועים היום</p>
                             : (
-                                <ul>
+                                // גובה מוגבל - אם יש הרבה אירועים, גוללים בתוך הקופסה
+                                <ul className="max-h-60 overflow-y-auto overscroll-contain -mx-1 px-1">
                                     {todayEvents.map((ev) => (
                                         <li key={ev._id} className="flex gap-3 py-2 border-t border-[#EEF2E9] first:border-t-0">
                                             <span className="w-1 rounded" style={{ background: EVENT_KINDS[ev.type]?.fg }} />
