@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import api from "../api-config"; // ייבוא הגדרת axios המרכזית
+import { normalizeSiteImages } from "../utils/siteImages";
 
 function GallerySection({status}) {
     const scrollRef = useRef(null);
@@ -8,10 +9,10 @@ function GallerySection({status}) {
 
     useEffect(() => {
         api
-            .get(`/api/images/${status}`) // בקשה לשרת לקבלת התמונות מהתיקייה המתאימה
+            .get(`/api/images/${status}`) // בקשה לשרת לקבלת התמונות של הקטגוריה
             .then((res) => {
-                const fullUrls = res.data.map((url) => `${api.defaults.baseURL}${url}`);
-                setFinishedGalleryImages(fullUrls);
+                // { url, alt, clientName } - מ-Cloudinary או מהתיקייה בשרת
+                setFinishedGalleryImages(normalizeSiteImages(res.data));
             })
             .catch((err) => console.error("שגיאה בטעינת תמונות:", err));
     }, [status]);
@@ -51,11 +52,12 @@ function GallerySection({status}) {
                         ref={scrollRef}
                         className="no-scrollbar flex gap-4 overflow-x-auto scroll-smooth px-2"
                     >
-                        {finishedGalleryImages.map((src, i) => (
+                        {finishedGalleryImages.map((image, i) => (
                             <img
-                                key={i}
-                                src={src}
-                                alt={`תמונת סיום בנייה ${i + 1}`}
+                                key={image.url}
+                                src={image.url}
+                                loading="lazy" // נטענת רק כשמתקרבים אליה - חוסך תעבורה ומאיץ את העמוד
+                                alt={image.alt || `תמונת סיום בנייה ${i + 1}`}
                                 className="h-65 w-auto flex-shrink-0 rounded-2xl object-cover shadow-lg ring-2 ring-[#DCEAC7]"
                             />
                         ))}

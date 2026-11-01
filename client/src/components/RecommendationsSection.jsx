@@ -3,6 +3,7 @@ import { X, ZoomIn } from "lucide-react";
 import { Compass } from "lucide-react";
 import api from "../api-config";
 import useAccessibleDialog from "./useAccessibleDialog";
+import { normalizeSiteImages } from "../utils/siteImages";
 
 const GREEN_TEXT = "#51762b"; // גוון כהה יותר לטקסט, כדי שיהיה קריא (ניגודיות 4.5 לפחות)
 const CREAM = "#FBF8F2";
@@ -18,25 +19,9 @@ function RecommendationsSection() {
     useEffect(() => {
         const getRecommendationImages = async () => {
             try {
-                /*
-                 * השרת צריך לקבל status בשם recommendations
-                 * ולקרוא את התמונות מהתיקייה המתאימה בתוך public.
-                 */
+                // צילומי ההמלצות: { url, alt, clientName } - מ-Cloudinary או מהתיקייה בשרת
                 const response = await api.get("/api/images/Testimonials");
-
-                const fullUrls = response.data.map((url) => {
-                    // אם השרת כבר החזיר כתובת מלאה
-                    if (url.startsWith("http")) {
-                        return url;
-                    }
-
-                    const baseURL = api.defaults.baseURL.replace(/\/$/, "");
-                    const imagePath = url.startsWith("/") ? url : `/${url}`;
-
-                    return `${baseURL}${imagePath}`;
-                });
-
-                setRecommendationImages(fullUrls);
+                setRecommendationImages(normalizeSiteImages(response.data));
             } catch (error) {
                 console.error("שגיאה בטעינת תמונות ההמלצות:", error);
             } finally {
@@ -129,19 +114,27 @@ function RecommendationsSection() {
                     {/* גלריית המלצות */}
                     {!isLoading && recommendationImages.length > 0 && (
                         <div className="columns-1 gap-6 sm:columns-2 lg:columns-3">
-                            {recommendationImages.map((src, index) => (
+                            {recommendationImages.map((image, index) => (
                                 <button
-                                    key={src}
+                                    key={image.url}
                                     type="button"
-                                    onClick={() => setSelectedImage(src)}
+                                    onClick={() => setSelectedImage(image)}
                                     className="group relative mb-6 block w-full break-inside-avoid overflow-hidden rounded-[28px] border border-[#DDE8CF] bg-white p-3 text-right shadow-[0_15px_45px_rgba(48,75,29,0.10)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(48,75,29,0.16)]"
-                                    aria-label={`פתיחת המלצה מספר ${index + 1}`}
+                                    aria-label={
+                                        image.clientName
+                                            ? `פתיחת ההמלצה של ${image.clientName}`
+                                            : `פתיחת המלצה מספר ${index + 1}`
+                                    }
                                 >
                                     <div className="relative overflow-hidden rounded-[20px] bg-[#F5F7F1]">
                                         <img
-                                            src={src}
-                                            alt={`המלצה של משתתף בקורס ${index + 1
-                                                }`}
+                                            src={image.url}
+                                            alt={
+                                                image.alt ||
+                                                (image.clientName
+                                                    ? `המלצה של ${image.clientName}`
+                                                    : `המלצה של משתתף בקורס ${index + 1}`)
+                                            }
                                             loading="lazy"
                                             className="block h-auto w-full transition duration-500 group-hover:scale-[1.02]"
                                         />
@@ -154,19 +147,12 @@ function RecommendationsSection() {
                                     </div>
 
                                     <div className="flex items-center gap-3 px-2 pb-2 pt-4">
-                                        {/* <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EAF4DC] text-[#689E35]">
-                                            <MessageSquareQuote size={18} />
-                                        </span> */}
-                                        {/* 
-                                        <div>
+                                        {/* שם הממליץ - מופיע רק אם המנהל הזין אותו */}
+                                        {image.clientName && (
                                             <p className="font-bold text-[#283521]">
-                                                משתתף בקורס
+                                                {image.clientName}
                                             </p>
-
-                                            <p className="mt-0.5 text-xs text-[#75806E]">
-                                                המלצה שנשלחה לאחר הלמידה
-                                            </p>
-                                        </div> */}
+                                        )}
                                     </div>
                                 </button>
                             ))}
@@ -196,8 +182,13 @@ function RecommendationsSection() {
                     </button>
 
                     <img
-                        src={selectedImage}
-                        alt="המלצה מוגדלת"
+                        src={selectedImage.url}
+                        alt={
+                            selectedImage.alt ||
+                            (selectedImage.clientName
+                                ? `המלצה מוגדלת של ${selectedImage.clientName}`
+                                : "המלצה מוגדלת")
+                        }
                         onClick={(event) => event.stopPropagation()}
                         className="max-h-[88vh] max-w-full rounded-2xl object-contain shadow-2xl"
                     />
