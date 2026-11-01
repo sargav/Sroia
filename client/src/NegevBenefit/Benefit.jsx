@@ -5,6 +5,10 @@ import baitLogo from "./assets/bait-logo.png";
 import negevLogo from "./assets/negev-logo-heart.jpg";
 import giftBox from "./assets/gift-box.webp";
 import BenefitTermsDialog from "./components/BenefitTermsDialog";
+import api from "../api-config";
+
+// המזהה של ההטבה בקטלוג בשרת (server/config/defaultBenefits.js) - חייב להיות זהה
+const BENEFIT_ID = "negev";
 
 function SparkleIcon({ className = "", style = {} }) {
     return (
@@ -146,6 +150,8 @@ export default function Benefit() {
     const [form, setForm] = useState({ name: "", phone: "", email: "", stage: "" });
     const [errors, setErrors] = useState({});
     const [submitted, setSubmitted] = useState(false);
+    const [isSending, setIsSending] = useState(false);
+    const [sendError, setSendError] = useState("");
     const [heroVisible, setHeroVisible] = useState(false);
 
     useEffect(() => {
@@ -158,8 +164,10 @@ export default function Benefit() {
         document.getElementById("offer-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        if (isSending) return; // מונע שליחה כפולה בלחיצה מהירה
+
         const next = {};
         if (!form.name.trim()) next.name = "נא למלא שם מלא";
         if (!form.phone.trim() || !/^0\d{1,2}-?\d{7}$/.test(form.phone.replace(/\s/g, "")))
@@ -167,11 +175,31 @@ export default function Benefit() {
         if (!form.email.trim() || !/^\S+@\S+\.\S+$/.test(form.email)) next.email = "נא למלא אימייל תקין";
         if (!form.stage) next.stage = "נא לבחור שלב בנייה";
         setErrors(next);
-        if (Object.keys(next).length === 0)
-         { setSubmitted(true);
-            axios.post()
-         }
+        if (Object.keys(next).length > 0) return;
 
+        setIsSending(true);
+        setSendError("");
+        try {
+            // שומר את הלקוח וההטבה בשרת. השרת שולח מייל למנהל ולמנהלי החנות של נגב
+            await api.post("/api/benefits", {
+                name: form.name.trim(),
+                phone: form.phone,
+                email: form.email.trim(),
+                levelOfBuilder: form.stage,
+                benefits: [BENEFIT_ID],
+            });
+            setSubmitted(true);
+        } catch (err) {
+            // 409 = הלקוח כבר ביקש את ההטבה הזו - מבחינתו הבקשה כבר אצלנו
+            if (err.response?.status === 409) {
+                setSubmitted(true);
+            } else {
+                console.error("שגיאה בשליחת בקשת ההטבה:", err);
+                setSendError("לא הצלחנו לשלוח את הפרטים. נסו שוב בעוד רגע, או התקשרו אלינו.");
+            }
+        } finally {
+            setIsSending(false);
+        }
     };
 
     return (
@@ -511,12 +539,20 @@ export default function Benefit() {
                                     {errors.stage && <p id="benefit-stage-error" role="alert" className="mt-1 text-xs text-red-400">{errors.stage}</p>}
                                 </div>
 
+                                {sendError && (
+                                    <p role="alert" className="text-center text-sm" style={{ color: "#ff8a8a" }}>
+                                        {sendError}
+                                    </p>
+                                )}
+
                                 <button
                                     type="submit"
-                                    className="w-full rounded-xl py-4 text-lg font-bold text-black transition-transform hover:scale-[1.01]"
+                                    disabled={isSending}
+                                    aria-busy={isSending}
+                                    className="w-full rounded-xl py-4 text-lg font-bold text-black transition-transform hover:scale-[1.01] disabled:cursor-wait disabled:opacity-70"
                                     style={{ backgroundColor: GREEN }}
                                 >
-                                    שליחה וקבלת ההטבה
+                                    {isSending ? "שולחים..." : "שליחה וקבלת ההטבה"}
                                 </button>
 
                                 {/* div ולא p: בתוך התקנון יש חלון עם כותרות ורשימות, ו-p לא יכול להכיל אותם */}
