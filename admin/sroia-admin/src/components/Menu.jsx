@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { House, Inbox, Users, Image, Video, UserRound, LogOut } from 'lucide-react'
+import { House, Inbox, Users, Image, Video, UserRound } from 'lucide-react'
 
 const menuLinks = [
     { to: '/', label: 'דף הבית', icon: House },
