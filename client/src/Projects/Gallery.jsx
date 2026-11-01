@@ -59,6 +59,7 @@ function GallerySection({status}) {
                             <img
                                 key={i}
                                 src={src}
+                                loading="lazy" // נטענת רק כשמתקרבים אליה - חוסך תעבורה ומאיץ את העמוד
                                 alt={`תמונת סיום בנייה ${i + 1}`}
                                 className="h-65 w-auto flex-shrink-0 rounded-2xl object-cover shadow-lg ring-2 ring-[#DCEAC7]"
                             />
