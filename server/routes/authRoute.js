@@ -8,6 +8,7 @@ router.get('/refresh', controller.refresh)
 router.post('/logout', controller.logout)
 
 router.post('/register', verifyJWT, controller.register)
+router.patch('/me', verifyJWT, controller.updateMe)   // עדכון הפרטים והסיסמה של המנהל המחובר
 router.delete('/:id', verifyJWT,controller.deleteManager)
 router.get('/', verifyJWT,controller.getAllManagers)
 
