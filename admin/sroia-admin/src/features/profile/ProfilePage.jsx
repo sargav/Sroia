@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Mail, Phone, AtSign, Eye, EyeOff, KeyRound, UserRound } from 'lucide-react'
 import { useUpdateMeMutation } from './profileApiSlice'
@@ -7,6 +7,19 @@ import { useRefreshMutation } from '../auth/authApiSlice'
 import { setToken } from '../auth/authSlice'
 import useCurrentManager from '../auth/useCurrentManager'
 import Toast from '../../components/Toast'
+import { useGetContactsQuery } from '../contacts/contactsApiSlice'
+import { useGetEventsQuery, useGetTasksQuery } from '../calendar/calendarApiSlice'
+import cover from '../../assets/profile-cover.webp'
+
+// טווח השבוע הנוכחי: מיום ראשון 00:00 עד יום ראשון הבא
+const thisWeek = () => {
+    const start = new Date()
+    start.setHours(0, 0, 0, 0)
+    start.setDate(start.getDate() - start.getDay())
+    const end = new Date(start)
+    end.setDate(start.getDate() + 7)
+    return { from: start.toISOString(), to: end.toISOString() }
+}
 
 // ההודעות של השרת -> עברית
 const ERRORS = {
@@ -51,6 +64,17 @@ const ProfilePage = () => {
     const { data: managers = [], isLoading } = useGetManagersQuery()
     const [updateMe, { isLoading: isSaving }] = useUpdateMeMutation()
     const [refresh] = useRefreshMutation()
+
+    // המונים בראש הדף
+    const week = useMemo(() => thisWeek(), [])
+    const { data: contacts = [] } = useGetContactsQuery()
+    const { data: events = [] } = useGetEventsQuery(week)
+    const { data: tasks = [] } = useGetTasksQuery('mine')
+    const stats = [
+        { label: 'פניות חדשות', value: contacts.filter((c) => !c.isRead).length, color: 'text-[#2f4a17]' },
+        { label: 'אירועים השבוע', value: events.filter((ev) => ev.manager?._id === me?._id).length, color: 'text-[#1d4a66]' },
+        { label: 'משימות פתוחות', value: tasks.filter((t) => t.status !== 'done').length, color: 'text-[#6b4f00]' },
+    ]
 
     const [toast, setToast] = useState(null) // { type, title, details }
     const closeToast = useCallback(() => setToast(null), [])
@@ -97,22 +121,35 @@ const ProfilePage = () => {
     const joined = manager.createdAt ? new Date(manager.createdAt).toLocaleDateString('he-IL', { month: 'long', year: 'numeric' }) : ''
 
     return (
-        <div className="flex flex-col gap-6 max-w-4xl">
-            {/* כרטיס עליון */}
-            <section className="relative overflow-hidden rounded-2xl bg-sroia-dark text-white p-6 md:p-8 flex flex-wrap items-center gap-5">
-                <span aria-hidden="true" className="absolute -left-10 -top-10 w-48 h-48 rounded-full bg-sroia-light/10" />
-                <span aria-hidden="true"
-                    className="relative w-20 h-20 rounded-2xl bg-sroia-light text-sroia-dark flex items-center justify-center text-4xl font-extrabold">
-                    {manager.name?.[0] || '?'}
-                </span>
-                <div className="relative flex-1 min-w-[200px]">
-                    <h1 className="text-3xl font-extrabold">{manager.name}</h1>
-                    <p className="text-[#C6D3BB] flex flex-wrap gap-x-4 gap-y-1 mt-1">
-                        <span className="flex items-center gap-1.5"><AtSign size={16} aria-hidden="true" />{manager.manName}</span>
-                        {joined && <span>מנהל/ת מאז {joined}</span>}
-                    </p>
+        <div className="flex flex-col gap-6 max-w-5xl">
+            {/* באנר עם תמונה מהאתר */}
+            <div>
+                <div className="relative h-36 md:h-44 rounded-3xl overflow-hidden">
+                    <img src={cover} alt="" className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0" style={{ background: 'linear-gradient(0deg, rgba(45,56,43,0.75), rgba(45,56,43,0.2))' }} />
                 </div>
-            </section>
+                <div className="relative flex flex-wrap items-end gap-x-4 gap-y-3 px-4 md:px-6">
+                    <span aria-hidden="true"
+                        className="-mt-12 w-24 h-24 md:w-26 md:h-26 rounded-[28px] bg-sroia-light text-sroia-dark border-[5px] border-sroia-bg flex items-center justify-center text-5xl font-extrabold">
+                        {manager.name?.[0] || '?'}
+                    </span>
+                    <div className="flex-1 min-w-[160px] pb-1">
+                        <h1 className="text-3xl font-extrabold text-sroia-dark">{manager.name}</h1>
+                        <p className="text-[#565f52] flex flex-wrap gap-x-3">
+                            <span className="flex items-center gap-1"><AtSign size={15} aria-hidden="true" />{manager.manName}</span>
+                            {joined && <span>· מנהל/ת מאז {joined}</span>}
+                        </p>
+                    </div>
+                    <ul className="flex gap-2 pb-2 w-full sm:w-auto">
+                        {stats.map((st) => (
+                            <li key={st.label} className="flex-1 sm:flex-none bg-white rounded-2xl px-4 py-2 flex flex-col items-center shadow-[0_1px_2px_rgba(45,56,43,0.06),0_4px_16px_rgba(45,56,43,0.05)]">
+                                <span className={`text-2xl font-extrabold ${st.color}`}>{st.value}</span>
+                                <span className="text-xs text-[#565f52] whitespace-nowrap">{st.label}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
 
             <div className="grid gap-6 md:grid-cols-2">
                 {/* פרטים אישיים */}
