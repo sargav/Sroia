@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-import { UserPlus, Trash2, X, Mail, Phone } from 'lucide-react'
+import { UserPlus, Trash2, X, Mail, Phone, Eye, EyeOff } from 'lucide-react'
 import {
     useGetManagersQuery,
     useAddManagerMutation,
@@ -14,6 +14,7 @@ import useCurrentManager from '../auth/useCurrentManager'
 const ERRORS = {
     'All fields are required': 'יש למלא את כל השדות',
     'Invalid name': 'השם לא תקין',
+    'Invalid manager name': 'שם משתמש: 3-30 תווים באנגלית, מספרים, נקודה, מקף או קו תחתון, בלי רווחים',
     'Invalid email': 'המייל לא תקין',
     'Invalid phone': 'הטלפון לא תקין',
     'Password must be at least 6 characters with letters and numbers': 'סיסמה: לפחות 6 תווים, עם אותיות ומספרים',
@@ -44,15 +45,41 @@ const deleteErrorInfo = (err) => {
     return { title: 'המחיקה נכשלה', details: 'קרתה תקלה בשרת. נסי שוב בעוד רגע.' }
 }
 
-const emptyForm = { name: '', manName: '', email: '', phone: '', password: '' }
+const emptyForm = { name: '', manName: '', email: '', phone: '', password: '', confirmPassword: '' }
 
 const FIELDS = [
     { name: 'name', label: 'שם מלא', type: 'text', autoComplete: 'off' },
-    { name: 'manName', label: 'שם משתמש', type: 'text', autoComplete: 'off' },
+    { name: 'manName', label: 'שם משתמש (באנגלית)', type: 'text', autoComplete: 'off', dir: 'ltr' },
     { name: 'email', label: 'מייל', type: 'email', autoComplete: 'off', dir: 'ltr' },
     { name: 'phone', label: 'טלפון', type: 'tel', autoComplete: 'off', dir: 'ltr' },
-    { name: 'password', label: 'סיסמה', type: 'password', autoComplete: 'new-password' },
 ]
+
+// שדה סיסמה עם כפתור עין להצגה/הסתרה
+const PasswordInput = ({ label, name, value, onChange, invalid, describedBy }) => {
+    const [show, setShow] = useState(false)
+    return (
+        <label className="flex flex-col gap-1 text-sm font-bold text-[#3a4436]">
+            {label}
+            <span className={`flex items-center min-h-11 pe-1 ps-3 border rounded-lg bg-white focus-within:border-sroia-green ${invalid ? 'border-[#c0392b]' : 'border-sroia-line'}`}>
+                <input
+                    name={name}
+                    type={show ? 'text' : 'password'}
+                    autoComplete="new-password"
+                    value={value}
+                    onChange={onChange}
+                    required
+                    aria-invalid={invalid || undefined}
+                    aria-describedby={describedBy}
+                    className="flex-1 min-w-0 font-normal bg-transparent outline-none"
+                />
+                <button type="button" onClick={() => setShow(!show)} aria-label={show ? 'הסתרת הסיסמה' : 'הצגת הסיסמה'}
+                    className="w-9 h-9 flex items-center justify-center rounded-md text-[#565f52] hover:bg-sroia-bg cursor-pointer">
+                    {show ? <EyeOff size={18} aria-hidden="true" /> : <Eye size={18} aria-hidden="true" />}
+                </button>
+            </span>
+        </label>
+    )
+}
 
 const ManagersPage = () => {
     const { data: managers = [], isLoading, isError, refetch } = useGetManagersQuery()
@@ -72,8 +99,14 @@ const ManagersPage = () => {
     const handleAdd = async (e) => {
         e.preventDefault()
         setFormError('')
+        if (form.password !== form.confirmPassword) {
+            return setFormError('הסיסמאות לא תואמות - הקלידו את אותה סיסמה פעמיים')
+        }
+        // את האימות לא שולחים לשרת - הוא רק לבדיקה כאן
+        const data = { ...form }
+        delete data.confirmPassword
         try {
-            await addManager(form).unwrap()
+            await addManager(data).unwrap()
             setForm(emptyForm)
             setShowForm(false)
         } catch (err) {
@@ -124,7 +157,15 @@ const ManagersPage = () => {
                                     className="font-normal min-h-11 px-3 border border-sroia-line rounded-lg" />
                             </label>
                         ))}
+                        <PasswordInput label="סיסמה" name="password" value={form.password} onChange={handleChange} describedBy="password-hint" />
+                        <PasswordInput label="אימות סיסמה" name="confirmPassword" value={form.confirmPassword} onChange={handleChange}
+                            invalid={form.confirmPassword !== '' && form.confirmPassword !== form.password} describedBy="password-match" />
                     </div>
+                    <p id="password-hint" className="text-xs text-[#565f52] -mt-1">סיסמה: לפחות 6 תווים, עם אותיות באנגלית ומספרים</p>
+                    {/* הודעה בזמן ההקלדה, כשהאימות לא תואם */}
+                    <p id="password-match" aria-live="polite" className="text-sm text-[#8a2424] -mt-2 min-h-5">
+                        {form.confirmPassword !== '' && form.confirmPassword !== form.password ? 'הסיסמאות לא תואמות' : ''}
+                    </p>
                     {formError && <p role="alert" className="text-sm text-[#8a2424]">{formError}</p>}
                     <button type="submit" disabled={isAdding}
                         className="self-start min-h-11 px-5 rounded-lg bg-sroia-dark text-white font-bold cursor-pointer disabled:opacity-50">

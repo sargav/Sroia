@@ -27,6 +27,15 @@ const createAccessToken = (manager) => {
     return jwt.sign(managerInfo, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' })
 }
 
+// טוקן רענון (יום אחד) - רק כדי לקבל טוקן גישה חדש. נחתם במפתח נפרד.
+// המנהל מזוהה לפי ה-_id, שלא משתנה גם כשהוא משנה את שם המשתמש שלו
+const createRefreshToken = (manager) =>
+    jwt.sign(
+        { _id: manager._id, manName: manager.manName },
+        process.env.REFRESH_TOKEN_SECRET,
+        { expiresIn: '1d' } // חייב להתאים ל-maxAge של העוגייה
+    )
+
 // הערה על הלוגים: אף פעם לא מדפיסים סיסמאות או טוקנים - מי שרואה את הלוג יראה אותם
 
 const login = async (req, res) => {
@@ -54,16 +63,8 @@ const login = async (req, res) => {
         // טוקן גישה קצר (15 דקות) - נשלח בכותרת Authorization בכל קריאה מוגנת
         const accessToken = createAccessToken(foundManager)
 
-        // טוקן רענון (יום אחד) - רק כדי לקבל טוקן גישה חדש.
-        // מספיק בו manName כדי למצוא את המנהל שוב. נחתם במפתח נפרד
-        const refreshToken = jwt.sign(
-            { manName: foundManager.manName },
-            process.env.REFRESH_TOKEN_SECRET,
-            { expiresIn: '1d' } // חייב להתאים ל-maxAge של העוגייה
-        )
-
         // טוקן הרענון נכנס לעוגייה מאובטחת - הדפדפן שומר אותה לבד
-        res.cookie('jwt', refreshToken, cookieOptions)
+        res.cookie('jwt', createRefreshToken(foundManager), cookieOptions)
 
         console.log('מנהל התחבר:', foundManager.manName)
 
@@ -93,7 +94,10 @@ const refresh = async (req, res) => {
     }
 
     try {
-        const foundManager = await Manager.findOne({ manName: decoded.manName }).lean()
+        // לפי _id. עוגיות ישנות (מלפני השינוי) מכילות רק manName
+        const foundManager = decoded._id
+            ? await Manager.findById(decoded._id).lean()
+            : await Manager.findOne({ manName: decoded.manName }).lean()
         if (!foundManager) {
             // טוקן תקין של מנהל שנמחק
             console.warn('refresh נדחה - המנהל לא קיים יותר:', decoded.manName)
@@ -125,6 +129,9 @@ const register = async (req, res) => {
 
         if (!checking.isValidName(String(name))) {
             return res.status(400).json({ message: 'Invalid name' })
+        }
+        if (!checking.isValidManName(String(manName))) {
+            return res.status(400).json({ message: 'Invalid manager name' })
         }
         if (!checking.isValidEmail(String(email))) {
             return res.status(400).json({ message: 'Invalid email' })
@@ -199,7 +206,7 @@ const deleteManager = async (req, res) => {
 // את manName לא משנים: טוקן הרענון שומר אותו, ושינוי שלו ינתק את המנהל
 const updateMe = async (req, res) => {
     try {
-        const { name, email, phone, currentPassword, newPassword } = req.body
+        const { name, manName, email, phone, currentPassword, newPassword } = req.body
 
         // המנהל המחובר - req.manager מגיע מ-verifyJWT
         const manager = await Manager.findById(req.manager._id)
@@ -212,6 +219,24 @@ const updateMe = async (req, res) => {
                 return res.status(400).json({ message: 'Invalid name' })
             }
             manager.name = String(name).trim()
+        }
+
+        // שינוי שם המשתמש (זה שמתחברים איתו)
+        let manNameChanged = false
+        if (manName !== undefined && String(manName).trim() !== manager.manName) {
+            if (!checking.isValidManName(String(manName))) {
+                return res.status(400).json({ message: 'Invalid manager name' })
+            }
+            const taken = await Manager.findOne({
+                manName: String(manName).trim(),
+                _id: { $ne: manager._id }
+            }).lean()
+            if (taken) {
+                return res.status(409).json({ message: 'Manager name already exists' })
+            }
+            console.log(`מנהל שינה שם משתמש: ${manager.manName} -> ${String(manName).trim()}`)
+            manager.manName = String(manName).trim()
+            manNameChanged = true
         }
 
         if (email !== undefined) {
@@ -254,6 +279,8 @@ const updateMe = async (req, res) => {
         }
 
         await manager.save()
+        // שם המשתמש השתנה - עוגיית רענון חדשה, כדי שהחיבור יישאר פעיל
+        if (manNameChanged) res.cookie('jwt', createRefreshToken(manager), cookieOptions)
         console.log(`מנהל עדכן את הפרטים שלו: ${manager.manName}${newPassword !== undefined ? ' (כולל סיסמה)' : ''}`)
 
         // מחזירים את הפרטים המעודכנים בלי הסיסמה
