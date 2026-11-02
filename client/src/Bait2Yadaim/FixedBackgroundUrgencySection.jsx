@@ -4,6 +4,7 @@ import BACKGROUND_IMAGE_URL from './assets/vieww.webp';
 import num1 from './assets/1.webp';
 import num2 from './assets/2.webp';
 import num3 from './assets/3.webp';
+import useSiteStats, { formatPrice } from "../utils/useSiteStats";
 
 const reasons = [
   {
@@ -30,6 +31,8 @@ const warnings = [
 ];
 
 export default function FixedBackgroundUrgencySection() {
+  // המחיר החדש מתעדכן מפאנל הניהול
+  const { coursePriceNext } = useSiteStats();
   return (
     <section
       dir="rtl"
@@ -104,7 +107,7 @@ export default function FixedBackgroundUrgencySection() {
           </div>
 
           <p style={{ fontSize: "1.0625rem", fontWeight: 700, color: "#ffffff", lineHeight: 1.8, margin: "0 0 6px" }}>
-            בחודש הבא המחיר עולה ל-2,700 ₪.
+            בחודש הבא המחיר עולה ל-{formatPrice(coursePriceNext)} ₪.
           </p>
           <p style={{ fontSize: "1rem", color: "#d9d9d4", margin: "0 0 40px" }}>
             ואם אתם חושבים "אחשוב על זה ואחזור"...

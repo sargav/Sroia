@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import handHouseIcon from "./assets/handHouse.webp";
+import useSiteStats, { formatPrice } from "../utils/useSiteStats";
 
 // אנימציית כניסה עדינה
 function Reveal({ children, delay = 0 }) {
@@ -60,6 +61,8 @@ function BenefitRow({ text }) {
 }
 
 function CTASection() {
+    // המחיר מתעדכן מפאנל הניהול
+    const { coursePrice } = useSiteStats();
     return (
         <section
             className="relative overflow-hidden px-6 py-20"
@@ -127,7 +130,7 @@ function CTASection() {
                             className="mb-1 text-4xl font-bold"
                             style={{ color: "#669336" }}
                         >
-                            רק 1,987 ₪
+                            רק {formatPrice(coursePrice)} ₪
                         </p>
                         <p className="mb-8 text-sm text-neutral-500">
                             תשלום מאובטח | גישה מיידית | 30 יום החזר מלא

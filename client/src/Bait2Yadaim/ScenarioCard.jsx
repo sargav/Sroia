@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import v3Bg from "./assets/v3.webp";
+import useSiteStats, { formatPrice } from "../utils/useSiteStats";
 
 // אנימציית כניסה עדינה
 function Reveal({ children, delay = 0 }) {
@@ -80,6 +81,8 @@ function ScenarioCard({ number, title, lines, variant, tilt }) {
 }
 
 function ScenarioComparisonSection() {
+    // המחיר מתעדכן מפאנל הניהול
+    const { coursePrice } = useSiteStats();
     return (
         <section className="relative overflow-hidden px-6 py-24" dir="rtl">
             {/* תמונת הרקע - V3 */}
@@ -145,7 +148,7 @@ function ScenarioComparisonSection() {
                             className="mb-6 text-4xl font-bold"
                             style={{ color: "#9CD65C" }}
                         >
-                            1,987 ₪ בלבד
+                            {formatPrice(coursePrice)} ₪ בלבד
                         </p>
 
                         <p className="mx-auto mb-8 max-w-md text-base leading-relaxed text-white/80">
