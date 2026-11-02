@@ -10,6 +10,7 @@ import ImagesPage from './features/images/ImagesPage.jsx'
 import VideosPage from './features/videos/VideosPage.jsx'
 import ManagersPage from './features/managers/ManagersPage.jsx'
 import CalendarPage from './features/calendar/CalendarPage.jsx'
+import ProfilePage from './features/profile/ProfilePage.jsx'
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
               <Route path='/managers' element={<ManagersPage />} />
               <Route path='/images' element={<ImagesPage />} />
               <Route path='/videos' element={<VideosPage />} />
-              <Route path='/me' element={<p>כאן יופיעו פרטי המנהל כרגע</p>} />
+              <Route path='/me' element={<ProfilePage />} />
             </Route>
           </Route>
         </Route>
