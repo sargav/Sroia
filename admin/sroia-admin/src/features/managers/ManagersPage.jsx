@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { UserPlus, Trash2, X } from 'lucide-react'
 import {
     useGetManagersQuery,
@@ -7,6 +7,8 @@ import {
 } from './managersApiSlice'
 import ConfirmDialog from '../../components/ConfirmDialog'
 import PageHeader from '../../components/PageHeader'
+import Toast from '../../components/Toast'
+import useCurrentManager from '../auth/useCurrentManager'
 
 // ההודעות של השרת (באנגלית) -> הודעה בעברית למנהל
 const ERRORS = {
@@ -40,6 +42,8 @@ const ManagersPage = () => {
     const [form, setForm] = useState(emptyForm)
     const [formError, setFormError] = useState('')
     const [listError, setListError] = useState('')
+    const closeToast = useCallback(() => setListError(''), [])
+    const me = useCurrentManager()
     const [toDelete, setToDelete] = useState(null)
 
     const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
@@ -109,7 +113,7 @@ const ManagersPage = () => {
 
             {isLoading && <p>טוען מנהלים...</p>}
             {isError && <p role="alert">לא הצלחנו לטעון את המנהלים</p>}
-            {listError && <p role="alert" className="text-[#8a2424]">{listError}</p>}
+            <Toast message={listError} type="error" onClose={closeToast} />
 
             <div className="bg-white border border-[#E1E8DA] rounded-xl overflow-x-auto">
                 <table className="w-full min-w-[640px] text-[15px]">
@@ -123,20 +127,29 @@ const ManagersPage = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {managers.map((m) => (
-                            <tr key={m._id} className="border-t border-[#EEF2E9]">
-                                <td className="p-3 font-bold">{m.name}</td>
+                        {managers.map((m) => {
+                            const isMe = me?._id === m._id
+                            return (
+                            <tr key={m._id} className={`border-t border-[#EEF2E9] ${isMe ? 'bg-[#F7FAF3]' : ''}`}>
+                                <td className="p-3 font-bold">
+                                    {m.name}
+                                    {isMe && <span className="mr-2 px-2 py-0.5 rounded-full bg-[#E3EFD3] text-[#2f4a17] text-xs font-bold">המשתמש שלי</span>}
+                                </td>
                                 <td className="p-3">{m.manName}</td>
                                 <td className="p-3" dir="ltr">{m.email}</td>
                                 <td className="p-3" dir="ltr">{m.phone}</td>
                                 <td className="p-2 text-left">
-                                    <button type="button" onClick={() => setToDelete(m)} aria-label={`מחיקת ${m.name}`}
-                                        className="w-10 h-10 inline-flex items-center justify-center rounded-lg text-[#a12f2f] cursor-pointer hover:bg-[#FBECEC]">
-                                        <Trash2 size={18} aria-hidden="true" />
-                                    </button>
+                                    {/* את עצמך אי אפשר למחוק - לכן אין כפתור */}
+                                    {!isMe && (
+                                        <button type="button" onClick={() => setToDelete(m)} aria-label={`מחיקת ${m.name}`}
+                                            className="w-10 h-10 inline-flex items-center justify-center rounded-lg text-[#a12f2f] cursor-pointer hover:bg-[#FBECEC]">
+                                            <Trash2 size={18} aria-hidden="true" />
+                                        </button>
+                                    )}
                                 </td>
                             </tr>
-                        ))}
+                            )
+                        })}
                     </tbody>
                 </table>
             </div>
