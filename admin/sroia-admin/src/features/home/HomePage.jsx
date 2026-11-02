@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom'
-import { Inbox, Image, Video, ChevronLeft } from 'lucide-react'
+import { Inbox, Image, Video, ChevronLeft, CalendarDays } from 'lucide-react'
 import { useGetContactsQuery } from '../contacts/contactsApiSlice'
 import { useGetImagesQuery } from '../images/imagesApiSlice'
 import { useGetVideosQuery } from '../videos/videosApiSlice'
-import PageHeader from '../../components/PageHeader'
 import useCurrentManager from '../auth/useCurrentManager'
 
 // ברכה לפי השעה עכשיו
@@ -13,6 +12,10 @@ const greetingByHour = (hour) => {
     if (hour >= 17 && hour < 21) return 'ערב טוב'
     return 'לילה טוב'
 }
+
+// התאריך של היום, למשל: "יום שני, 2 בנובמבר 2026"
+const todayLabel = () =>
+    new Date().toLocaleDateString('he-IL', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
 
 const HomePage = () => {
     const me = useCurrentManager() // השם של המנהל המחובר, מתוך הטוקן
@@ -31,10 +34,16 @@ const HomePage = () => {
 
     return (
         <div className="flex flex-col gap-8">
-            <PageHeader
-                title={me?.name ? `${greetingByHour(new Date().getHours())}, ${me.name}` : greetingByHour(new Date().getHours())}
-                subtitle="מה קורה באתר של סרויה"
-            />
+            {/* הברכה, ומתחתיה היום והתאריך */}
+            <div className="flex flex-col gap-1.5">
+                <h1 className="text-3xl font-extrabold text-sroia-dark">
+                    {me?.name ? `${greetingByHour(new Date().getHours())}, ${me.name}` : greetingByHour(new Date().getHours())}
+                </h1>
+                <p className="flex items-center gap-2 font-medium text-sroia-green">
+                    <CalendarDays size={18} aria-hidden="true" />
+                    {todayLabel()}
+                </p>
+            </div>
 
             <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
                 {tiles.map(({ to, label, value, sub, icon: Icon }) => (
