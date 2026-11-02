@@ -21,7 +21,12 @@ const isValidPhone = (phone) => {
         const phoneRegex = /^(?:0\d{8,9}|972\d{8,9})$/;
         return phoneRegex.test(cleanPhone);
 }
+//בדיקת תקינות שם משתמש: 3-30 תווים, אותיות באנגלית, מספרים, נקודה, מקף וקו תחתון - בלי רווחים
+const isValidManName = (manName) => {
+    return /^[a-zA-Z0-9._-]{3,30}$/.test(manName.trim());
+}
 module.exports = {
+    isValidManName,
     isValidEmail,
     isValidPassword,
     isValidName,

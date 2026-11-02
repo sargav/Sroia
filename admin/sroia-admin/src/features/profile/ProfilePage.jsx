@@ -27,6 +27,8 @@ const ERRORS = {
     'Invalid email': 'המייל לא תקין',
     'Invalid phone': 'מספר הטלפון לא תקין',
     'Email already exists': 'המייל הזה כבר שייך למנהל אחר',
+    'Invalid manager name': 'שם משתמש: 3-30 תווים באנגלית, מספרים, נקודה, מקף או קו תחתון, בלי רווחים',
+    'Manager name already exists': 'שם המשתמש הזה כבר תפוס',
     'Current password is required': 'יש להקליד את הסיסמה הנוכחית',
     'Current password is incorrect': 'הסיסמה הנוכחית שגויה',
     'Password must be at least 6 characters with letters and numbers': 'הסיסמה החדשה צריכה לפחות 6 תווים, עם אותיות ומספרים',
@@ -86,8 +88,8 @@ const ProfilePage = () => {
         e.preventDefault()
         const f = Object.fromEntries(new FormData(e.target))
         try {
-            await updateMe({ name: f.name.trim(), email: f.email.trim(), phone: f.phone.trim() }).unwrap()
-            // הטוקן שומר את השם - מבקשים טוקן חדש כדי שהשם יתעדכן גם בברכה בדף הבית
+            await updateMe({ name: f.name.trim(), manName: f.manName.trim(), email: f.email.trim(), phone: f.phone.trim() }).unwrap()
+            // הטוקן שומר את השם ואת שם המשתמש - מבקשים טוקן חדש כדי שיתעדכנו בכל הפאנל
             const { accessToken } = await refresh().unwrap()
             dispatch(setToken(accessToken))
             setToast({ type: 'success', title: 'הפרטים נשמרו' })
@@ -158,7 +160,7 @@ const ProfilePage = () => {
                         <span className="w-10 h-10 rounded-xl bg-[#E3EFD3] text-sroia-green flex items-center justify-center"><UserRound size={20} aria-hidden="true" /></span>
                         <div>
                             <h2 id="details-title" className="text-lg font-extrabold text-sroia-dark">הפרטים שלי</h2>
-                            <p className="text-sm text-[#565f52]">שם, מייל וטלפון ליצירת קשר</p>
+                            <p className="text-sm text-[#565f52]">שם, שם משתמש, מייל וטלפון</p>
                         </div>
                     </div>
                     {/* key - כדי שהשדות יתמלאו מחדש אחרי שמירה */}
@@ -169,6 +171,16 @@ const ProfilePage = () => {
                                 <UserRound size={18} aria-hidden="true" className="text-[#8a9386]" />
                                 <input name="name" defaultValue={manager.name} required className={inputClass} />
                             </span>
+                        </label>
+                        <label className={labelClass}>
+                            שם משתמש (להתחברות)
+                            <span className={inputBox}>
+                                <AtSign size={18} aria-hidden="true" className="text-[#8a9386]" />
+                                <input name="manName" dir="ltr" defaultValue={manager.manName} required minLength={3} maxLength={30}
+                                    pattern="[a-zA-Z0-9._\-]+" title="אותיות באנגלית, מספרים, נקודה, מקף או קו תחתון - בלי רווחים"
+                                    autoComplete="username" className={`${inputClass} text-right`} />
+                            </span>
+                            <span className="font-normal text-xs text-[#8a9386]">באנגלית, בלי רווחים. מהשמירה והלאה מתחברים עם השם החדש.</span>
                         </label>
                         <label className={labelClass}>
                             מייל
@@ -184,7 +196,6 @@ const ProfilePage = () => {
                                 <input name="phone" type="tel" dir="ltr" defaultValue={manager.phone} required className={`${inputClass} text-right`} />
                             </span>
                         </label>
-                        <p className="text-xs text-[#8a9386]">את שם המשתמש ({manager.manName}) אי אפשר לשנות.</p>
                         <button type="submit" disabled={isSaving}
                             className="self-start min-h-11 px-6 rounded-xl bg-sroia-green text-white font-bold cursor-pointer disabled:opacity-50">
                             {isSaving ? 'שומר...' : 'שמירת הפרטים'}
