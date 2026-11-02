@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Upload, Trash2 } from 'lucide-react'
+import { Upload, Trash2, ImagePlus } from 'lucide-react'
 import {
     useGetImagesQuery,
     useUploadImagesMutation,
@@ -84,16 +84,23 @@ const ImagesPage = () => {
 
             {/* העלאה */}
             <form onSubmit={handleUpload} className="bg-white border border-[#E1E8DA] rounded-xl p-4 flex flex-wrap items-end gap-3">
-                <label className="flex flex-col gap-1 text-sm font-bold text-[#3a4436] flex-[1_1_240px]">
-                    בחירת תמונות
-                    <input
-                        type="file"
-                        multiple
-                        accept="image/*"
-                        onChange={(e) => setFiles([...e.target.files])}
-                        className="font-normal text-sm file:ml-3 file:min-h-10 file:px-4 file:rounded-lg file:border-0 file:bg-[#E3EFD3] file:text-sroia-dark file:font-bold file:cursor-pointer"
-                    />
-                </label>
+                <div className="flex flex-col gap-1 flex-[1_1_240px]">
+                    <span className="text-sm font-bold text-[#3a4436]">בחירת תמונות</span>
+                    {/* הקלט האמיתי מוסתר, והתווית נראית כמו כפתור - ככה הכיתוב בעברית ולא "Choose Files" */}
+                    <label className="min-h-12 px-4 rounded-xl border-2 border-dashed border-sroia-line bg-sroia-bg text-sroia-dark flex items-center gap-3 cursor-pointer hover:border-sroia-green focus-within:border-sroia-green focus-within:ring-2 focus-within:ring-sroia-light/40">
+                        <ImagePlus size={22} aria-hidden="true" className="shrink-0 text-sroia-green" />
+                        <span className="font-bold">
+                            {files.length === 0 ? 'לחצו לבחירת תמונות' : `נבחרו ${files.length} תמונות`}
+                        </span>
+                        <input
+                            type="file"
+                            multiple
+                            accept="image/*"
+                            onChange={(e) => setFiles([...e.target.files])}
+                            className="sr-only"
+                        />
+                    </label>
+                </div>
                 {isTestimonials && (
                     <label className="flex flex-col gap-1 text-sm font-bold text-[#3a4436] flex-[1_1_200px]">
                         שם הממליץ (לא חובה)
