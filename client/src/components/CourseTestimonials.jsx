@@ -3,6 +3,7 @@ import { Compass, Play, Video, MessageCircle, ZoomIn, X } from "lucide-react";
 import api from "../api-config";
 import useAccessibleDialog from "./useAccessibleDialog";
 import { normalizeSiteImages } from "../utils/siteImages";
+import bgImage from "../Bait2Yadaim/assets/vieww.webp";
 
 const GREEN = "#7CB342";
 const CREAM = "#FBF8F2";
@@ -70,8 +71,12 @@ function CourseTestimonials() {
     return (
         <section
             dir="rtl"
-            className="relative overflow-hidden bg-gradient-to-b from-[#F7FAF2] via-white to-[#F2F7EA] px-4 py-20 sm:px-6 lg:px-8"
+            className="relative overflow-hidden bg-[#F7FAF2] px-4 py-20 sm:px-6 lg:px-8"
         >
+            {/* רקע: תמונה מהאתר, מטושטשת, ומעליה שכבה בהירה כדי שהטקסט יישאר קריא */}
+            <img src={bgImage} alt="" aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full scale-110 object-cover blur-md" />
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[#F7FAF2]/75" />
+
             <div className="relative mx-auto max-w-6xl">
                 {/* כותרת */}
                 <div className="mx-auto mb-10 max-w-3xl text-center">
