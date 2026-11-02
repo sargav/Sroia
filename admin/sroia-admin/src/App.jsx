@@ -44,9 +44,11 @@ function App() {
                 <Route path='/site' element={<SiteStatsPage />} />
               </Route>
 
-              {/* הגדרות - שתי לשוניות */}
+              {/* הפרופיל שלי - נפתח מהעיגול עם השם (למטה בתפריט / למעלה בטלפון) */}
+              <Route path='/me' element={<ProfilePage />} />
+
+              {/* הגדרות */}
               <Route element={<SettingsSection />}>
-                <Route path='/me' element={<ProfilePage />} />
                 <Route path='/managers' element={<ManagersPage />} />
               </Route>
             </Route>
