@@ -4,7 +4,10 @@ const allowedOrigins = [
 'https://sargav.github.io',
 'https://sroia.onrender.com',
 'https://sroia.co.il',
-'https://www.sroia.co.il'
+'https://www.sroia.co.il',
+// פאנל הניהול
+'https://admin.sroia.co.il',
+'https://sroia-admin.onrender.com'
 
 
 ]
