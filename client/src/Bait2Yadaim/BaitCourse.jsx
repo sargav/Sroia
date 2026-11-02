@@ -19,8 +19,7 @@ import PainPointSection from './PainPointSection';
 import ProblemNarrativeSection from './ProblemNarrativeSection';
 import RecognitionSection from './RecognitionSection';
 import PersonalStorySection from './WhenStart';
-import RecommendationsSection from '../components/RecommendationsSection';
-import TestimonialVideos from '../components/TestimonialVideos';
+import CourseTestimonials from '../components/CourseTestimonials';
 
 const BaitCourse = () => {
 
@@ -74,7 +73,7 @@ const BaitCourse = () => {
             {/* <GallerySection status="start" /> */}
             <PersonalStorySection />{/*לפני 3 שנים-הסיפור מאחורי הכל */}
             <HardTruthSection />{/* האמת שאף אחד לא אומר*/}
-            <RecommendationsSection />{/*המלצות של משתתפים בקורס -   תמונות מהאוטסאפ*/}
+            <CourseTestimonials />{/*המלצות: לשוניות סרטונים / צילומי שיחות מהוואטסאפ*/}
             <WhyDifferentSection />{/*מה שונה ממה שייש באינטרנט */}
             <CourseModulesSection />{/*מה תקבלו-המודולים */}
             {/*מה לקוחות אומרים -ברטונים וחלקים מואטסאפ*/}
@@ -84,8 +83,6 @@ const BaitCourse = () => {
             <GuaranteeSection />
             <FixedBackgroundUrgencySection />{/*3 סיבות שחשוב שתדעו-עליית המחיר של הקורס*/}
             <CTASection />
-            {/*סרטוני המלצות של לקוחות */}
-            <TestimonialVideos type="course" />
             {/* <div><div className="text-center mt-6">
                 <h2 className="mt-2 text-2xl font-bold text-neutral-900 md:text-3xl">
                     ככה זה נראה כשגומרים נכון
