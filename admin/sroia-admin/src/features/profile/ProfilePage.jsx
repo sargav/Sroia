@@ -134,7 +134,7 @@ const ProfilePage = () => {
                         {manager.name?.[0] || '?'}
                     </span>
                     <div className="flex-1 min-w-[160px] pb-1">
-                        <h1 className="text-3xl font-extrabold text-sroia-dark">{manager.name}</h1>
+                        <h2 className="text-3xl font-extrabold text-sroia-dark">{manager.name}</h2>
                         <p className="text-[#565f52] flex flex-wrap gap-x-3">
                             <span className="flex items-center gap-1"><AtSign size={15} aria-hidden="true" />{manager.manName}</span>
                             {joined && <span>· מנהל/ת מאז {joined}</span>}

@@ -1,46 +1,31 @@
-import { NavLink } from 'react-router-dom'
-import { House, Inbox, CalendarDays, Users, Image, Video, Globe, UserRound } from 'lucide-react'
-
-const menuLinks = [
-    { to: '/', label: 'דף הבית', icon: House },
-    { to: '/contacts', label: 'פניות', icon: Inbox },
-    { to: '/calendar', label: 'יומן ומשימות', icon: CalendarDays },
-    { to: '/managers', label: 'מנהלים', icon: Users },
-    { to: '/images', label: 'תמונות', icon: Image },
-    { to: '/videos', label: 'סרטוני המלצות', icon: Video },
-    { to: '/site', label: 'נתוני האתר', icon: Globe },
-    { to: '/me', label: 'פרופיל', icon: UserRound },
-]
+import { Link, useLocation } from 'react-router-dom'
+import { NAV_ITEMS, isActive } from './navItems'
 
 // onNavigate - נקרא בלחיצה על קישור (בטלפון זה סוגר את התפריט)
 const Menu = ({ onNavigate }) => {
+    const { pathname } = useLocation()
+
     return (
-        <nav aria-label="תפריט ראשי" className="flex flex-col gap-1">
-            {menuLinks.map(({ to, label, icon: Icon }) => (
-                <NavLink
-                    key={to}
-                    to={to}
-                    end={to === '/'}
-                    onClick={onNavigate}
-                    className={({ isActive }) =>
-                        `flex items-center justify-between gap-3 min-h-11 px-3 rounded-lg text-[15px] no-underline ${isActive
+        <nav aria-label="תפריט ראשי" className="flex flex-col gap-1.5">
+            {NAV_ITEMS.map((item) => {
+                const active = isActive(item, pathname)
+                const Icon = item.icon
+                return (
+                    <Link
+                        key={item.to}
+                        to={item.to}
+                        onClick={onNavigate}
+                        aria-current={active ? 'page' : undefined}
+                        className={`flex items-center justify-between gap-3 min-h-12 px-3.5 rounded-xl text-base no-underline ${active
                             ? 'bg-sroia-light/20 text-white font-bold'
                             : 'text-[#D3DECC] hover:bg-white/5'
-                        }`
-                    }
-                >
-                    {({ isActive }) => (
-                        <>
-                            <span>{label}</span>
-                            <Icon
-                                size={20}
-                                aria-hidden="true"
-                                className={isActive ? 'text-sroia-light' : ''}
-                            />
-                        </>
-                    )}
-                </NavLink>
-            ))}
+                            }`}
+                    >
+                        <span>{item.label}</span>
+                        <Icon size={21} aria-hidden="true" className={active ? 'text-sroia-light' : ''} />
+                    </Link>
+                )
+            })}
         </nav>
     )
 }

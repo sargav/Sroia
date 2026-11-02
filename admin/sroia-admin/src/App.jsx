@@ -12,6 +12,8 @@ import ManagersPage from './features/managers/ManagersPage.jsx'
 import CalendarPage from './features/calendar/CalendarPage.jsx'
 import ProfilePage from './features/profile/ProfilePage.jsx'
 import SiteStatsPage from './features/siteStats/SiteStatsPage.jsx'
+import RegistrationsPage from './features/registrations/RegistrationsPage.jsx'
+import { InboxSection, ContentSection, SettingsSection } from './components/sections.jsx'
 
 function App() {
   return (
@@ -27,13 +29,26 @@ function App() {
           <Route element={<RequireAuth />}>
             <Route element={<Layout />}>
               <Route index element={<HomePage />} />
-              <Route path='/contacts' element={<ContactsList/>} />
               <Route path='/calendar' element={<CalendarPage />} />
-              <Route path='/managers' element={<ManagersPage />} />
-              <Route path='/images' element={<ImagesPage />} />
-              <Route path='/videos' element={<VideosPage />} />
-              <Route path='/site' element={<SiteStatsPage />} />
-              <Route path='/me' element={<ProfilePage />} />
+
+              {/* פניות והרשמות - שתי לשוניות */}
+              <Route element={<InboxSection />}>
+                <Route path='/contacts' element={<ContactsList />} />
+                <Route path='/registrations' element={<RegistrationsPage />} />
+              </Route>
+
+              {/* תוכן האתר - שלוש לשוניות */}
+              <Route element={<ContentSection />}>
+                <Route path='/images' element={<ImagesPage />} />
+                <Route path='/videos' element={<VideosPage />} />
+                <Route path='/site' element={<SiteStatsPage />} />
+              </Route>
+
+              {/* הגדרות - שתי לשוניות */}
+              <Route element={<SettingsSection />}>
+                <Route path='/me' element={<ProfilePage />} />
+                <Route path='/managers' element={<ManagersPage />} />
+              </Route>
             </Route>
           </Route>
         </Route>

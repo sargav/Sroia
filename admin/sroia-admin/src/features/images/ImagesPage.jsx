@@ -64,17 +64,17 @@ const ImagesPage = () => {
         <div className="flex flex-col gap-6">
             <PageHeader title="תמונות" subtitle="התמונות שמופיעות באתר, לפי קטגוריה" />
 
-            {/* לשוניות הקטגוריות */}
-            <div role="group" aria-label="קטגוריה" className="flex flex-wrap gap-1 border-b border-[#E1E8DA]">
+            {/* הקטגוריות - כפתורים עגולים, כדי שלא ייראו כמו הלשוניות של "תוכן האתר" שמעליהן */}
+            <div role="group" aria-label="קטגוריה" className="flex flex-wrap gap-2">
                 {CATEGORIES.map((c) => (
                     <button
                         key={c.id}
                         type="button"
                         aria-pressed={category === c.id}
                         onClick={() => { setCategory(c.id); setMessage('') }}
-                        className={`min-h-11 px-4 border-b-[3px] cursor-pointer ${category === c.id
-                            ? 'border-sroia-green text-sroia-dark font-bold'
-                            : 'border-transparent text-[#565f52]'
+                        className={`min-h-10 px-4 rounded-full border text-sm font-bold cursor-pointer ${category === c.id
+                            ? 'bg-sroia-dark border-sroia-dark text-white'
+                            : 'bg-white border-sroia-line text-sroia-dark'
                             }`}
                     >
                         {c.label}
