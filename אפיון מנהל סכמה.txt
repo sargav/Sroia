@@ -1,0 +1,38 @@
+src/
+│
+├── app/                      ← "המטבח והמקרר", הבסיס של הכל
+│   ├── store.js              ← המקרר (שלב 1)
+│   └── apiSlice.js           ← החיבור לשרת: כתובת, טוקן, רענון
+│
+├── features/                 ← תיקייה לכל נושא בפאנל
+│   │
+│   ├── auth/                 ← התחברות
+│   │   ├── authSlice.js      ← המגירה של הטוקן (שלב 2)
+│   │   ├── authApiSlice.js   ← login / refresh / logout
+│   │   ├── Login.jsx         ← מסך ההתחברות (מעבירים לכאן מ-src/Login)
+│   │   ├── PersistLogin.jsx  ← משאיר מחובר אחרי רענון דף
+│   │   └── RequireAuth.jsx   ← חוסם מי שלא מחובר
+│   │
+│   ├── contacts/             ← פניות
+│   │   ├── contactsApiSlice.js
+│   │   └── ContactsList.jsx
+│   │
+│   ├── images/               ← תמונות
+│   │   ├── imagesApiSlice.js
+│   │   └── ImagesPage.jsx
+│   │
+│   ├── videos/               ← סרטוני המלצות
+│   │   ├── videosApiSlice.js
+│   │   └── VideosPage.jsx
+│   │
+│   └── managers/             ← מנהלים + הפרטים שלי
+│       ├── managersApiSlice.js
+│       └── ManagersPage.jsx
+│
+├── components/               ← חלקים משותפים לכל המסכים
+│   ├── Layout.jsx            ← תפריט צד + <Outlet />
+│   └── Sidebar.jsx           ← התפריט עצמו
+│
+├── App.jsx                   ← הנתיבים (Routes)
+├── App.css
+└── main.jsx                  ← Provider + App

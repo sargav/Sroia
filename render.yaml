@@ -42,3 +42,29 @@ services:
       # הכתובת של השרת - האתר שולח אליה את כל הבקשות (טפסים, תמונות, סרטונים)
       - key: VITE_API_URL
         value: https://api.sroia.co.il
+
+  # פאנל הניהול (React) - אתר סטטי נפרד
+  - type: web
+    runtime: static
+    name: sroia-admin
+    rootDir: admin/sroia-admin
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    autoDeploy: true
+    # רענון בעמוד פנימי (למשל /calendar) נטען דרך index.html ולא נותן 404
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      # אף אתר לא יכול להציג את הפאנל בתוך iframe
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+    envVars:
+      # הכתובת של השרת - הפאנל שולח אליה את כל הבקשות
+      - key: VITE_API_URL
+        value: https://api.sroia.co.il

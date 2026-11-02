@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Heebo', sans-serif;
+  --color-sroia-dark: #2D382B;    /* הירוק הכהה של התפריט */
+  --color-sroia-green: #51762b;   /* כפתורים */
+  --color-sroia-light: #8FC24B;   /* הירוק הבהיר */
+  --color-sroia-bg: #F4F6F0;      /* רקע המסכים */
+  --color-sroia-line: #C6D3BB;    /* מסגרות של שדות */
+}
+/* כניסה של הודעה קופצת (Toast) */
+@keyframes toast-in {
+  from { opacity: 0; transform: translate(-50%, -12px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
