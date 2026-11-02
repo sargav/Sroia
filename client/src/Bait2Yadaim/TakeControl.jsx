@@ -140,13 +140,19 @@ function CTASection() {
                         <a  
                             href="#cta-form"
                             type="button"
-                            className="w-full rounded-full px-8 py-4 text-lg font-bold text-[#1a1a1a] transition-transform hover:scale-[1.02]"
+                            className="group/button flex w-full items-center justify-center gap-3 hover:gap-5 rounded-full px-8 py-4 text-lg font-bold text-[#1a1a1a] transition-all duration-300 hover:scale-[1.02]"
                             style={{
                                 backgroundColor: "#7CB342",
                                 boxShadow: "0 10px 24px rgba(124,179,66,0.35)",
                             }}
                         >
-                            הצטרפו ותתחילו לחסוך עכשיו!
+                            <span>הצטרפו ותתחילו לחסוך עכשיו</span>
+                            <span
+                                className="transition-transform duration-300 group-hover/button:-translate-x-1"
+                                aria-hidden="true"
+                            >
+                                ←
+                            </span>
                         </a>
                     </div>
                 </Reveal>

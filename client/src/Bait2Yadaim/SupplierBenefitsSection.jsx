@@ -227,10 +227,16 @@ function SupplierBenefitsSection() {
                     <div className="mt-8">
                         <a
                             href="#cta-form"
-                            className="inline-flex items-center justify-center gap-2 rounded-full px-10 py-4 text-base font-extrabold text-[#1a1a1a] shadow-md transition hover:opacity-90"
+                            className="group/button inline-flex items-center justify-center gap-3 rounded-full px-10 py-4 text-base font-extrabold text-[#1a1a1a] shadow-md transition-all duration-300 hover:gap-5 hover:opacity-90"
                             style={{ backgroundColor: GREEN }}
                         >
-                            הצטרפו ותתחילו לחסוך עכשיו
+                            <span>הצטרפו ותתחילו לחסוך עכשיו</span>
+                            <span
+                                className="transition-transform duration-300 group-hover/button:-translate-x-1"
+                                aria-hidden="true"
+                            >
+                                ←
+                            </span>
                         </a>
                     </div>
                 </div>
