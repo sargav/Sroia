@@ -36,9 +36,9 @@ services:
         name: Referrer-Policy
         value: strict-origin-when-cross-origin
     envVars:
-      # הכתובת של האתר. כשהדומיין יחובר, משנים לכתובת הדומיין
+      # הכתובת של האתר (הדומיין)
       - key: SITE_URL
-        value: https://sroia.onrender.com
-      # הכתובת של השרת. ממלאים כשהשרת יעלה ל-Render
+        value: https://sroia.co.il
+      # הכתובת של השרת - האתר שולח אליה את כל הבקשות (טפסים, תמונות, סרטונים)
       - key: VITE_API_URL
-        sync: false
+        value: https://api.sroia.co.il
