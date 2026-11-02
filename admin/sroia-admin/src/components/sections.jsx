@@ -1,4 +1,4 @@
-import { Inbox, ShoppingCart, Image, Video, Globe, UserRound, Users } from 'lucide-react'
+import { Inbox, ShoppingCart, Image, Video, Globe, Users } from 'lucide-react'
 import SectionTabs from './SectionTabs'
 import { useGetContactsQuery } from '../features/contacts/contactsApiSlice'
 
@@ -34,9 +34,8 @@ export const ContentSection = () => (
 export const SettingsSection = () => (
     <SectionTabs
         title="הגדרות"
-        subtitle="הפרטים שלך ומי יכול להיכנס לפאנל"
+        subtitle="מי יכול להיכנס לפאנל"
         tabs={[
-            { to: '/me', label: 'הפרופיל שלי', icon: UserRound },
             { to: '/managers', label: 'מנהלים', icon: Users },
         ]}
     />

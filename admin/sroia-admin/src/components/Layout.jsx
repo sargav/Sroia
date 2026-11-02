@@ -1,103 +1,88 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { LogOut, Menu as MenuIcon, X } from 'lucide-react'
-import { logOut } from '../features/auth/authSlice'
-import { useLogoutMutation } from '../features/auth/authApiSlice'
-import apiSlice from '../app/apiSlice'
+import { Link, Outlet, useLocation } from 'react-router-dom'
+import { ArrowLeft, LogOut } from 'lucide-react'
+import useLogout from '../features/auth/useLogout'
+import useCurrentManager from '../features/auth/useCurrentManager'
 import { useGetContactsQuery } from '../features/contacts/contactsApiSlice'
 import Menu from './Menu'
 import { NAV_ITEMS, isActive } from './navItems'
 import logo from '../assets/sroia-logo-white.png'
 
-const Layout = () => {
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const [logoutRequest] = useLogoutMutation()
-    const { pathname } = useLocation()
+// העיגול עם האות הראשונה של השם
+const Avatar = ({ name, className = '' }) => (
+    <span aria-hidden="true"
+        className={`rounded-full bg-sroia-light text-sroia-dark flex items-center justify-center font-extrabold shrink-0 ${className}`}>
+        {name?.[0] || '?'}
+    </span>
+)
 
-    // האם התפריט פתוח (רלוונטי רק בטלפון)
-    const [menuOpen, setMenuOpen] = useState(false)
+const Layout = () => {
+    const { pathname } = useLocation()
+    const handleLogout = useLogout()
+    const me = useCurrentManager()
+    const onProfile = pathname.startsWith('/me')
 
     // כמה פניות עוד לא נקראו - בשביל המספר על "פניות" בסרגל התחתון
     const { data: contacts = [] } = useGetContactsQuery()
     const unread = contacts.filter((c) => !c.isRead).length
 
-    const handleLogout = async () => {
-        try {
-            await logoutRequest().unwrap()          // השרת מוחק את העוגייה
-        } catch (err) {
-            console.log('שגיאה בהתנתקות:', err.status) // גם אם נכשל - מנתקים בצד שלנו
-        }
-        dispatch(logOut())                           // מרוקנים את המגירה
-        dispatch(apiSlice.util.resetApiState())      // מוחקים את הנתונים מהזיכרון
-        navigate('/login', { replace: true })
-    }
-
     return (
         <div dir="rtl" className="min-h-screen bg-sroia-bg font-sans md:flex">
 
-            {/* פס עליון - רק בטלפון */}
+            {/* פס עליון - רק בטלפון: לוגו + עיגול הפרופיל (הניווט עצמו בסרגל התחתון) */}
             <header className="md:hidden sticky top-0 z-20 flex items-center justify-between bg-sroia-dark px-4 h-14 shadow-md">
                 <img src={logo} alt="סרויה" className="w-24 h-auto" />
-                <button
-                    type="button"
-                    onClick={() => setMenuOpen(true)}
-                    aria-label="פתיחת התפריט"
-                    aria-expanded={menuOpen}
-                    aria-controls="side-menu"
-                    className="w-11 h-11 flex items-center justify-center rounded-lg text-white hover:bg-white/10 cursor-pointer"
+                <Link
+                    to="/me"
+                    aria-label="הפרופיל שלי"
+                    aria-current={onProfile ? 'page' : undefined}
+                    className="w-11 h-11 flex items-center justify-center rounded-full"
                 >
-                    <MenuIcon size={26} aria-hidden="true" />
-                </button>
+                    <Avatar name={me?.name}
+                        className={`w-9 h-9 text-base ${onProfile ? 'ring-[3px] ring-white' : ''}`} />
+                </Link>
             </header>
 
-            {/* רקע כהה מאחורי התפריט הפתוח - לחיצה עליו סוגרת */}
-            {menuOpen && (
-                <div
-                    className="md:hidden fixed inset-0 z-30 bg-black/50"
-                    onClick={() => setMenuOpen(false)}
-                    aria-hidden="true"
-                />
-            )}
-
-            {/* תפריט הצד: בטלפון נפתח מהצד, במחשב תמיד מוצג */}
-            <aside
-                id="side-menu"
-                className={`
-            fixed inset-y-0 right-0 z-40 w-72 max-w-[85vw] transition-[translate,visibility] duration-200
-            ${menuOpen ? 'translate-x-0 visible' : 'translate-x-full invisible'}
-            md:visible md:sticky md:top-0 md:h-screen md:translate-x-0 md:w-64 md:shrink-0
-            bg-sroia-dark text-white p-4 flex flex-col gap-8 overflow-y-auto
-        `}
-            >
-                <div className="flex items-start justify-between px-2 pt-3">
-                    <div className="flex flex-col gap-1">
-                        <img src={logo} alt="סרויה – ניהול פרויקטים ופיקוח בנייה" className="w-40 h-auto" />
-                    </div>
-
-                    {/* כפתור סגירה - רק בטלפון */}
-                    <button
-                        type="button"
-                        onClick={() => setMenuOpen(false)}
-                        aria-label="סגירת התפריט"
-                        className="md:hidden w-11 h-11 flex items-center justify-center rounded-lg hover:bg-white/10 cursor-pointer"
-                    >
-                        <X size={24} aria-hidden="true" />
-                    </button>
+            {/* תפריט הצד - רק במחשב */}
+            <aside className="hidden md:flex sticky top-0 h-screen w-64 shrink-0 bg-sroia-dark text-white p-4 flex-col gap-8 overflow-y-auto">
+                <div className="px-2 pt-3">
+                    <img src={logo} alt="סרויה – ניהול פרויקטים ופיקוח בנייה" className="w-40 h-auto" />
                 </div>
 
-                {/* לחיצה על קישור סוגרת את התפריט בטלפון */}
-                <Menu onNavigate={() => setMenuOpen(false)} />
+                <Menu />
 
-                <button
-                    type="button"
-                    onClick={handleLogout}
-                    className="mt-auto flex items-center justify-between gap-3 min-h-11 px-3 rounded-lg text-[15px] text-[#D3DECC] hover:bg-white/5 cursor-pointer"
-                >
-                    <span>התנתקות</span>
-                    <LogOut size={20} aria-hidden="true" />
-                </button>
+                {/* למטה: הכרטיס שלי (פותח את הפרופיל) + התנתקות */}
+                <div className={`mt-auto flex items-center gap-2 p-2 rounded-2xl transition-colors ${onProfile
+                    ? 'bg-sroia-light/20 ring-1 ring-inset ring-sroia-light/40'
+                    : 'bg-white/5 has-[a:hover]:bg-sroia-light/15 has-[a:hover]:ring-1 has-[a:hover]:ring-inset has-[a:hover]:ring-sroia-light/50'}`}>
+                    <Link
+                        to="/me"
+                        title="לחיצה פותחת את הפרופיל שלך"
+                        aria-current={onProfile ? 'page' : undefined}
+                        className="group flex-1 min-w-0 flex items-center gap-2.5 p-1 rounded-xl text-white no-underline"
+                    >
+                        <Avatar name={me?.name}
+                            className={`w-10 h-10 text-lg transition-shadow ${onProfile ? 'ring-[3px] ring-white' : 'group-hover:ring-[3px] group-hover:ring-sroia-light/40'}`} />
+                        <span className="min-w-0">
+                            <b className="block text-[15px] truncate">{me?.name}</b>
+                            <span className="flex items-center gap-1 text-xs text-[#B9DB8C]">
+                                הפרופיל שלי
+                                {!onProfile && (
+                                    <ArrowLeft size={13} aria-hidden="true"
+                                        className="opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition" />
+                                )}
+                            </span>
+                        </span>
+                    </Link>
+                    <button
+                        type="button"
+                        onClick={handleLogout}
+                        aria-label="התנתקות"
+                        title="התנתקות"
+                        className="w-10 h-10 shrink-0 flex items-center justify-center rounded-xl text-[#D3DECC] hover:bg-white/10 hover:text-white cursor-pointer"
+                    >
+                        <LogOut size={20} aria-hidden="true" />
+                    </button>
+                </div>
             </aside>
 
             {/* כאן מופיע העמוד הנוכחי */}

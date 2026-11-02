@@ -1,11 +1,12 @@
 import { useCallback, useMemo, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Mail, Phone, AtSign, Eye, EyeOff, KeyRound, UserRound } from 'lucide-react'
+import { Mail, Phone, AtSign, Eye, EyeOff, KeyRound, UserRound, LogOut, ChevronDown } from 'lucide-react'
 import { useUpdateMeMutation } from './profileApiSlice'
 import { useGetManagersQuery } from '../managers/managersApiSlice'
 import { useRefreshMutation } from '../auth/authApiSlice'
 import { setToken } from '../auth/authSlice'
 import useCurrentManager from '../auth/useCurrentManager'
+import useLogout from '../auth/useLogout'
 import Toast from '../../components/Toast'
 import { useGetContactsQuery } from '../contacts/contactsApiSlice'
 import { useGetEventsQuery, useGetTasksQuery } from '../calendar/calendarApiSlice'
@@ -66,6 +67,10 @@ const ProfilePage = () => {
     const { data: managers = [], isLoading } = useGetManagersQuery()
     const [updateMe, { isLoading: isSaving }] = useUpdateMeMutation()
     const [refresh] = useRefreshMutation()
+    const handleLogout = useLogout()
+
+    // בטלפון שינוי הסיסמה סגור עד שלוחצים עליו (במחשב תמיד פתוח)
+    const [pwOpen, setPwOpen] = useState(false)
 
     // המונים בראש הדף
     const week = useMemo(() => thisWeek(), [])
@@ -124,6 +129,12 @@ const ProfilePage = () => {
 
     return (
         <div className="flex flex-col gap-6 max-w-5xl">
+            {/* בטלפון הכותרת רק לקוראי מסך - השם הגדול בבאנר כבר אומר איפה אנחנו */}
+            <div className="sr-only md:not-sr-only">
+                <h1 className="text-3xl font-extrabold text-sroia-dark">הפרופיל שלי</h1>
+                <p className="text-[#565f52]">הפרטים שלך והסיסמה לכניסה לפאנל</p>
+            </div>
+
             {/* באנר עם תמונה מהאתר */}
             <div>
                 <div className="relative h-36 md:h-44 rounded-3xl overflow-hidden">
@@ -142,6 +153,12 @@ const ProfilePage = () => {
                             {joined && <span>· מנהל/ת מאז {joined}</span>}
                         </p>
                     </div>
+                    {/* התנתקות - בטלפון כאן (במחשב היא למטה בתפריט) */}
+                    <button type="button" onClick={handleLogout}
+                        className="md:hidden mb-1 min-h-11 px-4 rounded-xl border border-[#E1C9C9] text-[#a12f2f] bg-white font-bold flex items-center gap-2 cursor-pointer">
+                        <LogOut size={18} aria-hidden="true" />
+                        התנתקות
+                    </button>
                     <ul className="flex gap-2 pb-2 w-full sm:w-auto">
                         {stats.map((st) => (
                             <li key={st.label} className="flex-1 sm:flex-none bg-white rounded-2xl px-4 py-2 flex flex-col items-center shadow-[0_1px_2px_rgba(45,56,43,0.06),0_4px_16px_rgba(45,56,43,0.05)]">
@@ -204,15 +221,25 @@ const ProfilePage = () => {
                 </section>
 
                 {/* שינוי סיסמה */}
-                <section aria-labelledby="password-title" className="bg-white rounded-2xl p-6 shadow-[0_1px_2px_rgba(45,56,43,0.06),0_4px_16px_rgba(45,56,43,0.05)] flex flex-col gap-5">
-                    <div className="flex items-center gap-3">
-                        <span className="w-10 h-10 rounded-xl bg-[#FDF3DC] text-[#6b4f00] flex items-center justify-center"><KeyRound size={20} aria-hidden="true" /></span>
-                        <div>
-                            <h2 id="password-title" className="text-lg font-extrabold text-sroia-dark">שינוי סיסמה</h2>
-                            <p className="text-sm text-[#565f52]">לפחות 6 תווים, עם אותיות ומספרים</p>
-                        </div>
-                    </div>
-                    <form onSubmit={savePassword} className="flex flex-col gap-4">
+                <section aria-labelledby="password-title" className="bg-white rounded-2xl p-4 md:p-6 shadow-[0_1px_2px_rgba(45,56,43,0.06),0_4px_16px_rgba(45,56,43,0.05)] flex flex-col gap-5">
+                    <h2 id="password-title" className="text-lg font-extrabold text-sroia-dark">
+                        {/* בטלפון הכותרת היא כפתור שפותח את הטופס */}
+                        <button type="button" onClick={() => setPwOpen(!pwOpen)} aria-expanded={pwOpen} aria-controls="password-form"
+                            className="md:hidden w-full min-h-12 flex items-center gap-3 text-right cursor-pointer">
+                            <span className="w-10 h-10 rounded-xl bg-[#FDF3DC] text-[#6b4f00] flex items-center justify-center"><KeyRound size={20} aria-hidden="true" /></span>
+                            <span className="flex-1">שינוי סיסמה</span>
+                            <ChevronDown size={20} aria-hidden="true" className={`text-[#6b7468] transition-transform ${pwOpen ? 'rotate-180' : ''}`} />
+                        </button>
+                        <span className="hidden md:flex items-center gap-3">
+                            <span className="w-10 h-10 rounded-xl bg-[#FDF3DC] text-[#6b4f00] flex items-center justify-center"><KeyRound size={20} aria-hidden="true" /></span>
+                            <span>
+                                שינוי סיסמה
+                                <span className="block text-sm font-normal text-[#565f52]">לפחות 6 תווים, עם אותיות ומספרים</span>
+                            </span>
+                        </span>
+                    </h2>
+                    <form id="password-form" onSubmit={savePassword} className={`${pwOpen ? 'flex' : 'hidden'} md:flex flex-col gap-4`}>
+                        <p className="md:hidden text-sm text-[#565f52]">לפחות 6 תווים, עם אותיות ומספרים</p>
                         <PasswordField label="סיסמה נוכחית" name="currentPassword" autoComplete="current-password" />
                         <PasswordField label="סיסמה חדשה" name="newPassword" autoComplete="new-password" />
                         <PasswordField label="אימות הסיסמה החדשה" name="confirmPassword" autoComplete="new-password" />
