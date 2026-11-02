@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Search, Download, Phone, Mail, MapPin, BookOpen, GraduationCap, TrendingUp, Check } from 'lucide-react'
-import { useGetRegistrationsQuery, useSetHandledMutation } from './registrationsApiSlice'
+import { useGetRegistrationsQuery } from './registrationsApiSlice'
 import PageHeader from '../../components/PageHeader'
 
 // כל מוצר: שם, צבעים ואייקון
@@ -19,10 +19,10 @@ const dateLabel = (d) => new Date(d).toLocaleDateString('he-IL', { day: 'numeric
 const exportCsv = (rows) => {
     const cell = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`
     const lines = [
-        ['שם', 'מוצר', 'סכום', 'תשלומים', 'טלפון', 'מייל', 'תאריך', 'קיבל גישה'],
+        ['שם', 'מוצר', 'סכום', 'תשלומים', 'טלפון', 'מייל', 'תאריך'],
         ...rows.map((r) => [
             r.name, PRODUCTS[r.product].label, r.amount, r.numberOfPayments || '', r.phone, r.email,
-            dateLabel(r.date), r.kind === 'payment' ? (r.handled ? 'כן' : 'לא') : '',
+            dateLabel(r.date),
         ]),
     ]
     const blob = new Blob(['\uFEFF' + lines.map((l) => l.map(cell).join(',')).join('\n')], { type: 'text/csv;charset=utf-8' })
@@ -47,7 +47,6 @@ const StatTile = ({ label, value, icon: Icon, iconClass }) => (
 
 const RegistrationsPage = () => {
     const { data: rows = [], isLoading, isError } = useGetRegistrationsQuery()
-    const [setHandled] = useSetHandledMutation()
     const [filter, setFilter] = useState('all')
     const [search, setSearch] = useState('')
     const [shown, setShown] = useState(PAGE)
@@ -129,7 +128,7 @@ const RegistrationsPage = () => {
                             const p = PRODUCTS[r.product]
                             const PIcon = p.icon
                             return (
-                                <li key={r._id} className={`flex flex-wrap items-center gap-x-4 gap-y-2 px-4 sm:px-5 py-3 border-t first:border-t-0 border-[#EEF2E9] ${r.kind === 'payment' && !r.handled ? 'bg-[#FBFDF8]' : ''}`}>
+                                <li key={r._id} className={`flex flex-wrap items-center gap-x-4 gap-y-2 px-4 sm:px-5 py-3 border-t first:border-t-0 border-[#EEF2E9]`}>
                                     <span aria-hidden="true" className={`w-9 h-9 shrink-0 rounded-full flex items-center justify-center font-extrabold ${p.bg} ${p.fg}`}>
                                         {r.name?.[0] || '?'}
                                     </span>
@@ -146,17 +145,8 @@ const RegistrationsPage = () => {
                                         {r.numberOfPayments > 1 && <span className="block text-xs text-[#6b7468]">{r.numberOfPayments} תשלומים</span>}
                                     </span>
 
-                                    {r.kind === 'payment' ? (
-                                        <label className={`inline-flex items-center gap-2 min-h-9 px-3 rounded-full text-xs font-bold cursor-pointer ${r.handled ? 'bg-[#E3EFD3] text-[#2f4a17]' : 'bg-[#FDF3DC] text-[#7a5a00]'}`}>
-                                            <input
-                                                type="checkbox"
-                                                checked={!!r.handled}
-                                                onChange={(e) => setHandled({ id: r._id, handled: e.target.checked })}
-                                                className="w-4 h-4 accent-sroia-green"
-                                            />
-                                            {r.handled ? 'קיבל גישה' : 'מחכה לגישה'}
-                                        </label>
-                                    ) : (
+                                    {/* ליד נרשם למדריך: האם רב מסר שלחו לו את המדריך */}
+                                    {r.kind === 'guide' && (
                                         <span className="inline-flex items-center gap-1.5 min-h-9 px-3 rounded-full text-xs font-bold bg-[#EEF0EC] text-[#565f52]">
                                             {r.sentToMailer && <Check size={14} aria-hidden="true" />}
                                             {r.sentToMailer ? 'נשלח במייל' : 'לא נשלח - לבדוק ברב מסר'}

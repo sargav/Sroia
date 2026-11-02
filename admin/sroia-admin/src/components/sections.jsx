@@ -1,19 +1,17 @@
 import { Inbox, ShoppingCart, Image, Video, Globe, UserRound, Users } from 'lucide-react'
 import SectionTabs from './SectionTabs'
 import { useGetContactsQuery } from '../features/contacts/contactsApiSlice'
-import { useGetRegistrationsQuery } from '../features/registrations/registrationsApiSlice'
 
 // "פניות והרשמות"
 export const InboxSection = () => {
     const { data: contacts = [] } = useGetContactsQuery()
-    const { data: registrations = [] } = useGetRegistrationsQuery()
     return (
         <SectionTabs
             title="פניות והרשמות"
             subtitle="מי פנה אלינו, ומי נרשם לקורס, למצפן ולמדריך"
             tabs={[
                 { to: '/contacts', label: 'פניות', icon: Inbox, count: contacts.filter((c) => !c.isRead).length },
-                { to: '/registrations', label: 'הרשמות ורכישות', icon: ShoppingCart, count: registrations.filter((r) => r.kind === 'payment' && !r.handled).length },
+                { to: '/registrations', label: 'הרשמות ורכישות', icon: ShoppingCart },
             ]}
         />
     )

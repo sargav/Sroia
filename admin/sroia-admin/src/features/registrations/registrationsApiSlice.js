@@ -7,12 +7,7 @@ const registrationsApiSlice = apiSlice.injectEndpoints({
       query: () => "/api/manager/registrations",
       providesTags: ["Registration"],
     }),
-    // סימון "קיבל גישה" לרוכש
-    setHandled: build.mutation({
-      query: ({ id, handled }) => ({ url: `/api/manager/registrations/payments/${id}`, method: "PATCH", body: { handled } }),
-      invalidatesTags: ["Registration"],
-    }),
   }),
 })
 
-export const { useGetRegistrationsQuery, useSetHandledMutation } = registrationsApiSlice
+export const { useGetRegistrationsQuery } = registrationsApiSlice

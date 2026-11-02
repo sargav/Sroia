@@ -28,7 +28,6 @@ const getRegistrations = async (req, res) => {
                 phone: p.phone,
                 amount: p.amount,
                 numberOfPayments: p.numberOfPayments,
-                handled: p.handled,
                 date: p.dealDate || p.createdAt,
             })),
             ...guides.map((g) => ({
@@ -50,24 +49,4 @@ const getRegistrations = async (req, res) => {
     }
 }
 
-// PATCH /api/manager/registrations/payments/:id  { handled: true/false }
-// סימון "קיבל גישה" לרוכש
-const setHandled = async (req, res) => {
-    if (typeof req.body.handled !== 'boolean') {
-        return res.status(400).json({ message: 'handled must be true or false' })
-    }
-    try {
-        const payment = await Payment.findByIdAndUpdate(
-            req.params.id,
-            { handled: req.body.handled },
-            { new: true }
-        )
-        if (!payment) return res.status(404).json({ message: 'Payment not found' })
-        res.json({ _id: payment._id, handled: payment.handled })
-    } catch (error) {
-        // מזהה לא תקין
-        res.status(400).json({ message: error.message })
-    }
-}
-
-module.exports = { getRegistrations, setHandled }
+module.exports = { getRegistrations }

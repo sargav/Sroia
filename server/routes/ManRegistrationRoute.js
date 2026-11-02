@@ -7,6 +7,5 @@ const verifyJWT = require('../middleware/verifyJWT')
 router.use(verifyJWT)
 
 router.get('/', controller.getRegistrations)
-router.patch('/payments/:id', controller.setHandled)
 
 module.exports = router
