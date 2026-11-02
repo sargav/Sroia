@@ -4,8 +4,18 @@ import { useGetContactsQuery } from '../contacts/contactsApiSlice'
 import { useGetImagesQuery } from '../images/imagesApiSlice'
 import { useGetVideosQuery } from '../videos/videosApiSlice'
 import PageHeader from '../../components/PageHeader'
+import useCurrentManager from '../auth/useCurrentManager'
+
+// ברכה לפי השעה עכשיו
+const greetingByHour = (hour) => {
+    if (hour >= 5 && hour < 12) return 'בוקר טוב'
+    if (hour >= 12 && hour < 17) return 'צהריים טובים'
+    if (hour >= 17 && hour < 21) return 'ערב טוב'
+    return 'לילה טוב'
+}
 
 const HomePage = () => {
+    const me = useCurrentManager() // השם של המנהל המחובר, מתוך הטוקן
     const { data: contacts = [] } = useGetContactsQuery()
     const { data: images = [] } = useGetImagesQuery()
     const { data: videos = [] } = useGetVideosQuery()
@@ -21,7 +31,10 @@ const HomePage = () => {
 
     return (
         <div className="flex flex-col gap-8">
-            <PageHeader title="שלום 👋" subtitle="מה קורה באתר של סרויה" />
+            <PageHeader
+                title={me?.name ? `${greetingByHour(new Date().getHours())}, ${me.name}` : greetingByHour(new Date().getHours())}
+                subtitle="מה קורה באתר של סרויה"
+            />
 
             <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
                 {tiles.map(({ to, label, value, sub, icon: Icon }) => (
