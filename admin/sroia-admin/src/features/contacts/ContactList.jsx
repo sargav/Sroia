@@ -7,6 +7,7 @@ import {
     useDeleteContactMutation,
 } from './contactsApiSlice'
 import ConfirmDialog from '../../components/ConfirmDialog'
+import PageHeader from '../../components/PageHeader'
 
 // השמות של המקורות, כמו ב-enum במודל
 const SOURCES = {
@@ -68,10 +69,7 @@ const ContactsList = () => {
 
     return (
         <div className="flex flex-col gap-6">
-            <div>
-                <h1 className="text-3xl font-extrabold text-sroia-dark">פניות</h1>
-                <p className="text-[#565f52]">כל הפניות שהגיעו מהטפסים באתר</p>
-            </div>
+            <PageHeader title="פניות" subtitle="כל הפניות שהגיעו מהטפסים באתר" />
 
             {/* סינון */}
             <label className="flex items-center gap-2 min-h-11 px-4 bg-white border border-sroia-line rounded-lg max-w-md">

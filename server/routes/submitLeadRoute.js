@@ -31,6 +31,7 @@
 const express = require("express");
 const axios = require("axios");
 const router = express.Router();
+const GuideSignup = require("../models/GuideSignup");
 
 // ==================================================
 // שלב 1: קבלת Access Token זמני מרב מסר
@@ -144,8 +145,18 @@ router.post("/", async (req, res) => {
     return res.status(400).json({ error: "חסרים פרטים בטופס" });
   }
 
+  // שומרים גם אצלנו, כדי שהמנהל יראה בפאנל מי נרשם למדריך.
+  // אם השמירה נכשלת - לא עוצרים את השליחה לרב מסר
+  let signup = null;
+  try {
+    signup = await GuideSignup.create({ name, email, phone });
+  } catch (err) {
+    console.error("שגיאה בשמירת נרשם למדריך:", err.message);
+  }
+
   try {
     await addLeadToRavMesser({ name, email, phone });
+    if (signup) await GuideSignup.updateOne({ _id: signup._id }, { sentToMailer: true });
     res.json({ success: true });
   } catch (err) {
     console.error("שגיאה בשליחה לרב מסר:", err.message);

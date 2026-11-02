@@ -1,26 +1,20 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { NavLink, Outlet, useNavigate } from 'react-router-dom'
-import { LogOut, Menu as MenuIcon, X, House, Inbox, CalendarDays, UserRound, LayoutGrid } from 'lucide-react'
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { LogOut, Menu as MenuIcon, X } from 'lucide-react'
 import { logOut } from '../features/auth/authSlice'
 import { useLogoutMutation } from '../features/auth/authApiSlice'
 import apiSlice from '../app/apiSlice'
 import { useGetContactsQuery } from '../features/contacts/contactsApiSlice'
 import Menu from './Menu'
+import { NAV_ITEMS, isActive } from './navItems'
 import logo from '../assets/sroia-logo-white.png'
-
-// הקישורים בסרגל התחתון בטלפון. כל השאר נמצא תחת "עוד"
-const BOTTOM_LINKS = [
-    { to: '/', label: 'בית', icon: House },
-    { to: '/contacts', label: 'פניות', icon: Inbox },
-    { to: '/calendar', label: 'יומן', icon: CalendarDays },
-    { to: '/me', label: 'פרופיל', icon: UserRound },
-]
 
 const Layout = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [logoutRequest] = useLogoutMutation()
+    const { pathname } = useLocation()
 
     // האם התפריט פתוח (רלוונטי רק בטלפון)
     const [menuOpen, setMenuOpen] = useState(false)
@@ -117,47 +111,32 @@ const Layout = () => {
                 aria-label="ניווט מהיר"
                 className="md:hidden fixed bottom-0 inset-x-0 z-20 bg-white border-t border-[#E1E8DA] shadow-[0_-4px_16px_rgba(45,56,43,0.08)] pb-[env(safe-area-inset-bottom)]"
             >
+                {/* כל 5 הפריטים של התפריט - אין צורך ב"עוד" */}
                 <ul className="grid grid-cols-5">
-                    {BOTTOM_LINKS.map(({ to, label, icon: Icon }) => (
-                        <li key={to}>
-                            <NavLink
-                                to={to}
-                                end={to === '/'}
-                                className={({ isActive }) =>
-                                    `flex flex-col items-center justify-center gap-1 h-16 text-xs no-underline ${isActive ? 'text-sroia-dark font-bold' : 'text-[#6b7468]'}`
-                                }
-                            >
-                                {({ isActive }) => (
-                                    <>
-                                        <span className={`relative flex items-center justify-center w-12 h-8 rounded-full ${isActive ? 'bg-[#E3EFD3] text-sroia-green' : ''}`}>
-                                            <Icon size={22} aria-hidden="true" />
-                                            {to === '/contacts' && unread > 0 && (
-                                                <span className="absolute -top-1 left-1 min-w-5 h-5 px-1 rounded-full bg-[#c0392b] text-white text-[11px] font-bold flex items-center justify-center">
-                                                    {unread}
-                                                    <span className="sr-only"> לא נקראו</span>
-                                                </span>
-                                            )}
-                                        </span>
-                                        {label}
-                                    </>
-                                )}
-                            </NavLink>
-                        </li>
-                    ))}
-                    <li>
-                        <button
-                            type="button"
-                            onClick={() => setMenuOpen(true)}
-                            aria-expanded={menuOpen}
-                            aria-controls="side-menu"
-                            className="w-full flex flex-col items-center justify-center gap-1 h-16 text-xs text-[#6b7468] cursor-pointer"
-                        >
-                            <span className="flex items-center justify-center w-12 h-8">
-                                <LayoutGrid size={22} aria-hidden="true" />
-                            </span>
-                            עוד
-                        </button>
-                    </li>
+                    {NAV_ITEMS.map((item) => {
+                        const active = isActive(item, pathname)
+                        const Icon = item.icon
+                        return (
+                            <li key={item.to}>
+                                <Link
+                                    to={item.to}
+                                    aria-current={active ? 'page' : undefined}
+                                    className={`flex flex-col items-center justify-center gap-1 h-16 text-xs no-underline ${active ? 'text-sroia-dark font-bold' : 'text-[#6b7468]'}`}
+                                >
+                                    <span className={`relative flex items-center justify-center w-12 h-8 rounded-full ${active ? 'bg-[#E3EFD3] text-sroia-green' : ''}`}>
+                                        <Icon size={22} aria-hidden="true" />
+                                        {item.to === '/contacts' && unread > 0 && (
+                                            <span className="absolute -top-1 left-1 min-w-5 h-5 px-1 rounded-full bg-[#c0392b] text-white text-[11px] font-bold flex items-center justify-center">
+                                                {unread}
+                                                <span className="sr-only"> לא נקראו</span>
+                                            </span>
+                                        )}
+                                    </span>
+                                    {item.short}
+                                </Link>
+                            </li>
+                        )
+                    })}
                 </ul>
             </nav>
         </div>
