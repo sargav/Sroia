@@ -50,24 +50,24 @@ const Login = () => {
             {/* הצד הירוק - רק לקישוט */}
             <section
                 aria-hidden="true"
-                className="flex-[1_1_380px] bg-sroia-dark text-white px-12 py-14 flex flex-col justify-between gap-10"
+                className="flex-[1_1_100%] md:flex-[1_1_380px] bg-sroia-dark text-white px-6 pt-6 pb-12 md:px-12 md:py-14 flex flex-col items-center md:items-start justify-between gap-10 rounded-b-[28px] md:rounded-none"
             >
-                <img src={logo} alt="" className="w-48 h-auto" />
-                <div className="flex flex-col gap-3 max-w-sm">
+                <img src={logo} alt="" className="w-32 md:w-48 h-auto" />
+                <div className="hidden md:flex flex-col gap-3 max-w-sm">
                     <span className="block w-12 h-1 rounded bg-sroia-light" />
                     <p className="text-3xl font-extrabold leading-tight">פאנל הניהול</p>
                     <p className="text-lg leading-relaxed text-sroia-line">
                         פניות, יומן, תמונות, סרטוני המלצות ומנהלים – הכל במקום אחד.
                     </p>
                 </div>
-                <p className="text-sm text-sroia-line">סרויה – ניהול פרויקטים ופיקוח בנייה</p>
+                <p className="hidden md:block text-sm text-sroia-line">סרויה – ניהול פרויקטים ופיקוח בנייה</p>
             </section>
 
             {/* הטופס */}
-            <main className="flex-[999_1_480px] min-w-0 flex items-center justify-center px-6 py-12">
-                <div className="w-full max-w-md bg-white border border-[#E1E8DA] rounded-2xl px-9 py-10 flex flex-col gap-7 shadow-sm">
+            <main className="flex-[999_1_480px] min-w-0 flex items-start md:items-center justify-center px-4 -mt-6 md:mt-0 pb-10 md:px-6 md:py-12">
+                <div className="w-full max-w-md bg-white border border-[#E1E8DA] rounded-2xl px-6 py-8 md:px-9 md:py-10 flex flex-col gap-7 shadow-sm">
                     <div className="flex flex-col gap-1">
-                        <h1 className="text-3xl font-extrabold text-sroia-dark">כניסת מנהלים</h1>
+                        <h1 className="text-2xl md:text-3xl font-extrabold text-sroia-dark">כניסת מנהלים</h1>
                         <p className="text-[#565f52]">התחברו עם שם המשתמש והסיסמה שלכם</p>
                     </div>
 
