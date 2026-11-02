@@ -11,6 +11,7 @@ import VideosPage from './features/videos/VideosPage.jsx'
 import ManagersPage from './features/managers/ManagersPage.jsx'
 import CalendarPage from './features/calendar/CalendarPage.jsx'
 import ProfilePage from './features/profile/ProfilePage.jsx'
+import SiteStatsPage from './features/siteStats/SiteStatsPage.jsx'
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
               <Route path='/managers' element={<ManagersPage />} />
               <Route path='/images' element={<ImagesPage />} />
               <Route path='/videos' element={<VideosPage />} />
+              <Route path='/site' element={<SiteStatsPage />} />
               <Route path='/me' element={<ProfilePage />} />
             </Route>
           </Route>

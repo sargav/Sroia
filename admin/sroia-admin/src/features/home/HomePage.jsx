@@ -9,7 +9,6 @@ import { useGetEventsQuery, useGetTasksQuery } from '../calendar/calendarApiSlic
 import { timeLabel, dayKey } from '../calendar/calendarUtils'
 import EventFormDialog from '../calendar/EventFormDialog'
 import useCurrentManager from '../auth/useCurrentManager'
-import SiteStatsCard from '../siteStats/SiteStatsCard'
 
 // ברכה לפי השעה עכשיו
 const greetingByHour = (hour) => {
@@ -238,9 +237,6 @@ const HomePage = () => {
                     </ul>
                 </section>
             </div>
-
-            {/* המספרים שמופיעים באתר */}
-            <SiteStatsCard />
 
             <EventFormDialog open={newEventOpen} date={dayKey(now)} onClose={() => setNewEventOpen(false)} />
         </div>
