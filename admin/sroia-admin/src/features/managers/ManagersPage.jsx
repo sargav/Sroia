@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-import { UserPlus, Trash2, X } from 'lucide-react'
+import { UserPlus, Trash2, X, Mail, Phone } from 'lucide-react'
 import {
     useGetManagersQuery,
     useAddManagerMutation,
@@ -137,7 +137,49 @@ const ManagersPage = () => {
             {isError && <p role="alert">לא הצלחנו לטעון את המנהלים</p>}
             <Toast message={listError?.title} details={listError?.details} type="error" onClose={closeToast} />
 
-            <div className="bg-white border border-[#E1E8DA] rounded-xl overflow-x-auto">
+            {/* בטלפון: כרטיס לכל מנהל */}
+            <ul className="md:hidden flex flex-col gap-3">
+                {managers.map((m) => {
+                    const isMe = me?._id === m._id
+                    return (
+                        <li key={m._id} className={`bg-white border rounded-2xl p-4 flex flex-col gap-3 ${isMe ? 'border-sroia-light' : 'border-[#E1E8DA]'}`}>
+                            <div className="flex items-center gap-3">
+                                <span aria-hidden="true" className="w-12 h-12 shrink-0 rounded-full bg-[#E3EFD3] text-sroia-dark text-lg font-extrabold flex items-center justify-center">
+                                    {m.name?.[0]}
+                                </span>
+                                <div className="flex-1 min-w-0">
+                                    <p className="font-bold flex flex-wrap items-center gap-2">
+                                        {m.name}
+                                        {isMe && <span className="px-2 py-0.5 rounded-full bg-[#E3EFD3] text-[#2f4a17] text-xs font-bold">המשתמש שלי</span>}
+                                    </p>
+                                    <p className="text-sm text-[#565f52]" dir="ltr">@{m.manName}</p>
+                                </div>
+                                {!isMe && (
+                                    <button type="button" onClick={() => setToDelete(m)} aria-label={`מחיקת ${m.name}`}
+                                        className="w-11 h-11 shrink-0 inline-flex items-center justify-center rounded-xl text-[#a12f2f] bg-[#FBECEC] cursor-pointer">
+                                        <Trash2 size={18} aria-hidden="true" />
+                                    </button>
+                                )}
+                            </div>
+                            <div className="flex flex-wrap gap-2 text-sm">
+                                <a href={`mailto:${m.email}`} className="min-h-10 px-3 rounded-xl bg-sroia-bg text-sroia-dark inline-flex items-center gap-2 no-underline max-w-full">
+                                    <Mail size={16} aria-hidden="true" className="shrink-0 text-sroia-green" />
+                                    <span dir="ltr" className="truncate">{m.email}</span>
+                                </a>
+                                {m.phone && (
+                                    <a href={`tel:${m.phone}`} className="min-h-10 px-3 rounded-xl bg-sroia-bg text-sroia-dark inline-flex items-center gap-2 no-underline">
+                                        <Phone size={16} aria-hidden="true" className="text-sroia-green" />
+                                        <span dir="ltr">{m.phone}</span>
+                                    </a>
+                                )}
+                            </div>
+                        </li>
+                    )
+                })}
+            </ul>
+
+            {/* במחשב: טבלה */}
+            <div className="hidden md:block bg-white border border-[#E1E8DA] rounded-xl overflow-x-auto">
                 <table className="w-full min-w-[640px] text-[15px]">
                     <thead>
                         <tr className="bg-[#F0F3E8] text-right text-[#3a4436]">
