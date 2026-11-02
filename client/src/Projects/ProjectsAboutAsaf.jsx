@@ -1,18 +1,22 @@
 import { YEARS_OF_EXPERIENCE } from "../utils/experience";
+import useSiteStats, { formatSavings } from "../utils/useSiteStats";
 import asafImg from './assets/asaf-site.webp'
 
 export default function AboutAsaf() {
+  // מספר הפרויקטים והחיסכון - מתעדכנים מפאנל הניהול
+  const { projectsCount, avgSavings } = useSiteStats()
+
   const stats = [
     {
       number: `${YEARS_OF_EXPERIENCE}+`,
       text: 'שנות ניסיון בשטח',
     },
     {
-      number: '100+',
+      number: `${projectsCount}+`,
       text: 'פרויקטים שליווינו',
     },
     {
-      number: '₪120K',
+      number: formatSavings(avgSavings),
       text: 'חיסכון ממוצע ללקוח',
     },
   ]
@@ -88,7 +92,7 @@ export default function AboutAsaf() {
             <div className="max-w-[42.5rem] border-r-2 border-[#91C755]/40 pr-5">
               <p className="mb-4 text-[1rem] font-normal leading-[1.9] text-[#4E594B]">
                 איש בנייה ותיק שהפך תשוקה לבנייה איכותית למקצוע חיים.
-                עם {YEARS_OF_EXPERIENCE} שנות ניסיון ומעל 100 פרויקטים שליווה מהיסוד ועד
+                עם {YEARS_OF_EXPERIENCE} שנות ניסיון ומעל {projectsCount} פרויקטים שליווה מהיסוד ועד
                 למפתח, אסף מכיר את כל המהמורות שבדרך — ויודע איך לחסוך
                 לכם מהן.
               </p>

@@ -45,6 +45,8 @@ app.use('/api/testi-urls', require('./routes/TestiUrlRoute')) //נתיב להח�
 app.use('/api/manager/testi-urls', require('./routes/ManTestiUrlRoute')) // ניהול סרטוני ההמלצות (עבור המנהל)
 app.use('/api/manager/events', require('./routes/ManEventRoute')) // יומן: פגישות, ביקורים ושיחות (עבור המנהל)
 app.use('/api/manager/tasks', require('./routes/ManTaskRoute')) // משימות (עבור המנהל)
+app.use('/api/site-stats', require('./routes/siteStatsRoute')) // המספרים שמופיעים באתר (פרויקטים, חיסכון)
+app.use('/api/manager/site-stats', require('./routes/ManSiteStatsRoute')) // עדכון המספרים (עבור המנהל)
 app.use('/api/payment', require('./routes/paymentRoute')) // נתיב ליצירת תשלום
 app.use('/api/benefits', require('./routes/benefitRoute')) // נתיב לשמירת לקוח וההטבות שבחר
 app.get('/', (req, res) => {
