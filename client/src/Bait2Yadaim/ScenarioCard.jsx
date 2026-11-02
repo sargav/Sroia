@@ -155,13 +155,19 @@ function ScenarioComparisonSection() {
 
                         <a
                             href="#cta-form"
-                            className="mx-auto block w-full max-w-sm rounded-full px-8 py-4 text-center text-lg font-bold text-[#1a1a1a] transition-transform hover:scale-[1.02]"
+                            className="mx-auto group/button flex w-full items-center justify-center gap-3 hover:gap-5 max-w-sm rounded-full px-8 py-4 text-lg font-bold text-[#1a1a1a] transition-all duration-300 hover:scale-[1.02]"
                             style={{
                                 backgroundColor: "#7CB342",
                                 boxShadow: "0 8px 20px rgba(124,179,66,0.35)",
                             }}
                         >
-                            אני בוחר במצב 2 - תרשמו אותי!
+                            <span>אני בוחר במצב 2 - תרשמו אותי</span>
+                            <span
+                                className="transition-transform duration-300 group-hover/button:-translate-x-1"
+                                aria-hidden="true"
+                            >
+                                ←
+                            </span>
                         </a>
                     </div>
                 </Reveal>
