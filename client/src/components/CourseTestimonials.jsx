@@ -207,19 +207,27 @@ function CourseTestimonials() {
                             {image.clientName && <p className="mt-3 text-center text-lg font-bold text-[#1E2B18]">{image.clientName}</p>}
                         </div>
 
-                        {/* התמונות הקטנות - גלילה בתוכן */}
+                        {/* רשימת הצילומים בטור, כמו הסרטונים - גוללים בתוך הרשימה ולא בכל הדף */}
                         {images.length > 1 && (
-                            <ul className="flex w-full gap-3 overflow-x-auto pb-2 md:grid md:w-80 md:max-h-[35rem] md:grid-cols-3 md:overflow-y-auto md:overflow-x-visible md:pb-0 md:pl-1">
+                            <ul className="flex w-full gap-3 overflow-x-auto pb-2 md:w-80 md:max-h-[33rem] md:flex-col md:overflow-y-auto md:overflow-x-hidden md:pb-0 md:pl-1">
                                 {images.map((img, i) => (
                                     <li key={img.url} className="shrink-0">
                                         <button
                                             type="button"
                                             onClick={() => setImageIndex(i)}
                                             aria-current={i === imageIndex ? "true" : undefined}
-                                            aria-label={img.clientName ? `ההמלצה של ${img.clientName}` : `המלצה ${i + 1}`}
-                                            className={`block h-28 w-20 overflow-hidden rounded-xl border-2 bg-white md:w-full ${i === imageIndex ? "border-[#7CB342]" : "border-transparent opacity-80 hover:opacity-100"}`}
+                                            className={`flex w-64 items-center gap-3 rounded-2xl border p-2.5 text-right transition md:w-full ${i === imageIndex ? "border-[#7CB342] bg-[#E7EEDD]" : "border-[#DDE8CF] bg-white hover:border-[#7CB342]"}`}
                                         >
-                                            <img src={img.url} alt="" loading="lazy" className="h-full w-full object-cover object-top" />
+                                            <span className="h-20 w-14 shrink-0 overflow-hidden rounded-xl bg-[#EFE7DD]">
+                                                <img src={img.url} alt="" loading="lazy" className="h-full w-full object-cover object-top" />
+                                            </span>
+                                            <span className="min-w-0">
+                                                <span className="block truncate font-bold text-[#1E2B18]">{img.clientName || `המלצה ${i + 1}`}</span>
+                                                <span className="flex items-center gap-1.5 text-sm text-[#5C6657]">
+                                                    <MessageCircle size={14} aria-hidden="true" />
+                                                    צילום שיחה
+                                                </span>
+                                            </span>
                                         </button>
                                     </li>
                                 ))}
