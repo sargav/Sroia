@@ -24,6 +24,7 @@ import procurementIcon from "../assets/icons/bonus-procurement.webp";
 import kitchenIcon from "../assets/icons/bonus-kitchen.webp";
 import testimonialsBackground from "../assets/backgrounds/testimonials-architectural.webp";
 import pricingPhoto from "../assets/backgrounds/pricing-photo.webp";
+import useSiteStats, { formatPrice } from "../../utils/useSiteStats";
 
 
 const mistakes = [
@@ -56,12 +57,13 @@ const testimonials = [
   ["לפני כל ביקור אנחנו פותחים את הרשימה הרלוונטית ומסמנים מה נבדק. זה הכניס סדר אמיתי לתהליך.", "דנה", "שלב השלד"],
 ];
 
-const faqs = [
+// השאלות הנפוצות. המחיר מגיע מפאנל הניהול
+const makeFaqs = (price) => [
   ["האם צריך ידע קודם בבנייה?", "לא. המצפן נכתב בשפה פשוטה ומסודרת, גם למי שאינו מגיע מהתחום."],
   ["האם זה מתאים גם לשיפוץ מקיף?", "כן. הוא מתאים גם לתהליך מקיף הכולל תכנון, תשתיות, ביצוע וגמרים."],
   ["האם זה מחליף מנהל פרויקט?", "לא. המצפן נותן לכם ידע, סדר ושאלות נכונות כדי לעבוד טוב יותר מול כל אנשי המקצוע."],
   ["באיזה שלב כדאי להצטרף?", "ככל שמצטרפים מוקדם יותר אפשר למנוע יותר טעויות, אבל אפשר להתחיל גם באמצע התהליך ולדלג ישר לשלב הרלוונטי."],
-  ["האם המחיר יישאר 297 ₪?", "זהו מחיר השקה לתקופה מוגבלת. לאחר מכן המחיר צפוי להתעדכן."],
+  [`האם המחיר יישאר ${price} ₪?`, "זהו מחיר השקה לתקופה מוגבלת. לאחר מכן המחיר צפוי להתעדכן."],
 ];
 
 /* הפונט והאנימציה של המצפן, כדי שלא יהיה צורך לגעת ב-CSS של האתר הראשי */
@@ -99,6 +101,7 @@ function PhoneMockup({ src, alt, className = "" }) {
 }
 
 function CompassPage() {
+  const { compassPrice } = useSiteStats();
   // כשמגיעים עם #pricing בכתובת (למשל מכפתור "לנסות שוב" בדף התוצאה), גוללים ישר לטופס התשלום
   useEffect(() => {
     if (window.location.hash !== "#pricing") return undefined;
@@ -192,7 +195,7 @@ function CompassPage() {
         </div>
       </section>
 
-      <FaqSection  faqs={faqs}/>
+      <FaqSection faqs={makeFaqs(formatPrice(compassPrice))} />
 
       <JoinSteps />
 

@@ -15,6 +15,7 @@ import Reveal from "../components/Reveal";
 import useAccessibleDialog from "../../components/useAccessibleDialog";
 import SectionHeading from "../components/SectionHeading";
 import PhotoBackground from "./PhotoBackground";
+import useSiteStats, { formatPrice } from "../../utils/useSiteStats";
 
 const PAYMENT_BASE = "https://secure.cardcom.solutions/EA/EA5/aZoY90GJgke3fTZVlqxFnQ/PaymentSP";
 
@@ -41,6 +42,8 @@ const notch = "absolute h-6 w-6 rounded-full border border-[#D3DECC] bg-[#F5F6F1
  * שומר על id="pricing" כדי ש-scrollToPricing ימשיך לעבוד.
  */
 export default function PricingSection({ photo }) {
+  // המחיר מתעדכן מפאנל הניהול (הסכום שנגבה בפועל מוגדר ב-Cardcom)
+  const { compassPrice } = useSiteStats();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [paymentUrl, setPaymentUrl] = useState("");
@@ -135,7 +138,7 @@ export default function PricingSection({ photo }) {
                   </span>
                   <p className="mt-4 text-sm font-bold text-[#656f62]">במקום 938 ₪</p>
                   <p className="mt-1 text-7xl font-black leading-none text-[#2D382B]">
-                    297<span className="mr-2 align-top text-2xl">₪</span>
+                    {formatPrice(compassPrice)}<span className="mr-2 align-top text-2xl">₪</span>
                   </p>
                 </div>
               </div>

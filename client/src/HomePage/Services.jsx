@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import useSiteStats, { formatPrice } from "../utils/useSiteStats";
 export default function Services() {
     const navigate = useNavigate();
+    // מחיר המצפן מתעדכן מפאנל הניהול
+    const { compassPrice } = useSiteStats();
     const services = [
         {
             number: '01',
@@ -26,7 +29,7 @@ export default function Services() {
             label: 'כלים מעשיים',
             title: 'אפליקציית "המצפן לבונה"',
             description:
-                'כל הרשימות, הבדיקות והשלבים הנחוצים לבניית בית, מסודרים ונגישים בכף היד שלכם — ב־298 ₪ בלבד.',
+                `כל הרשימות, הבדיקות והשלבים הנחוצים לבניית בית, מסודרים ונגישים בכף היד שלכם — ב־${formatPrice(compassPrice)} ₪ בלבד.`,
             buttonText: 'לרכישת האפליקציה',
             href: '/application',
         },

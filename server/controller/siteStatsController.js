@@ -1,5 +1,15 @@
 const SiteStats = require('../models/SiteStats')
 
+// השדות שהמנהל יכול לעדכן
+const FIELDS = ['projectsCount', 'avgSavings', 'coursePrice', 'courseInstallments', 'coursePriceNext', 'compassPrice']
+
+// מה שהאתר מקבל: רק השדות האלה ותאריך העדכון
+const toJSON = (stats) => {
+    const data = { updatedAt: stats.updatedAt }
+    FIELDS.forEach((f) => { data[f] = stats[f] })
+    return data
+}
+
 // מחזיר את המסמך היחיד. אם עוד לא קיים - יוצר אותו עם ברירות המחדל
 const getOrCreate = async () => {
     const stats = await SiteStats.findOne()
@@ -10,7 +20,7 @@ const getOrCreate = async () => {
 const getStats = async (req, res) => {
     try {
         const stats = await getOrCreate()
-        res.json({ projectsCount: stats.projectsCount, avgSavings: stats.avgSavings, updatedAt: stats.updatedAt })
+        res.json(toJSON(stats))
     } catch (error) {
         console.error('שגיאה בקריאת נתוני האתר:', error.message)
         res.status(500).json({ message: 'Server error' })
@@ -26,18 +36,18 @@ const wholeNumber = (value) => {
 
 // PATCH /api/manager/site-stats - רק למנהלים
 const updateStats = async (req, res) => {
-    const projectsCount = wholeNumber(req.body.projectsCount)
-    const avgSavings = wholeNumber(req.body.avgSavings)
-    if (projectsCount === null || avgSavings === null) {
-        return res.status(400).json({ message: 'Numbers must be whole and not negative' })
+    const changes = {}
+    for (const f of FIELDS) {
+        const n = wholeNumber(req.body[f])
+        if (n === null) return res.status(400).json({ message: 'Numbers must be whole and not negative' })
+        if (n !== undefined) changes[f] = n
     }
     try {
         const stats = await getOrCreate()
-        if (projectsCount !== undefined) stats.projectsCount = projectsCount
-        if (avgSavings !== undefined) stats.avgSavings = avgSavings
+        Object.assign(stats, changes)
         stats.updatedBy = req.manager._id
-        await stats.save()
-        res.json({ projectsCount: stats.projectsCount, avgSavings: stats.avgSavings, updatedAt: stats.updatedAt })
+        await stats.save() // ה-min/max במודל נבדקים כאן
+        res.json(toJSON(stats))
     } catch (error) {
         console.error('שגיאה בעדכון נתוני האתר:', error.message)
         res.status(400).json({ message: error.message })

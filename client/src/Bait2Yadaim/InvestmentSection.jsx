@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import moneyIcon from "./assets/pay.webp";
 import handHouse from './assets/handHouse.webp'
+import useSiteStats, { formatPrice, monthlyPayment } from "../utils/useSiteStats";
 
 // אנימציית כניסה עדינה
 function Reveal({ children, delay = 0 }) {
@@ -83,6 +84,9 @@ function MistakeCard({ title, cost, delay }) {
 }
 
 function InvestmentSection() {
+    // המחירים מתעדכנים מפאנל הניהול
+    const { coursePrice, courseInstallments } = useSiteStats();
+    const monthly = monthlyPayment(coursePrice, courseInstallments);
     return (
         <section
             className="relative overflow-hidden px-6 py-20"
@@ -226,7 +230,7 @@ function InvestmentSection() {
                                 className="mb-3 text-5xl font-bold"
                                 style={{ color: "#669336" }}
                             >
-                                1,987 ₪
+                                {formatPrice(coursePrice)} ₪
                             </p>
 
                             <div
@@ -236,12 +240,12 @@ function InvestmentSection() {
                                     color: "#4e7527",
                                 }}
                             >
-                                או רק 198 ₪ לחודש ב-10 תשלומים
+                                או רק {monthly} ₪ לחודש ב-{courseInstallments} תשלומים
                             </div>
 
                             <div className="space-y-1.5 text-right">
                                 {[
-                                    "198 ₪ בחודש.",
+                                    `${monthly} ₪ בחודש.`,
                                     "פחות מארוחה זוגית במסעדה.",
                                     "פחות משעת עבודה של טייח.",
                                     "פחות מביקור אחד של יועץ.",
