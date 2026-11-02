@@ -5,8 +5,8 @@ import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import { YEARS_OF_EXPERIENCE } from './src/utils/experience.js'
 
 // הכתובת המלאה של האתר (בשביל sitemap.xml ו-robots.txt).
-// ב-Render מגדירים SITE_URL במשתני הסביבה. כשהדומיין יחובר, משנים שם לכתובת הדומיין
-const SITE_URL = (process.env.SITE_URL || 'https://sroia.onrender.com').replace(/\/$/, '')
+// ב-Render מגדירים SITE_URL במשתני הסביבה. ברירת המחדל - הדומיין של האתר
+const SITE_URL = (process.env.SITE_URL || 'https://sroia.co.il').replace(/\/$/, '')
 
 // העמודים שגוגל צריך להכיר (בלי עמודי תודה ותשלום)
 const PUBLIC_PAGES = ['/', '/projects', '/courses', '/application', '/guid-to-builder', '/benefit', '/contact', '/accessibility']
