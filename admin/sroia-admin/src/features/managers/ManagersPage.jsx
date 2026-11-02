@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { UserPlus, Trash2, X } from 'lucide-react'
 import {
     useGetManagersQuery,
@@ -7,6 +7,8 @@ import {
 } from './managersApiSlice'
 import ConfirmDialog from '../../components/ConfirmDialog'
 import PageHeader from '../../components/PageHeader'
+import Toast from '../../components/Toast'
+import useCurrentManager from '../auth/useCurrentManager'
 
 // ההודעות של השרת (באנגלית) -> הודעה בעברית למנהל
 const ERRORS = {
@@ -21,6 +23,27 @@ const ERRORS = {
 }
 const toHebrew = (err, fallback) => ERRORS[err?.data?.message] || fallback
 
+// שגיאה במחיקה -> כותרת + הסבר מה קרה ומה לעשות
+const deleteErrorInfo = (err) => {
+    const serverMessage = err?.data?.message
+    if (serverMessage === 'You cannot delete yourself') {
+        return { title: 'אי אפשר למחוק את עצמך', details: 'כדי להסיר את המשתמש שלך, צריך שמנהל אחר ימחק אותו.' }
+    }
+    if (err?.status === 404) {
+        return { title: 'המנהל כבר לא קיים', details: 'כנראה מנהל אחר מחק אותו בינתיים. הרשימה עודכנה.' }
+    }
+    if (err?.status === 400) {
+        return { title: 'המחיקה נכשלה', details: 'הפרטים של המנהל לא תקינים. רענני את הדף ונסי שוב.' }
+    }
+    if (err?.status === 'FETCH_ERROR') {
+        return { title: 'אין חיבור לשרת', details: 'בדקי את חיבור האינטרנט ונסי שוב.' }
+    }
+    if (err?.status === 401 || err?.status === 403) {
+        return { title: 'פג תוקף ההתחברות', details: 'יש להתחבר מחדש ולנסות שוב.' }
+    }
+    return { title: 'המחיקה נכשלה', details: 'קרתה תקלה בשרת. נסי שוב בעוד רגע.' }
+}
+
 const emptyForm = { name: '', manName: '', email: '', phone: '', password: '' }
 
 const FIELDS = [
@@ -32,14 +55,16 @@ const FIELDS = [
 ]
 
 const ManagersPage = () => {
-    const { data: managers = [], isLoading, isError } = useGetManagersQuery()
+    const { data: managers = [], isLoading, isError, refetch } = useGetManagersQuery()
     const [addManager, { isLoading: isAdding }] = useAddManagerMutation()
     const [deleteManager] = useDeleteManagerMutation()
 
     const [showForm, setShowForm] = useState(false)
     const [form, setForm] = useState(emptyForm)
     const [formError, setFormError] = useState('')
-    const [listError, setListError] = useState('')
+    const [listError, setListError] = useState(null) // { title, details }
+    const closeToast = useCallback(() => setListError(null), [])
+    const me = useCurrentManager()
     const [toDelete, setToDelete] = useState(null)
 
     const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
@@ -59,11 +84,12 @@ const ManagersPage = () => {
     const confirmDelete = async () => {
         const manager = toDelete
         setToDelete(null)
-        setListError('')
+        setListError(null)
         try {
             await deleteManager(manager._id).unwrap()
         } catch (err) {
-            setListError(toHebrew(err, 'המחיקה נכשלה'))
+            setListError(deleteErrorInfo(err))
+            if (err?.status === 404) refetch() // מישהו אחר כבר מחק - מרעננים את הרשימה
         }
     }
 
@@ -109,7 +135,7 @@ const ManagersPage = () => {
 
             {isLoading && <p>טוען מנהלים...</p>}
             {isError && <p role="alert">לא הצלחנו לטעון את המנהלים</p>}
-            {listError && <p role="alert" className="text-[#8a2424]">{listError}</p>}
+            <Toast message={listError?.title} details={listError?.details} type="error" onClose={closeToast} />
 
             <div className="bg-white border border-[#E1E8DA] rounded-xl overflow-x-auto">
                 <table className="w-full min-w-[640px] text-[15px]">
@@ -123,20 +149,29 @@ const ManagersPage = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {managers.map((m) => (
-                            <tr key={m._id} className="border-t border-[#EEF2E9]">
-                                <td className="p-3 font-bold">{m.name}</td>
+                        {managers.map((m) => {
+                            const isMe = me?._id === m._id
+                            return (
+                            <tr key={m._id} className={`border-t border-[#EEF2E9] ${isMe ? 'bg-[#F7FAF3]' : ''}`}>
+                                <td className="p-3 font-bold">
+                                    {m.name}
+                                    {isMe && <span className="mr-2 px-2 py-0.5 rounded-full bg-[#E3EFD3] text-[#2f4a17] text-xs font-bold">המשתמש שלי</span>}
+                                </td>
                                 <td className="p-3">{m.manName}</td>
                                 <td className="p-3" dir="ltr">{m.email}</td>
                                 <td className="p-3" dir="ltr">{m.phone}</td>
                                 <td className="p-2 text-left">
-                                    <button type="button" onClick={() => setToDelete(m)} aria-label={`מחיקת ${m.name}`}
-                                        className="w-10 h-10 inline-flex items-center justify-center rounded-lg text-[#a12f2f] cursor-pointer hover:bg-[#FBECEC]">
-                                        <Trash2 size={18} aria-hidden="true" />
-                                    </button>
+                                    {/* את עצמך אי אפשר למחוק - לכן אין כפתור */}
+                                    {!isMe && (
+                                        <button type="button" onClick={() => setToDelete(m)} aria-label={`מחיקת ${m.name}`}
+                                            className="w-10 h-10 inline-flex items-center justify-center rounded-lg text-[#a12f2f] cursor-pointer hover:bg-[#FBECEC]">
+                                            <Trash2 size={18} aria-hidden="true" />
+                                        </button>
+                                    )}
                                 </td>
                             </tr>
-                        ))}
+                            )
+                        })}
                     </tbody>
                 </table>
             </div>

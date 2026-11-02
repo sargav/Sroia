@@ -9,3 +9,8 @@
   --color-sroia-bg: #F4F6F0;      /* רקע המסכים */
   --color-sroia-line: #C6D3BB;    /* מסגרות של שדות */
 }
+/* כניסה של הודעה קופצת (Toast) */
+@keyframes toast-in {
+  from { opacity: 0; transform: translate(-50%, -12px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
