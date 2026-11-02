@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, useLocation, useNavigate } from 'react-router-dom'
-import { Eye, EyeOff, User, Lock, LogIn } from 'lucide-react'
+import { Eye, EyeOff, User, Lock, ArrowLeft } from 'lucide-react'
 import { setToken, selectToken } from './authSlice'
 import { useLoginMutation } from './authApiSlice'
 import logo from '../../assets/sroia-logo-white.png'
@@ -46,29 +46,19 @@ const Login = () => {
     }
 
     return (
-        <div dir="rtl" className="min-h-screen flex flex-wrap bg-sroia-bg">
-            {/* הצד הירוק - רק לקישוט */}
-            <section
-                aria-hidden="true"
-                className="flex-[1_1_380px] bg-sroia-dark text-white px-12 py-14 flex flex-col justify-between gap-10"
-            >
-                <img src={logo} alt="" className="w-48 h-auto" />
-                <div className="flex flex-col gap-3 max-w-sm">
-                    <span className="block w-12 h-1 rounded bg-sroia-light" />
-                    <p className="text-3xl font-extrabold leading-tight">פאנל הניהול</p>
-                    <p className="text-lg leading-relaxed text-sroia-line">
-                        פניות, יומן, תמונות, סרטוני המלצות ומנהלים – הכל במקום אחד.
-                    </p>
-                </div>
-                <p className="text-sm text-sroia-line">סרויה – ניהול פרויקטים ופיקוח בנייה</p>
-            </section>
+        <div dir="rtl" className="min-h-screen bg-sroia-bg flex flex-col">
+            {/* פס עליון דק: לוגו ושם הפאנל */}
+            <header className="bg-sroia-dark h-16 px-5 flex items-center justify-between">
+                <img src={logo} alt="סרויה" className="w-24 h-auto" />
+                <span className="text-sm text-sroia-line">פאנל ניהול</span>
+            </header>
 
-            {/* הטופס */}
-            <main className="flex-[999_1_480px] min-w-0 flex items-center justify-center px-6 py-12">
-                <div className="w-full max-w-md bg-white border border-[#E1E8DA] rounded-2xl px-9 py-10 flex flex-col gap-7 shadow-sm">
+            {/* הטופס - במרכז המסך */}
+            <main className="flex-1 flex items-center justify-center px-4 py-10">
+                <div className="w-full max-w-sm bg-white border border-[#E1E8DA] rounded-2xl px-6 py-8 md:px-8 flex flex-col gap-6 shadow-sm">
                     <div className="flex flex-col gap-1">
-                        <h1 className="text-3xl font-extrabold text-sroia-dark">כניסת מנהלים</h1>
-                        <p className="text-[#565f52]">התחברו עם שם המשתמש והסיסמה שלכם</p>
+                        <h1 className="text-2xl font-extrabold text-sroia-dark">כניסת מנהלים</h1>
+                        <p className="text-sm text-[#565f52]">התחברו עם שם המשתמש והסיסמה</p>
                     </div>
 
                     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
@@ -121,8 +111,8 @@ const Login = () => {
                             disabled={isLoading}
                             className="min-h-12 rounded-xl bg-sroia-green text-white font-bold text-base flex items-center justify-center gap-2 cursor-pointer hover:bg-sroia-dark disabled:opacity-60 disabled:cursor-wait"
                         >
-                            <LogIn size={18} aria-hidden="true" />
                             {isLoading ? 'מתחבר...' : 'התחברות'}
+                            <ArrowLeft size={18} aria-hidden="true" />
                         </button>
                     </form>
 
