@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Trash2, ChevronDown, Search } from 'lucide-react'
 import {
     useGetContactsQuery,
@@ -26,7 +27,9 @@ const ContactsList = () => {
     const [updateContact] = useUpdateContactMutation()
     const [deleteContact] = useDeleteContactMutation()
     const [search, setSearch] = useState('')
-    const [filter, setFilter] = useState('all')
+    // אפשר להגיע עם סינון מוכן, למשל מדף הבית: /contacts?filter=unreplied
+    const [searchParams] = useSearchParams()
+    const [filter, setFilter] = useState(searchParams.get('filter') || 'all')
     const [openId, setOpenId] = useState(null) // איזו פנייה פתוחה
     const [toDelete, setToDelete] = useState(null)
     if (isLoading) return <p>טוען פניות...</p>

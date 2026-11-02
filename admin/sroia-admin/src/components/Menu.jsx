@@ -11,7 +11,8 @@ const menuLinks = [
     { to: '/me', label: 'פרופיל', icon: UserRound },
 ]
 
-const Menu = () => {
+// onNavigate - נקרא בלחיצה על קישור (בטלפון זה סוגר את התפריט)
+const Menu = ({ onNavigate }) => {
     return (
         <nav aria-label="תפריט ראשי" className="flex flex-col gap-1">
             {menuLinks.map(({ to, label, icon: Icon }) => (
@@ -19,6 +20,7 @@ const Menu = () => {
                     key={to}
                     to={to}
                     end={to === '/'}
+                    onClick={onNavigate}
                     className={({ isActive }) =>
                         `flex items-center justify-between gap-3 min-h-11 px-3 rounded-lg text-[15px] no-underline ${isActive
                             ? 'bg-sroia-light/20 text-white font-bold'
