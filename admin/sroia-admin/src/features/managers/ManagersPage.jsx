@@ -200,8 +200,9 @@ const ManagersPage = () => {
                                     {isMe && <span className="mr-2 px-2 py-0.5 rounded-full bg-[#E3EFD3] text-[#2f4a17] text-xs font-bold">המשתמש שלי</span>}
                                 </td>
                                 <td className="p-3">{m.manName}</td>
-                                <td className="p-3" dir="ltr">{m.email}</td>
-                                <td className="p-3" dir="ltr">{m.phone}</td>
+                                {/* bdi: המייל נכתב משמאל לימין, אבל התא נשאר מיושר לימין כמו הכותרת */}
+                                <td className="p-3"><bdi dir="ltr">{m.email}</bdi></td>
+                                <td className="p-3"><bdi dir="ltr">{m.phone}</bdi></td>
                                 <td className="p-2 text-left">
                                     {/* את עצמך אי אפשר למחוק - לכן אין כפתור */}
                                     {!isMe && (
