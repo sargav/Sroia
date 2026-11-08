@@ -8,6 +8,7 @@ import {
 } from './imagesApiSlice'
 import ConfirmDialog from '../../components/ConfirmDialog'
 import PageHeader from '../../components/PageHeader'
+import Loading from '../../components/Loading'
 
 // הקטגוריות - כמו IMAGE_CATEGORIES במודל בשרת
 const CATEGORIES = [
@@ -124,7 +125,7 @@ const ImagesPage = () => {
             </form>
 
             {/* התמונות */}
-            {isLoading && <p>טוען תמונות...</p>}
+            {isLoading && <Loading text="טוען תמונות..." />}
             {isError && <p role="alert">לא הצלחנו לטעון את התמונות</p>}
             {!isLoading && images.length === 0 && <p className="text-[#565f52]">אין עדיין תמונות בקטגוריה הזו</p>}
 

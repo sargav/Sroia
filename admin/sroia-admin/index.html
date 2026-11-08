@@ -7,7 +7,19 @@
     <title>סרויה - פאנל ניהול</title>
   </head>
   <body>
-    <div id="root"></div>
+    <!-- מסך פתיחה עד שהקוד נטען: אותו צבע כמו ערכת הצבעים שנבחרה (הגדרות > עיצוב). React מחליף אותו -->
+    <style>
+      #splash { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #2D382B; }
+      [data-theme="navy"] #splash { background: #060d36; }
+      [data-theme="blackgreen"] #splash { background: #0B0B0C; }
+    </style>
+    <script>
+      try {
+        var t = localStorage.getItem('sroia-theme')
+        if (t && t !== 'green') document.documentElement.dataset.theme = t
+      } catch (e) { /* אין גישה לאחסון - נשארים בירוק */ }
+    </script>
+    <div id="root"><div id="splash"><img src="/logo-white.png" alt="סרויה" width="192" /></div></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

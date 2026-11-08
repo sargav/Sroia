@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Plus, Trash2 } from 'lucide-react'
 import ConfirmDialog from '../../components/ConfirmDialog'
+import Loading from '../../components/Loading'
 import {
     useGetTasksQuery,
     useAddTaskMutation,
@@ -107,7 +108,7 @@ const TasksPanel = () => {
                 )}
             </form>
 
-            {isLoading && <p className="text-sm">טוען משימות...</p>}
+            {isLoading && <Loading text="טוען משימות..." className="py-6 text-sm" />}
             {isError && <p role="alert" className="text-sm">לא הצלחנו לטעון את המשימות</p>}
             {!isLoading && tasks.length === 0 && <p className="text-sm text-[#565f52]">אין משימות 🎉</p>}
 
