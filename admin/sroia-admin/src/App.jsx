@@ -50,11 +50,12 @@ function App() {
 
               {/* הגדרות */}
               <Route element={<SettingsSection />}>
-                <Route path='/settings' element={<ManagersPage />} />
+                <Route path='/settings/managers' element={<ManagersPage />} />
                 <Route path='/settings/appearance' element={<AppearancePage />} />
               </Route>
-              {/* כתובות ישנות - מפנים לכתובות החדשות */}
-              <Route path='/managers' element={<Navigate to='/settings' replace />} />
+              {/* /settings לבד - פותח את הלשונית הראשונה. וכתובות ישנות - מפנים לכתובות החדשות */}
+              <Route path='/settings' element={<Navigate to='/settings/managers' replace />} />
+              <Route path='/managers' element={<Navigate to='/settings/managers' replace />} />
               <Route path='/appearance' element={<Navigate to='/settings/appearance' replace />} />
             </Route>
           </Route>

@@ -36,7 +36,7 @@ export const SettingsSection = () => (
         title="הגדרות"
         subtitle="מי יכול להיכנס לפאנל, ואיך הפאנל נראה"
         tabs={[
-            { to: '/settings', label: 'מנהלים', icon: Users },
+            { to: '/settings/managers', label: 'מנהלים', icon: Users },
             { to: '/settings/appearance', label: 'עיצוב', icon: Palette },
         ]}
     />
