@@ -17,6 +17,7 @@ const SectionTabs = ({ title, subtitle, tabs }) => (
                 <NavLink
                     key={to}
                     to={to}
+                    end
                     className={({ isActive }) =>
                         `flex shrink-0 items-center gap-2 min-h-12 px-0.5 border-b-[3px] no-underline whitespace-nowrap ${isActive
                             ? 'border-sroia-green text-sroia-dark font-extrabold'
