@@ -10,7 +10,7 @@ const AppearancePage = () => {
         <div className="flex flex-col gap-6">
             <PageHeader title="עיצוב" subtitle="הצבעים של הפאנל. הבחירה נשמרת במכשיר הזה." />
 
-            <fieldset className="grid gap-4 sm:grid-cols-2 max-w-3xl">
+            <fieldset className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl">
                 <legend className="sr-only">ערכת צבעים</legend>
                 {THEMES.map((t) => {
                     const selected = theme === t.id

@@ -31,6 +31,17 @@
   --color-sroia-edge: #DFE4F0;
   --color-sroia-subtle: #ECEFF7;
 }
+
+/* ערכת שחור עם ירוק: תפריט שחור, כפתורים והדגשות בירוק של סרויה */
+:root[data-theme="blackgreen"] {
+  --color-sroia-dark: #0B0B0C;
+  --color-sroia-bg: #F5F6F3;
+  --color-sroia-line: #CFD3CB;
+  --color-sroia-menu: #CFCFCF;
+  --color-sroia-edge: #E3E5E0;
+  --color-sroia-subtle: #EEEFEC;
+}
+
 /* כניסה של הודעה קופצת (Toast) */
 @keyframes toast-in {
   from { opacity: 0; transform: translate(-50%, -12px); }
