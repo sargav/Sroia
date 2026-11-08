@@ -23,9 +23,9 @@ export const ContentSection = () => (
         title="תוכן האתר"
         subtitle="מה שמופיע באתר ומתעדכן מכאן"
         tabs={[
-            { to: '/images', label: 'תמונות', icon: Image },
-            { to: '/videos', label: 'סרטוני המלצות', icon: Video },
-            { to: '/site', label: 'מספרים ומחירים', icon: Globe },
+            { to: '/content/images', label: 'תמונות', icon: Image },
+            { to: '/content/videos', label: 'סרטוני המלצות', icon: Video },
+            { to: '/content/numbers', label: 'מספרים ומחירים', icon: Globe },
         ]}
     />
 )
