@@ -9,6 +9,7 @@ import ConfirmDialog from '../../components/ConfirmDialog'
 import PageHeader from '../../components/PageHeader'
 import Toast from '../../components/Toast'
 import useCurrentManager from '../auth/useCurrentManager'
+import Loading from '../../components/Loading'
 
 // ההודעות של השרת (באנגלית) -> הודעה בעברית למנהל
 const ERRORS = {
@@ -174,7 +175,7 @@ const ManagersPage = () => {
                 </form>
             )}
 
-            {isLoading && <p>טוען מנהלים...</p>}
+            {isLoading && <Loading text="טוען מנהלים..." />}
             {isError && <p role="alert">לא הצלחנו לטעון את המנהלים</p>}
             <Toast message={listError?.title} details={listError?.details} type="error" onClose={closeToast} />
 

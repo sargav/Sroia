@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Globe, Tag, Check, TriangleAlert } from 'lucide-react'
 import { useGetSiteStatsQuery, useUpdateSiteStatsMutation } from './siteStatsApiSlice'
+import Loading from '../../components/Loading'
 
 const inputClass = 'w-full min-h-11 px-3 border border-sroia-line rounded-lg bg-white text-lg font-bold text-sroia-dark'
 
@@ -50,7 +51,7 @@ const SiteStatsCard = () => {
         }
     }
 
-    if (isLoading) return <p>טוען...</p>
+    if (isLoading) return <Loading />
 
     return (
         // key: כשהנתונים מגיעים, השדות מתמלאים בהם

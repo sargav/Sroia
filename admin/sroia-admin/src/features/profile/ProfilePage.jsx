@@ -8,9 +8,9 @@ import { setToken } from '../auth/authSlice'
 import useCurrentManager from '../auth/useCurrentManager'
 import useLogout from '../auth/useLogout'
 import Toast from '../../components/Toast'
-import { useGetContactsQuery } from '../contacts/contactsApiSlice'
 import { useGetEventsQuery, useGetTasksQuery } from '../calendar/calendarApiSlice'
 import cover from '../../assets/profile-cover.webp'
+import Loading from '../../components/Loading'
 
 // טווח השבוע הנוכחי: מיום ראשון 00:00 עד יום ראשון הבא
 const thisWeek = () => {
@@ -72,13 +72,11 @@ const ProfilePage = () => {
     // בטלפון שינוי הסיסמה סגור עד שלוחצים עליו (במחשב תמיד פתוח)
     const [pwOpen, setPwOpen] = useState(false)
 
-    // המונים בראש הדף
+    // המונים בראש הדף - רק מה שקשור למנהל עצמו (האירועים והמשימות שלו)
     const week = useMemo(() => thisWeek(), [])
-    const { data: contacts = [] } = useGetContactsQuery()
     const { data: events = [] } = useGetEventsQuery(week)
     const { data: tasks = [] } = useGetTasksQuery('mine')
     const stats = [
-        { label: 'פניות חדשות', value: contacts.filter((c) => !c.isRead).length, color: 'text-sroia-ink' },
         { label: 'אירועים השבוע', value: events.filter((ev) => ev.manager?._id === me?._id).length, color: 'text-[#1d4a66]' },
         { label: 'משימות פתוחות', value: tasks.filter((t) => t.status !== 'done').length, color: 'text-[#6b4f00]' },
     ]
@@ -122,7 +120,7 @@ const ProfilePage = () => {
         }
     }
 
-    if (isLoading) return <p>טוען...</p>
+    if (isLoading) return <Loading />
     if (!manager) return <p role="alert">לא הצלחנו לטעון את הפרטים שלך</p>
 
     const joined = manager.createdAt ? new Date(manager.createdAt).toLocaleDateString('he-IL', { month: 'long', year: 'numeric' }) : ''

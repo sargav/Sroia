@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Outlet } from 'react-router-dom'
 import { selectToken, setToken } from './authSlice'
 import { useRefreshMutation } from './authApiSlice'
+import FullScreenLoader from '../../components/FullScreenLoader'
 
 // אחרי רענון דף המגירה מתרוקנת (הטוקן שמור רק בזיכרון).
 // הקומפוננטה הזו מבקשת מהשרת טוקן חדש בעזרת העוגייה, לפני ש-RequireAuth מחליט אם המנהל מחובר
@@ -27,7 +28,7 @@ const PersistLogin = () => {
             .finally(() => setChecking(false))
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-    if (checking) return <p>טוען...</p>
+    if (checking) return <FullScreenLoader />
     return <Outlet />
 }
 

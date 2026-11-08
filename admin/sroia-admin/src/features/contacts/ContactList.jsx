@@ -8,6 +8,7 @@ import {
 } from './contactsApiSlice'
 import ConfirmDialog from '../../components/ConfirmDialog'
 import PageHeader from '../../components/PageHeader'
+import Loading from '../../components/Loading'
 
 // השמות של המקורות, כמו ב-enum במודל
 const SOURCES = {
@@ -33,7 +34,7 @@ const ContactsList = () => {
     const [filter, setFilter] = useState(searchParams.get('filter') || 'all')
     const [openId, setOpenId] = useState(null) // איזו פנייה פתוחה
     const [toDelete, setToDelete] = useState(null)
-    if (isLoading) return <p>טוען פניות...</p>
+    if (isLoading) return <Loading text="טוען פניות..." />
     if (isError) return <p role="alert">לא הצלחנו לטעון את הפניות</p>
 
     // סינון בצד הלקוח

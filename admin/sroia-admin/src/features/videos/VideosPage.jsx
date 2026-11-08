@@ -8,6 +8,7 @@ import {
 } from './videosApiSlice'
 import ConfirmDialog from '../../components/ConfirmDialog'
 import PageHeader from '../../components/PageHeader'
+import Loading from '../../components/Loading'
 
 // מוציא את מזהה הסרטון מקישור יוטיוב, בשביל התמונה הקטנה
 const getYoutubeId = (url) => {
@@ -82,7 +83,7 @@ const VideosPage = () => {
                 {error && <p role="alert" className="w-full text-sm text-[#8a2424]">{error}</p>}
             </form>
 
-            {isLoading && <p>טוען סרטונים...</p>}
+            {isLoading && <Loading text="טוען סרטונים..." />}
             {isError && <p role="alert">לא הצלחנו לטעון את הסרטונים</p>}
             {!isLoading && videos.length === 0 && <p className="text-[#565f52]">אין עדיין סרטונים</p>}
 

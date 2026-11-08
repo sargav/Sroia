@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Search, Download, Phone, Mail, MapPin, BookOpen, GraduationCap, TrendingUp, Check } from 'lucide-react'
 import { useGetRegistrationsQuery } from './registrationsApiSlice'
 import PageHeader from '../../components/PageHeader'
+import Loading from '../../components/Loading'
 
 // כל מוצר: שם, צבעים ואייקון
 const PRODUCTS = {
@@ -51,7 +52,7 @@ const RegistrationsPage = () => {
     const [search, setSearch] = useState('')
     const [shown, setShown] = useState(PAGE)
 
-    if (isLoading) return <p>טוען הרשמות...</p>
+    if (isLoading) return <Loading text="טוען הרשמות..." />
     if (isError) return <p role="alert">לא הצלחנו לטעון את ההרשמות</p>
 
     // החודש הנוכחי
