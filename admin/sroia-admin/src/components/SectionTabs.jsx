@@ -12,7 +12,7 @@ const SectionTabs = ({ title, subtitle, tabs }) => (
 
         {/* בטלפון הלשוניות נגללות הצידה אם לא נכנסות. הקו התחתון מצויר עם צל, ופס הגלילה מוסתר -
             אחרת הדפדפן (בעיקר בווינדוס) הוסיף פס גלילה עם חיצים ליד הלשוניות */}
-        <nav aria-label={title} className="flex gap-6 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden shadow-[inset_0_-1px_0_#C6D3BB]">
+        <nav aria-label={title} className="flex gap-6 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden shadow-[inset_0_-1px_0_var(--color-sroia-line)]">
             {tabs.map(({ to, label, icon: Icon, count }) => (
                 <NavLink
                     key={to}
@@ -29,7 +29,7 @@ const SectionTabs = ({ title, subtitle, tabs }) => (
                             <Icon size={18} aria-hidden="true" />
                             {label}
                             {count > 0 && (
-                                <span className={`text-xs font-extrabold px-2 py-0.5 rounded-full ${isActive ? 'bg-[#E3EFD3] text-[#2f4a17]' : 'bg-[#EEF0EC] text-[#3a4436]'}`}>
+                                <span className={`text-xs font-extrabold px-2 py-0.5 rounded-full ${isActive ? 'bg-sroia-tint text-sroia-ink' : 'bg-[#EEF0EC] text-[#3a4436]'}`}>
                                     {count}
                                 </span>
                             )}

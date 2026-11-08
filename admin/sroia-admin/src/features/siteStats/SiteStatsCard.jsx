@@ -12,7 +12,7 @@ const price = (n) => `${Number(n).toLocaleString('en-US')} ₪`
 // שתי קבוצות: מספרים ומחירים. preview = איך זה ייראה באתר
 const GROUPS = [
     {
-        title: 'המספרים באתר', sub: 'מופיעים בדף הבית ובדף ניהול פרויקטים', icon: Globe, iconClass: 'bg-[#E3EFD3] text-[#2f4a17]',
+        title: 'המספרים באתר', sub: 'מופיעים בדף הבית ובדף ניהול פרויקטים', icon: Globe, iconClass: 'bg-sroia-tint text-sroia-ink',
         fields: [
             { name: 'projectsCount', label: 'פרויקטים שליווינו', step: 1, dir: 'ltr', preview: (v) => `${v.projectsCount}+` },
             { name: 'avgSavings', label: 'חיסכון ממוצע ללקוח (₪)', step: 1000, dir: 'ltr', preview: (v) => `₪${Math.round(v.avgSavings / 1000)}K` },

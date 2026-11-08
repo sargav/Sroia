@@ -54,7 +54,7 @@ const VideosPage = () => {
             <PageHeader title="סרטוני המלצות" subtitle="סרטוני היוטיוב שמופיעים באתר" />
 
             {/* הוספת סרטון */}
-            <form onSubmit={handleAdd} className="bg-white border border-[#E1E8DA] rounded-xl p-4 flex flex-wrap items-end gap-3">
+            <form onSubmit={handleAdd} className="bg-white border border-sroia-edge rounded-xl p-4 flex flex-wrap items-end gap-3">
                 <label className="flex flex-col gap-1 text-sm font-bold text-[#3a4436] flex-[1_1_180px]">
                     שם הממליץ
                     <input name="name" value={form.name} onChange={handleChange} required
@@ -90,10 +90,10 @@ const VideosPage = () => {
                 {videos.map((video) => {
                     const ytId = getYoutubeId(video.url)
                     return (
-                        <li key={video._id} className="bg-white border border-[#E1E8DA] rounded-xl overflow-hidden flex flex-col">
+                        <li key={video._id} className="bg-white border border-sroia-edge rounded-xl overflow-hidden flex flex-col">
                             {ytId
                                 ? <img src={`https://img.youtube.com/vi/${ytId}/mqdefault.jpg`} alt="" loading="lazy" className="w-full aspect-video object-cover" />
-                                : <div className="w-full aspect-video bg-[#EEF2E9]" />}
+                                : <div className="w-full aspect-video bg-sroia-subtle" />}
                             <div className="p-3 flex flex-col gap-2">
                                 <label className="flex flex-col gap-1 text-xs font-bold text-[#3a4436]">
                                     שם הממליץ

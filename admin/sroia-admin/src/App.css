@@ -8,6 +8,28 @@
   --color-sroia-light: #8FC24B;   /* הירוק הבהיר */
   --color-sroia-bg: #F4F6F0;      /* רקע המסכים */
   --color-sroia-line: #C6D3BB;    /* מסגרות של שדות */
+  --color-sroia-tint: #E3EFD3;    /* רקע בהיר לתגיות ולאייקונים */
+  --color-sroia-ink: #2f4a17;     /* טקסט כהה על הרקע הבהיר */
+  --color-sroia-menu: #D3DECC;    /* טקסט בתפריט הכהה */
+  --color-sroia-soft: #B9DB8C;    /* גוון בהיר: עמודות בגרף, טקסט משני בתפריט */
+  --color-sroia-edge: #E1E8DA;    /* קווים מפרידים */
+  --color-sroia-subtle: #EEF2E9;  /* קווים ורקעים עדינים מאוד */
+}
+
+/* ערכת צבעים כחולה - נבחרת בהגדרות > עיצוב (data-theme על התגית html).
+   מחליפה רק את המשתנים, ולכן כל המחלקות של Tailwind (bg-sroia-dark וכו') מתעדכנות לבד */
+:root[data-theme="navy"] {
+  --color-sroia-dark: #060d36;
+  --color-sroia-green: #2B3F9E;
+  --color-sroia-light: #8FB3FF;
+  --color-sroia-bg: #F3F5FA;
+  --color-sroia-line: #C9D0E4;
+  --color-sroia-tint: #E2E8FA;
+  --color-sroia-ink: #1B2766;
+  --color-sroia-menu: #CDD4EE;
+  --color-sroia-soft: #A9BEF5;
+  --color-sroia-edge: #DFE4F0;
+  --color-sroia-subtle: #ECEFF7;
 }
 /* כניסה של הודעה קופצת (Toast) */
 @keyframes toast-in {

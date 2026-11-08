@@ -82,7 +82,7 @@ const DayDialog = ({ day, events, onClose, onAdd, onEdit }) => {
                     </div>
                     <div className="relative flex-1">
                         {hours.map((h) => (
-                            <div key={h} style={{ height: HOUR_PX }} className="border-t border-[#EEF2E9]" aria-hidden="true" />
+                            <div key={h} style={{ height: HOUR_PX }} className="border-t border-sroia-subtle" aria-hidden="true" />
                         ))}
                         {events.map((ev) => {
                             const kind = EVENT_KINDS[ev.type] || EVENT_KINDS.meet

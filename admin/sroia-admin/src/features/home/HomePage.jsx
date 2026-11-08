@@ -145,7 +145,7 @@ const HomePage = () => {
             {/* 4 ריבועים */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
                 <StatTile to="/contacts?filter=unread" label="פניות שלא נקראו" value={unread.length}
-                    sub={unreadToday ? `${unreadToday} מהן הגיעו היום` : ''} icon={Mail} iconClass="bg-[#E3EFD3] text-[#2f4a17]" />
+                    sub={unreadToday ? `${unreadToday} מהן הגיעו היום` : ''} icon={Mail} iconClass="bg-sroia-tint text-sroia-ink" />
                 <StatTile to="/contacts?filter=unreplied" label="ממתינות למענה" value={unreplied.length}
                     sub={oldestWaiting >= 3 ? `הוותיקה מחכה ${oldestWaiting} ימים` : ''} warn icon={Clock} iconClass="bg-[#FDF3DC] text-[#7a5a00]" />
                 <StatTile to="/calendar" label="אירועים השבוע" value={events.length}
@@ -175,13 +175,13 @@ const HomePage = () => {
                     <div
                         role="img"
                         aria-label={`פניות לפי יום: ${days.map((d) => `${SHORT_DAYS[d.start.getDay()]} ${d.count}`).join(', ')}`}
-                        className="flex items-end gap-3 h-60 pt-2 pb-0.5 border-b border-[#E1E8DA]"
+                        className="flex items-end gap-3 h-60 pt-2 pb-0.5 border-b border-sroia-edge"
                     >
                         {days.map((d) => (
                             <div key={d.start.toISOString()} className="flex-1 h-full flex flex-col items-center justify-end gap-1.5">
                                 <span className={`text-[13px] font-bold ${d.count ? 'text-sroia-dark' : 'text-[#a3ab9f]'}`}>{d.count}</span>
                                 <div
-                                    className={`w-full max-w-11 rounded-t-lg rounded-b-sm ${d.isToday ? 'bg-sroia-green' : d.count ? 'bg-[#B9D58E]' : 'bg-[#E1E8DA]'}`}
+                                    className={`w-full max-w-11 rounded-t-lg rounded-b-sm ${d.isToday ? 'bg-sroia-green' : d.count ? 'bg-sroia-soft' : 'bg-sroia-edge'}`}
                                     style={{ height: Math.max(4, (d.count / maxCount) * 160) }}
                                 />
                                 <span className="flex flex-col items-center leading-tight">
@@ -211,7 +211,7 @@ const HomePage = () => {
                             const SrcIcon = src.icon
                             return (
                                 <li key={c._id}>
-                                    <Link to="/contacts" className="flex items-center gap-3 px-5 py-2.5 border-t border-[#EEF2E9] no-underline text-inherit hover:bg-sroia-bg">
+                                    <Link to="/contacts" className="flex items-center gap-3 px-5 py-2.5 border-t border-sroia-subtle no-underline text-inherit hover:bg-sroia-bg">
                                         <span className="relative shrink-0">
                                             <span aria-hidden="true" className={`w-9.5 h-9.5 rounded-full flex items-center justify-center font-extrabold ${src.bg} ${src.fg}`}>
                                                 {c.name?.[0]}

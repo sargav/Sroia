@@ -78,7 +78,7 @@ const ProfilePage = () => {
     const { data: events = [] } = useGetEventsQuery(week)
     const { data: tasks = [] } = useGetTasksQuery('mine')
     const stats = [
-        { label: 'פניות חדשות', value: contacts.filter((c) => !c.isRead).length, color: 'text-[#2f4a17]' },
+        { label: 'פניות חדשות', value: contacts.filter((c) => !c.isRead).length, color: 'text-sroia-ink' },
         { label: 'אירועים השבוע', value: events.filter((ev) => ev.manager?._id === me?._id).length, color: 'text-[#1d4a66]' },
         { label: 'משימות פתוחות', value: tasks.filter((t) => t.status !== 'done').length, color: 'text-[#6b4f00]' },
     ]
@@ -139,7 +139,7 @@ const ProfilePage = () => {
             <div>
                 <div className="relative h-36 md:h-44 rounded-3xl overflow-hidden">
                     <img src={cover} alt="" className="absolute inset-0 w-full h-full object-cover" />
-                    <div className="absolute inset-0" style={{ background: 'linear-gradient(0deg, rgba(45,56,43,0.75), rgba(45,56,43,0.2))' }} />
+                    <div className="absolute inset-0" style={{ background: 'linear-gradient(0deg, color-mix(in srgb, var(--color-sroia-dark) 75%, transparent), color-mix(in srgb, var(--color-sroia-dark) 20%, transparent))' }} />
                 </div>
                 <div className="relative flex flex-wrap items-end gap-x-4 gap-y-3 px-4 md:px-6">
                     <span aria-hidden="true"
@@ -174,7 +174,7 @@ const ProfilePage = () => {
                 {/* פרטים אישיים */}
                 <section aria-labelledby="details-title" className="bg-white rounded-2xl p-6 shadow-[0_1px_2px_rgba(45,56,43,0.06),0_4px_16px_rgba(45,56,43,0.05)] flex flex-col gap-5">
                     <div className="flex items-center gap-3">
-                        <span className="w-10 h-10 rounded-xl bg-[#E3EFD3] text-sroia-green flex items-center justify-center"><UserRound size={20} aria-hidden="true" /></span>
+                        <span className="w-10 h-10 rounded-xl bg-sroia-tint text-sroia-green flex items-center justify-center"><UserRound size={20} aria-hidden="true" /></span>
                         <div>
                             <h2 id="details-title" className="text-lg font-extrabold text-sroia-dark">הפרטים שלי</h2>
                             <p className="text-sm text-[#565f52]">שם, שם משתמש, מייל וטלפון</p>

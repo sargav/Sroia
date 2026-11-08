@@ -140,7 +140,7 @@ const ManagersPage = () => {
 
             {/* הוספת מנהל */}
             {showForm && (
-                <form onSubmit={handleAdd} className="bg-white border border-[#E1E8DA] rounded-xl p-5 flex flex-col gap-4">
+                <form onSubmit={handleAdd} className="bg-white border border-sroia-edge rounded-xl p-5 flex flex-col gap-4">
                     <div className="flex items-center justify-between">
                         <h2 className="text-lg font-extrabold text-sroia-dark">מנהל חדש</h2>
                         <button type="button" onClick={() => { setShowForm(false); setFormError('') }} aria-label="סגירה"
@@ -183,15 +183,15 @@ const ManagersPage = () => {
                 {managers.map((m) => {
                     const isMe = me?._id === m._id
                     return (
-                        <li key={m._id} className={`bg-white border rounded-2xl p-4 flex flex-col gap-3 ${isMe ? 'border-sroia-light' : 'border-[#E1E8DA]'}`}>
+                        <li key={m._id} className={`bg-white border rounded-2xl p-4 flex flex-col gap-3 ${isMe ? 'border-sroia-light' : 'border-sroia-edge'}`}>
                             <div className="flex items-center gap-3">
-                                <span aria-hidden="true" className="w-12 h-12 shrink-0 rounded-full bg-[#E3EFD3] text-sroia-dark text-lg font-extrabold flex items-center justify-center">
+                                <span aria-hidden="true" className="w-12 h-12 shrink-0 rounded-full bg-sroia-tint text-sroia-dark text-lg font-extrabold flex items-center justify-center">
                                     {m.name?.[0]}
                                 </span>
                                 <div className="flex-1 min-w-0">
                                     <p className="font-bold flex flex-wrap items-center gap-2">
                                         {m.name}
-                                        {isMe && <span className="px-2 py-0.5 rounded-full bg-[#E3EFD3] text-[#2f4a17] text-xs font-bold">המשתמש שלי</span>}
+                                        {isMe && <span className="px-2 py-0.5 rounded-full bg-sroia-tint text-sroia-ink text-xs font-bold">המשתמש שלי</span>}
                                     </p>
                                     <p className="text-sm text-[#565f52]" dir="ltr">@{m.manName}</p>
                                 </div>
@@ -220,7 +220,7 @@ const ManagersPage = () => {
             </ul>
 
             {/* במחשב: טבלה */}
-            <div className="hidden md:block bg-white border border-[#E1E8DA] rounded-xl overflow-x-auto">
+            <div className="hidden md:block bg-white border border-sroia-edge rounded-xl overflow-x-auto">
                 <table className="w-full min-w-[640px] text-[15px]">
                     <thead>
                         <tr className="bg-[#F0F3E8] text-right text-[#3a4436]">
@@ -235,10 +235,10 @@ const ManagersPage = () => {
                         {managers.map((m) => {
                             const isMe = me?._id === m._id
                             return (
-                            <tr key={m._id} className={`border-t border-[#EEF2E9] ${isMe ? 'bg-[#F7FAF3]' : ''}`}>
+                            <tr key={m._id} className={`border-t border-sroia-subtle ${isMe ? 'bg-[#F7FAF3]' : ''}`}>
                                 <td className="p-3 font-bold">
                                     {m.name}
-                                    {isMe && <span className="mr-2 px-2 py-0.5 rounded-full bg-[#E3EFD3] text-[#2f4a17] text-xs font-bold">המשתמש שלי</span>}
+                                    {isMe && <span className="mr-2 px-2 py-0.5 rounded-full bg-sroia-tint text-sroia-ink text-xs font-bold">המשתמש שלי</span>}
                                 </td>
                                 <td className="p-3">{m.manName}</td>
                                 {/* bdi: המייל נכתב משמאל לימין, אבל התא נשאר מיושר לימין כמו הכותרת */}

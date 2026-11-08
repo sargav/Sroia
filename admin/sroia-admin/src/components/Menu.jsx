@@ -18,7 +18,7 @@ const Menu = ({ onNavigate }) => {
                         aria-current={active ? 'page' : undefined}
                         className={`flex items-center justify-between gap-3 min-h-12 px-3.5 rounded-xl text-base no-underline ${active
                             ? 'bg-sroia-light/20 text-white font-bold'
-                            : 'text-[#D3DECC] hover:bg-white/5'
+                            : 'text-sroia-menu hover:bg-white/5'
                             }`}
                     >
                         <span>{item.label}</span>

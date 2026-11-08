@@ -83,7 +83,7 @@ const ImagesPage = () => {
             </div>
 
             {/* העלאה */}
-            <form onSubmit={handleUpload} className="bg-white border border-[#E1E8DA] rounded-xl p-4 flex flex-wrap items-end gap-3">
+            <form onSubmit={handleUpload} className="bg-white border border-sroia-edge rounded-xl p-4 flex flex-wrap items-end gap-3">
                 <div className="flex flex-col gap-1 flex-[1_1_240px]">
                     <span className="text-sm font-bold text-[#3a4436]">בחירת תמונות</span>
                     {/* הקלט האמיתי מוסתר, והתווית נראית כמו כפתור - ככה הכיתוב בעברית ולא "Choose Files" */}
@@ -130,7 +130,7 @@ const ImagesPage = () => {
 
             <ul className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-4">
                 {images.map((image) => (
-                    <li key={image._id} className="bg-white border border-[#E1E8DA] rounded-xl overflow-hidden flex flex-col">
+                    <li key={image._id} className="bg-white border border-sroia-edge rounded-xl overflow-hidden flex flex-col">
                         <img src={image.url} alt={image.alt || ''} loading="lazy" className="w-full aspect-[4/3] object-cover" />
                         <div className="p-3 flex flex-col gap-2">
                             <label className="flex flex-col gap-1 text-xs font-bold text-[#3a4436]">

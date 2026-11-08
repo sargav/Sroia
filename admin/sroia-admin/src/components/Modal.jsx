@@ -24,7 +24,7 @@ const Modal = ({ open, onClose, title, subtitle, actions, children, wide = false
         >
             {open && (
                 <div className="flex flex-col max-h-[inherit] font-sans">
-                    <div className="flex items-start justify-between gap-3 px-5 pt-5 pb-3 border-b border-[#EEF2E9]">
+                    <div className="flex items-start justify-between gap-3 px-5 pt-5 pb-3 border-b border-sroia-subtle">
                         <div>
                             <h2 className="text-xl font-extrabold text-sroia-dark">{title}</h2>
                             {subtitle && <p className="text-sm text-[#565f52]">{subtitle}</p>}
