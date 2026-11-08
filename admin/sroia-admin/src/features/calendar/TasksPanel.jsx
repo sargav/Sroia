@@ -45,7 +45,7 @@ const TasksPanel = () => {
         const isDone = t.status === 'done'
         const late = !isDone && t.dueDate && new Date(t.dueDate) < new Date(new Date().toDateString())
         return (
-            <li key={t._id} className="flex items-start gap-3 py-2 border-t border-[#EEF2E9] first:border-t-0">
+            <li key={t._id} className="flex items-start gap-3 py-2 border-t border-sroia-subtle first:border-t-0">
                 <input
                     type="checkbox"
                     checked={isDone}
@@ -74,10 +74,10 @@ const TasksPanel = () => {
     }
 
     return (
-        <section aria-labelledby="tasks-title" className="bg-white border border-[#E1E8DA] rounded-xl p-4 flex flex-col gap-3">
+        <section aria-labelledby="tasks-title" className="bg-white border border-sroia-edge rounded-xl p-4 flex flex-col gap-3">
             <div className="flex items-center justify-between gap-2">
                 <h2 id="tasks-title" className="text-lg font-extrabold text-sroia-dark">משימות</h2>
-                <div role="group" aria-label="של מי" className="flex gap-1 p-1 rounded-lg bg-[#EEF2E9]">
+                <div role="group" aria-label="של מי" className="flex gap-1 p-1 rounded-lg bg-sroia-subtle">
                     {SCOPES.map((s) => (
                         <button key={s.id} type="button" aria-pressed={scope === s.id} onClick={() => setScope(s.id)}
                             className={`min-h-9 px-3 rounded-md text-sm cursor-pointer ${scope === s.id ? 'bg-white font-bold shadow-sm' : ''}`}>

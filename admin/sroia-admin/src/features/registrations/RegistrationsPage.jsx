@@ -88,7 +88,7 @@ const RegistrationsPage = () => {
                 <StatTile label="נרשמו לקורס החודש" value={countOf(thisMonth, 'course')} icon={GraduationCap} iconClass="bg-[#E9F3DF] text-[#2f4a17]" />
                 <StatTile label="רכשו את המצפן החודש" value={countOf(thisMonth, 'compass')} icon={MapPin} iconClass="bg-[#F3ECFA] text-[#4f2d66]" />
                 <StatTile label="הורידו את המדריך החודש" value={countOf(thisMonth, 'guide')} icon={BookOpen} iconClass="bg-[#FDF3DC] text-[#6b4f00]" />
-                <StatTile label="נכנס החודש" value={money(income)} icon={TrendingUp} iconClass="bg-[#E3EFD3] text-[#2f4a17]" />
+                <StatTile label="נכנס החודש" value={money(income)} icon={TrendingUp} iconClass="bg-sroia-tint text-sroia-ink" />
             </div>
 
             {/* סינון וחיפוש */}
@@ -128,7 +128,7 @@ const RegistrationsPage = () => {
                             const p = PRODUCTS[r.product]
                             const PIcon = p.icon
                             return (
-                                <li key={r._id} className={`flex flex-wrap items-center gap-x-4 gap-y-2 px-4 sm:px-5 py-3 border-t first:border-t-0 border-[#EEF2E9]`}>
+                                <li key={r._id} className={`flex flex-wrap items-center gap-x-4 gap-y-2 px-4 sm:px-5 py-3 border-t first:border-t-0 border-sroia-subtle`}>
                                     <span aria-hidden="true" className={`w-9 h-9 shrink-0 rounded-full flex items-center justify-center font-extrabold ${p.bg} ${p.fg}`}>
                                         {r.name?.[0] || '?'}
                                     </span>
@@ -155,7 +155,7 @@ const RegistrationsPage = () => {
 
                                     <span className="flex gap-1 mr-auto">
                                         {r.phone && (
-                                            <a href={`tel:${r.phone}`} aria-label={`התקשרות ל${r.name || 'נרשם'}`} className="w-9 h-9 rounded-lg flex items-center justify-center text-[#3d5a20] hover:bg-sroia-bg">
+                                            <a href={`tel:${r.phone}`} aria-label={`התקשרות ל${r.name || 'נרשם'}`} className="w-9 h-9 rounded-lg flex items-center justify-center text-sroia-ink hover:bg-sroia-bg">
                                                 <Phone size={16} aria-hidden="true" />
                                             </a>
                                         )}
@@ -170,7 +170,7 @@ const RegistrationsPage = () => {
                         })}
                     </ul>
                     {shown < filtered.length && (
-                        <div className="flex flex-col items-center gap-1 p-4 border-t border-[#EEF2E9]">
+                        <div className="flex flex-col items-center gap-1 p-4 border-t border-sroia-subtle">
                             <button type="button" onClick={() => setShown(shown + PAGE)}
                                 className="min-h-11 px-5 rounded-xl border border-sroia-line bg-white font-bold text-sroia-dark cursor-pointer hover:bg-sroia-bg">
                                 טעינת עוד {Math.min(PAGE, filtered.length - shown)}

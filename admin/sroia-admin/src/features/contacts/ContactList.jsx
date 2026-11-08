@@ -105,7 +105,7 @@ const ContactsList = () => {
             {/* הרשימה */}
             <ul className="flex flex-col gap-2">
                 {shown.map((c) => (
-                    <li key={c._id} className="bg-white border border-[#E1E8DA] rounded-xl">
+                    <li key={c._id} className="bg-white border border-sroia-edge rounded-xl">
                         {/* השורה הסגורה */}
                         <button
                             type="button"
@@ -121,7 +121,7 @@ const ContactsList = () => {
                             <span className="text-sm text-[#565f52]">
                                 {new Date(c.createdAt).toLocaleDateString('he-IL')}
                             </span>
-                            <span className={`px-3 py-1 rounded-full text-xs font-bold ${c.isReplied ? 'bg-sroia-dark text-white' : 'bg-[#E3EFD3] text-[#3d5a20]'
+                            <span className={`px-3 py-1 rounded-full text-xs font-bold ${c.isReplied ? 'bg-sroia-dark text-white' : 'bg-sroia-tint text-sroia-ink'
                                 }`}>
                                 {c.isReplied ? 'נענתה' : 'ממתינה'}
                             </span>
@@ -134,7 +134,7 @@ const ContactsList = () => {
 
                         {/* הפרטים - רק כשהפנייה פתוחה */}
                         {openId === c._id && (
-                            <div className="border-t border-[#EEF2E9] p-4 flex flex-col gap-4">
+                            <div className="border-t border-sroia-subtle p-4 flex flex-col gap-4">
                                 <div className="flex flex-wrap gap-6 text-sm">
                                     <a href={`tel:${c.phone}`} dir="ltr">{c.phone}</a>
                                     <a href={`mailto:${c.email}`} dir="ltr">{c.email}</a>

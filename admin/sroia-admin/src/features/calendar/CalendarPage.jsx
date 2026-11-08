@@ -74,7 +74,7 @@ const CalendarPage = () => {
 
             <div className="flex flex-wrap gap-5 items-start">
                 {/* הלוח החודשי */}
-                <div className="flex-[999_1_560px] min-w-0 bg-white border border-[#E1E8DA] rounded-xl overflow-hidden" aria-busy={isLoading}>
+                <div className="flex-[999_1_560px] min-w-0 bg-white border border-sroia-edge rounded-xl overflow-hidden" aria-busy={isLoading}>
                     <div className="grid grid-cols-7 bg-[#F0F3E8]">
                         {WEEKDAYS.map((d, i) => (
                             <div key={d} className="py-2 text-center text-xs md:text-sm font-bold text-[#565f52]">
@@ -95,7 +95,7 @@ const CalendarPage = () => {
                                     type="button"
                                     onClick={() => setSelectedDay(day)}
                                     aria-label={`${day.getDate()} ב${MONTHS[day.getMonth()]}, ${dayEvents.length ? `${dayEvents.length} אירועים` : 'אין אירועים'}`}
-                                    className={`min-h-14 md:min-h-26 p-1 md:p-1.5 border-t border-l border-[#EEF2E9] flex flex-col items-center md:items-stretch gap-1 text-right cursor-pointer hover:bg-[#F4F8EE] min-w-0
+                                    className={`min-h-14 md:min-h-26 p-1 md:p-1.5 border-t border-l border-sroia-subtle flex flex-col items-center md:items-stretch gap-1 text-right cursor-pointer hover:bg-[#F4F8EE] min-w-0
                                         ${inMonth ? 'bg-white' : 'bg-[#FAFBF8]'}`}
                                 >
                                     <span className={`w-7 h-7 rounded-full flex items-center justify-center text-sm
@@ -133,7 +133,7 @@ const CalendarPage = () => {
 
                 {/* בצד: היום + משימות */}
                 <div className="flex-[1_1_280px] min-w-0 flex flex-col gap-4">
-                    <section aria-labelledby="today-title" className="bg-white border border-[#E1E8DA] rounded-xl p-4">
+                    <section aria-labelledby="today-title" className="bg-white border border-sroia-edge rounded-xl p-4">
                         <h2 id="today-title" className="text-lg font-extrabold text-sroia-dark mb-1">
                             היום · {WEEKDAYS[today.getDay()]} {today.getDate()}.{today.getMonth() + 1}
                         </h2>
@@ -143,7 +143,7 @@ const CalendarPage = () => {
                                 // גובה מוגבל - אם יש הרבה אירועים, גוללים בתוך הקופסה
                                 <ul className="max-h-60 overflow-y-auto overscroll-contain -mx-1 px-1">
                                     {todayEvents.map((ev) => (
-                                        <li key={ev._id} className="flex gap-3 py-2 border-t border-[#EEF2E9] first:border-t-0">
+                                        <li key={ev._id} className="flex gap-3 py-2 border-t border-sroia-subtle first:border-t-0">
                                             <span className="w-1 rounded" style={{ background: EVENT_KINDS[ev.type]?.fg }} />
                                             <span className="flex flex-col">
                                                 <span className="text-sm font-bold text-[#3a4436]">{timeLabel(ev.start)}</span>

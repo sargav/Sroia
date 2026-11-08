@@ -64,7 +64,7 @@ const Layout = () => {
                             className={`w-10 h-10 text-lg transition-shadow ${onProfile ? 'ring-[3px] ring-white' : 'group-hover:ring-[3px] group-hover:ring-sroia-light/40'}`} />
                         <span className="min-w-0">
                             <b className="block text-[15px] truncate">{me?.name}</b>
-                            <span className="flex items-center gap-1 text-xs text-[#B9DB8C]">
+                            <span className="flex items-center gap-1 text-xs text-sroia-soft">
                                 הפרופיל שלי
                                 {!onProfile && (
                                     <ArrowLeft size={13} aria-hidden="true"
@@ -78,7 +78,7 @@ const Layout = () => {
                         onClick={handleLogout}
                         aria-label="התנתקות"
                         title="התנתקות"
-                        className="w-10 h-10 shrink-0 flex items-center justify-center rounded-xl text-[#D3DECC] hover:bg-white/10 hover:text-white cursor-pointer"
+                        className="w-10 h-10 shrink-0 flex items-center justify-center rounded-xl text-sroia-menu hover:bg-white/10 hover:text-white cursor-pointer"
                     >
                         <LogOut size={20} aria-hidden="true" />
                     </button>
@@ -94,7 +94,7 @@ const Layout = () => {
             {/* סרגל תחתון - רק בטלפון, כמו באפליקציה */}
             <nav
                 aria-label="ניווט מהיר"
-                className="md:hidden fixed bottom-0 inset-x-0 z-20 bg-white border-t border-[#E1E8DA] shadow-[0_-4px_16px_rgba(45,56,43,0.08)] pb-[env(safe-area-inset-bottom)]"
+                className="md:hidden fixed bottom-0 inset-x-0 z-20 bg-white border-t border-sroia-edge shadow-[0_-4px_16px_rgba(45,56,43,0.08)] pb-[env(safe-area-inset-bottom)]"
             >
                 {/* כל 5 הפריטים של התפריט - אין צורך ב"עוד" */}
                 <ul className="grid grid-cols-5">
@@ -108,7 +108,7 @@ const Layout = () => {
                                     aria-current={active ? 'page' : undefined}
                                     className={`flex flex-col items-center justify-center gap-1 h-16 text-xs no-underline ${active ? 'text-sroia-dark font-bold' : 'text-[#6b7468]'}`}
                                 >
-                                    <span className={`relative flex items-center justify-center w-12 h-8 rounded-full ${active ? 'bg-[#E3EFD3] text-sroia-green' : ''}`}>
+                                    <span className={`relative flex items-center justify-center w-12 h-8 rounded-full ${active ? 'bg-sroia-tint text-sroia-green' : ''}`}>
                                         <Icon size={22} aria-hidden="true" />
                                         {item.to === '/contacts' && unread > 0 && (
                                             <span className="absolute -top-1 left-1 min-w-5 h-5 px-1 rounded-full bg-[#c0392b] text-white text-[11px] font-bold flex items-center justify-center">
