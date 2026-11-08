@@ -5,7 +5,7 @@ export const NAV_ITEMS = [
     { to: '/', label: 'דף הבית', short: 'בית', icon: House, paths: ['/'] },
     { to: '/contacts', label: 'פניות והרשמות', short: 'פניות', icon: Inbox, paths: ['/contacts', '/registrations'] },
     { to: '/calendar', label: 'יומן ומשימות', short: 'יומן', icon: CalendarDays, paths: ['/calendar'] },
-    { to: '/images', label: 'תוכן האתר', short: 'תוכן', icon: LayoutTemplate, paths: ['/images', '/videos', '/site'] },
+    { to: '/content/images', label: 'תוכן האתר', short: 'תוכן', icon: LayoutTemplate, paths: ['/content'] },
     { to: '/settings/managers', label: 'הגדרות', short: 'הגדרות', icon: Settings, paths: ['/settings'] },
 ]
 

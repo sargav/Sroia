@@ -40,10 +40,15 @@ function App() {
 
               {/* תוכן האתר - שלוש לשוניות */}
               <Route element={<ContentSection />}>
-                <Route path='/images' element={<ImagesPage />} />
-                <Route path='/videos' element={<VideosPage />} />
-                <Route path='/site' element={<SiteStatsPage />} />
+                <Route path='/content/images' element={<ImagesPage />} />
+                <Route path='/content/videos' element={<VideosPage />} />
+                <Route path='/content/numbers' element={<SiteStatsPage />} />
               </Route>
+              {/* /content לבד - פותח את הלשונית הראשונה. וכתובות ישנות - מפנים לכתובות החדשות */}
+              <Route path='/content' element={<Navigate to='/content/images' replace />} />
+              <Route path='/images' element={<Navigate to='/content/images' replace />} />
+              <Route path='/videos' element={<Navigate to='/content/videos' replace />} />
+              <Route path='/site' element={<Navigate to='/content/numbers' replace />} />
 
               {/* הפרופיל שלי - נפתח מהעיגול עם השם (למטה בתפריט / למעלה בטלפון) */}
               <Route path='/me' element={<ProfilePage />} />
