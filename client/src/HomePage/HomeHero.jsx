@@ -107,7 +107,7 @@ export default function Hero() {
       <div className="hero-stripe-grow pointer-events-none absolute right-6 top-1/2 -z-10 hidden h-[55%] w-[3px] -translate-y-1/2 rounded-full bg-gradient-to-b from-transparent via-[#78A93B]/70 to-transparent md:right-10 lg:block" />
 
       <div className="relative mx-auto w-full max-w-[80rem] px-6 py-20 md:px-12 lg:px-20">
-        <div className="max-w-[40rem]">
+        <div className="mx-auto max-w-[40rem] text-center">
 
           {/* אזור הטקסט - שכבה אחת שעוברת מטושטשת לחדה */}
           <div className="hero-text-focus">
@@ -124,16 +124,16 @@ export default function Hero() {
               <span className="block text-[#79A942]">חוסכים הון.</span>
             </h1>
 
-            <div className="mb-8 mt-6 h-px w-24 bg-gradient-to-l from-[#78A93B]/60 to-transparent" />
+            <div className="mx-auto mb-8 mt-6 h-px w-24 bg-gradient-to-r from-transparent via-[#78A93B]/60 to-transparent" />
 
-            <p className="mb-9 max-w-[33.75rem] text-[1rem] font-medium leading-[1.9] text-[#51594C] md:text-[1.125rem]">
+            <p className="mx-auto mb-9 max-w-[33.75rem] text-[1rem] font-medium leading-[1.9] text-[#51594C] md:text-[1.125rem]">
               ליווי יד ביד משלב רכישת המגרש ועד קבלת המפתח — ללא חריגות
               תקציב, ללא טעויות יקרות ובסטנדרט הגבוה ביותר.
             </p>
           </div>
 
           {/* כפתורים */}
-          <div className="hero-btns-in flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="hero-btns-in flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
             <button
               type="button"
               onClick={() => {
