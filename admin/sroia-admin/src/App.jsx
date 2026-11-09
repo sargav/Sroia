@@ -12,6 +12,7 @@ import ManagersPage from './features/managers/ManagersPage.jsx'
 import CalendarPage from './features/calendar/CalendarPage.jsx'
 import ProfilePage from './features/profile/ProfilePage.jsx'
 import AppearancePage from './features/appearance/AppearancePage.jsx'
+import BenefitsPage from './features/benefits/BenefitsPage.jsx'
 import SiteStatsPage from './features/siteStats/SiteStatsPage.jsx'
 import RegistrationsPage from './features/registrations/RegistrationsPage.jsx'
 import { InboxSection, ContentSection, SettingsSection } from './components/sections.jsx'
@@ -57,6 +58,7 @@ function App() {
               <Route element={<SettingsSection />}>
                 <Route path='/settings/managers' element={<ManagersPage />} />
                 <Route path='/settings/appearance' element={<AppearancePage />} />
+                <Route path='/settings/benefits' element={<BenefitsPage />} />
               </Route>
               {/* /settings לבד - פותח את הלשונית הראשונה. וכתובות ישנות - מפנים לכתובות החדשות */}
               <Route path='/settings' element={<Navigate to='/settings/managers' replace />} />

@@ -1,4 +1,4 @@
-import { Inbox, ShoppingCart, Image, Video, Globe, Users, Palette } from 'lucide-react'
+import { Inbox, ShoppingCart, Image, Video, Globe, Users, Palette, Gift } from 'lucide-react'
 import SectionTabs from './SectionTabs'
 import { useGetContactsQuery } from '../features/contacts/contactsApiSlice'
 
@@ -34,10 +34,11 @@ export const ContentSection = () => (
 export const SettingsSection = () => (
     <SectionTabs
         title="הגדרות"
-        subtitle="מי יכול להיכנס לפאנל, ואיך הפאנל נראה"
+        subtitle="מנהלים, עיצוב הפאנל, ולמי נשלחות בקשות ההטבות"
         tabs={[
             { to: '/settings/managers', label: 'מנהלים', icon: Users },
             { to: '/settings/appearance', label: 'עיצוב', icon: Palette },
+            { to: '/settings/benefits', label: 'הטבות', icon: Gift },
         ]}
     />
 )
