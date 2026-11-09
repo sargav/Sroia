@@ -6,6 +6,7 @@ import negevLogo from "./assets/negev-logo-heart.jpg";
 import giftBox from "./assets/gift-box.webp";
 import BenefitTermsDialog from "./components/BenefitTermsDialog";
 import api from "../api-config";
+import checking from "../functionChecking/functionChecking";
 
 // המזהה של ההטבה בקטלוג בשרת (server/config/defaultBenefits.js) - חייב להיות זהה
 const BENEFIT_ID = "negev";
@@ -170,7 +171,7 @@ export default function Benefit() {
 
         const next = {};
         if (!form.name.trim()) next.name = "נא למלא שם מלא";
-        if (!form.phone.trim() || !/^0\d{1,2}-?\d{7}$/.test(form.phone.replace(/\s/g, "")))
+        if (!checking.isValidPhone(form.phone))
             next.phone = "נא למלא מספר טלפון תקין";
         if (!form.email.trim() || !/^\S+@\S+\.\S+$/.test(form.email)) next.email = "נא למלא אימייל תקין";
         if (!form.stage) next.stage = "נא לבחור שלב בנייה";
