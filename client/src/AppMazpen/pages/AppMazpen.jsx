@@ -66,10 +66,10 @@ const makeFaqs = (price) => [
   [`האם המחיר יישאר ${price} ₪?`, "זהו מחיר השקה לתקופה מוגבלת. לאחר מכן המחיר צפוי להתעדכן."],
 ];
 
-/* הפונט והאנימציה של המצפן, כדי שלא יהיה צורך לגעת ב-CSS של האתר הראשי */
+/* האנימציה של המצפן (הגופן Heebo נטען לכל האתר ב-index.html), כדי שלא יהיה צורך לגעת ב-CSS של האתר הראשי */
 function PageStyles() {
   return (
-    <style>{`@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap');@keyframes compass-spin{to{transform:rotate(360deg)}}`}</style>
+    <style>{`@keyframes compass-spin{to{transform:rotate(360deg)}}`}</style>
   );
 }
 

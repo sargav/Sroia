@@ -11,8 +11,7 @@ import todaSketchBg from "./assets/sketch-warm-wide.webp";
  */
 export default function ThankYouPage() {
   return (
-    <div dir="rtl" style={{ fontFamily: "'Rubik', 'Arial', sans-serif" }} className="text-neutral-900">
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap');`}</style>
+    <div dir="rtl" style={{ fontFamily: "'Heebo', sans-serif" }} className="text-neutral-900">
 
       <section className="relative overflow-hidden py-6" style={{ minHeight: "100vh" }}>
         <div

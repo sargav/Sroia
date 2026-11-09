@@ -1,5 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
+
+/* הגופן של כל האתר: Heebo (כמו בעמוד ניהול פרויקטים). נטען ב-index.html.
+   גם המחלקה font-sans של Tailwind מצביעה עליו */
+@theme {
+  --font-sans: 'Heebo', sans-serif;
+}
+
 body {
   font-family: 'Heebo', sans-serif;
 }

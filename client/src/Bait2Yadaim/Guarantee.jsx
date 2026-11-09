@@ -32,7 +32,7 @@ function GuaranteeCard() {
                     fontWeight: 900,
                     lineHeight: 1,
                     color: "rgba(255,255,255,0.06)",
-                    fontFamily: "Arial, sans-serif",
+                    fontFamily: "'Heebo', sans-serif",
                     userSelect: "none",
                 }}
             >
@@ -114,7 +114,7 @@ export default function Guarant() {
             style={{
                 width: "100%",
                 background: "#f4f2e8",
-                fontFamily: "Arial, sans-serif",
+                fontFamily: "'Heebo', sans-serif",
                 padding: "64px 20px",
                 boxSizing: "border-box",
             }}
