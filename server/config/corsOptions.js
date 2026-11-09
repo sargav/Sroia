@@ -7,7 +7,8 @@ const allowedOrigins = [
 'https://www.sroia.co.il',
 // פאנל הניהול
 'https://admin.sroia.co.il',
-'https://sroia-admin.onrender.com'
+'https://sroia-admin.onrender.com',
+'https://admin-sroia.onrender.com'
 
 
 ]
