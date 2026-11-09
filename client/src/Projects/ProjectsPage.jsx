@@ -49,7 +49,7 @@ export default function ProjectManagement() {
   const navigate = useNavigate();
 
   return (
-    <div dir="rtl" className="overflow-hidden bg-[#FAFCF7] font-['Assistant',sans-serif] text-[#213020]">
+    <div dir="rtl" className="overflow-hidden bg-[#FAFCF7] font-['Heebo',sans-serif] text-[#213020]">
       <Hero />
       {/* <AboutAsaf /> */}
       <WhyUs />

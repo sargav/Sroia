@@ -22,7 +22,7 @@ function SparkleIcon({ className = "", style = {} }) {
 
 /**
  * דף "הטבת נגב לחברי הקהילה" - קהילת בית בשתי ידיים | אסף סרויה
- * שחזור עיצובי מדויק: רקע כהה, ירוק מותג #8DC63F, פונט Rubik, RTL
+ * שחזור עיצובי מדויק: רקע כהה, ירוק מותג #8DC63F, פונט Heebo (כמו בשאר האתר), RTL
  * התמונות נטענות מתיקיית assets/ הצמודה לקובץ הזה.
  */
 
@@ -213,8 +213,7 @@ export default function Benefit() {
     };
 
     return (
-        <div dir="rtl" style={{ backgroundColor: DARK, fontFamily: "'Rubik', 'Arial', sans-serif" }} className="min-h-screen text-white">
-            <style>{`@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap');`}</style>
+        <div dir="rtl" style={{ backgroundColor: DARK, fontFamily: "'Heebo', sans-serif" }} className="min-h-screen text-white">
             <PageAnimationStyles />
 
             {/* HERO */}
