@@ -1,8 +1,9 @@
 
 //בדיקת תקינות מייל
 const isValidEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    // אותו רעיון כמו בשרת: דומיין תקין, סיומת של 2 אותיות לפחות, ובלי נקודות כפולות
+    const emailRegex = /^[^\s@.]+(?:\.[^\s@.]+)*@(?:[\p{L}\p{N}](?:[\p{L}\p{N}-]*[\p{L}\p{N}])?\.)+\p{L}{2,}$/u;
+    return emailRegex.test(email.trim());
 }
 //בדיקת תקינות סיסמא
 const isValidPassword = (password) => {
@@ -12,7 +13,8 @@ const isValidPassword = (password) => {
 }
 //בדיקת תקינות שם
 const isValidName = (name) => {
-    return name.length >= 2 && name.length <= 50;
+    const clean = name.trim();
+    return clean.length >= 2 && clean.length <= 50;
 }
 //בדיקת תקינות טלפון
 const isValidPhone = (phone) => {

@@ -170,10 +170,10 @@ export default function Benefit() {
         if (isSending) return; // מונע שליחה כפולה בלחיצה מהירה
 
         const next = {};
-        if (!form.name.trim()) next.name = "נא למלא שם מלא";
+        if (!checking.isValidName(form.name)) next.name = "נא למלא שם מלא (2 עד 50 תווים)";
         if (!checking.isValidPhone(form.phone))
             next.phone = "נא למלא מספר טלפון תקין";
-        if (!form.email.trim() || !/^\S+@\S+\.\S+$/.test(form.email)) next.email = "נא למלא אימייל תקין";
+        if (!checking.isValidEmail(form.email)) next.email = "נא למלא אימייל תקין";
         if (!form.stage) next.stage = "נא לבחור שלב בנייה";
         setErrors(next);
         if (Object.keys(next).length > 0) return;
@@ -194,6 +194,15 @@ export default function Benefit() {
             // 409 = הלקוח כבר ביקש את ההטבה הזו - מבחינתו הבקשה כבר אצלנו
             if (err.response?.status === 409) {
                 setSubmitted(true);
+            } else if (err.response?.status === 400 && err.response.data?.errors) {
+                // השרת דחה שדה מסוים - מסמנים אותו ליד השדה
+                const bad = err.response.data.errors;
+                setErrors({
+                    ...(bad.name && { name: "נא למלא שם מלא (2 עד 50 תווים)" }),
+                    ...(bad.phone && { phone: "נא למלא מספר טלפון תקין" }),
+                    ...(bad.email && { email: "נא למלא אימייל תקין" }),
+                    ...(bad.levelOfBuilder && { stage: "נא לבחור שלב בנייה" }),
+                });
             } else {
                 console.error("שגיאה בשליחת בקשת ההטבה:", err);
                 setSendError("לא הצלחנו לשלוח את הפרטים. נסו שוב בעוד רגע, או התקשרו אלינו.");

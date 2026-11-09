@@ -1,4 +1,5 @@
 import { YEARS_OF_EXPERIENCE } from "../utils/experience";
+import checking from "../functionChecking/functionChecking";
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import api from "../api-config";
@@ -575,27 +576,23 @@ function CTAFormSection() {
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
-  // אימייל: תבנית סטנדרטית - שם@דומיין.סיומת (לפחות 2 תווים בסיומת)
-  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  // טלפון ישראלי: נייד (05X) או קווי (0X), עם או בלי מקף, עם או בלי קידומת 972+
-  const PHONE_REGEX = /^(\+972|0)(([23489]-?\d{7})|(5\d-?\d{7})|(7\d-?\d{7}))$/;
-
   const validateField = (key, value) => {
     if (key === "name") {
       if (!value.trim()) return "נא למלא שם";
       if (value.trim().length < 2) return "שם קצר מדי";
+      if (value.trim().length > 50) return "שם ארוך מדי";
       return "";
     }
     if (key === "email") {
       const trimmed = value.trim();
       if (!trimmed) return "נא למלא אימייל";
-      if (!EMAIL_REGEX.test(trimmed)) return "כתובת אימייל לא תקינה";
+      if (!checking.isValidEmail(trimmed)) return "כתובת אימייל לא תקינה";
       return "";
     }
     if (key === "phone") {
       const cleaned = value.replace(/[\s-]/g, "");
       if (!cleaned) return "נא למלא טלפון";
-      if (!PHONE_REGEX.test(cleaned)) return "מספר טלפון לא תקין (לדוגמה: 050-1234567)";
+      if (!checking.isValidPhone(cleaned)) return "מספר טלפון לא תקין (לדוגמה: 050-1234567)";
       return "";
     }
     return "";
