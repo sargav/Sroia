@@ -22,7 +22,12 @@ const paymentSchema = new mongoose.Schema({
     dealDate: { type: Date },
 
     // האם הלקוח כבר קיבל את מה ששילם עליו (לשימוש עתידי בפאנל הניהול)
-    handled: { type: Boolean, default: false }
+    handled: { type: Boolean, default: false },
+
+    // הטופס שהלקוח מילא באתר לפני התשלום
+    checkoutLead: { type: mongoose.Schema.Types.ObjectId, ref: 'CheckoutLead' },
+    // linked = נמצא טופס מתאים, unlinked = לא נמצא. בתשלומים ישנים השדה ריק
+    linkStatus: { type: String, enum: ['linked', 'unlinked'] }
 }, {
     timestamps: true
 })

@@ -1,20 +1,14 @@
 const Payment = require('../../models/Payment')
 const GuideSignup = require('../../models/GuideSignup')
-
-// לאיזה מוצר שייך תשלום, לפי השם שמגיע מ-Cardcom.
-// שם המצפן ב-Cardcom הוא למשל "המצפן לבונה- בית בשתי ידיים", לכן בודקים קודם "מצפן"
-const productOf = (payment) => {
-    const name = payment.productName || ''
-    if (name.includes('מצפן')) return 'compass'
-    return 'course'
-}
+require('../../models/CheckoutLead') // נדרש בשביל populate
+const productOf = require('../../utils/paymentProduct')
 
 // GET /api/manager/registrations
 // כל ההרשמות ביחד: רכישות (קורס ומצפן) ונרשמים למדריך, מהחדש לישן
 const getRegistrations = async (req, res) => {
     try {
         const [payments, guides] = await Promise.all([
-            Payment.find().sort({ createdAt: -1 }).lean(),
+            Payment.find().populate('checkoutLead', 'name email phone marketingConsent').sort({ createdAt: -1 }).lean(),
             GuideSignup.find().sort({ createdAt: -1 }).lean(),
         ])
         const list = [
@@ -23,9 +17,12 @@ const getRegistrations = async (req, res) => {
                 kind: 'payment',
                 product: productOf(p),
                 productName: p.productName,
-                name: p.name,
-                email: p.email,
-                phone: p.phone,
+                // הפרטים שהלקוח כתב בטופס, ואם אין - מה שחזר מ-Cardcom
+                name: p.checkoutLead?.name || p.name,
+                email: p.checkoutLead?.email || p.email,
+                phone: p.checkoutLead?.phone || p.phone,
+                marketingConsent: p.checkoutLead?.marketingConsent,
+                linkStatus: p.linkStatus,
                 amount: p.amount,
                 numberOfPayments: p.numberOfPayments,
                 date: p.dealDate || p.createdAt,
