@@ -200,10 +200,6 @@ export default function GiftsCommunity() {
                   <path d="M9 12h6" />
                   <path d="M9 16h6" />
                 </svg>
-
-                <span className="absolute -left-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[0.5625rem] font-bold text-[#4e7723] shadow">
-                  1
-                </span>
               </div>
             </div>
 
@@ -260,10 +256,6 @@ export default function GiftsCommunity() {
                   <path d="m9 8.5.8 1.2" />
                   <path d="m13.9 13.5 1.2-.8" />
                 </svg>
-
-                <span className="absolute -left-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#8BC34A] text-[0.5625rem] font-bold text-[#24301E] shadow">
-                  2
-                </span>
               </div>
             </div>
 
