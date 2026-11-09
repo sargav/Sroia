@@ -36,6 +36,31 @@ const getOverview = async (req, res) => {
     }
 }
 
+// GET /api/benefit-notifications/requests
+// כל הבקשות להטבות: שורה לכל לקוח+הטבה (לקוח שביקש שתי הטבות = שתי שורות), מהחדש לישן
+const getRequests = async (req, res) => {
+    try {
+        const customers = await CustomerBenefit.find().lean()
+        const rows = customers.flatMap((c) => c.benefits.map((b) => ({
+            _id: `${c._id}-${b.IDBenefit}`,
+            customerId: c._id,
+            name: c.nameCustomer,
+            phone: c.Phone,
+            email: c.email,
+            IDBenefit: b.IDBenefit,
+            nameCompany: b.nameCompany,
+            levelOfBuilder: b.levelOfBuilder,
+            date: b.createdAt || c.createdAt, // מתי ביקש את ההטבה הזו
+        })))
+        rows.sort((a, b) => new Date(b.date) - new Date(a.date))
+        res.json(rows)
+    }
+    catch (error) {
+        console.error('getRequests:', error.message)
+        res.status(500).json({ message: 'Server error' })
+    }
+}
+
 const getAllNotifications = async (req, res) => {
     try {
         const notifications = await BenefitNotification.find()
@@ -244,6 +269,7 @@ const removeRecipient = async (req, res) => {
 
 module.exports = {
     getOverview,
+    getRequests,
     getAllNotifications,
     getOneNotification,
     addNotification,

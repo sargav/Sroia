@@ -8,10 +8,11 @@ export const InboxSection = () => {
     return (
         <SectionTabs
             title="פניות והרשמות"
-            subtitle="מי פנה אלינו, ומי נרשם לקורס, למצפן ולמדריך"
+            subtitle="מי פנה אלינו, מי נרשם לקורס, למצפן ולמדריך, ומי ביקש הטבה"
             tabs={[
                 { to: '/contacts', label: 'פניות', icon: Inbox, count: contacts.filter((c) => !c.isRead).length },
                 { to: '/registrations', label: 'הרשמות ורכישות', icon: ShoppingCart },
+                { to: '/benefit-requests', label: 'בקשות הטבה', icon: Gift },
             ]}
         />
     )

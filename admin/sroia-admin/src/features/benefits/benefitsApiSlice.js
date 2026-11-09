@@ -8,6 +8,11 @@ const benefitsApiSlice = apiSlice.injectEndpoints({
       query: () => "/api/benefit-notifications/overview",
       providesTags: ["Benefits"],
     }),
+    // כל מי שביקש הטבה - ללשונית "בקשות הטבה" ליד הפניות
+    getBenefitRequests: build.query({
+      query: () => "/api/benefit-notifications/requests",
+      providesTags: ["Benefits"],
+    }),
     // רשימה ראשונה להטבה שעוד אין לה רשימה (עם המייל הראשון)
     createBenefitList: build.mutation({
       query: ({ benefit, recipient }) => ({
@@ -46,6 +51,7 @@ const benefitsApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useGetBenefitsOverviewQuery,
+  useGetBenefitRequestsQuery,
   useCreateBenefitListMutation,
   useAddBenefitRecipientMutation,
   useRemoveBenefitRecipientMutation,
