@@ -7,7 +7,6 @@ export default function Services() {
     const services = [
         {
             number: '01',
-            label: 'ליווי מלא',
             title: 'ניהול פרויקטים מלא',
             description:
                 'שירות פרימיום בפיקוח וניהול מלא בשטח. ליווי בוטיק מקיף מא׳ עד ת׳ — אנחנו מנהלים את הקבלנים, התקציב, האישורים והפיקוח.',
@@ -17,7 +16,6 @@ export default function Services() {
         },
         {
             number: '02',
-            label: 'לימוד עצמאי',
             title: 'קורס "בית בשתי ידיים"',
             description:
                 'קורס דיגיטלי מקיף הכולל 40 שיעורים, המעניקים את כל הידע והכלים לניהול תהליך הבנייה בביטחון וברוגע.',
@@ -26,7 +24,6 @@ export default function Services() {
         },
         {
             number: '03',
-            label: 'כלים מעשיים',
             title: 'אפליקציית "המצפן לבונה"',
             description:
                 `כל הרשימות, הבדיקות והשלבים הנחוצים לבניית בית, מסודרים ונגישים בכף היד שלכם — ב־${formatPrice(compassPrice)} ₪ בלבד.`,
@@ -75,48 +72,48 @@ export default function Services() {
                     {services.map((service) => (
                         <article
                             key={service.number}
-                            className="group relative flex flex-col overflow-hidden rounded-[16px] border border-[#DDE3D6] bg-white p-7 shadow-[0_8px_25px_rgba(50,65,40,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#AFC99A] hover:shadow-[0_18px_42px_rgba(50,65,40,0.11)] md:p-8"
+                            className="group relative isolate flex flex-col overflow-hidden rounded-[16px] border-[1.5px] border-[#659B2D] bg-white p-7 shadow-[0_14px_34px_rgba(83,130,40,0.14)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_24px_48px_rgba(83,130,40,0.26)] focus-within:-translate-y-2 focus-within:shadow-[0_24px_48px_rgba(83,130,40,0.26)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:focus-within:translate-y-0 md:p-8"
                         >
-                            
-                            {/* פס ירוק עליון */}
-                            <div className="absolute right-0 top-0 h-[4px] w-0 bg-[#76A944] transition-all duration-500 group-hover:w-full" />
+                            {/* מילוי ירוק שעולה בריחוף */}
+                            <div
+                                aria-hidden="true"
+                                className="absolute inset-0 z-0 translate-y-[101%] bg-[#4F7F1F] transition-transform duration-[450ms] ease-[cubic-bezier(.2,.7,.2,1)] group-hover:translate-y-0 group-focus-within:translate-y-0 motion-reduce:transition-none"
+                            />
+
+                            {/* חצי פס ירוק במרכז, נפתח לכל הרוחב בריחוף */}
+                            <div
+                                aria-hidden="true"
+                                className="absolute left-1/4 top-0 z-20 h-[7px] w-1/2 rounded-b-[7px] bg-[#659B2D] transition-all duration-500 group-hover:left-0 group-hover:w-full group-hover:rounded-none group-focus-within:left-0 group-focus-within:w-full group-focus-within:rounded-none motion-reduce:transition-none"
+                            />
 
                             {/* מספר גדול ברקע */}
                             <span
                                 aria-hidden="true"
-                                className="pointer-events-none absolute -left-2 -top-3 select-none text-[6.25rem] font-bold leading-none text-[#60942b]/[0.045]"
+                                className="pointer-events-none absolute left-3 top-2.5 z-[1] select-none text-[6.25rem] font-extrabold leading-none text-[#CCD9BE] opacity-65 transition-all duration-300 group-hover:translate-x-2.5 group-hover:text-white group-hover:opacity-[0.14] group-focus-within:translate-x-2.5 group-focus-within:text-white group-focus-within:opacity-[0.14] motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-focus-within:translate-x-0"
                             >
                                 {service.number}
                             </span>
 
-                            {/* מספר ותווית */}
-                            <div className="relative z-10 mb-7 flex items-center justify-between">
-                                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#EAF2DF] text-[1rem] font-bold text-[#4e7723] transition-colors duration-300 group-hover:bg-[#659B2D] group-hover:text-[#1a1a1a]">
-                                    {service.number}
-                                </span>
-
-                                <span className="rounded-full border border-[#DCE6D1] bg-[#F9FBF6] px-3.5 py-1.5 text-[0.75rem] font-medium text-[#617a4e]">
-                                    {service.label}
-                                </span>
-                            </div>
-
                             {/* תוכן הכרטיס */}
-                            <h3 className="relative z-10 mb-4 text-[1.4375rem] font-bold leading-[1.4] text-[#293126]">
+                            <h3 className="relative z-10 mb-4 mt-12 text-[1.4375rem] font-bold leading-[1.4] text-[#293126] transition-colors duration-300 group-hover:text-white group-focus-within:text-white motion-reduce:transition-none">
                                 {service.title}
                             </h3>
 
-                            <p className="relative z-10 mb-8 flex-1 text-[1rem] font-normal leading-[1.85] text-[#626A5D]">
+                            <p className="relative z-10 mb-8 flex-1 text-[1rem] font-normal leading-[1.85] text-[#626A5D] transition-colors duration-300 group-hover:text-white group-focus-within:text-white motion-reduce:transition-none">
                                 {service.description}
                             </p>
 
                             {/* קישור */}
                             <a
                                 href={service.href}
-                                className="relative z-10 flex items-center justify-between border-t border-[#E3E7DE] pt-5 text-[0.9375rem] font-semibold text-[#538228]"
+                                className="relative z-10 flex items-center justify-between border-t border-[#E3E7DE] pt-5 text-[0.9375rem] font-semibold text-[#538228] transition-colors duration-300 focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-white group-hover:border-white/35 group-hover:text-white group-focus-within:border-white/35 group-focus-within:text-white motion-reduce:transition-none"
                             >
                                 <span>{service.buttonText}</span>
 
-                                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#EDF4E5] text-[1.0625rem] transition-all duration-300 group-hover:-translate-x-1 group-hover:bg-[#659B2D] group-hover:text-[#1a1a1a]">
+                                <span
+                                    aria-hidden="true"
+                                    className="flex h-10 w-10 items-center justify-center rounded-full bg-[#659B2D] text-[1.125rem] text-white transition-all duration-300 group-hover:-translate-x-2.5 group-hover:bg-white group-hover:text-[#4F7F1F] group-focus-within:-translate-x-2.5 group-focus-within:bg-white group-focus-within:text-[#4F7F1F] motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-focus-within:translate-x-0"
+                                >
                                     ←
                                 </span>
                             </a>
