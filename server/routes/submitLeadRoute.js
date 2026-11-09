@@ -32,6 +32,7 @@ const express = require("express");
 const axios = require("axios");
 const router = express.Router();
 const GuideSignup = require("../models/GuideSignup");
+const checking = require("../functionChecking/functionChecking");
 
 // ==================================================
 // שלב 1: קבלת Access Token זמני מרב מסר
@@ -144,12 +145,23 @@ router.post("/", async (req, res) => {
   if (!name || !email || !phone) {
     return res.status(400).json({ error: "חסרים פרטים בטופס" });
   }
+  if (
+    typeof name !== "string" || typeof email !== "string" || typeof phone !== "string" ||
+    !checking.isValidName(name.trim()) || !checking.isValidEmail(email) || !checking.isValidPhone(phone)
+  ) {
+    return res.status(400).json({ error: "הפרטים בטופס לא תקינים" });
+  }
 
   // שומרים גם אצלנו, כדי שהמנהל יראה בפאנל מי נרשם למדריך.
   // אם השמירה נכשלת - לא עוצרים את השליחה לרב מסר
   let signup = null;
   try {
-    signup = await GuideSignup.create({ name, email, phone });
+    // מי שנרשם שוב עם אותו מייל מעדכן את השורה שלו, בלי כפילות
+    signup = await GuideSignup.findOneAndUpdate(
+      { email: email.trim().toLowerCase() },
+      { $set: { name: name.trim(), phone: phone.trim() } },
+      { upsert: true, returnDocument: "after", runValidators: true, setDefaultsOnInsert: true }
+    );
   } catch (err) {
     console.error("שגיאה בשמירת נרשם למדריך:", err.message);
   }
