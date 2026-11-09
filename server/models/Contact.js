@@ -25,7 +25,8 @@ const contactSchema = new mongoose.Schema({
         ]
     },
     message: {
-        type: String
+        type: String,
+        maxlength: 5000
     },
     //הגדרת שדות נוספים למעקב אחרי הפניות
     

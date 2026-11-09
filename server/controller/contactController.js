@@ -19,7 +19,7 @@ const addContact = async (req, res) => {
         const checkedPhone = checking.isValidPhone(phone)
         const cleanPhone = String(phone).replace(/\D/g, '')
         //בדיקת שם
-        const checkedName = checking.isValidName(name)
+        const checkedName = checking.isValidName(String(name).trim())
         //בדיקת אימייל
         const checkedEmail = checking.isValidEmail(email)
         //בדיקה האם המקור אחד מהENUM 

@@ -3,13 +3,17 @@ const cookieParser = require('cookie-parser')
 
 const express = require('express')
 const cors = require('cors')
+const helmet = require('helmet')
 const  mongoose  = require('mongoose')
 
 const connectDB = require('./config/dbConn')
 const corsOptions = require('./config/corsOptions')
 const { ensureDefaultBenefits } = require('./config/defaultBenefits')
+const formRateLimit = require('./middleware/formRateLimit')
 
 const app = express()
+// השרת יושב מאחורי ה-proxy של Render. בלי זה כל הגולשים נראים כאילו באו מאותה כתובת IP
+app.set('trust proxy', Number(process.env.TRUST_PROXY_HOPS) || 1)
 const PORT = process.env.PORT || 7500 // אותו פורט שהריאקט מחפש כברירת מחדל
 
 connectDB()
@@ -27,7 +31,10 @@ app.use('/api/payment', (req, res, next) => {
     next()
 })
 
+// כותרות אבטחה. התמונות שהשרת מגיש נטענות מדומיין אחר, ולכן cross-origin
+app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }))
 app.use(cors(corsOptions))
+app.use(['/api/contacts', '/api/submit-lead', '/api/benefits', '/api/checkout-leads'], formRateLimit)
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.static('public'))
