@@ -13,6 +13,7 @@ import CalendarPage from './features/calendar/CalendarPage.jsx'
 import ProfilePage from './features/profile/ProfilePage.jsx'
 import AppearancePage from './features/appearance/AppearancePage.jsx'
 import BenefitsPage from './features/benefits/BenefitsPage.jsx'
+import BenefitRequestsPage from './features/benefits/BenefitRequestsPage.jsx'
 import SiteStatsPage from './features/siteStats/SiteStatsPage.jsx'
 import RegistrationsPage from './features/registrations/RegistrationsPage.jsx'
 import { InboxSection, ContentSection, SettingsSection } from './components/sections.jsx'
@@ -37,6 +38,7 @@ function App() {
               <Route element={<InboxSection />}>
                 <Route path='/contacts' element={<ContactsList />} />
                 <Route path='/registrations' element={<RegistrationsPage />} />
+                <Route path='/benefit-requests' element={<BenefitRequestsPage />} />
               </Route>
 
               {/* תוכן האתר - שלוש לשוניות */}

@@ -7,6 +7,7 @@ const verifyJWT = require('../middleware/verifyJWT.js')
 router.use(verifyJWT)
 
 router.get('/overview', controller.getOverview)    // לעמוד ההטבות בפאנל (לפני /:id!)
+router.get('/requests', controller.getRequests)    // כל מי שביקש הטבה (לפני /:id!)
 router.get('/', controller.getAllNotifications)
 router.get('/:id', controller.getOneNotification)
 router.post('/', controller.addNotification)
