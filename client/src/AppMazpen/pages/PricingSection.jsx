@@ -16,6 +16,7 @@ import useAccessibleDialog from "../../components/useAccessibleDialog";
 import SectionHeading from "../components/SectionHeading";
 import PhotoBackground from "./PhotoBackground";
 import useSiteStats, { formatPrice } from "../../utils/useSiteStats";
+import saveCheckoutLead from "../../utils/saveCheckoutLead";
 
 const PAYMENT_BASE = "https://secure.cardcom.solutions/EA/EA5/aZoY90GJgke3fTZVlqxFnQ/PaymentSP";
 
@@ -49,6 +50,8 @@ export default function PricingSection({ photo }) {
   const [paymentUrl, setPaymentUrl] = useState("");
   const paymentDialogRef = useAccessibleDialog(Boolean(paymentUrl), () => setPaymentUrl(""));
   const [paymentStatus, setPaymentStatus] = useState(null); // null | "success" | "failed"
+  // בזמן שמירת הפרטים הכפתור נעול, כדי שלא יישלח פעמיים
+  const [opening, setOpening] = useState(false);
 
   // כשהתשלום פתוח במסך מלא: לנעול גלילה של הדף ולאפשר סגירה עם Esc
   useEffect(() => {
@@ -75,9 +78,13 @@ export default function PricingSection({ photo }) {
     return () => window.removeEventListener("message", onMessage);
   }, []);
 
-  function handlePayment(event) {
+  async function handlePayment(event) {
     event.preventDefault();
-    if (!fullName.trim() || !email.trim()) return;
+    if (!fullName.trim() || !email.trim() || opening) return;
+    // שומרים את הפרטים בשרת לפני התשלום. גם אם השמירה נכשלת, התשלום נפתח
+    setOpening(true);
+    await saveCheckoutLead({ name: fullName.trim(), email: email.trim(), product: "compass" });
+    setOpening(false);
     const url = `${PAYMENT_BASE}?subscribers_email=${encodeURIComponent(
       email.trim()
     )}&subscribers_name=${encodeURIComponent(fullName.trim())}`;
@@ -186,7 +193,7 @@ export default function PricingSection({ photo }) {
                     className="mt-2 flex w-full items-center justify-center gap-2 rounded-2xl bg-[#5A7F43] px-6 py-4 text-lg font-black text-white shadow-[0_14px_35px_rgba(90,127,67,.28)] transition hover:-translate-y-1 hover:bg-[#4F7239]"
                   >
                     <KeyRound size={20} />
-                    אני רוצה להצטרף עכשיו
+                    {opening ? "רגע..." : "אני רוצה להצטרף עכשיו"}
                   </button>
                 </form>
 

@@ -146,6 +146,13 @@ const RegistrationsPage = () => {
                                         {r.numberOfPayments > 1 && <span className="block text-xs text-[#6b7468]">{r.numberOfPayments} תשלומים</span>}
                                     </span>
 
+                                    {/* תשלום שלא נמצא לו טופס באתר: הפרטים הם מה שחזר מ-Cardcom */}
+                                    {r.linkStatus === 'unlinked' && (
+                                        <span className="inline-flex items-center min-h-9 px-3 rounded-full text-xs font-bold bg-[#FDF3DC] text-[#6b4f00]">
+                                            לא קושר לטופס
+                                        </span>
+                                    )}
+
                                     {/* ליד נרשם למדריך: האם רב מסר שלחו לו את המדריך */}
                                     {r.kind === 'guide' && (
                                         <span className="inline-flex items-center gap-1.5 min-h-9 px-3 rounded-full text-xs font-bold bg-[#EEF0EC] text-[#565f52]">

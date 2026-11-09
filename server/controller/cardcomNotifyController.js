@@ -14,6 +14,7 @@
 
 const axios = require('axios')
 const Payment = require('../models/Payment')
+const { linkPaymentToLead } = require('../utils/linkCheckoutLead')
 
 const CARDCOM_TX_INFO = 'https://secure.cardcom.solutions/api/v11/Transactions/GetTransactionInfoById'
 
@@ -77,7 +78,7 @@ const cardcomNotify = async (req, res) => {
         }
 
         console.log('Cardcom notify: עסקה אומתה ונשמרת', dealNumber)
-        await Payment.create({
+        const payment = await Payment.create({
             internalDealNumber: dealNumber,
             productName: pick(body, 'ProdName') || pick(body, 'GroupDescription'),
             productGroupId: pick(body, 'ProdGroupID'),
@@ -90,6 +91,12 @@ const cardcomNotify = async (req, res) => {
             approvalNumber: tx.ApprovalNumber ? String(tx.ApprovalNumber) : pick(body, 'ApprovelNumber'),
             invoiceNumber: tx.DocumentNumber ? String(tx.DocumentNumber) : pick(body, 'invoicenumber'),
             dealDate: tx.CreateDate ? new Date(tx.CreateDate) : new Date(),
+        })
+
+        // מחברים את התשלום לטופס שהלקוח מילא באתר לפני התשלום
+        await linkPaymentToLead(payment, {
+            emails: [pick(body, 'UserEmail'), tx.CardOwnerEmail],
+            phones: [tx.CardOwnerPhone, pick(body, 'CardOwnerPhone'), pick(body, 'InvMobile'), pick(body, 'InvPhone')],
         })
 
         return res.sendStatus(200)

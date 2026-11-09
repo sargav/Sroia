@@ -6,6 +6,7 @@ import footerBg from './assets/footerBg.webp'
 import PrivacyPolicyDialog from "../components/PrivacyPolicyDialog";
 import TermsOfUseDialog from '../components/TermsOfUseDialog';
 import pi4 from './assets/pi4.webp'
+import saveCheckoutLead from "../utils/saveCheckoutLead";
 const GREEN = '#7CB342';
 // דף התשלום של הקורס ב-Cardcom (נפתח בחלון מעל הדף, כמו במצפן)
 const PAYMENT_BASE = "https://secure.cardcom.solutions/e/nLaM8Ld8qU6GjHF85jqFQ";
@@ -36,12 +37,16 @@ function CTAFormSection() {
         return () => clearTimeout(timer);
     }, []);
     const [form, setForm] = useState({ email: "", name: "", phone: "" });
+    // אישור התנאים הוא חובה. ההסכמה לדיוור נפרדת ולא חובה
     const [agree, setAgree] = useState(false);
+    const [marketing, setMarketing] = useState(false);
     const [errors, setErrors] = useState({});
 
     const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
 
     const [submitError, setSubmitError] = useState("");
+    // בזמן שמירת הפרטים הכפתור נעול, כדי שלא יישלח פעמיים
+    const [opening, setOpening] = useState(false);
 
     const validateField = (key, value) => {
         if (key === "name") {
@@ -79,11 +84,22 @@ function CTAFormSection() {
         if (nameErr) next.name = nameErr;
         if (emailErr) next.email = emailErr;
         if (phoneErr) next.phone = phoneErr;
-        if (!agree) next.agree = "יש לאשר קבלת תכנים שיווקיים";
+        if (!agree) next.agree = "יש לאשר את מדיניות הפרטיות ותקנון האתר";
         setErrors(next);
         if (Object.keys(next).length > 0) return;
+        if (opening) return;
 
         setSubmitError("");
+        // שומרים את הפרטים בשרת לפני התשלום. גם אם השמירה נכשלת, התשלום נפתח
+        setOpening(true);
+        await saveCheckoutLead({
+            name: form.name.trim(),
+            email: form.email.trim(),
+            phone: form.phone,
+            product: "course",
+            marketingConsent: marketing,
+        });
+        setOpening(false);
         // פותחים את התשלום בחלון מעל הדף, ומעבירים ל-Cardcom את השם והאימייל (כמו במצפן)
         const url = `${PAYMENT_BASE}?subscribers_email=${encodeURIComponent(
             form.email.trim()
@@ -183,17 +199,27 @@ function CTAFormSection() {
                                 checked={agree}
                                 onChange={(e) => setAgree(e.target.checked)}
                             />
-                            אני מאשר/ת קבלת תכנים שיווקיים וכי קראתי ואני מאשר/ת את מדיניות הפרטיות ותקנון אתר                            </label>
+                            קראתי ואני מאשר/ת את מדיניות הפרטיות ותקנון האתר
+                        </label>
+                        <label dir="rtl" className="flex items-center justify-start gap-2 text-sm text-neutral-600">
+                            <input
+                                type="checkbox"
+                                checked={marketing}
+                                onChange={(e) => setMarketing(e.target.checked)}
+                            />
+                            אני מאשר/ת קבלת תכנים שיווקיים (לא חובה)
+                        </label>
                         {errors.agree && <p id="course-agree-error" role="alert" className="text-xs text-red-700">{errors.agree}</p>}
                         {submitError && <p role="alert" className="text-xs text-red-700">{submitError}</p>}
 
                         <button
                             type="submit"
-                            disabled={!agree}
+                            disabled={!agree || opening}
+                            aria-busy={opening}
                             className="w-full rounded-xl py-4 text-lg font-bold text-[#1a1a1a] shadow-lg transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:hover:scale-100"
-                            style={{ backgroundColor: GREEN, opacity: !agree ? 0.5 : 1 }}
+                            style={{ backgroundColor: GREEN, opacity: !agree || opening ? 0.5 : 1 }}
                         >
-                            אני רוצה להצטרף לקורס
+                            {opening ? "רגע..." : "אני רוצה להצטרף לקורס"}
                         </button>
 
                     </form>

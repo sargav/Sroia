@@ -49,6 +49,7 @@ app.use('/api/site-stats', require('./routes/siteStatsRoute')) // המספרים
 app.use('/api/manager/site-stats', require('./routes/ManSiteStatsRoute')) // עדכון המספרים (עבור המנהל)
 app.use('/api/manager/registrations', require('./routes/ManRegistrationRoute')) // הרשמות ורכישות: קורס, מצפן ומדריך (עבור המנהל)
 app.use('/api/payment', require('./routes/paymentRoute')) // נתיב ליצירת תשלום
+app.use('/api/checkout-leads', require('./routes/checkoutLeadRoute')) // שמירת פרטי טופס הקורס והמצפן לפני התשלום
 app.use('/api/benefits', require('./routes/benefitRoute')) // נתיב לשמירת לקוח וההטבות שבחר
 app.get('/', (req, res) => {
     res.send('hello from server')
