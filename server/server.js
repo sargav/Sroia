@@ -35,7 +35,7 @@ app.use(express.static('public'))
 //routes
 app.use('/api/auth', require('./routes/authRoute')) // התחברות, רענון, התנתקות והוספת מנהל
 app.use('/api/manager/contacts', require('./routes/ManContactRoute')) // ניהול פניות (עבור המנהל)
-app.use('/api/benefit-notifications', require('./routes/benefitNotificationRoute')) // ניהול רשימות המיילים של ההטבות (מוגן במפתח מנהל)
+app.use('/api/benefit-notifications', require('./routes/benefitNotificationRoute')) // ניהול רשימות המיילים של ההטבות (מוגן בהתחברות מנהל)
 app.use('/api/manager/images', require('./routes/ManImageRoute')) // ניהול התמונות (עבור המנהל)
 app.use('/api/contacts', require('./routes/contactRoute'))
 app.use('/api/testimonials', require('./routes/testimonialRoute'))

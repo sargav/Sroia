@@ -1,8 +1,40 @@
 // ניהול רשימות הנמענים של כל הטבה: מי מקבל מייל כשמגיעה פניה על ההטבה.
-// לפאנל הניהול בלבד (הראוט מוגן במפתח מנהל, ראי middleware/requireAdminKey.js)
+// לפאנל הניהול בלבד (הראוט מוגן ב-verifyJWT, ראי routes/benefitNotificationRoute.js)
 const mongoose = require('mongoose')
 const BenefitNotification = require('../../models/BenefitNotification')
 const BenefitDefi = require('../../models/BenefitDefi')
+const CustomerBenefit = require('../../models/CustomerBenefit')
+
+// לעמוד ההטבות בפאנל: כל ההטבות שבקטלוג, ולכל אחת - רשימת המיילים שלה (אם יש) וכמה לקוחות ביקשו אותה.
+// alwaysTo - מי מקבל תמיד את כל הבקשות (MAIL_TO מהשרת). מוצג בפאנל כשורה נעולה
+const getOverview = async (req, res) => {
+    try {
+        const [benefits, lists] = await Promise.all([
+            BenefitDefi.find({}, 'IDBenefit nameCompany levelOfBuilder').sort({ createdAt: 1 }).lean(),
+            BenefitNotification.find().lean()
+        ])
+        const listByBenefit = new Map(lists.map((l) => [String(l.benefit), l]))
+
+        const result = await Promise.all(benefits.map(async (b) => {
+            const list = listByBenefit.get(String(b._id))
+            return {
+                _id: b._id,
+                IDBenefit: b.IDBenefit,
+                nameCompany: b.nameCompany,
+                levelOfBuilder: b.levelOfBuilder,
+                requests: await CustomerBenefit.countDocuments({ 'benefits.IDBenefit': b.IDBenefit }),
+                notification: list ? { _id: list._id, recipients: list.recipients, isActive: list.isActive } : null
+            }
+        }))
+
+        const alwaysTo = (process.env.MAIL_TO || '').split(',').map((a) => a.trim()).filter(Boolean)
+        res.json({ alwaysTo, benefits: result })
+    }
+    catch (error) {
+        console.error('getOverview:', error.message)
+        res.status(500).json({ message: 'Server error' })
+    }
+}
 
 const getAllNotifications = async (req, res) => {
     try {
@@ -211,6 +243,7 @@ const removeRecipient = async (req, res) => {
 }
 
 module.exports = {
+    getOverview,
     getAllNotifications,
     getOneNotification,
     addNotification,
