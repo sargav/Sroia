@@ -69,6 +69,16 @@ const AddContact = () => {
       form.reset();
     } catch (error) {
       console.error("שגיאה בשליחת הנתונים:", error);
+      // השרת דחה שדה מסוים - מסמנים אותו ליד השדה
+      const bad = error.response?.status === 400 ? error.response.data?.errors : null;
+      if (bad) {
+        setErrors({
+          email: bad.email ? "מייל לא תקין" : null,
+          name: bad.name ? "שם לא תקין" : null,
+          phone: bad.phone ? "טלפון לא תקין" : null,
+        });
+        return;
+      }
       // הפרטים נשארים בשדות, כדי שאפשר יהיה פשוט ללחוץ שוב
       setSubmitError("משהו השתבש בשליחה, נסו שוב בעוד מספר דקות.");
     } finally {
