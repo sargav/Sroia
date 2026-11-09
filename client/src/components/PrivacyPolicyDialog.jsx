@@ -17,14 +17,20 @@ function PrivacyPolicyDialog() {
             </button>
 
             {isOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+                    onMouseDown={(event) => {
+                        // לחיצה על הרקע מחוץ לחלון סוגרת אותו, כמו לחיצה על X
+                        if (event.target === event.currentTarget) setIsOpen(false);
+                    }}
+                >
                     <div
                         ref={dialogRef}
                         role="dialog"
                         aria-modal="true"
                         aria-labelledby="privacy-dialog-title"
                         tabIndex={-1}
-                        className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-6 sm:p-8"
+                        className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-6 text-right sm:p-8"
                         dir="rtl"
                     >
                         <button
