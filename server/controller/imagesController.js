@@ -32,6 +32,10 @@ const returnImage = async (req, res) => {
     // גיבוי: התמונות הישנות מהתיקייה, באותו מבנה
     const dir = path.join(__dirname, '..', 'public', folderName)
     fs.readdir(dir, (err, files) => {
+        // התיקיות הישנות נמחקו אחרי ההעברה ל-Cloudinary - אין תיקייה = אין תמונות, לא שגיאה
+        if (err && err.code === 'ENOENT') {
+            return res.json([])
+        }
         if (err) {
             console.error(err)
             return res.status(500).json({ error: 'שגיאה בקריאת התמונות' })
