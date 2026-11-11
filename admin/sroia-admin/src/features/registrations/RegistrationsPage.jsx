@@ -13,6 +13,36 @@ const PRODUCTS = {
 const FILTERS = [{ id: 'all', label: 'הכל' }, { id: 'course', label: 'קורס' }, { id: 'compass', label: 'מצפן' }, { id: 'guide', label: 'מדריך' }]
 const PAGE = 20
 
+// התקופות שאפשר לבחור. "טווח תאריכים" פותח שני שדות תאריך
+const PERIODS = [
+    { id: 'all', label: 'כל הזמן' },
+    { id: 'thisMonth', label: 'החודש' },
+    { id: 'lastMonth', label: 'חודש קודם' },
+    { id: 'thisYear', label: 'השנה' },
+    { id: 'custom', label: 'טווח תאריכים' },
+]
+
+// מחזיר את תחילת התקופה ואת סופה (הסוף לא כלול). null = בלי גבול
+const periodRange = (period, from, to) => {
+    const now = new Date()
+    const y = now.getFullYear()
+    const m = now.getMonth()
+    if (period === 'thisMonth') return [new Date(y, m, 1), null]
+    if (period === 'lastMonth') return [new Date(y, m - 1, 1), new Date(y, m, 1)]
+    if (period === 'thisYear') return [new Date(y, 0, 1), null]
+    if (period === 'custom') {
+        const start = from ? new Date(`${from}T00:00:00`) : null
+        // "עד תאריך" כולל את כל אותו היום, לכן הסוף הוא תחילת היום שאחריו
+        let end = null
+        if (to) {
+            end = new Date(`${to}T00:00:00`)
+            end.setDate(end.getDate() + 1)
+        }
+        return [start, end]
+    }
+    return [null, null]
+}
+
 const money = (n) => `${Number(n || 0).toLocaleString('en-US')} ₪`
 const dateLabel = (d) => new Date(d).toLocaleDateString('he-IL', { day: 'numeric', month: 'numeric', year: '2-digit' })
 
@@ -51,20 +81,24 @@ const RegistrationsPage = () => {
     const [filter, setFilter] = useState('all')
     const [search, setSearch] = useState('')
     const [shown, setShown] = useState(PAGE)
+    const [period, setPeriod] = useState('all')
+    const [from, setFrom] = useState('')
+    const [to, setTo] = useState('')
 
     if (isLoading) return <Loading text="טוען הרשמות..." />
     if (isError) return <p role="alert">לא הצלחנו לטעון את ההרשמות</p>
 
-    // החודש הנוכחי
-    const monthStart = new Date()
-    monthStart.setDate(1)
-    monthStart.setHours(0, 0, 0, 0)
-    const thisMonth = rows.filter((r) => new Date(r.date) >= monthStart)
+    // רק ההרשמות שבתקופה שנבחרה - מהן מחושבים הסיכומים, הרשימה והייצוא
+    const [start, end] = periodRange(period, from, to)
+    const inPeriod = rows.filter((r) => {
+        const d = new Date(r.date)
+        return (!start || d >= start) && (!end || d < end)
+    })
     const countOf = (list, product) => list.filter((r) => r.product === product).length
-    const income = thisMonth.reduce((sum, r) => sum + (r.amount || 0), 0)
+    const income = inPeriod.reduce((sum, r) => sum + (r.amount || 0), 0)
 
     const term = search.trim().toLowerCase()
-    const filtered = rows.filter((r) => {
+    const filtered = inPeriod.filter((r) => {
         if (filter !== 'all' && r.product !== filter) return false
         if (term && !`${r.name} ${r.phone} ${r.email}`.toLowerCase().includes(term)) return false
         return true
@@ -84,12 +118,45 @@ const RegistrationsPage = () => {
                 </button>
             </PageHeader>
 
-            {/* החודש */}
+            {/* בחירת תקופה */}
+            <div className="flex flex-wrap items-center gap-2">
+                <div role="group" aria-label="סינון לפי תקופה" className="flex flex-wrap gap-2">
+                    {PERIODS.map((p) => (
+                        <button
+                            key={p.id}
+                            type="button"
+                            aria-pressed={period === p.id}
+                            onClick={() => { setPeriod(p.id); setShown(PAGE) }}
+                            className={`min-h-10 px-4 rounded-full border text-sm font-bold cursor-pointer ${period === p.id ? 'bg-sroia-dark border-sroia-dark text-white' : 'bg-white border-sroia-line text-sroia-dark'}`}
+                        >
+                            {p.label}
+                        </button>
+                    ))}
+                </div>
+                {period === 'custom' && (
+                    <div className="flex flex-wrap items-center gap-2 text-sm">
+                        <label className="flex items-center gap-2">
+                            מתאריך
+                            <input type="date" value={from} max={to || undefined}
+                                onChange={(e) => { setFrom(e.target.value); setShown(PAGE) }}
+                                className="min-h-10 px-3 bg-white border border-sroia-line rounded-xl" />
+                        </label>
+                        <label className="flex items-center gap-2">
+                            עד תאריך
+                            <input type="date" value={to} min={from || undefined}
+                                onChange={(e) => { setTo(e.target.value); setShown(PAGE) }}
+                                className="min-h-10 px-3 bg-white border border-sroia-line rounded-xl" />
+                        </label>
+                    </div>
+                )}
+            </div>
+
+            {/* סיכום התקופה שנבחרה */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                <StatTile label="נרשמו לקורס החודש" value={countOf(thisMonth, 'course')} icon={GraduationCap} iconClass="bg-[#E9F3DF] text-[#2f4a17]" />
-                <StatTile label="רכשו את המצפן החודש" value={countOf(thisMonth, 'compass')} icon={MapPin} iconClass="bg-[#F3ECFA] text-[#4f2d66]" />
-                <StatTile label="הורידו את המדריך החודש" value={countOf(thisMonth, 'guide')} icon={BookOpen} iconClass="bg-[#FDF3DC] text-[#6b4f00]" />
-                <StatTile label="נכנס החודש" value={money(income)} icon={TrendingUp} iconClass="bg-sroia-tint text-sroia-ink" />
+                <StatTile label="נרשמו לקורס" value={countOf(inPeriod, 'course')} icon={GraduationCap} iconClass="bg-[#E9F3DF] text-[#2f4a17]" />
+                <StatTile label="רכשו את המצפן" value={countOf(inPeriod, 'compass')} icon={MapPin} iconClass="bg-[#F3ECFA] text-[#4f2d66]" />
+                <StatTile label="הורידו את המדריך" value={countOf(inPeriod, 'guide')} icon={BookOpen} iconClass="bg-[#FDF3DC] text-[#6b4f00]" />
+                <StatTile label="סך הכול נכנס" value={money(income)} icon={TrendingUp} iconClass="bg-sroia-tint text-sroia-ink" />
             </div>
 
             {/* סינון וחיפוש */}
@@ -103,7 +170,7 @@ const RegistrationsPage = () => {
                             onClick={() => { setFilter(f.id); setShown(PAGE) }}
                             className={`min-h-10 px-4 rounded-full border text-sm font-bold cursor-pointer ${filter === f.id ? 'bg-sroia-dark border-sroia-dark text-white' : 'bg-white border-sroia-line text-sroia-dark'}`}
                         >
-                            {f.label} · {f.id === 'all' ? rows.length : countOf(rows, f.id)}
+                            {f.label} · {f.id === 'all' ? inPeriod.length : countOf(inPeriod, f.id)}
                         </button>
                     ))}
                 </div>
