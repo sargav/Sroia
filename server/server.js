@@ -12,7 +12,7 @@ const { ensureDefaultBenefits } = require('./config/defaultBenefits')
 const formRateLimit = require('./middleware/formRateLimit')
 
 const app = express()
-// השרת יושב מאחורי ה-proxy של Render. בלי זה כל הגולשים נראים כאילו באו מאותה כתובת IP
+//ללא הטרסט פרוקסי זה יראה שכל הגולשים הגיעו מאותה כתובת IP
 app.set('trust proxy', Number(process.env.TRUST_PROXY_HOPS) || 1)
 const PORT = process.env.PORT || 7500 // אותו פורט שהריאקט מחפש כברירת מחדל
 
