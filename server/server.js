@@ -40,24 +40,26 @@ app.use(cookieParser())
 app.use(express.static('public'))
 
 //routes
-app.use('/api/auth', require('./routes/authRoute')) // התחברות, רענון, התנתקות והוספת מנהל
-app.use('/api/manager/contacts', require('./routes/ManContactRoute')) // ניהול פניות (עבור המנהל)
-app.use('/api/benefit-notifications', require('./routes/benefitNotificationRoute')) // ניהול רשימות המיילים של ההטבות (מוגן בהתחברות מנהל)
-app.use('/api/manager/images', require('./routes/ManImageRoute')) // ניהול התמונות (עבור המנהל)
 app.use('/api/contacts', require('./routes/contactRoute'))
 app.use('/api/testimonials', require('./routes/testimonialRoute'))
 app.use('/api/submit-lead', require('./routes/submitLeadRoute'))//השרת ששןלח אחכ את כל המידע לרב מסר
 app.use('/api/images', require('./routes/imagesRoute')) //נתיב להחזרת התמונות  
 app.use('/api/testi-urls', require('./routes/TestiUrlRoute')) //נתיב להחזרת כתובות הוידאו של העדויות
+app.use('/api/payment', require('./routes/paymentRoute')) // נתיב ליצירת תשלום
+app.use('/api/checkout-leads', require('./routes/checkoutLeadRoute')) // שמירת פרטי טופס הקורס והמצפן לפני התשלום
+app.use('/api/benefits', require('./routes/benefitRoute')) // נתיב לשמירת לקוח וההטבות שבחר
+
+app.use('/api/auth', require('./routes/authRoute')) // התחברות, רענון, התנתקות והוספת מנהל
+app.use('/api/manager/contacts', require('./routes/ManContactRoute')) // ניהול פניות (עבור המנהל)
+app.use('/api/benefit-notifications', require('./routes/benefitNotificationRoute')) // ניהול רשימות המיילים של ההטבות (מוגן בהתחברות מנהל)
+app.use('/api/manager/images', require('./routes/ManImageRoute')) // ניהול התמונות (עבור המנהל)
 app.use('/api/manager/testi-urls', require('./routes/ManTestiUrlRoute')) // ניהול סרטוני ההמלצות (עבור המנהל)
 app.use('/api/manager/events', require('./routes/ManEventRoute')) // יומן: פגישות, ביקורים ושיחות (עבור המנהל)
 app.use('/api/manager/tasks', require('./routes/ManTaskRoute')) // משימות (עבור המנהל)
 app.use('/api/site-stats', require('./routes/siteStatsRoute')) // המספרים שמופיעים באתר (פרויקטים, חיסכון)
 app.use('/api/manager/site-stats', require('./routes/ManSiteStatsRoute')) // עדכון המספרים (עבור המנהל)
 app.use('/api/manager/registrations', require('./routes/ManRegistrationRoute')) // הרשמות ורכישות: קורס, מצפן ומדריך (עבור המנהל)
-app.use('/api/payment', require('./routes/paymentRoute')) // נתיב ליצירת תשלום
-app.use('/api/checkout-leads', require('./routes/checkoutLeadRoute')) // שמירת פרטי טופס הקורס והמצפן לפני התשלום
-app.use('/api/benefits', require('./routes/benefitRoute')) // נתיב לשמירת לקוח וההטבות שבחר
+
 app.get('/', (req, res) => {
     res.send('hello from server')
 })
