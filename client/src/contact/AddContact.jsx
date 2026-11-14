@@ -325,7 +325,7 @@ const AddContact = () => {
                 {/* כפתור שליחה */}
                 <button
                   type="submit"
-                  disabled={!submitting}
+                  disabled={submitting}
                   aria-busy={submitting}
                   className="
                     disabled:cursor-wait disabled:opacity-60
