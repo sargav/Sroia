@@ -3,12 +3,7 @@ import todaCelebrateGif from "./assets/toda-celebrate.gif";
 import todaWhatsappBtn from "./assets/toda-whatsapp-button.webp";
 import todaSketchBg from "./assets/sketch-warm-wide.webp";
 
-/**
- * דף התודה - עמוד עצמאי לגמרי (לא מקונן בתוך GuidePage).
- * מגיעים אליו דרך ניווט (navigate) אחרי שליחת טופס מוצלחת,
- * לא דרך state מקומי בתוך אותו עמוד - כך שאין תלות בשאר
- * המבנה של דף הנחיתה, ואין סיכוי שהוא "יופיע במקום הלא נכון".
- */
+
 export default function ThankYouPage() {
   return (
     <div dir="rtl" style={{ fontFamily: "'Heebo', sans-serif" }} className="text-neutral-900">
