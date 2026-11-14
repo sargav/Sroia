@@ -29,9 +29,9 @@ const contactSchema = new mongoose.Schema({
         maxlength: 5000
     },
     //הגדרת שדות נוספים למעקב אחרי הפניות
-    
+
     // האם הפנייה נקראה     
-     isRead: {
+    isRead: {
         type: Boolean,
         default: false
     },
@@ -40,8 +40,8 @@ const contactSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-        // הערות מנהל על הפנייה
-            adminNote: {
+    // הערות מנהל על הפנייה
+    adminNote: {
         type: String,
         trim: true,
         maxlength: 2000
@@ -49,5 +49,7 @@ const contactSchema = new mongoose.Schema({
 }, {
     timestamps: true
 })
+contactSchema.index({ isRead: 1, isReplied: 1, createdAt: -1 })
+
 
 module.exports = mongoose.model('Contact', contactSchema)

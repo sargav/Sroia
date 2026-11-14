@@ -4,20 +4,20 @@ const mongoose = require('mongoose')
 const EVENT_TYPES = ['meet', 'site', 'call']
 
 const eventSchema = new mongoose.Schema({
-    // שם האירוע, למשל "פגישת היכרות – משפחת לוי"
+    //כותרת האירוע
     title: {
         type: String,
         required: true,
         trim: true,
         maxlength: 150
     },
-    // סוג האירוע - קובע את הצבע ביומן
+    // סוג האירוע -לפי זה נקבע את הצבע ביומן
     type: {
         type: String,
         enum: EVENT_TYPES,
         required: true
     },
-    // מתי מתחיל ומתי נגמר (תאריך + שעה ביחד)
+    //התחלה וסיום-זמני האירוע
     start: {
         type: Date,
         required: true
@@ -26,20 +26,21 @@ const eventSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    // איפה, למשל "משרד" או "רחובות"
+    //מיקום האירוע
     location: {
         type: String,
         trim: true,
         maxlength: 150,
         default: ''
     },
+    //הערות
     notes: {
         type: String,
         trim: true,
         maxlength: 2000,
         default: ''
     },
-    // קישור לפנייה (לא חובה) - למשל פגישה עם לקוח שפנה דרך האתר
+    //קישור לפניה-אם הפניה הזזאת קשורה לאירוע מהיומן
     contact: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Contact',
@@ -59,7 +60,7 @@ const eventSchema = new mongoose.Schema({
     }
 }, { timestamps: true })
 
-// היומן תמיד מחפש לפי טווח תאריכים - האינדקס מאיץ את זה
+//כיון שתמיד היומן מחפשאת השדב הזה לכן יש את היאנדקס
 eventSchema.index({ start: 1 })
 
 module.exports = mongoose.model('Event', eventSchema)

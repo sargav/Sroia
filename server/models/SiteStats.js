@@ -8,14 +8,11 @@ const siteStatsSchema = new mongoose.Schema({
         type: Number,
         default: 100,
         min: 0,
-        max: 100000
     },
-    // "₪120K חיסכון ממוצע ללקוח" - נשמר בשקלים (120000)
     avgSavings: {
         type: Number,
         default: 120000,
         min: 0,
-        max: 100000000
     },
     // ===== מחירים (רק מה שמוצג באתר. הסכום שנגבה בפועל מוגדר ב-Cardcom) =====
     // קורס "בית בשתי ידיים"
@@ -23,9 +20,9 @@ const siteStatsSchema = new mongoose.Schema({
     // בכמה תשלומים אפשר לשלם (התשלום החודשי מחושב באתר)
     courseInstallments: { type: Number, default: 10, min: 1, max: 36 },
     // "בחודש הבא המחיר עולה ל-..."
-    coursePriceNext: { type: Number, default: 2700, min: 0, max: 1000000 },
+    coursePriceNext: { type: Number, default: 2700, min: 0,  },
     // אפליקציית "המצפן לבונה"
-    compassPrice: { type: Number, default: 297, min: 0, max: 1000000 },
+    compassPrice: { type: Number, default: 297, min: 0,  },
     // מי עדכן אחרון
     updatedBy: {
         type: mongoose.Schema.Types.ObjectId,

@@ -49,7 +49,6 @@ const imageSchema = new mongoose.Schema({
     }
 }, { timestamps: true })
 
-// מאיץ את השאילתה הנפוצה: "כל התמונות של קטגוריה X לפי הסדר"
 imageSchema.index({ category: 1, order: 1 })
 
 module.exports = mongoose.model('Image', imageSchema)

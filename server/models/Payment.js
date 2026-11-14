@@ -7,9 +7,9 @@ const paymentSchema = new mongoose.Schema({
     // מספר העסקה אצל Cardcom. ייחודי, כדי שהודעה כפולה לא תיצור תשלום כפול
     internalDealNumber: { type: String, required: true, unique: true },
 
-    productName: { type: String },       // למשל "המצפן לבונה- בית בשתי ידיים"
-    productGroupId: { type: String },    // מזהה הדף/המוצר ב-Cardcom (ProdGroupID)
-    amount: { type: Number },            // הסכום ששולם בפועל, בשקלים
+    productName: { type: String },       
+    productGroupId: { type: String },  
+    amount: { type: Number },            
     numberOfPayments: { type: Number },
     couponNumber: { type: String },
 
@@ -21,7 +21,6 @@ const paymentSchema = new mongoose.Schema({
     invoiceNumber: { type: String },
     dealDate: { type: Date },
 
-    // האם הלקוח כבר קיבל את מה ששילם עליו (לשימוש עתידי בפאנל הניהול)
     handled: { type: Boolean, default: false },
 
     // הטופס שהלקוח מילא באתר לפני התשלום

@@ -4,7 +4,6 @@ const mongoose = require('mongoose')
 const TASK_STATUSES = ['todo', 'doing', 'done']
 
 const taskSchema = new mongoose.Schema({
-    // מה צריך לעשות, למשל "לשלוח הצעת מחיר ליוסי"
     title: {
         type: String,
         required: true,
@@ -16,7 +15,6 @@ const taskSchema = new mongoose.Schema({
         enum: TASK_STATUSES,
         default: 'todo'
     },
-    // עד מתי (לא חובה)
     dueDate: {
         type: Date,
         default: null
@@ -27,13 +25,11 @@ const taskSchema = new mongoose.Schema({
         maxlength: 2000,
         default: ''
     },
-    // למי המשימה
     manager: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Manager',
         default: null
     },
-    // קישור לפנייה (לא חובה) - למשל "לחזור לרחל כהן"
     contact: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Contact',
@@ -47,7 +43,6 @@ const taskSchema = new mongoose.Schema({
     }
 }, { timestamps: true })
 
-// חיפושים נפוצים: לפי מצב ולפי תאריך יעד
 taskSchema.index({ status: 1, dueDate: 1 })
 
 module.exports = mongoose.model('Task', taskSchema)

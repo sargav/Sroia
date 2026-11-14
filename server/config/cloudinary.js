@@ -1,5 +1,4 @@
 // הגדרות החיבור ל-Cloudinary (שירות הענן שבו נשמרות התמונות).
-// שלושת הפרטים נמצאים ב-.env וב-Render תחת Environment - אף פעם לא בקוד
 const cloudinary = require('cloudinary').v2
 
 cloudinary.config({
