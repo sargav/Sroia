@@ -1,0 +1,125 @@
+/**
+ * אינטגרציית Rav Messer API (עם axios)
+ * ================================================
+ * הקובץ הזה מטפל בכל התקשורת מול רב מסר, כדי שהפרטים הרגישים
+ * (Client Secret, User Token) לעולם לא ייחשפו בדפדפן של המשתמש.
+ *
+ * מה שהוא עושה:
+ * 1. מתחבר לרב מסר ומקבל Access Token זמני.
+ * 2. שולח את הליד לרשימת התפוצה שלך ברב מסר.
+ * 3. רב מסר כבר דואג לשלוח את המדריך במייל, לפי האוטומציה שהגדרת אצלם.
+ *
+ * מי שמשתמש בו: controller/submitLeadController.js
+ *
+ * ==================================================
+ * משתני סביבה (קובץ .env):
+ * ==================================================
+ * Client_ID=...
+ * Client_Secret=...
+ * User_Token=...
+ * RAVMESSER_LIST_ID=...   (מזהה רשימת התפוצה שאליה מצטרפים - את מוצאת
+ *                          אותו בעריכת הרשימה ברב מסר)
+ *
+ * לעולם אל תשימי את הערכים האלה ישירות בקוד או ב-React -
+ * רק בקובץ .env בשרת, שלא מועלה ל-git.
+ */
+
+const axios = require("axios");
+
+// ==================================================
+// שלב 1: קבלת Access Token זמני מרב מסר
+// ==================================================
+// הטוקן הזה תקף לזמן מוגבל, אז אנחנו שומרים אותו בזיכרון
+// ומחדשים אותו רק כשצריך (או אחרי שגיאת 401).
+
+let cachedToken = null;
+let tokenExpiresAt = 0;
+
+async function getAccessToken() {
+  // אם יש טוקן תקף בזיכרון - נשתמש בו במקום לבקש חדש בכל פעם
+  if (cachedToken && Date.now() < tokenExpiresAt) {
+    return cachedToken;
+  }
+
+  try {
+    // לפי תיעוד ה-API הרשמי (Swagger): הבקשה היא JSON רגיל, לא form
+    const response = await axios.post(
+      "https://graph.responder.live/v2/oauth/token",
+      {
+        grant_type: "client_credentials",
+        scope: "*",
+        client_id: process.env.Client_ID,
+        client_secret: process.env.Client_Secret,
+        user_token: process.env.User_Token,
+      },
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+
+    const data = response.data;
+    // לפי התיעוד: שם השדה הוא "token", לא "access_token"
+    cachedToken = data.token;
+    // לפי התיעוד: אין expires_in בתשובה - הטוקן בתוקף קבוע ל-14 יום.
+    // שומרים מרווח ביטחון של יום אחד לפני שהוא פג בפועל.
+    const THIRTEEN_DAYS_MS = 13 * 24 * 60 * 60 * 1000;
+    tokenExpiresAt = Date.now() + THIRTEEN_DAYS_MS;
+
+    return cachedToken;
+  } catch (err) {
+    // axios שם את תגובת השרת (אם יש) בתוך err.response
+    const status = err.response ? err.response.status : "?";
+    const details = err.response ? JSON.stringify(err.response.data) : err.message;
+    throw new Error(`שגיאה בהזדהות מול רב מסר: ${status} - ${details}`);
+  }
+}
+
+// ==================================================
+// שלב 2: הוספת ליד לרשימת התפוצה
+// ==================================================
+// מאומת מול תיעוד ה-API הרשמי (Swagger): POST /subscribers
+
+async function postSubscriber(accessToken, { name, email, phone }) {
+  // לפי הסכימה המדויקת מה-Swagger: השדה נקרא "list_ids" (ברבים),
+  // ומצפה למערך של מספרים - גם אם יש רק רשימה אחת.
+  return axios.post(
+    `https://graph.responder.live/v2/subscribers`,
+    { email, name, phone, list_ids: [Number(process.env.RAVMESSER_LIST_ID)] },
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+}
+
+// הפונקציה היחידה שיוצאת מהקובץ: מוסיפה ליד לרב מסר.
+// אם הטוקן פג באמצע (401) - מבקשת טוקן חדש ומנסה פעם אחת נוספת
+async function addLeadToRavMesser({ name, email, phone }) {
+  const accessToken = await getAccessToken();
+
+  try {
+    const response = await postSubscriber(accessToken, { name, email, phone });
+    return response.data;
+  } catch (err) {
+    if (err.response && err.response.status === 401) {
+      cachedToken = null;
+      const freshToken = await getAccessToken();
+      try {
+        const retryResponse = await postSubscriber(freshToken, { name, email, phone });
+        return retryResponse.data;
+      } catch (retryErr) {
+        const status = retryErr.response ? retryErr.response.status : "?";
+        const details = retryErr.response ? JSON.stringify(retryErr.response.data) : retryErr.message;
+        throw new Error(`שגיאה בהוספת ליד (אחרי חידוש טוקן): ${status} - ${details}`);
+      }
+    }
+
+    const status = err.response ? err.response.status : "?";
+    const details = err.response ? JSON.stringify(err.response.data) : err.message;
+    throw new Error(`שגיאה בהוספת ליד: ${status} - ${details}`);
+  }
+}
+
+module.exports = { addLeadToRavMesser };
