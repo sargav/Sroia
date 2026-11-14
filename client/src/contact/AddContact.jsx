@@ -325,7 +325,7 @@ const AddContact = () => {
                 {/* כפתור שליחה */}
                 <button
                   type="submit"
-                  disabled={submitting}
+                  disabled={!submitting}
                   aria-busy={submitting}
                   className="
                     disabled:cursor-wait disabled:opacity-60
@@ -422,11 +422,6 @@ const AddContact = () => {
   );
 };
 
-/**
- * מקליד שורות טקסט אות-אות, עם סמן מהבהב.
- * lines: מערך שורות. lineClassName: פונקציה שמקבלת אינדקס ומחזירה class לשורה.
- * onDone: נקרא פעם אחת כשההקלדה של כל השורות הסתיימה.
- */
 const Typewriter = ({
   lines,
   speed = 50,
@@ -529,14 +524,7 @@ const ContactStep = ({ number, text, last = false, visible, delay = 0 }) => {
   );
 };
 
-const FormField = ({
-  label,
-  name,
-  type,
-  placeholder,
-  error,
-  icon,
-}) => {
+const FormField = ({label,name,type,placeholder,error,icon,}) => {
   return (
     <div className="flex w-full flex-col gap-2">
       <label

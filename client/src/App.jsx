@@ -7,7 +7,7 @@ import PageTitle from './components/PageTitle'
 import NotFound from './components/NotFound'
 
 // כל עמוד חוץ מדף הבית נטען רק כשנכנסים אליו, כדי שדף הבית ייפתח מהר
-const Contact = lazy(() => import('./contact/Contact'))
+const Contact = lazy(() => import('./contact/AddContact'))
 const Benefit = lazy(() => import('./NegevBenefit/Benefit'))
 const GuidePage = lazy(() => import('./GuideBuilder/GuidePage'))
 const ThankYouPage = lazy(() => import('./GuideBuilder/ThankYouPage'))
@@ -35,9 +35,7 @@ function App() {
             <Route path='/contact' element={<PageTitle title="צרו קשר"><div><Contact /></div></PageTitle>} />
             <Route path='/pay' element={<PageTitle title="תשלום עבור הקורס"><div><Pay /></div></PageTitle>} />
             <Route path='/accessibility' element={<AccessibilityStatement />} />
-            {/* לכאן Cardcom מחזירה את הלקוח אחרי התשלום: ?status=success או ?status=failed */}
             <Route path='/payment-result' element={<PaymentResult />} />
-            {/* כל כתובת שלא קיימת באתר */}
             <Route path='*' element={<NotFound />} />
 
           </Route>

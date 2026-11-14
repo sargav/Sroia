@@ -12,14 +12,12 @@ const DEFAULTS = {
   compassPrice: 297,
 };
 
-// 120000 -> "₪120K"
 export const formatSavings = (n) =>
   n >= 1000 ? `₪${Math.round(n / 1000)}K` : `₪${n}`;
 
-// 1987 -> "1,987"
 export const formatPrice = (n) => Number(n).toLocaleString("en-US");
 
-// כמה כל תשלום חודשי, מעוגל למטה: 1987 ב-10 תשלומים -> 198
+//מחיר חודשי
 export const monthlyPayment = (price, installments) =>
   Math.floor(price / Math.max(1, installments));
 

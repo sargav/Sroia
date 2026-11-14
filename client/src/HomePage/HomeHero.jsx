@@ -111,12 +111,7 @@ export default function Hero() {
 
           {/* אזור הטקסט - שכבה אחת שעוברת מטושטשת לחדה */}
           <div className="hero-text-focus">
-            {/* <div className="mb-6 flex items-center gap-3">
-              <span className="h-px w-[3.375rem] bg-[#78A93B]" />
-              <span className="text-[0.8125rem] font-bold uppercase tracking-[0.2em] text-[#628E32]">
-                ליווי בנייה פרטית
-              </span>
-            </div> */}
+            
 
             <h1 className="mb-2 text-[2.625rem] font-black leading-[1.12] text-[#252A22] sm:text-[3.5rem] md:text-[4.375rem]">
               <span className="block">בונים בית פרטי?</span>

@@ -15,7 +15,6 @@ const Layout = () => {
       </a>
       <Header />
       <main id="main-content" tabIndex={-1} className="focus:outline-none">
-        {/* עמודים שנטענים רק כשנכנסים אליהם: עד שהם מגיעים מוצג סימן טעינה, והתפריט והפוטר נשארים */}
         <Suspense fallback={<PageLoader />}>
           <Outlet />
         </Suspense>
