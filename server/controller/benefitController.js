@@ -4,9 +4,6 @@ const { BUILD_LEVELS } = require('../models/benefitSchema');
 const checking = require('../functionChecking/functionChecking');
 const sendBenefitEmails = require('../utils/sendBenefitEmails');
 
-// שליחת המיילים (למנהל האתר ולמנהלי החנות של כל הטבה) בלי לחכות להם,
-// כדי שהגולש יקבל תשובה מיד. אם המייל נכשל - הבקשה כבר שמורה במסד ורק נרשמת שגיאה בלוג.
-// catalog = מסמכי ההטבות מהקטלוג, addedIds = הקודים של ההטבות שנוספו בבקשה הזו בלבד
 const notify = (customerInfo, catalog, addedIds) => {
     const addedBenefits = catalog.filter(b => addedIds.includes(b.IDBenefit));
     sendBenefitEmails(customerInfo, addedBenefits).catch((err) =>
@@ -25,10 +22,6 @@ const getCatalog = async (req, res) => {
         return res.status(500).json({ message: 'An error occurred while getting the benefits' });
     }
 };
-
-// הוספת הטבות ללקוח.
-// גוף הבקשה: { name, phone, email, levelOfBuilder, benefits }
-// benefits = מערך של מזהי הטבות (IDBenefit) מתוך הקטלוג BenefitDefi
 const addBenefit = async (req, res) => {
     try {
         const { name, phone, email, levelOfBuilder, benefits } = req.body;

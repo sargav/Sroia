@@ -22,8 +22,6 @@ const toDate = (value) => {
 // כמה זמן מקסימום אפשר לבקש בבת אחת (כדי שלא יבקשו את כל השנים)
 const MAX_RANGE_DAYS = 62
 
-// ===== אירועים בטווח תאריכים =====
-// ?from=2026-11-01&to=2026-12-01  (from כולל, to לא כולל)
 const getEvents = async (req, res) => {
     try {
         const from = toDate(req.query.from)

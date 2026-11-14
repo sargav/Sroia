@@ -5,8 +5,6 @@ const BenefitNotification = require('../../models/BenefitNotification')
 const BenefitDefi = require('../../models/BenefitDefi')
 const CustomerBenefit = require('../../models/CustomerBenefit')
 
-// לעמוד ההטבות בפאנל: כל ההטבות שבקטלוג, ולכל אחת - רשימת המיילים שלה (אם יש) וכמה לקוחות ביקשו אותה.
-// alwaysTo - מי מקבל תמיד את כל הבקשות (MAIL_TO מהשרת). מוצג בפאנל כשורה נעולה
 const getOverview = async (req, res) => {
     try {
         const [benefits, lists] = await Promise.all([
@@ -36,8 +34,6 @@ const getOverview = async (req, res) => {
     }
 }
 
-// GET /api/benefit-notifications/requests
-// כל הבקשות להטבות: שורה לכל לקוח+הטבה (לקוח שביקש שתי הטבות = שתי שורות), מהחדש לישן
 const getRequests = async (req, res) => {
     try {
         const customers = await CustomerBenefit.find().lean()

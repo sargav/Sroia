@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')      // בשביל isValidObjectId במחיקת מנהל
-const bcrypt = require('bcrypt')          // השוואת סיסמה מול הסיסמה המוצפנת
-const jwt = require('jsonwebtoken')       // יצירת טוקנים ובדיקתם
+const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 const Manager = require('../../models/Manager')
 const checking = require('../../functionChecking/functionChecking')
 
@@ -16,27 +16,22 @@ const cookieOptions = {
 // פונקציית עזר: יוצרת טוקן גישה קצר מפרטי המנהל.
 // login ו-refresh שתיהן צריכות אותה, ולכן היא נפרדת
 const createAccessToken = (manager) => {
-    // מה שייכתב בתוך הטוקן. בלי סיסמה - את התוכן של טוקן כל אחד יכול לקרוא
     const managerInfo = {
         _id: manager._id,
         name: manager.name,
         manName: manager.manName,
         email: manager.email
     }
-    // חותמים עם המפתח הסודי מ-.env. בלי המפתח אי אפשר לזייף או לשנות טוקן
     return jwt.sign(managerInfo, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' })
 }
 
-// טוקן רענון (יום אחד) - רק כדי לקבל טוקן גישה חדש. נחתם במפתח נפרד.
-// המנהל מזוהה לפי ה-_id, שלא משתנה גם כשהוא משנה את שם המשתמש שלו
 const createRefreshToken = (manager) =>
     jwt.sign(
         { _id: manager._id, manName: manager.manName },
         process.env.REFRESH_TOKEN_SECRET,
-        { expiresIn: '1d' } // חייב להתאים ל-maxAge של העוגייה
+        { expiresIn: '1d' }
     )
 
-// הערה על הלוגים: אף פעם לא מדפיסים סיסמאות או טוקנים - מי שרואה את הלוג יראה אותם
 
 const login = async (req, res) => {
     try {
@@ -60,7 +55,7 @@ const login = async (req, res) => {
             return res.status(401).json({ message: 'Unauthorized' })
         }
 
-        // טוקן גישה קצר (15 דקות) - נשלח בכותרת Authorization בכל קריאה מוגנת
+        //יצירת טוקן ל15 דקות
         const accessToken = createAccessToken(foundManager)
 
         // טוקן הרענון נכנס לעוגייה מאובטחת - הדפדפן שומר אותה לבד

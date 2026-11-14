@@ -3,8 +3,6 @@ const router = express.Router()
 const controller = require('../controller/siteStatsController')
 const verifyJWT = require('../middleware/verifyJWT')
 
-// עדכון המספרים - למנהלים בלבד
-router.use(verifyJWT)
-router.patch('/', controller.updateStats)
+router.patch('/',verifyJWT, controller.updateStats)
 
 module.exports = router
