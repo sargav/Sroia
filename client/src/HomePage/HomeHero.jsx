@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section
       dir="rtl"
-      className="relative isolate flex min-h-[42.5rem] items-center overflow-hidden bg-[#F7F5EF] font-['Heebo',sans-serif] md:min-h-[46.875rem]"
+      className="relative isolate flex min-h-[42.5rem] items-center overflow-hidden bg-[#F7F5EF] font-['Heebo',sans-serif] md:min-h-[42.5rem]"
     >
       <style>{`
         @keyframes hero-image-in {
@@ -46,16 +46,6 @@ export default function Hero() {
           }
         }
 
-        @keyframes hero-stripe-grow {
-          from {
-            transform: scaleY(0);
-            opacity: 0;
-          }
-          to {
-            transform: scaleY(1);
-            opacity: 1;
-          }
-        }
 
         .hero-image-in {
           animation: hero-image-in 1.6s ease-out forwards;
@@ -71,17 +61,11 @@ export default function Hero() {
           animation: hero-btns-in 0.6s ease-out 1.5s forwards;
         }
 
-        .hero-stripe-grow {
-          transform-origin: top;
-          opacity: 0;
-          animation: hero-stripe-grow 1s ease-out 0.4s forwards;
-        }
 
         @media (prefers-reduced-motion: reduce) {
           .hero-image-in,
           .hero-text-focus,
-          .hero-btns-in,
-          .hero-stripe-grow {
+          .hero-btns-in {
             animation: none;
             opacity: 1;
             transform: none;
@@ -97,38 +81,52 @@ export default function Hero() {
         className="hero-image-in absolute inset-0 -z-30 h-full w-full object-cover"
       />
 
-      {/* שכבת שמנת שמבהירה את אזור הטקסט */}
-      <div className="pointer-events-none absolute inset-0 -z-20 bg-gradient-to-l from-[#F8F6EF]/70 via-[#F8F6EF]/85 to-[#F8F6EF]/25" />
+      {/* שכבת שמנת שמבהירה את אזור הטקסט:
+          במובייל על כל הרוחב, ובמסך רחב רק בצד ימין כך שהתמונה נחשפת לכיוון שמאל */}
+      <div className="pointer-events-none absolute inset-0 -z-20 bg-[#F8F6EF]/[0.93] md:hidden" />
+      <div
+        className="pointer-events-none absolute inset-0 -z-20 hidden md:block"
+        style={{
+          background:
+            "linear-gradient(to left, rgba(248,246,239,0.93) 0%, rgba(248,246,239,0.93) 48%, rgba(248,246,239,0.2) 80%, rgba(248,246,239,0) 100%)",
+        }}
+      />
 
       {/* שכבה תחתונה עדינה */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-20 h-[35%] bg-gradient-to-t from-[#F4F0E7]/35 to-transparent" />
 
-      {/* פס ירוק אנכי דק */}
-      <div className="hero-stripe-grow pointer-events-none absolute right-6 top-1/2 -z-10 hidden h-[55%] w-[3px] -translate-y-1/2 rounded-full bg-gradient-to-b from-transparent via-[#78A93B]/70 to-transparent md:right-10 lg:block" />
-
       <div className="relative mx-auto w-full max-w-[80rem] px-6 py-20 md:px-12 lg:px-20">
-        <div className="max-w-[40rem]">
+        <div className="mx-auto max-w-[35rem] text-center md:mx-0">
 
           {/* אזור הטקסט - שכבה אחת שעוברת מטושטשת לחדה */}
           <div className="hero-text-focus">
-            
+            {/* תווית עליונה */}
+            <div className="mb-5 flex items-center justify-center gap-3">
+              <span className="h-[2px] w-14 bg-[#4A7322]" aria-hidden="true" />
+              <span className="text-[1.0625rem] font-bold tracking-[0.15em] text-[#3F6B1E]">
+                ליווי בנייה פרטית
+              </span>
+              <span className="h-[2px] w-14 bg-[#4A7322]" aria-hidden="true" />
+            </div>
 
-            <h1 className="mb-2 text-[2.625rem] font-black leading-[1.12] text-[#252A22] sm:text-[3.5rem] md:text-[4.375rem]">
+            <h1 className="mb-5 text-[2rem] font-black leading-[1.25] text-[#252A22] sm:text-[2.25rem] md:text-[2.5rem]">
               <span className="block">בונים בית פרטי?</span>
-              <span className="block">נהנים מהדרך.</span>
-              <span className="block text-[#79A942]">חוסכים הון.</span>
+              <span className="block text-[#4A7322]">
+                {/* במסך צר נשבר בין שני הצירופים ולא באמצע */}
+                <span className="inline-block">בלי חריגות.</span>{" "}
+                <span className="inline-block">בלי הפתעות.</span>
+              </span>
             </h1>
 
-            <div className="mb-8 mt-6 h-px w-24 bg-gradient-to-l from-[#78A93B]/60 to-transparent" />
-
-            <p className="mb-9 max-w-[33.75rem] text-[1rem] font-medium leading-[1.9] text-[#51594C] md:text-[1.125rem]">
-              ליווי יד ביד משלב רכישת המגרש ועד קבלת המפתח — ללא חריגות
-              תקציב, ללא טעויות יקרות ובסטנדרט הגבוה ביותר.
+            <p className="mx-auto mb-7 max-w-[31.25rem] text-[0.9375rem] font-medium leading-[1.8] text-[#3F463A] md:text-[1rem]">
+              ליווי יד ביד משלב רכישת המגרש ועד קבלת המפתח
+              <br />
+              ללא חריגות תקציב, ללא טעויות יקרות ובסטנדרט הגבוה ביותר.
             </p>
           </div>
 
           {/* כפתורים */}
-          <div className="hero-btns-in flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="hero-btns-in flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
             <button
               type="button"
               onClick={() => {
@@ -159,9 +157,9 @@ export default function Hero() {
               onClick={() => navigate("/guid-to-builder")}
               className="
                 group flex items-center justify-center gap-4
-                rounded-full border border-[#86B84D]/60
-                bg-white/55 px-7 py-4
-                text-[0.9375rem] font-bold text-[#628E32]
+                rounded-full border border-[#4A7322]
+                bg-white/85 px-7 py-4
+                text-[0.9375rem] font-bold text-[#3F6B1E]
                 backdrop-blur-sm transition-all duration-300
                 hover:-translate-y-1 hover:gap-6
                 hover:border-[#86B84D]
