@@ -119,7 +119,12 @@ export default function Hero() {
             </h1>
 
             <p className="mx-auto mb-7 max-w-[31.25rem] text-[0.9375rem] font-medium leading-[1.8] text-[#3F463A] md:text-[1rem]">
-              ליווי יד ביד משלב רכישת המגרש ועד קבלת המפתח
+              <strong className="font-extrabold text-[#252A22]">
+                סרויה ניהול פרויקטים
+              </strong>{" "}
+              מלווה אתכם יד ביד,
+              <br />
+              מרכישת המגרש ועד קבלת המפתח.
               <br />
               ללא חריגות תקציב, ללא טעויות יקרות ובסטנדרט הגבוה ביותר.
             </p>
