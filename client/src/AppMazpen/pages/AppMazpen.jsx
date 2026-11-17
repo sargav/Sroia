@@ -89,12 +89,43 @@ function CTAButton({ children = "אני רוצה את המצפן לבונה", cl
   );
 }
 
+// טלפון שנראה אמיתי: מסגרת מתכת עם כפתורים בצדדים, שורת סטטוס עם שעה וסוללה,
+// "אי" שחור למעלה (שלא מסתיר את המסך), פס בית למטה וברק עדין על הזכוכית.
+// כל הגדלים בתוך המסך יחסיים לרוחב הטלפון (cqw), כך שהוא נראה אותו דבר בכל גודל.
 function PhoneMockup({ src, alt, className = "" }) {
   return (
-    <div className={`relative rounded-[2.5rem] bg-[#171b18] p-[6px] shadow-[0_25px_70px_rgba(31,43,34,.25)] ${className}`}>
-      <div className="absolute left-1/2 top-3 z-10 h-5 w-[4.5rem] -translate-x-1/2 rounded-full bg-[#171b18]" />
-      <div className="overflow-hidden rounded-[2.15rem] bg-white">
-        <img src={src} alt={alt} className="block h-auto w-full" />
+    <div className={`relative ${className}`}>
+      {/* כפתורי הצד */}
+      <span aria-hidden="true" className="absolute -left-[3px] top-[18%] h-[6%] w-[3px] rounded-l-sm bg-[#2b302c]" />
+      <span aria-hidden="true" className="absolute -left-[3px] top-[26%] h-[9%] w-[3px] rounded-l-sm bg-[#2b302c]" />
+      <span aria-hidden="true" className="absolute -left-[3px] top-[37%] h-[9%] w-[3px] rounded-l-sm bg-[#2b302c]" />
+      <span aria-hidden="true" className="absolute -right-[3px] top-[28%] h-[13%] w-[3px] rounded-r-sm bg-[#2b302c]" />
+
+      {/* המסגרת */}
+      <div className="rounded-[14%/6.5%] bg-[linear-gradient(145deg,#3b413c,#151916_45%,#262b27)] p-[3.2%] shadow-[0_2px_0_1px_#454c46_inset,0_30px_60px_-12px_rgba(20,30,22,.45),0_12px_24px_-8px_rgba(20,30,22,.3)]">
+        <div className="relative flex aspect-[9/19.5] flex-col overflow-hidden rounded-[11%/5.2%] bg-white [container-type:inline-size]">
+          {/* שורת הסטטוס */}
+          <div dir="ltr" aria-hidden="true" className="relative flex h-[7%] flex-none items-center justify-between bg-white px-[7cqw] text-[4.6cqw] font-semibold text-[#111]">
+            <span>9:41</span>
+            <span className="absolute left-1/2 top-[28%] h-[52%] w-[30cqw] -translate-x-1/2 rounded-full bg-black" />
+            <span className="flex items-center gap-[1.4cqw]">
+              {/* קליטה */}
+              <svg viewBox="0 0 18 12" className="h-[3.4cqw] w-auto fill-current"><rect x="0" y="8" width="3" height="4" rx=".8" /><rect x="5" y="5.5" width="3" height="6.5" rx=".8" /><rect x="10" y="3" width="3" height="9" rx=".8" /><rect x="15" y="0" width="3" height="12" rx=".8" /></svg>
+              {/* וייפיי */}
+              <svg viewBox="0 0 16 12" className="h-[3.4cqw] w-auto fill-current"><path d="M8 2.2c2.3 0 4.4.9 6 2.4l1.3-1.4A10.4 10.4 0 0 0 8 .2C5.2.2 2.6 1.3.7 3.2L2 4.6a8.4 8.4 0 0 1 6-2.4Zm0 3.6c1.4 0 2.6.5 3.5 1.4l1.4-1.4A6.9 6.9 0 0 0 8 3.8c-1.9 0-3.6.7-4.9 2l1.4 1.4A5 5 0 0 1 8 5.8Zm0 3.5a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4Z" /></svg>
+              {/* סוללה */}
+              <svg viewBox="0 0 27 12" className="h-[3.4cqw] w-auto"><rect x=".5" y=".5" width="22" height="11" rx="3" fill="none" stroke="currentColor" opacity=".4" /><rect x="2" y="2" width="17" height="8" rx="1.8" fill="currentColor" /><rect x="24" y="4" width="2" height="4" rx="1" fill="currentColor" opacity=".4" /></svg>
+            </span>
+          </div>
+
+          {/* צילום המסך מהאפליקציה */}
+          <img src={src} alt={alt} loading="lazy" className="min-h-0 w-full flex-1 object-cover object-top" />
+
+          {/* פס הבית */}
+          <span aria-hidden="true" className="absolute bottom-[1.4%] left-1/2 h-[0.6%] w-[34cqw] -translate-x-1/2 rounded-full bg-black/80" />
+          {/* ברק עדין על הזכוכית */}
+          <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,.18)_0%,rgba(255,255,255,0)_32%,rgba(255,255,255,0)_70%,rgba(255,255,255,.06)_100%)]" />
+        </div>
       </div>
     </div>
   );
@@ -144,7 +175,9 @@ function CompassPage() {
       <section className="py-20 md:py-28 overflow-hidden bg-[#FBFBF8]">
         <div className="mx-auto w-full px-5 md:px-10 max-w-7xl">
           <SectionHeading eyebrow="כך זה נראה" title="המצפן הולך איתכם" accent="ישר מהטלפון" description="שלושה מסכים, מאות החלטות, מקום אחד מסודר." />
-          <div className="flex items-end justify-center gap-3 px-2 sm:gap-6 md:gap-10">
+          <div className="relative flex items-end justify-center gap-3 px-2 pb-6 sm:gap-6 md:gap-10">
+            {/* צל רך על "הרצפה" מתחת לטלפונים */}
+            <span aria-hidden="true" className="absolute bottom-0 left-1/2 h-10 w-[80%] max-w-[46rem] -translate-x-1/2 rounded-[50%] bg-[#1f2b22]/15 blur-2xl" />
             <PhoneMockup src={screen3} alt="מסך מודולים" className="w-[27%] max-w-[13.75rem] translate-y-8 -rotate-3" />
             <PhoneMockup src={screen2} alt="מסך רשימת משימות" className="z-10 w-[31%] max-w-[15.625rem]" />
             <PhoneMockup src={screen1} alt="מסך מילון מושגים" className="w-[27%] max-w-[13.75rem] translate-y-8 rotate-3" />
