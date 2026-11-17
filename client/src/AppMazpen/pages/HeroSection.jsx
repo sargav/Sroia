@@ -1,179 +1,124 @@
-import {
-  ArrowDown,
-  CheckCircle2,
-  ClipboardCheck,
-  Route,
-} from "lucide-react";
+import { ArrowDown, CheckCircle2, Compass, ListChecks, Smartphone } from "lucide-react";
 import Reveal from "../components/Reveal";
 import heroModelV2 from "../assets/images/hero-mosaic-v2.webp";
 
 /**
- * הכותרת המקורית, בדיוק באותו מבנה ובאותן צורות.
- * המסגרות, הריבועים והצל חזרו בדיוק למקור. נשארו רק גווני הטקסט הרכים.
+ * הכותרת של המצפן לבונה – לפי עיצוב "מ" מהקנבס:
+ * תמונת הבית כרקע מלא שמתבהר לכיוון הטקסט, הטקסט מימין,
+ * ושלושה ריבועים לבנים במסגרת ירוקה בטור משמאל (בטלפון: בשורה מתחת לטקסט).
  *   <HeroSection />
  */
+
+const TILES = [
+  { icon: Compass, title: ["מסלול", "ברור"] },
+  { icon: ListChecks, title: ["פותחים", "בודקים", "ממשיכים"] },
+  { icon: Smartphone, title: ["זמין תמיד"], small: "מכל מכשיר" },
+];
+
+// ריבוע: לבן עם מסגרת ירוקה ואייקון גדול שיוצא מהפינה. בריחוף מתמלא בירוק מלמטה
+function Tile({ icon: Icon, title, small }) {
+  return (
+    <div className="group relative isolate flex min-h-[7.5rem] flex-col justify-end overflow-hidden rounded-2xl border-4 border-[#659b2d] bg-white p-3 text-[#26321F] shadow-[0_18px_40px_rgba(10,20,12,.22)] transition duration-300 hover:-translate-x-2 hover:text-white motion-reduce:transition-none motion-reduce:hover:translate-x-0 sm:p-4 lg:min-h-[9.375rem] lg:px-[1.125rem]">
+      <span
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 translate-y-full bg-[#4f7f1f] transition-transform duration-[450ms] ease-[cubic-bezier(.2,.7,.2,1)] group-hover:translate-y-0 motion-reduce:transition-none"
+      />
+      <Icon
+        aria-hidden="true"
+        strokeWidth={1.4}
+        className="absolute -left-4 -top-4 h-16 w-16 text-[#4f7f1f] transition duration-[450ms] group-hover:rotate-[14deg] group-hover:text-white motion-reduce:transition-none sm:h-20 sm:w-20 lg:-left-5 lg:-top-5 lg:h-[6.875rem] lg:w-[6.875rem]"
+      />
+      <p className="relative text-sm font-black leading-tight sm:text-base lg:text-xl">
+        {title.map((line, i) => (
+          <span key={line} className="block">
+            {line}
+            {i === title.length - 1 && small && (
+              <span className="mt-0.5 block text-xs font-bold lg:text-sm">{small}</span>
+            )}
+          </span>
+        ))}
+      </p>
+    </div>
+  );
+}
+
 export default function HeroSection() {
   return (
-    <section className="relative isolate overflow-hidden bg-[#f2f4ed] px-5 pb-20 pt-20 text-[#2D382B] md:px-10">
+    <section className="relative isolate overflow-hidden bg-[#f2f4ed] text-[#2D382B]">
+      {/* תמונת הבית כרקע מלא */}
+      <img
+        src={heroModelV2}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 -z-20 h-full w-full object-cover object-[0%_40%]"
+      />
+      {/* שכבה בהירה: מלאה מאחורי הטקסט ונעלמת לכיוון הבית. במסך צר - בהירה בכל השטח כדי שהטקסט יהיה קריא */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-[#f2f4ed]/90 xl:bg-transparent xl:[background-image:linear-gradient(to_left,#f2f4ed_0%,rgba(242,244,237,.97)_38%,rgba(242,244,237,.5)_56%,rgba(242,244,237,0)_72%)]"
+      />
 
-      <div className="absolute -right-28 top-24 h-80 w-80 rounded-full bg-[#bdd39f]/25 blur-3xl" />
-
-      <div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[.92fr_1.08fr] lg:gap-20">
+      <div className="mx-auto flex max-w-[82.5rem] flex-col gap-10 px-5 py-16 md:px-10 xl:min-h-[56.25rem] xl:flex-row xl:items-center xl:justify-between xl:py-16">
         {/* התוכן */}
-        <Reveal className="order-2 lg:order-1">
-          <div className="max-w-[38.75rem]">
-            {/* ציטוט: גרשיים גדולים משני הצדדים ופס קצר מתחת */}
-            <blockquote>
-              <div className="flex items-start gap-2 md:gap-3">
-                <span
-                  aria-hidden="true"
-                  className="-mt-1 select-none font-serif text-[3.5rem] font-black leading-[0.9] text-[#A8CE7A] md:text-[4rem]"
-                >
-                  “
-                </span>
-
-                <p className="pt-1 text-lg font-black leading-9 text-[#2D382B]/70 italic  md:text-xl">
-                  הלוואי שהכרנו את זה לפני שהתחלנו לבנות
-                </p>
-
-                <span
-                  aria-hidden="true"
-                  className="select-none self-end font-serif text-[3.5rem] font-black leading-[0.5] text-[#A8CE7A] md:text-[4rem]"
-                >
-                  ”
-                </span>
-              </div>
-            </blockquote>
-
-            <div className="mt-7">
-              <h1 className="mt-8 text-[2.6rem] font-black leading-[1.05] tracking-[-0.045em] sm:text-6xl lg:text-[4.25rem]">
-                <span className="inline-block [background-image:linear-gradient(to_left,#263A29,#71964F,#B1D384)] bg-clip-text text-transparent">
-                  המצפן לבונה
-                </span>
-              </h1>
-
-              <p className="mt-3 max-w-xl text-base font-medium leading-8 text-[#656f62] md:text-lg">
-                מערכת חכמה שמלווה אתכם צעד אחר צעד מהיזום ועד המפתח.
-              </p>
-            </div>
-
-            {/* משפט המשך */}
-            <span className="relative mt-8 block pt-6 text-2xl">
-              כל אחד יכול לבנות בית פרטי,
+        <Reveal className="w-full max-w-[37.5rem]">
+          <blockquote className="text-lg font-black italic text-[#4d5a4b] md:text-xl">
+            <span aria-hidden="true" className="select-none align-[-0.875rem] font-serif text-[2.75rem] not-italic leading-[0] text-[#7da457]">
+              “
+            </span>{" "}
+            הלוואי שהכרנו את זה לפני שהתחלנו לבנות{" "}
+            <span aria-hidden="true" className="select-none align-[-0.875rem] font-serif text-[2.75rem] not-italic leading-[0] text-[#7da457]">
+              ”
             </span>
-            <p className="max-w-xl text-xl font-black leading-9 text-[#71964f] md:text-2xl">
-              לא כולם יודעים מה לבדוק בדרך.
+          </blockquote>
+
+          <h1 className="mt-6 w-fit text-[2.75rem] font-black leading-[1.05] tracking-[-0.04em] sm:text-6xl xl:text-[5.25rem]">
+            <span className="[background-image:linear-gradient(to_left,#263A29,#4f7f1f,#659b2d)] bg-clip-text text-transparent">
+              המצפן לבונה
+            </span>
+          </h1>
+
+          <p className="mt-3 text-base font-medium leading-[1.7] text-[#565f53] md:text-lg">
+            מערכת חכמה שמלווה אתכם צעד אחר צעד מהיזום ועד המפתח.
+          </p>
+
+          <p className="mt-8 text-xl md:text-2xl">כל אחד יכול לבנות בית פרטי,</p>
+          <p className="mt-0.5 text-xl font-black text-[#4f7f1f] md:text-2xl">לא כולם יודעים מה לבדוק בדרך.</p>
+
+          <div className="mt-6 border-r-2 border-[#659b2d] px-5 py-1">
+            <p className="text-lg font-black text-[#3e4d3c] md:text-xl">איך לבנות בביטחון?</p>
+            <p className="mt-2.5 text-base font-medium leading-[1.75] text-[#565f53] md:text-lg">
+              לדעת בכל שלב מה לבדוק,
+              <br />
+              לא לפספס כלום
+              <br />
+              ולא להיות הצד שעובדים עליו.
             </p>
+          </div>
 
-            {/* המסר המרכזי */}
-            <div className="mt-7 border-r-2 border-[#9bb681] bg-white/5 px-5 py-4">
-              <p className="text-lg font-black text-[#3e4d3c] md:text-xl">
-                איך לבנות בביטחון?
-              </p>
+          <button
+            type="button"
+            onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+            className="group mt-5 inline-flex items-center gap-2 py-3 font-black text-[#3e4d3c] transition hover:text-[#4f7f1f]"
+          >
+            איך זה עובד
+            <ArrowDown size={18} aria-hidden="true" className="transition group-hover:translate-y-1 motion-reduce:transition-none" />
+          </button>
 
-              <p className="mt-3 text-base font-medium leading-8 text-[#656f62] md:text-lg">
-                לדעת בכל שלב מה לבדוק
-                , <br />
-                לא לפספס כלום
-                <span className="block">
-                  ולא להיות הצד שעובדים עליו.
-                </span>
-              </p>
-            </div>
-
-            {/* קישור להמשך */}
-            <div className="mt-7">
-              <button
-                type="button"
-                onClick={() =>
-                  document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="group inline-flex items-center gap-2 px-3 py-3 font-black text-[#50604f] transition hover:text-[#71964f]"
-              >
-                איך זה עובד
-                <ArrowDown size={18} className="transition group-hover:translate-y-1" />
-              </button>
-            </div>
-
-            {/* נתונים */}
-            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4 border-t border-[#cbd5c3] pt-6">
-              {["5 מודולים", "34 פרקים", "גישה מכל מכשיר", "זמין תמיד"].map((item) => (
-                <span
-                  key={item}
-                  className="flex items-center gap-2 text-sm font-black text-[#536052]"
-                >
-                  <CheckCircle2 size={17} className="shrink-0 text-[#7da457]" />
-                  {item}
-                </span>
-              ))}
-            </div>
+          <div className="mt-3 flex flex-wrap gap-x-7 gap-y-3 border-t border-[#cbd5c3] pt-5">
+            {["5 מודולים", "34 פרקים"].map((item) => (
+              <span key={item} className="flex items-center gap-2 text-sm font-black text-[#3e4d3c]">
+                <CheckCircle2 size={17} aria-hidden="true" className="shrink-0 text-[#4f7f1f]" />
+                {item}
+              </span>
+            ))}
           </div>
         </Reveal>
 
-        {/* התמונה */}
-        <Reveal
-          delay={130}
-          className="relative order-1 mx-auto w-full max-w-[38.75rem] lg:order-2 lg:mx-0"
-        >
-          {/* המסגרות בפינות */}
-          <div className="rounded-xl pointer-events-none absolute -left-3 -top-3 h-20 w-20 border-l border-t border-[#8da678] md:-left-5 md:-top-5 md:h-28 md:w-28" />
-
-          <div className="rounded-xl pointer-events-none absolute -bottom-3 -right-3 h-20 w-20 border-b border-r border-[#8da678] md:-bottom-5 md:-right-5 md:h-28 md:w-28" />
-
-          <div className="relative grid grid-cols-[minmax(0,1fr)_82px] gap-2 md:grid-cols-[minmax(0,1fr)_120px] md:gap-3">
-            {/* התמונה הראשית */}
-            <div className="rounded-xl overflow-hidden bg-[#1e3021] p-1.5 shadow-[14px_14px_0_rgba(55,78,51,.10)] md:p-2 md:shadow-[18px_18px_0_rgba(55,78,51,.10)]">
-              <img
-                src={heroModelV2}
-                alt="מודל של בית פרטי על גבי תכניות"
-                className="h-full min-h-[19.375rem] w-full object-cover sm:min-h-[25rem] md:min-h-[29.375rem]"
-              />
-            </div>
-
-            {/* שלושת הריבועים */}
-            <div className="grid grid-rows-3 gap-2  md:gap-3 ">
-              {/* ריבוע ראשון */}
-              <div className="flex min-h-0 flex-col justify-between bg-[#203123] p-3 text-white md:p-5 rounded-xl">
-                <Route size={22} className="text-[#afd180] md:h-7 md:w-7" />
-
-                <p className="text-[0.6875rem] font-black leading-4 md:text-sm md:leading-5">
-                  מסלול
-                  <br />
-                  ברור
-                </p>
-              </div>
-
-              {/* ריבוע שני */}
-              <div className=" rounded-xl flex min-h-0 flex-col justify-between border border-[#aebda4] bg-white/80 p-3 backdrop-blur md:p-5">
-                <ClipboardCheck size={22} className="text-[#729750] md:h-7 md:w-7" />
-
-                <p className="text-[0.625rem] font-black leading-4 text-[#445143] md:text-xs md:leading-5">
-                  פותחים
-                  <br />
-                  בודקים
-                  <br />
-                  ממשיכים
-                </p>
-              </div>
-
-              {/* ריבוע שלישי */}
-              <div className="rounded-xl flex min-h-0 flex-col justify-between bg-[#789B59] p-3 text-[#1a1a1a] md:p-5">
-                <CheckCircle2 size={22} className="text-[#e3f0d2] md:h-7 md:w-7" />
-
-                <div>
-                  <p className="text-[0.6875rem] font-black leading-4 md:text-sm md:leading-5">
-                    זמין
-                    <br />
-                    תמיד
-                  </p>
-
-                  <p className="mt-1 hidden text-[0.625rem] font-bold text-[#1a1a1a] md:block">
-                    מכל מכשיר
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* שלושת הריבועים: בטלפון שורה אחת מתחת לטקסט, במחשב טור משמאל */}
+        <Reveal delay={130} className="grid w-full grid-cols-3 gap-3 sm:gap-4 xl:w-[13.125rem] xl:shrink-0 xl:grid-cols-1 xl:grid-rows-3">
+          {TILES.map((tile) => (
+            <Tile key={tile.title.join(" ")} {...tile} />
+          ))}
         </Reveal>
       </div>
     </section>
