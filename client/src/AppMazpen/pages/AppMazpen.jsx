@@ -178,9 +178,9 @@ function CompassPage() {
           <div className="relative flex items-end justify-center gap-3 px-2 pb-6 sm:gap-6 md:gap-10">
             {/* צל רך על "הרצפה" מתחת לטלפונים */}
             <span aria-hidden="true" className="absolute bottom-0 left-1/2 h-10 w-[80%] max-w-[46rem] -translate-x-1/2 rounded-[50%] bg-[#1f2b22]/15 blur-2xl" />
-            <PhoneMockup src={screen3} alt="מסך מודולים" className="w-[27%] max-w-[13.75rem] translate-y-8 -rotate-3" />
-            <PhoneMockup src={screen2} alt="מסך רשימת משימות" className="z-10 w-[31%] max-w-[15.625rem]" />
-            <PhoneMockup src={screen1} alt="מסך מילון מושגים" className="w-[27%] max-w-[13.75rem] translate-y-8 rotate-3" />
+            <PhoneMockup src={screen3} alt="מסך מודולים" className="w-[23%] max-w-[11.5rem] translate-y-8 -rotate-3" />
+            <PhoneMockup src={screen2} alt="מסך רשימת משימות" className="z-10 w-[27%] max-w-[13.25rem]" />
+            <PhoneMockup src={screen1} alt="מסך מילון מושגים" className="w-[23%] max-w-[11.5rem] translate-y-8 rotate-3" />
           </div>
         </div>
       </section>
