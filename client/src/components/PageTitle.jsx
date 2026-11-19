@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { PAGES, SITE_NAME, SITE_URL } from "../seo/pages";
+import { PAGES, SITE_NAME, SITE_URL, fullTitle as buildTitle } from "../seo/pages";
 import { YEARS_OF_EXPERIENCE } from "../utils/experience";
 
 // משנה (או יוצר) תגית meta בראש הדף
@@ -22,7 +22,7 @@ export default function PageTitle({ title, children }) {
 
   useEffect(() => {
     const page = PAGES[pathname] || {};
-    const fullTitle = (page.title || title) ? `${page.title || title} | ${SITE_NAME}` : SITE_NAME;
+    const fullTitle = buildTitle(pathname, page.title || title);
     document.title = fullTitle;
 
     if (page.description) {

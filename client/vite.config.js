@@ -6,7 +6,7 @@ import fs from 'node:fs'
 import process from 'node:process'
 import path from 'node:path'
 import { YEARS_OF_EXPERIENCE } from './src/utils/experience.js'
-import { PAGES, SITE_NAME } from './src/seo/pages.js'
+import { PAGES, fullTitle } from './src/seo/pages.js'
 
 // הכתובת המלאה של האתר (בשביל sitemap.xml ו-robots.txt).
 // ב-Render מגדירים SITE_URL במשתני הסביבה. ברירת המחדל - הדומיין של האתר
@@ -20,7 +20,7 @@ const PRIVATE_PAGES = ['/thank-you', '/pay', '/payment-result']
 const escapeAttr = (text) => text.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;')
 const fillSeo = (html, page) => {
   const meta = PAGES[page] || PAGES['/']
-  const title = `${meta.title} | ${SITE_NAME}`
+  const title = fullTitle(PAGES[page] ? page : '/', meta.title)
   const description = meta.description.replaceAll('%YEARS%', String(YEARS_OF_EXPERIENCE))
   return html
     .replaceAll('%SEO_TITLE%', escapeAttr(title))
