@@ -61,6 +61,10 @@ services:
       - path: /*
         name: X-Frame-Options
         value: DENY
+      # גוגל ומנועי חיפוש לא יוסיפו את הפאנל לתוצאות (גם קבצים שאינם HTML)
+      - path: /*
+        name: X-Robots-Tag
+        value: noindex, nofollow
       - path: /*
         name: X-Content-Type-Options
         value: nosniff

@@ -49,3 +49,11 @@ export const PAGES = {
     description: "הצהרת הנגישות של אתר סרויה ניהול פרויקטים.",
   },
 };
+
+// הכותרת המלאה של עמוד (לשונית הדפדפן וגוגל).
+// בדף הבית שם העסק בא ראשון, כדי שגוגל יזהה אותו כשם האתר ויציג אותו מעל הכתובת.
+// בשאר העמודים שם העמוד ראשון ושם העסק אחריו.
+export const fullTitle = (path, title) => {
+  if (!title) return SITE_NAME;
+  return path === "/" ? `${SITE_NAME} | ${title}` : `${title} | ${SITE_NAME}`;
+};

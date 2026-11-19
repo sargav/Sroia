@@ -100,16 +100,15 @@ export default function Hero() {
 
           {/* אזור הטקסט - שכבה אחת שעוברת מטושטשת לחדה */}
           <div className="hero-text-focus">
-            {/* תווית עליונה */}
-            <div className="mb-5 flex items-center justify-center gap-3">
-              <span className="h-[2px] w-14 bg-[#4A7322]" aria-hidden="true" />
-              <span className="text-[1.0625rem] font-bold tracking-[0.15em] text-[#3F6B1E]">
-                ליווי בנייה פרטית
-              </span>
-              <span className="h-[2px] w-14 bg-[#4A7322]" aria-hidden="true" />
-            </div>
-
             <h1 className="mb-5 text-[2rem] font-black leading-[1.25] text-[#252A22] sm:text-[2.25rem] md:text-[2.5rem]">
+              {/* תווית עליונה עם שם העסק. היא חלק מה-H1 כדי שגוגל יראה את שם העסק בכותרת הראשית של דף הבית */}
+              <span className="mb-5 flex items-center justify-center gap-3">
+                <span className="h-[2px] w-14 bg-[#4A7322]" aria-hidden="true" />
+                <span className="text-[1.0625rem] font-bold leading-normal tracking-[0.15em] text-[#3F6B1E]">
+                  סרויה ניהול פרויקטים
+                </span>
+                <span className="h-[2px] w-14 bg-[#4A7322]" aria-hidden="true" />
+              </span>
               <span className="block">בונים בית פרטי?</span>
               <span className="block text-[#4A7322]">
                 {/* במסך צר נשבר בין שני הצירופים ולא באמצע */}
