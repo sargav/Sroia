@@ -1,12 +1,55 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Compass } from "lucide-react";
 import Reveal from "../components/Reveal";
 
 const RADIUS = 40; // רדיוס הטבעת, באחוזים מהמסגרת
+const TOUR_STEP_MS = 380; // כמה זמן כל תחנה מוצגת בסיבוב הפתיחה
 
 export default function MistakesCompass({ mistakes }) {
   const [active, setActive] = useState(0);
+  const [touring, setTouring] = useState(false);
+  const sectionRef = useRef(null);
+  const timersRef = useRef([]);
   const n = mistakes.length;
+
+  // עצירת סיבוב הפתיחה (למשל כשהמשתמש לוחץ בעצמו)
+  const stopTour = () => {
+    timersRef.current.forEach(clearTimeout);
+    timersRef.current = [];
+    setTouring(false);
+  };
+
+  // סיבוב פתיחה: בפעם הראשונה שהקטע נראה במסך, המחט עוברת מהר על כל התחנות
+  // וחוזרת לראשונה, כדי שיהיה ברור שאפשר לעבור ביניהן
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section || n < 2) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        setTouring(true);
+        for (let i = 1; i <= n; i++) {
+          timersRef.current.push(
+            setTimeout(() => {
+              setActive(i % n);
+              if (i === n) setTouring(false);
+            }, 600 + i * TOUR_STEP_MS)
+          );
+        }
+      },
+      { threshold: 0.45 }
+    );
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+      timersRef.current.forEach(clearTimeout);
+      timersRef.current = [];
+    };
+  }, [n]);
 
   // מיקום כל תחנה על הטבעת, עם כיוון השעון החל מהראש
   const points = mistakes.map((_, i) => {
@@ -21,11 +64,17 @@ export default function MistakesCompass({ mistakes }) {
 
   const [title, text] = mistakes[active];
   const num = String(active + 1).padStart(2, "0");
-  const next = () => setActive((a) => (a + 1) % n);
-  const prev = () => setActive((a) => (a - 1 + n) % n);
+  const next = () => {
+    stopTour();
+    setActive((a) => (a + 1) % n);
+  };
+  const prev = () => {
+    stopTour();
+    setActive((a) => (a - 1 + n) % n);
+  };
 
   return (
-    <section className="relative overflow-hidden bg-[#F5F6F1] px-5 py-14 text-[#2D382B] md:px-10 md:py-20">
+    <section ref={sectionRef} className="relative overflow-hidden bg-[#F5F6F1] px-5 py-14 text-[#2D382B] md:px-10 md:py-20">
       {/* עיטורי רקע */}
       <div className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-[#EDE6DB]/70 blur-3xl" />
 
@@ -89,7 +138,10 @@ export default function MistakesCompass({ mistakes }) {
                   <button
                     key={label}
                     type="button"
-                    onClick={() => setActive(i)}
+                    onClick={() => {
+                      stopTour();
+                      setActive(i);
+                    }}
                     aria-label={label}
                     aria-pressed={isActive}
                     style={{ left: `${points[i].left}%`, top: `${points[i].top}%` }}
@@ -110,7 +162,7 @@ export default function MistakesCompass({ mistakes }) {
 
           {/* התוכן של התחנה הפעילה */}
           <Reveal delay={100}>
-            <article aria-live="polite" className="group relative min-h-[15.625rem] overflow-hidden rounded-[8px_30px_8px_30px] border border-[#D3DECC] bg-white/85 p-6 shadow-[0_12px_35px_rgba(65,83,56,.06)] backdrop-blur-sm md:p-8">
+            <article aria-live={touring ? "off" : "polite"} className="group relative min-h-[15.625rem] overflow-hidden rounded-[8px_30px_8px_30px] border border-[#D3DECC] bg-white/85 p-6 shadow-[0_12px_35px_rgba(65,83,56,.06)] backdrop-blur-sm md:p-8">
               <span
                 aria-hidden="true"
                 className="pointer-events-none absolute -left-2 -top-6 select-none text-[7.5rem] font-black leading-none text-[#7E9D65]/[0.07]"
