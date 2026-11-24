@@ -21,9 +21,10 @@
   width: 3.75rem;
   height: 3.75rem;
   border-radius: 9999px;
-  border: 1px solid rgba(141, 198, 63, 0.55);
-  background: var(--a11y-bg);
-  color: var(--a11y-accent);
+  border: 1px solid rgba(128, 204, 40, 0.55);
+  /* צבעי הכפתור מתוך פלטת האתר: הגוון של הפס העליון, והאייקון בירוק המותג */
+  background: var(--color-chrome);
+  color: var(--color-brand);
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
   cursor: pointer;
   transition: background-color 0.25s ease, border-color 0.25s ease;
@@ -59,8 +60,8 @@
 
 /* במעבר עכבר: גוון עדין ובהיר יותר של הרקע */
 .a11y-launcher:hover {
-  background: #1d2738;
-  border-color: rgba(141, 198, 63, 0.85);
+  background: #1F2A1C;
+  border-color: rgba(128, 204, 40, 0.85);
 }
 .a11y-launcher.has-changes::after {
   content: "";
@@ -70,8 +71,8 @@
   width: 0.75rem;
   height: 0.75rem;
   border-radius: 9999px;
-  background: var(--a11y-accent);
-  border: 2px solid var(--a11y-bg);
+  background: var(--color-brand);
+  border: 2px solid var(--color-chrome);
 }
 
 .a11y-panel {
