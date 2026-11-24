@@ -78,13 +78,31 @@ export default function AccessibilityMenu() {
     const panelRef = useAccessibleDialog(isOpen, () => setIsOpen(false));
     const percent = 100 + settings.textScale * 10;
 
+    // בנייד: הכפתור נעלם בזמן גלילה וחוזר כחצי שנייה אחרי שהגלילה נעצרת
+    const [isScrolling, setIsScrolling] = useState(false);
+    useEffect(() => {
+        const mobile = window.matchMedia("(max-width: 767px)");
+        let timer;
+        function onScroll() {
+            if (!mobile.matches) return;
+            setIsScrolling(true);
+            clearTimeout(timer);
+            timer = setTimeout(() => setIsScrolling(false), 600);
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            clearTimeout(timer);
+        };
+    }, []);
+
     return (
         <div className="a11y-root" dir="rtl">
             {settings.readingGuide && <ReadingGuide />}
 
             <button
                 type="button"
-                className={`a11y-launcher ${isChanged ? "has-changes" : ""}`}
+                className={`a11y-launcher ${isChanged ? "has-changes" : ""} ${isScrolling && !isOpen ? "is-scrolling" : ""}`}
                 onClick={() => setIsOpen((open) => !open)}
                 aria-label="תפריט נגישות"
                 aria-expanded={isOpen}
