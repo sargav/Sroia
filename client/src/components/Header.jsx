@@ -2,7 +2,9 @@ import { useState, useRef, useEffect } from 'react';
 import { NavLink } from 'react-router-dom'
 import { FaInstagram, FaFacebookF, FaWhatsapp } from 'react-icons/fa'
 import '../App.css'
-import logowhite from '../images/logowhite.png'
+// הלוגו בקובץ וקטורי (חד בכל גודל), בגרסה לבנה לפס הכהה.
+// הקו של המלל הקטן מעובה מעט כדי שיהיה קריא בגודל של הפס
+import logowhite from '../images/sroia-logo-white.svg'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -56,7 +58,7 @@ const Header = () => {
     <header className="relative bg-gray-900 text-white px-6 md:px-10 border-b border-neutral-800">
 
       {/* Header */}
-      <div className="relative max-w-7xl mx-auto h-28 flex items-center justify-between">
+      <div className="relative max-w-7xl mx-auto h-24 md:h-28 flex items-center justify-between">
 
         {/* צד שמאל - המבורגר */}
         <div className="relative z-20">
@@ -109,7 +111,7 @@ const Header = () => {
               id="main-menu"
               aria-label="ניווט ראשי"
               dir="rtl"
-              className="absolute top-14 left-0 w-64 bg-gray-900/95 backdrop-blur-md rounded-2xl border border-gray-800 shadow-2xl z-50 p-4"
+              className="absolute top-[4.625rem] md:top-[5rem] left-0 w-64 bg-gray-900/95 backdrop-blur-md rounded-2xl border border-gray-800 shadow-2xl z-50 p-4"
             >
               <ul className="flex flex-col gap-2">
 
@@ -141,15 +143,15 @@ const Header = () => {
           <NavLink to="/">
             <img
               src={logowhite}
-              alt="סרויה ניהול פרויקטים - לדף הבית"
-              className="h-28 md:h-32 w-auto object-contain"
+              alt="סרויה ניהול פרויקטים ופיקוח בנייה - לדף הבית"
+              className="h-[2.625rem] min-[360px]:h-[3.125rem] min-[380px]:h-[3.625rem] md:h-[4.75rem] w-auto"
             />
           </NavLink>
         </div>
 
 
         {/* צד ימין - רשתות חברתיות */}
-        <div className="flex items-center gap-4 z-20">
+        <div className="flex items-center gap-2 min-[360px]:gap-3 md:gap-4 z-20">
 
           {/* Instagram */}
           <a
