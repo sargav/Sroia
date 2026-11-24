@@ -137,6 +137,8 @@ export default function Hero() {
               <strong className="font-extrabold text-[#252A22]">
                 סרויה ניהול פרויקטים ופיקוח בנייה
               </strong>{" "}
+              {/* במחשב שם החברה בשורה נפרדת */}
+              <br className="hidden md:block" />
               מלווה אתכם מרכישת המגרש ועד קבלת המפתח.
             </p>
             <p className="mx-auto mb-4 max-w-[35rem] text-balance text-[1rem] font-medium leading-[1.75] text-[#3F463A] md:mb-[1.125rem] md:leading-[1.8]">
