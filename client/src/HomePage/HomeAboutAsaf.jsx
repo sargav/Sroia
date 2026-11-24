@@ -118,7 +118,7 @@ export default function AboutAsaf() {
         <div className="px-4 pb-9 pt-5 md:px-12 lg:px-16 lg:pb-10 lg:pt-10">
           {/* כותרת קטנה וציטוט - ממורכזים */}
           <div className="mx-auto mb-8 max-w-[70rem] text-center lg:mb-9">
-            <p className={`mb-4 ${THEME.tag} text-[1rem] font-bold leading-snug tracking-[0.04em] md:text-[1.0625rem] md:tracking-[0.1em]`}>
+            <p className={`mb-4 ${THEME.tag} text-[1rem] font-bold leading-snug tracking-[0.03em] md:text-[1.0625rem] md:tracking-[0.12em]`}>
               {/* בנייד השם והתפקיד בשתי שורות, במחשב בשורה אחת עם קו מפריד */}
               <span className="block md:inline">אסף סרויה</span>
               <span className="hidden md:inline" aria-hidden="true">
@@ -137,7 +137,7 @@ export default function AboutAsaf() {
               >
                 ”
               </span>
-              <blockquote className="text-balance text-[1.25rem] min-[380px]:text-[1.375rem] font-extrabold leading-[1.45] md:text-[2rem] lg:text-[2.25rem]">
+              <blockquote className="text-balance text-[1.25rem] min-[380px]:text-[1.375rem] font-black leading-[1.45] md:text-[2rem] lg:text-[2.25rem]">
                 <span className={`block ${THEME.quote1}`}>
                   מאחורי כל פרויקט יש משפחה, חלום והשקעה של שנים.
                 </span>
@@ -163,7 +163,7 @@ export default function AboutAsaf() {
             }`}
           >
             <div className={PHOTO_SIDE === "right" ? "lg:order-2" : ""}>
-              <div className={`mb-7 space-y-4 border-r-2 ${THEME.rule} pr-5 text-[1.125rem] leading-[1.8] ${THEME.body} lg:mb-7`}>
+              <div className={`mb-7 space-y-4 border-r-2 ${THEME.rule} pr-5 text-[1.125rem] font-medium leading-[1.8] ${THEME.body} lg:mb-7`}>
                 <p>
                   אסף סרויה צמח מתוך עולם הבנייה והביצוע ומביא איתו למעלה
                   מ־{YEARS_OF_EXPERIENCE} שנות ניסיון בקבלנות, בניהול ובפיקוח
@@ -221,7 +221,7 @@ export default function AboutAsaf() {
               >
                 {item.number}
               </dd>
-              <dt className={`order-last mt-2 text-[0.875rem] font-semibold leading-snug ${THEME.label} sm:text-[0.9375rem]`}>
+              <dt className={`order-last mt-2 text-[0.875rem] font-bold leading-snug ${THEME.label} sm:text-[0.9375rem]`}>
                 {item.text}
               </dt>
             </div>
