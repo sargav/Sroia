@@ -28,6 +28,35 @@
   cursor: pointer;
   transition: background-color 0.25s ease, border-color 0.25s ease;
 }
+/* בזמן גלילה בנייד הכפתור נעלם, כדי לא להסתיר תוכן, וחוזר כשהגלילה נעצרת */
+.a11y-launcher {
+  transition: background-color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+.a11y-launcher.is-scrolling {
+  opacity: 0;
+  transform: translateY(0.5rem);
+  pointer-events: none;
+}
+
+/* בנייד: כפתור קטן יותר, בצד שמאל של המסך */
+@media (max-width: 767px) {
+  .a11y-launcher {
+    right: auto;
+    left: 0.75rem;
+    width: 3rem;
+    height: 3rem;
+  }
+  .a11y-launcher svg {
+    width: 24px;
+    height: 24px;
+  }
+  .a11y-panel {
+    right: auto;
+    left: 0.75rem;
+    bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 /* במעבר עכבר: גוון עדין ובהיר יותר של הרקע */
 .a11y-launcher:hover {
   background: #1d2738;
