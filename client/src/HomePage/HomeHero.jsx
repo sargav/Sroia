@@ -133,7 +133,7 @@ export default function Hero() {
               </span>
             </h1>
 
-            <p className="mx-auto mb-2.5 max-w-[35rem] text-balance text-[1rem] font-medium leading-[1.75] text-[#3F463A] md:leading-[1.8]">
+            <p className="mx-auto mb-2.5 max-w-[35rem] md:mb-0 text-balance text-[1rem] font-medium leading-[1.75] text-[#3F463A] md:leading-[1.8]">
               <strong className="font-extrabold text-[#252A22]">
                 סרויה ניהול פרויקטים ופיקוח בנייה
               </strong>{" "}
