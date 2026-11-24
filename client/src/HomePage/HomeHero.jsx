@@ -98,8 +98,18 @@ export default function Hero() {
             "linear-gradient(to bottom, rgba(248,246,239,0.82) 0%, rgba(248,246,239,0.82) calc(100% - 190px), rgba(248,246,239,0.25) calc(100% - 40px), rgba(248,246,239,0.1) 100%)",
         }}
       />
+      {/* בטאבלט הטקסט רחב יחסית למסך, ולכן השכבה הבהירה על כל הרוחב */}
+      <div className="pointer-events-none absolute inset-0 -z-20 hidden bg-[#F8F6EF]/[0.93] md:block lg:hidden" />
+      {/* במסך מחשב קטן הטקסט מתקרב לאמצע, ולכן השכבה הבהירה מעט רחבה יותר */}
       <div
-        className="pointer-events-none absolute inset-0 -z-20 hidden md:block"
+        className="pointer-events-none absolute inset-0 -z-20 hidden lg:block xl:hidden"
+        style={{
+          background:
+            "linear-gradient(to left, rgba(248,246,239,0.93) 0%, rgba(248,246,239,0.93) 60%, rgba(248,246,239,0.2) 88%, rgba(248,246,239,0) 100%)",
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 -z-20 hidden xl:block"
         style={{
           background:
             "linear-gradient(to left, rgba(248,246,239,0.93) 0%, rgba(248,246,239,0.93) 48%, rgba(248,246,239,0.2) 80%, rgba(248,246,239,0) 100%)",
