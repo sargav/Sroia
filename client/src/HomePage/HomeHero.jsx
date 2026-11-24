@@ -2,13 +2,20 @@ import { useNavigate } from "react-router-dom";
 import heroImg from "./assets/hero.webp";
 
 
+// שלושת הפתרונות שהחברה מציעה
+const SERVICES = [
+  "ניהול פרויקט מלא",
+  'קורס "בית בשתי ידיים"',
+  'אפליקציית "המצפן לבונה"',
+];
+
 export default function Hero() {
   const navigate = useNavigate();
 
   return (
     <section
       dir="rtl"
-      className="relative isolate flex min-h-[42.5rem] items-center overflow-hidden bg-[#F7F5EF] font-['Heebo',sans-serif] md:min-h-[42.5rem]"
+      className="relative isolate overflow-hidden bg-[#F7F5EF] font-['Heebo',sans-serif] md:flex md:min-h-[42.5rem] md:items-center"
     >
       <style>{`
         @keyframes hero-image-in {
@@ -78,14 +85,31 @@ export default function Hero() {
       <img
         src={heroImg}
         alt="בית פרטי"
-        className="hero-image-in absolute inset-0 -z-30 h-full w-full object-cover"
+        className="hero-image-in absolute inset-0 -z-30 h-full w-full object-cover object-[30%_center] md:object-center"
       />
 
       {/* שכבת שמנת שמבהירה את אזור הטקסט:
-          במובייל על כל הרוחב, ובמסך רחב רק בצד ימין כך שהתמונה נחשפת לכיוון שמאל */}
-      <div className="pointer-events-none absolute inset-0 -z-20 bg-[#F8F6EF]/[0.93] md:hidden" />
+          במובייל מאחורי הטקסט, ומתחת לכפתורים התמונה נחשפת.
+          במסך רחב רק בצד ימין כך שהתמונה נחשפת לכיוון שמאל */}
       <div
-        className="pointer-events-none absolute inset-0 -z-20 hidden md:block"
+        className="pointer-events-none absolute inset-0 -z-20 md:hidden"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(248,246,239,0.82) 0%, rgba(248,246,239,0.82) calc(100% - 190px), rgba(248,246,239,0.25) calc(100% - 40px), rgba(248,246,239,0.1) 100%)",
+        }}
+      />
+      {/* בטאבלט הטקסט רחב יחסית למסך, ולכן השכבה הבהירה על כל הרוחב */}
+      <div className="pointer-events-none absolute inset-0 -z-20 hidden bg-[#F8F6EF]/[0.93] md:block lg:hidden" />
+      {/* במסך מחשב קטן הטקסט מתקרב לאמצע, ולכן השכבה הבהירה מעט רחבה יותר */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-20 hidden lg:block xl:hidden"
+        style={{
+          background:
+            "linear-gradient(to left, rgba(248,246,239,0.93) 0%, rgba(248,246,239,0.93) 60%, rgba(248,246,239,0.2) 88%, rgba(248,246,239,0) 100%)",
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 -z-20 hidden xl:block"
         style={{
           background:
             "linear-gradient(to left, rgba(248,246,239,0.93) 0%, rgba(248,246,239,0.93) 48%, rgba(248,246,239,0.2) 80%, rgba(248,246,239,0) 100%)",
@@ -95,39 +119,56 @@ export default function Hero() {
       {/* שכבה תחתונה עדינה */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-20 h-[35%] bg-gradient-to-t from-[#F4F0E7]/35 to-transparent" />
 
-      <div className="relative mx-auto w-full max-w-[80rem] px-6 py-20 md:px-12 lg:px-20">
-        <div className="mx-auto max-w-[35rem] text-center md:mx-0">
+      <div className="relative mx-auto w-full max-w-[80rem] px-5 pb-[10.625rem] pt-8 md:px-12 md:py-16 lg:px-20">
+        <div className="mx-auto max-w-[36.25rem] text-center md:mx-0">
 
           {/* אזור הטקסט - שכבה אחת שעוברת מטושטשת לחדה */}
           <div className="hero-text-focus">
             {/* תווית עליונה */}
-            <div className="mb-5 flex items-center justify-center gap-3">
-              <span className="h-[2px] w-14 bg-[#4A7322]" aria-hidden="true" />
-              <span className="text-[1.0625rem] font-bold tracking-[0.15em] text-[#3F6B1E]">
-                ליווי בנייה פרטית
+            <div className="mb-3.5 flex items-center justify-center gap-2 md:mb-5 md:gap-3">
+              <span className="h-[2px] w-5 shrink-0 bg-[#2F5216] md:w-14 md:bg-[#4A7322]" aria-hidden="true" />
+              <span className="whitespace-nowrap text-[0.9375rem] font-bold tracking-[0.03em] text-[#2F5216] md:text-[1.0625rem] md:tracking-[0.12em] md:text-[#3F6B1E]">
+                המעטפת המקצועית לבונה הפרטי
               </span>
-              <span className="h-[2px] w-14 bg-[#4A7322]" aria-hidden="true" />
+              <span className="h-[2px] w-5 shrink-0 bg-[#2F5216] md:w-14 md:bg-[#4A7322]" aria-hidden="true" />
             </div>
 
-            <h1 className="mb-5 text-[2rem] font-black leading-[1.25] text-[#252A22] sm:text-[2.25rem] md:text-[2.5rem]">
+            <h1 className="mb-4 text-[1.875rem] font-black leading-[1.25] text-[#252A22] sm:text-[2.25rem] md:mb-5 md:text-[2.5rem]">
               <span className="block">בונים בית פרטי?</span>
               <span className="block text-[#4A7322]">
-                {/* במסך צר נשבר בין שני הצירופים ולא באמצע */}
-                <span className="inline-block">בלי חריגות.</span>{" "}
-                <span className="inline-block">בלי הפתעות.</span>
+                {/* במסך צר נשבר בין המילים ולא באמצע צירוף */}
+                <span className="inline-block">ידע.</span>{" "}
+                <span className="inline-block">שליטה.</span>{" "}
+                <span className="inline-block">שקט נפשי.</span>
               </span>
             </h1>
 
-            <p className="mx-auto mb-7 max-w-[31.25rem] text-[0.9375rem] font-medium leading-[1.8] text-[#3F463A] md:text-[1rem]">
+            <p className="mx-auto mb-2.5 max-w-[35rem] md:mb-0 text-balance text-[1rem] font-medium leading-[1.75] text-[#3F463A] md:leading-[1.8]">
               <strong className="font-extrabold text-[#252A22]">
-                סרויה ניהול פרויקטים
+                סרויה ניהול פרויקטים ופיקוח בנייה
               </strong>{" "}
-              מלווה אתכם יד ביד,
-              <br />
-              מרכישת המגרש ועד קבלת המפתח.
-              <br />
-              ללא חריגות תקציב, ללא טעויות יקרות ובסטנדרט הגבוה ביותר.
+              {/* במחשב שם החברה בשורה נפרדת */}
+              <br className="hidden md:block" />
+              מלווה אתכם מרכישת המגרש ועד קבלת המפתח.
             </p>
+            <p className="mx-auto mb-4 max-w-[35rem] text-balance text-[1rem] font-medium leading-[1.75] text-[#3F463A] md:mb-[1.125rem] md:leading-[1.8]">
+              בניהול מקצועי מלא או בבנייה עצמאית, אנחנו מעניקים לכם את הידע
+              והכלים לקבל החלטות נכונות, לחסוך טעויות יקרות ולבנות באיכות
+              גבוהה.
+            </p>
+
+            {/* שלושת השירותים: בנייד עם נקודה לכל פריט, במסך רחב עם נקודות מפרידות */}
+            <ul className="mb-[1.375rem] flex flex-wrap justify-center gap-x-3.5 gap-y-1.5 text-[0.875rem] font-bold text-[#2F5216] md:mb-[1.625rem] md:gap-x-2.5 md:text-[#3F6B1E]">
+              {SERVICES.map((service, index) => (
+                <li key={service} className="inline-flex items-center gap-1.5 whitespace-nowrap md:gap-2.5">
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#4A7322] md:hidden" aria-hidden="true" />
+                  {index > 0 && (
+                    <span className="hidden md:inline" aria-hidden="true">·</span>
+                  )}
+                  {service}
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* כפתורים */}
