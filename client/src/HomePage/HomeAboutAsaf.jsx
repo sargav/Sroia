@@ -1,136 +1,120 @@
 import { YEARS_OF_EXPERIENCE } from "../utils/experience";
 import useSiteStats, { formatSavings } from "../utils/useSiteStats";
-import asafImg from './assets/asaf-site.webp'
+import asafImg from "./assets/asaf-personal.jpg";
+
+// שלושת הערכים שמוצגים ככפתורים עם סימן וי
+const VALUES = [
+  "100% מחויבות ואכפתיות",
+  "מקצועיות וניסיון בשטח",
+  "שליטה תקציבית מוחלטת",
+];
+
+function CheckIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#9ED164"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className="shrink-0"
+    >
+      <path d="M5 12l5 5 9-10" />
+    </svg>
+  );
+}
 
 export default function AboutAsaf() {
   // מספר הפרויקטים והחיסכון - מתעדכנים מפאנל הניהול
-  const { projectsCount, avgSavings } = useSiteStats()
+  const { projectsCount, avgSavings } = useSiteStats();
 
   const stats = [
-    {
-      number: `${YEARS_OF_EXPERIENCE}+`,
-      text: 'שנות ניסיון בשטח',
-    },
-    {
-      number: `${projectsCount}+`,
-      text: 'פרויקטים שליווינו',
-    },
-    {
-      number: formatSavings(avgSavings),
-      text: 'חיסכון ממוצע ללקוח',
-    },
-  ]
+    { number: `${YEARS_OF_EXPERIENCE}+`, text: "שנות ניסיון בשטח" },
+    { number: `${projectsCount}+`, text: "פרויקטים שליווינו" },
+    { number: formatSavings(avgSavings), text: "חיסכון ממוצע ללקוח" },
+  ];
 
   return (
     <section
       dir="rtl"
-      className="relative overflow-hidden bg-gradient-to-br from-[#FAFBF7] via-[#F6F8F1] to-[#F0F3E8] py-16 font-['Heebo',sans-serif] md:py-24"
+      className="bg-[#F6F8F1] px-4 py-14 font-['Heebo',sans-serif] md:px-6 md:py-20"
     >
-      {/* כתמי רקע עדינים */}
-      <div className="pointer-events-none absolute -right-24 -top-24 h-[21.25rem] w-[21.25rem] rounded-full bg-white/70 blur-3xl" />
-
-      <div className="pointer-events-none absolute -bottom-28 left-[5%] h-[23.125rem] w-[23.125rem] rounded-full bg-[#E5EBDD]/50 blur-3xl" />
-
-      <div className="relative z-10 mx-auto max-w-[73.75rem] px-6">
-        {/* התוכן הראשי */}
-        <div className="grid grid-cols-1 items-start gap-9 md:grid-cols-[auto_1fr] md:gap-16">
-          {/* תמונה ופרטים */}
-          <div className="flex items-center gap-4 md:flex-col md:items-start">
-            <div className="rounded-full border border-white bg-white/70 p-1.5 shadow-[0_12px_35px_rgba(55,75,40,0.12)]">
-              <img
-                src={asafImg}
-                alt="אסף סרויה"
-                className="h-[5.5rem] w-[5.5rem] rounded-full border-[3px] border-[#82BC3F] bg-[#F0F3E8] object-cover md:h-[8.75rem] md:w-[8.75rem]"
-              />
-            </div>
-
-            <div>
-              <h2 className="text-[1.1875rem] font-bold text-[#29352A]">
-                אסף סרויה
-              </h2>
-
-              <p className="mt-1 text-[0.875rem] font-medium text-[#66943B]">
-                מייסד ומוביל החברה
-              </p>
-            </div>
-          </div>
-
-          {/* טקסט */}
+      {/* כרטיס ירוק כהה: טקסט מימין, תמונה משמאל (במובייל התמונה למעלה) */}
+      <div className="mx-auto grid max-w-[77.5rem] overflow-hidden rounded-[2rem] bg-[#1F2E18] shadow-[0_30px_60px_rgba(31,46,24,0.18)] md:grid-cols-[1fr_27.5rem]">
+        <div className="order-2 flex flex-col justify-between gap-10 px-6 py-10 md:order-1 md:px-16 md:py-16">
           <div>
-            {/* המשפט המרכזי */}
-            <div className="relative mb-9 px-9 md:px-14">
-              {/* ציטוט פותח */}
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-1 -top-6 select-none font-serif text-[4.5rem] font-black leading-none text-[#67A42D]/40 md:-right-3 md:-top-9 md:text-[6.875rem]"
-              >
-                “
+            <p className="mb-4 text-[0.875rem] font-bold tracking-[0.15em] text-[#9ED164] md:text-[0.9375rem]">
+              <span>אסף סרויה</span>
+              <span className="hidden md:inline" aria-hidden="true">
+                {" · "}
               </span>
+              <span className="block md:inline">מנהל ומפקח בנייה פרטית</span>
+            </p>
 
-              <p className="relative z-10 text-[1.4375rem] font-bold leading-[1.55] text-[#29352A] md:text-[2.125rem]">
-                כל בית שאני מלווה מרגיש לי כמו הבית שלי.{' '}
+            <blockquote className="mb-5 text-[1.5rem] font-extrabold leading-[1.45] text-white md:text-[2rem]">
+              כל בית שאני מלווה מרגיש לי כמו הבית שלי.{" "}
+              <span className="text-[#9ED164]">אני לא עוזב פרויקט</span> עד
+              שאני בטוח שהמשפחה מקבלת בדיוק את מה שהיא חלמה עליו.
+            </blockquote>
 
-                <span className="relative inline-block text-[#579124]">
-                  אני לא עוזב פרויקט
+            <p className="mb-6 max-w-[37.5rem] text-[1rem] leading-[1.85] text-[#D5DAD2]">
+              בנייה פרטית היא תהליך מורכב ומבלבל, וכל טעות בדרך עולה כסף.
+              בליווי ובפיקוח הצמוד שלנו תחסכו זמן, כסף ועוגמת נפש, ותקבלו בית
+              בסטנדרט הבנייה הגבוה ביותר, בלי פשרות.
+            </p>
 
-                  <span className="absolute bottom-[2px] right-0 -z-10 h-[8px] w-full rounded-full bg-[#B7DE82]/55" />
-                </span>{' '}
-
-                עד שאני בטוח שהמשפחה מקבלת בדיוק את מה שהיא חלמה עליו.
-              </p>
-
-              {/* ציטוט סוגר */}
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute -bottom-10 left-0 select-none font-serif text-[4.5rem] font-black leading-none text-[#67A42D]/40 md:-bottom-14 md:-left-2 md:text-[6.875rem]"
-              >
-                ”
-              </span>
-            </div>
-
-            {/* פסקאות */}
-            <div className="max-w-[42.5rem] border-r-2 border-[#91C755]/40 pr-5">
-              <p className="mb-4 text-[1rem] font-normal leading-[1.9] text-[#4E594B]">
-                איש בנייה ותיק שהפך תשוקה לבנייה איכותית למקצוע חיים.
-                עם {YEARS_OF_EXPERIENCE} שנות ניסיון ומעל {projectsCount} פרויקטים שליווה מהיסוד ועד
-                למפתח, אסף מכיר את כל המהמורות שבדרך — ויודע איך לחסוך
-                לכם אותן.
-              </p>
-
-              <p className="text-[1rem] font-normal leading-[1.9] text-[#4E594B]">
-                הניסיון הרב שצבר בשטח, לצד היכרות מעמיקה עם קבלני
-                ויועצי הבנייה המובילים באזור, הוא מה שמאפשר לו להבטיח
-                לכם ליווי צמוד, שקוף ואמין — מהרגע הראשון ועד קבלת
-                המפתח.
-              </p>
-            </div>
+            <ul className="flex flex-wrap gap-2.5">
+              {VALUES.map((value) => (
+                <li
+                  key={value}
+                  className="inline-flex items-center gap-2 rounded-full border border-[#9ED164]/35 bg-white/[0.08] px-4 py-2.5 text-[0.9375rem] font-semibold text-white"
+                >
+                  <CheckIcon />
+                  {value}
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
 
-        {/* נתונים בשורה קומפקטית */}
-        <div className="mt-12 overflow-hidden rounded-xl border border-[#81AF51]/20 bg-white/55 shadow-[0_8px_25px_rgba(55,75,40,0.06)] md:mt-16">
-          <div className="grid grid-cols-1 sm:grid-cols-3">
+          {/* מספרים */}
+          <div className="grid grid-cols-3 border-t border-white/[0.18] pt-8">
             {stats.map((item, index) => (
               <div
                 key={item.text}
-                className={`flex items-center justify-center gap-3 px-5 py-5 ${
-                  index !== 0
-                    ? 'border-t border-[#81AF51]/20 sm:border-r sm:border-t-0'
-                    : ''
+                className={`px-2 md:px-7 ${
+                  index !== 0 ? "border-r border-white/[0.18]" : "md:pr-0"
                 }`}
               >
-                <span className="text-[1.5625rem] font-bold text-[#639F2B]">
+                <div
+                  dir="ltr"
+                  className="text-right text-[1.75rem] font-black leading-none text-[#9ED164] md:text-[3.25rem]"
+                >
                   {item.number}
-                </span>
-
-                <span className="text-[0.875rem] font-medium text-[#465341]">
+                </div>
+                <div className="mt-2 text-[0.8125rem] font-semibold text-[#D5DAD2] md:text-[0.9375rem]">
                   {item.text}
-                </span>
+                </div>
               </div>
             ))}
           </div>
         </div>
+
+        {/* תמונה */}
+        <div className="relative order-1 h-[20rem] md:order-2 md:h-auto">
+          <img
+            src={asafImg}
+            alt="אסף סרויה"
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover object-[40%_25%]"
+          />
+          {/* מעבר רך לירוק בצד של הטקסט */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#1F2E18] to-transparent md:inset-y-0 md:right-0 md:left-auto md:h-auto md:w-[11rem] md:bg-gradient-to-l md:from-[#1F2E18] md:via-[#1F2E18]/60" />
+        </div>
       </div>
     </section>
-  )
+  );
 }
