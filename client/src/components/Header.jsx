@@ -55,7 +55,7 @@ const Header = () => {
   }, [isOpen])
 
   return (
-    <header className="relative bg-gray-900 text-white px-6 md:px-10 border-b border-neutral-800">
+    <header className="relative bg-chrome text-white px-6 md:px-10 border-b border-white/10">
 
       {/* Header */}
       <div className="relative max-w-7xl mx-auto h-24 md:h-28 flex items-center justify-between">
@@ -66,7 +66,7 @@ const Header = () => {
             ref={buttonRef}
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="text-gray-300 hover:text-[rgb(141,196,62)] p-2 transition-colors duration-200"
+            className="text-gray-300 hover:text-brand p-2 transition-colors duration-200"
             aria-label={isOpen ? 'סגירת תפריט' : 'פתיחת תפריט'}
             aria-expanded={isOpen}
             aria-controls="main-menu"
@@ -111,7 +111,7 @@ const Header = () => {
               id="main-menu"
               aria-label="ניווט ראשי"
               dir="rtl"
-              className="absolute top-[4.625rem] md:top-[5rem] left-0 w-64 bg-gray-900/95 backdrop-blur-md rounded-2xl border border-gray-800 shadow-2xl z-50 p-4"
+              className="absolute top-[4.625rem] md:top-[5rem] left-0 w-64 bg-chrome/95 backdrop-blur-md rounded-2xl border border-white/10 shadow-2xl z-50 p-4"
             >
               <ul className="flex flex-col gap-2">
 
@@ -122,8 +122,8 @@ const Header = () => {
                       onClick={() => setIsOpen(false)}
                       className={({ isActive }) =>
                         `block px-4 py-3 rounded-lg text-right transition-all duration-200 ${isActive
-                          ? 'text-[rgb(141,196,62)] font-bold bg-gray-800/60'
-                          : 'text-gray-300 hover:text-[rgb(141,196,62)] hover:bg-gray-800/40'
+                          ? 'text-brand font-bold bg-white/[0.06]'
+                          : 'text-gray-300 hover:text-brand hover:bg-white/[0.04]'
                         }`
                       }
                     >
@@ -159,7 +159,7 @@ const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram (נפתח בחלון חדש)"
-            className="text-gray-400 hover:text-[rgb(141,196,62)] transition-colors"
+            className="text-gray-400 hover:text-brand transition-colors"
           >
             <FaInstagram size={22} aria-hidden="true" />
           </a>
@@ -170,7 +170,7 @@ const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook (נפתח בחלון חדש)"
-            className="text-gray-400 hover:text-[rgb(141,196,62)] transition-colors"
+            className="text-gray-400 hover:text-brand transition-colors"
           >
             <FaFacebookF size={22} aria-hidden="true" />
           </a>
@@ -181,7 +181,7 @@ const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp (נפתח בחלון חדש)"
-            className="text-gray-400 hover:text-[rgb(141,196,62)] transition-colors"
+            className="text-gray-400 hover:text-brand transition-colors"
           >
             <FaWhatsapp size={22} aria-hidden="true" />
           </a>

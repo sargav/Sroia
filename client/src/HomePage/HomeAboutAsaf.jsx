@@ -2,62 +2,23 @@ import { YEARS_OF_EXPERIENCE } from "../utils/experience";
 import useSiteStats, { formatPrice } from "../utils/useSiteStats";
 import asafImg from "./assets/asaf-personal.jpg";
 
-// ערכות צבע לכרטיס (לבחירה)
-const THEMES = {
-  // ירוק כהה (הקיים), עם מלל משני בהיר יותר
-  dark: {
-    card: "bg-[#1F2E18]",
-    tag: "text-[#9ED164]",
-    quote1: "text-white",
-    quote2: "text-[#9ED164]",
-    mark: "text-[#9ED164]/35",
-    body: "text-[#E3E7E0]",
-    rule: "border-[#9ED164]/40",
-    value: "text-white",
-    checkBg: "bg-[#9ED164]/15",
-    checkStroke: "#9ED164",
-    band: "bg-[#18240F]",
-    number: "text-[#9ED164]",
-    label: "text-[#E3E7E0]",
-    divider: "border-white/[0.15]",
-  },
-  // ירוק זית מעודן
-  olive: {
-    card: "bg-[#37452F]",
-    tag: "text-[#B4DD84]",
-    quote1: "text-white",
-    quote2: "text-[#B4DD84]",
-    mark: "text-[#B4DD84]/40",
-    body: "text-[#E6EAE2]",
-    rule: "border-[#B4DD84]/40",
-    value: "text-white",
-    checkBg: "bg-[#B4DD84]/15",
-    checkStroke: "#B4DD84",
-    band: "bg-[#26321F]",
-    number: "text-[#9ED164]",
-    label: "text-[#E6EAE2]",
-    divider: "border-white/[0.15]",
-  },
-  // ירוק מרווה בהיר
-  sage: {
-    card: "bg-[#E8EDDF]",
-    tag: "text-[#2F5216]",
-    quote1: "text-[#1F2E18]",
-    quote2: "text-[#3F6B1E]",
-    mark: "text-[#4A7322]/30",
-    body: "text-[#3A4535]",
-    rule: "border-[#4A7322]/40",
-    value: "text-[#1F2E18]",
-    checkBg: "bg-[#4A7322]/12",
-    checkStroke: "#3F6B1E",
-    band: "bg-[#1F2E18]",
-    number: "text-[#9ED164]",
-    label: "text-[#E3E7E0]",
-    divider: "border-white/[0.15]",
-  },
+// צבעי הכרטיס, מתוך פלטת האתר (מוגדרת ב-App.css)
+const THEME = {
+  card: "bg-sage",
+  tag: "text-deep",
+  quote1: "text-forest",
+  quote2: "text-deep",
+  mark: "text-deep/30",
+  body: "text-body",
+  rule: "border-deep/40",
+  value: "text-forest",
+  checkBg: "bg-deep/12",
+  checkStroke: "var(--color-deep)",
+  band: "bg-forest",
+  number: "text-brand",
+  label: "text-[#E3E7E0]",
+  divider: "border-white/[0.15]",
 };
-
-const THEME = THEMES.sage;
 
 // צד התמונה במחשב: "left" או "right"
 const PHOTO_SIDE = "right";
@@ -100,7 +61,7 @@ export default function AboutAsaf() {
   return (
     <section
       dir="rtl"
-      className="bg-[#F6F8F1] px-3 py-12 font-['Heebo',sans-serif] md:px-6 md:py-20"
+      className="bg-cream px-3 py-12 font-['Heebo',sans-serif] md:px-6 md:py-20"
     >
       <div className={`mx-auto max-w-[77.5rem] overflow-hidden rounded-[1.75rem] ${THEME.card} shadow-[0_18px_40px_rgba(31,46,24,0.09)] md:rounded-[2rem]`}>
         {/* תמונה בראש הכרטיס, עם פינות מעוגלות - רק בנייד ובטאבלט */}

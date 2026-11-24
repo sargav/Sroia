@@ -15,7 +15,7 @@ export default function Hero() {
   return (
     <section
       dir="rtl"
-      className="relative isolate overflow-hidden bg-[#F7F5EF] font-['Heebo',sans-serif] md:flex md:min-h-[42.5rem] md:items-center"
+      className="relative isolate overflow-hidden bg-cream font-['Heebo',sans-serif] md:flex md:min-h-[42.5rem] md:items-center"
     >
       <style>{`
         @keyframes hero-image-in {
@@ -99,7 +99,7 @@ export default function Hero() {
         }}
       />
       {/* בטאבלט הטקסט רחב יחסית למסך, ולכן השכבה הבהירה על כל הרוחב */}
-      <div className="pointer-events-none absolute inset-0 -z-20 hidden bg-[#F8F6EF]/[0.93] md:block lg:hidden" />
+      <div className="pointer-events-none absolute inset-0 -z-20 hidden bg-cream/[0.93] md:block lg:hidden" />
       {/* במסך מחשב קטן הטקסט מתקרב לאמצע, ולכן השכבה הבהירה מעט רחבה יותר */}
       <div
         className="pointer-events-none absolute inset-0 -z-20 hidden lg:block xl:hidden"
@@ -126,16 +126,16 @@ export default function Hero() {
           <div className="hero-text-focus">
             {/* תווית עליונה */}
             <div className="mb-3.5 flex items-center justify-center gap-2 md:mb-5 md:gap-3">
-              <span className="h-[2px] w-5 shrink-0 bg-[#2F5216] md:w-14 md:bg-[#4A7322]" aria-hidden="true" />
-              <span className="whitespace-nowrap text-[0.9375rem] font-bold tracking-[0.03em] text-[#2F5216] md:text-[1.0625rem] md:tracking-[0.12em] md:text-[#3F6B1E]">
+              <span className="h-[2px] w-5 shrink-0 bg-deep-strong md:w-14 md:bg-deep" aria-hidden="true" />
+              <span className="whitespace-nowrap text-[0.9375rem] font-bold tracking-[0.03em] text-deep-strong md:text-[1.0625rem] md:tracking-[0.12em] md:text-deep">
                 המעטפת המקצועית לבונה הפרטי
               </span>
-              <span className="h-[2px] w-5 shrink-0 bg-[#2F5216] md:w-14 md:bg-[#4A7322]" aria-hidden="true" />
+              <span className="h-[2px] w-5 shrink-0 bg-deep-strong md:w-14 md:bg-deep" aria-hidden="true" />
             </div>
 
-            <h1 className="mb-4 text-[1.875rem] font-black leading-[1.25] text-[#252A22] sm:text-[2.25rem] md:mb-5 md:text-[2.5rem]">
+            <h1 className="mb-4 text-[1.875rem] font-black leading-[1.25] text-ink sm:text-[2.25rem] md:mb-5 md:text-[2.5rem]">
               <span className="block">בונים בית פרטי?</span>
-              <span className="block text-[#4A7322]">
+              <span className="block text-deep">
                 {/* במסך צר נשבר בין המילים ולא באמצע צירוף */}
                 <span className="inline-block">ידע.</span>{" "}
                 <span className="inline-block">שליטה.</span>{" "}
@@ -143,25 +143,25 @@ export default function Hero() {
               </span>
             </h1>
 
-            <p className="mx-auto mb-2.5 max-w-[35rem] md:mb-0 text-balance text-[1rem] font-medium leading-[1.75] text-[#3F463A] md:leading-[1.8]">
-              <strong className="font-extrabold text-[#252A22]">
+            <p className="mx-auto mb-2.5 max-w-[35rem] md:mb-0 text-balance text-[1rem] font-medium leading-[1.75] text-body md:leading-[1.8]">
+              <strong className="font-extrabold text-ink">
                 סרויה ניהול פרויקטים ופיקוח בנייה
               </strong>{" "}
               {/* במחשב שם החברה בשורה נפרדת */}
               <br className="hidden md:block" />
               מלווה אתכם מרכישת המגרש ועד קבלת המפתח.
             </p>
-            <p className="mx-auto mb-4 max-w-[35rem] text-balance text-[1rem] font-medium leading-[1.75] text-[#3F463A] md:mb-[1.125rem] md:leading-[1.8]">
+            <p className="mx-auto mb-4 max-w-[35rem] text-balance text-[1rem] font-medium leading-[1.75] text-body md:mb-[1.125rem] md:leading-[1.8]">
               בניהול מקצועי מלא או בבנייה עצמאית, אנחנו מעניקים לכם את הידע
               והכלים לקבל החלטות נכונות, לחסוך טעויות יקרות ולבנות באיכות
               גבוהה.
             </p>
 
             {/* שלושת השירותים: בנייד עם נקודה לכל פריט, במסך רחב עם נקודות מפרידות */}
-            <ul className="mb-[1.375rem] flex flex-wrap justify-center gap-x-3.5 gap-y-1.5 text-[0.875rem] font-bold text-[#2F5216] md:mb-[1.625rem] md:gap-x-2.5 md:text-[#3F6B1E]">
+            <ul className="mb-[1.375rem] flex flex-wrap justify-center gap-x-3.5 gap-y-1.5 text-[0.875rem] font-bold text-deep-strong md:mb-[1.625rem] md:gap-x-2.5 md:text-deep">
               {SERVICES.map((service, index) => (
                 <li key={service} className="inline-flex items-center gap-1.5 whitespace-nowrap md:gap-2.5">
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#4A7322] md:hidden" aria-hidden="true" />
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-deep md:hidden" aria-hidden="true" />
                   {index > 0 && (
                     <span className="hidden md:inline" aria-hidden="true">·</span>
                   )}
@@ -180,13 +180,13 @@ export default function Hero() {
               }}
               className="
                 group flex items-center justify-center gap-4
-                rounded-full bg-[#86B84D]
-                px-7 py-4 text-[0.9375rem] font-bold text-[#1a1a1a]
-                shadow-[0_9px_25px_rgba(121,169,66,0.28)]
+                rounded-full bg-brand
+                px-7 py-4 text-[0.9375rem] font-bold text-brand-ink
+                shadow-[0_9px_25px_rgba(128,204,40,0.28)]
                 transition-all duration-300
                 hover:-translate-y-1 hover:gap-6
-                hover:bg-[#78A63F]
-                hover:shadow-[0_14px_32px_rgba(121,169,66,0.36)]
+                hover:bg-brand-hover
+                hover:shadow-[0_14px_32px_rgba(128,204,40,0.36)]
               "
             >
               <span>לתיאום פגישת ייעוץ חינם</span>
@@ -203,13 +203,13 @@ export default function Hero() {
               onClick={() => navigate("/guid-to-builder")}
               className="
                 group flex items-center justify-center gap-4
-                rounded-full border border-[#4A7322]
+                rounded-full border border-deep
                 bg-white/85 px-7 py-4
-                text-[0.9375rem] font-bold text-[#3F6B1E]
+                text-[0.9375rem] font-bold text-deep
                 backdrop-blur-sm transition-all duration-300
                 hover:-translate-y-1 hover:gap-6
-                hover:border-[#86B84D]
-                hover:bg-[#EFF6E7]
+                hover:border-deep
+                hover:bg-sage
               "
             >
               <span>המדריך החינמי לבונה</span>
