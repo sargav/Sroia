@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white border-t border-neutral-800 mt-auto">
+    <footer className="bg-charcoal text-white border-t border-white/10 mt-auto">
 
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-6">
         <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-2">
@@ -15,7 +15,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram (נפתח בחלון חדש)"
-              className="text-gray-400 hover:text-[rgb(141,196,62)] transition-colors"
+              className="text-gray-400 hover:text-brand transition-colors"
             >
               <FaInstagram size={22} aria-hidden="true" />
             </a>
@@ -25,7 +25,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook (נפתח בחלון חדש)"
-              className="text-gray-400 hover:text-[rgb(141,196,62)] transition-colors"
+              className="text-gray-400 hover:text-brand transition-colors"
             >
               <FaFacebookF size={22} aria-hidden="true" />
             </a>
@@ -35,7 +35,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp (נפתח בחלון חדש)"
-              className="text-gray-400 hover:text-[rgb(141,196,62)] transition-colors"
+              className="text-gray-400 hover:text-brand transition-colors"
             >
               <FaWhatsapp size={22} aria-hidden="true" />
             </a>
@@ -47,14 +47,14 @@ const Footer = () => {
 
           {/* קישורים בין העמודים */}
           <nav aria-label="ניווט תחתון" className="flex flex-wrap justify-center flex-col gap-6 items-end">
-            <Link to="/" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > דף הבית </Link>
-            {/* <Link to="/about" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > אודות</Link> */}
-            <Link to="/projects" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > ניהול פרויקטים </Link>
-            <Link to="/courses" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > קורס בית בשתי ידיים </Link>
-            <Link to="/application" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > המצפן לבונה-אפליקציה </Link>
-            <Link to="/guid-to-builder" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > המדריך לבונה </Link>
-            <Link to="/benefit" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > הטבות </Link>
-            <Link to="/contact" className="text-sm text-gray-400 hover:text-[rgb(141,196,62)] transition-colors" > צור קשר </Link>
+            <Link to="/" className="text-sm text-gray-400 hover:text-brand transition-colors" > דף הבית </Link>
+            {/* <Link to="/about" className="text-sm text-gray-400 hover:text-brand transition-colors" > אודות</Link> */}
+            <Link to="/projects" className="text-sm text-gray-400 hover:text-brand transition-colors" > ניהול פרויקטים </Link>
+            <Link to="/courses" className="text-sm text-gray-400 hover:text-brand transition-colors" > קורס בית בשתי ידיים </Link>
+            <Link to="/application" className="text-sm text-gray-400 hover:text-brand transition-colors" > המצפן לבונה-אפליקציה </Link>
+            <Link to="/guid-to-builder" className="text-sm text-gray-400 hover:text-brand transition-colors" > המדריך לבונה </Link>
+            <Link to="/benefit" className="text-sm text-gray-400 hover:text-brand transition-colors" > הטבות </Link>
+            <Link to="/contact" className="text-sm text-gray-400 hover:text-brand transition-colors" > צור קשר </Link>
           </nav>
 
 
@@ -62,7 +62,7 @@ const Footer = () => {
         </div>
 
         {/* זכויות יוצרים */}
-        <div className="mt-5 pt-4 border-t border-neutral-800 text-center text-xs text-gray-400">
+        <div className="mt-5 pt-4 border-t border-white/10 text-center text-xs text-gray-400">
           כל הזכויות שמורות לסרויה ניהול פרויקטים © {new Date().getFullYear()} | sara.code() בניה
         </div>
 

@@ -9,13 +9,29 @@ const SERVICES = [
   'אפליקציית "המצפן לבונה"',
 ];
 
+
+const CH = "32,35,35"; // אפור פחם #202323
+
+// צבעי המסך הראשון: שכבת אפור פחם רכה מעל התמונה, טקסט לבן וירוק המותג
+const T = {
+  section: "bg-charcoal",
+  mob: `linear-gradient(to bottom, rgba(${CH},0.78) 0%, rgba(${CH},0.78) calc(100% - 190px), rgba(${CH},0.2) calc(100% - 40px), rgba(${CH},0) 100%)`,
+  md: "bg-charcoal/[0.8]",
+  lgxl: `linear-gradient(to left, rgba(${CH},0.84) 0%, rgba(${CH},0.8) 60%, rgba(${CH},0.3) 78%, rgba(${CH},0) 100%)`,
+  xl: `linear-gradient(to left, rgba(${CH},0.82) 0%, rgba(${CH},0.78) 50%, rgba(${CH},0.3) 62%, rgba(${CH},0) 85%)`,
+  bottom: "from-transparent",
+  line: "bg-brand", eyebrow: "text-[#E6E8E7]", h1: "text-white", h1b: "text-brand",
+  body: "text-[#E6E8E7]", strong: "text-white", list: "text-[#E6E8E7]", dot: "bg-brand",
+  btn2: "border-white/70 bg-transparent text-white hover:border-white hover:bg-white/10",
+};
+
 export default function Hero() {
   const navigate = useNavigate();
 
   return (
     <section
       dir="rtl"
-      className="relative isolate overflow-hidden bg-[#F7F5EF] font-['Heebo',sans-serif] md:flex md:min-h-[42.5rem] md:items-center"
+      className={`relative isolate overflow-hidden ${T.section} font-['Heebo',sans-serif] md:flex md:min-h-[42.5rem] md:items-center`}
     >
       <style>{`
         @keyframes hero-image-in {
@@ -95,29 +111,29 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0 -z-20 md:hidden"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(248,246,239,0.82) 0%, rgba(248,246,239,0.82) calc(100% - 190px), rgba(248,246,239,0.25) calc(100% - 40px), rgba(248,246,239,0.1) 100%)",
+            T.mob,
         }}
       />
       {/* בטאבלט הטקסט רחב יחסית למסך, ולכן השכבה הבהירה על כל הרוחב */}
-      <div className="pointer-events-none absolute inset-0 -z-20 hidden bg-[#F8F6EF]/[0.93] md:block lg:hidden" />
+      <div className={`pointer-events-none absolute inset-0 -z-20 hidden ${T.md} md:block lg:hidden`} />
       {/* במסך מחשב קטן הטקסט מתקרב לאמצע, ולכן השכבה הבהירה מעט רחבה יותר */}
       <div
         className="pointer-events-none absolute inset-0 -z-20 hidden lg:block xl:hidden"
         style={{
           background:
-            "linear-gradient(to left, rgba(248,246,239,0.93) 0%, rgba(248,246,239,0.93) 60%, rgba(248,246,239,0.2) 88%, rgba(248,246,239,0) 100%)",
+            T.lgxl,
         }}
       />
       <div
         className="pointer-events-none absolute inset-0 -z-20 hidden xl:block"
         style={{
           background:
-            "linear-gradient(to left, rgba(248,246,239,0.93) 0%, rgba(248,246,239,0.93) 48%, rgba(248,246,239,0.2) 80%, rgba(248,246,239,0) 100%)",
+            T.xl,
         }}
       />
 
       {/* שכבה תחתונה עדינה */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-20 h-[35%] bg-gradient-to-t from-[#F4F0E7]/35 to-transparent" />
+      <div className={`pointer-events-none absolute inset-x-0 bottom-0 -z-20 h-[35%] bg-gradient-to-t ${T.bottom} to-transparent`} />
 
       <div className="relative mx-auto w-full max-w-[80rem] px-5 pb-[10.625rem] pt-8 md:px-12 md:py-16 lg:px-20">
         <div className="mx-auto max-w-[36.25rem] text-center md:mx-0">
@@ -126,16 +142,16 @@ export default function Hero() {
           <div className="hero-text-focus">
             {/* תווית עליונה */}
             <div className="mb-3.5 flex items-center justify-center gap-2 md:mb-5 md:gap-3">
-              <span className="h-[2px] w-5 shrink-0 bg-[#2F5216] md:w-14 md:bg-[#4A7322]" aria-hidden="true" />
-              <span className="whitespace-nowrap text-[0.9375rem] font-bold tracking-[0.03em] text-[#2F5216] md:text-[1.0625rem] md:tracking-[0.12em] md:text-[#3F6B1E]">
+              <span className={`h-[2px] w-5 shrink-0 md:w-14 ${T.line}`} aria-hidden="true" />
+              <span className={`whitespace-nowrap text-[0.9375rem] font-bold tracking-[0.03em] md:text-[1.0625rem] md:tracking-[0.12em] ${T.eyebrow}`}>
                 המעטפת המקצועית לבונה הפרטי
               </span>
-              <span className="h-[2px] w-5 shrink-0 bg-[#2F5216] md:w-14 md:bg-[#4A7322]" aria-hidden="true" />
+              <span className={`h-[2px] w-5 shrink-0 md:w-14 ${T.line}`} aria-hidden="true" />
             </div>
 
-            <h1 className="mb-4 text-[1.875rem] font-black leading-[1.25] text-[#252A22] sm:text-[2.25rem] md:mb-5 md:text-[2.5rem]">
+            <h1 className={`mb-4 text-[1.875rem] font-black leading-[1.25] ${T.h1} sm:text-[2.25rem] md:mb-5 md:text-[2.5rem]`}>
               <span className="block">בונים בית פרטי?</span>
-              <span className="block text-[#4A7322]">
+              <span className={`block ${T.h1b}`}>
                 {/* במסך צר נשבר בין המילים ולא באמצע צירוף */}
                 <span className="inline-block">ידע.</span>{" "}
                 <span className="inline-block">שליטה.</span>{" "}
@@ -143,25 +159,25 @@ export default function Hero() {
               </span>
             </h1>
 
-            <p className="mx-auto mb-2.5 max-w-[35rem] md:mb-0 text-balance text-[1rem] font-medium leading-[1.75] text-[#3F463A] md:leading-[1.8]">
-              <strong className="font-extrabold text-[#252A22]">
+            <p className={`mx-auto mb-2.5 max-w-[35rem] md:mb-0 text-balance text-[1rem] font-medium leading-[1.75] ${T.body} md:leading-[1.8]`}>
+              <strong className={`font-extrabold ${T.strong}`}>
                 סרויה ניהול פרויקטים ופיקוח בנייה
               </strong>{" "}
               {/* במחשב שם החברה בשורה נפרדת */}
               <br className="hidden md:block" />
               מלווה אתכם מרכישת המגרש ועד קבלת המפתח.
             </p>
-            <p className="mx-auto mb-4 max-w-[35rem] text-balance text-[1rem] font-medium leading-[1.75] text-[#3F463A] md:mb-[1.125rem] md:leading-[1.8]">
+            <p className={`mx-auto mb-4 max-w-[35rem] text-balance text-[1rem] font-medium leading-[1.75] ${T.body} md:mb-[1.125rem] md:leading-[1.8]`}>
               בניהול מקצועי מלא או בבנייה עצמאית, אנחנו מעניקים לכם את הידע
               והכלים לקבל החלטות נכונות, לחסוך טעויות יקרות ולבנות באיכות
               גבוהה.
             </p>
 
             {/* שלושת השירותים: בנייד עם נקודה לכל פריט, במסך רחב עם נקודות מפרידות */}
-            <ul className="mb-[1.375rem] flex flex-wrap justify-center gap-x-3.5 gap-y-1.5 text-[0.875rem] font-bold text-[#2F5216] md:mb-[1.625rem] md:gap-x-2.5 md:text-[#3F6B1E]">
+            <ul className={`mb-[1.375rem] flex flex-wrap justify-center gap-x-3.5 gap-y-1.5 text-[0.875rem] font-bold md:mb-[1.625rem] md:gap-x-2.5 ${T.list}`}>
               {SERVICES.map((service, index) => (
                 <li key={service} className="inline-flex items-center gap-1.5 whitespace-nowrap md:gap-2.5">
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#4A7322] md:hidden" aria-hidden="true" />
+                  <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${T.dot} md:hidden`} aria-hidden="true" />
                   {index > 0 && (
                     <span className="hidden md:inline" aria-hidden="true">·</span>
                   )}
@@ -180,13 +196,13 @@ export default function Hero() {
               }}
               className="
                 group flex items-center justify-center gap-4
-                rounded-full bg-[#86B84D]
-                px-7 py-4 text-[0.9375rem] font-bold text-[#1a1a1a]
-                shadow-[0_9px_25px_rgba(121,169,66,0.28)]
+                rounded-[0.625rem] bg-brand
+                px-7 py-4 text-[0.9375rem] font-bold text-brand-ink
+                shadow-[0_9px_25px_rgba(128,204,40,0.28)]
                 transition-all duration-300
                 hover:-translate-y-1 hover:gap-6
-                hover:bg-[#78A63F]
-                hover:shadow-[0_14px_32px_rgba(121,169,66,0.36)]
+                hover:bg-brand-hover
+                hover:shadow-[0_14px_32px_rgba(128,204,40,0.36)]
               "
             >
               <span>לתיאום פגישת ייעוץ חינם</span>
@@ -201,16 +217,14 @@ export default function Hero() {
             <button
               type="button"
               onClick={() => navigate("/guid-to-builder")}
-              className="
+              className={`
                 group flex items-center justify-center gap-4
-                rounded-full border border-[#4A7322]
-                bg-white/85 px-7 py-4
-                text-[0.9375rem] font-bold text-[#3F6B1E]
+                rounded-[0.625rem] border px-7 py-4
+                text-[0.9375rem] font-bold
                 backdrop-blur-sm transition-all duration-300
                 hover:-translate-y-1 hover:gap-6
-                hover:border-[#86B84D]
-                hover:bg-[#EFF6E7]
-              "
+                ${T.btn2}
+              `}
             >
               <span>המדריך החינמי לבונה</span>
               <span
