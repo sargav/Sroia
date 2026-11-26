@@ -204,7 +204,7 @@ export default function Hero() {
                 hover:shadow-[0_14px_32px_rgba(128,204,40,0.36)]
               "
             >
-              <span>לתיאום פגישת ייעוץ חינם</span>
+              <span>לתיאום פגישת היכרות</span>
               <span
                 className="transition-transform duration-300 group-hover:-translate-x-1"
                 aria-hidden="true"
