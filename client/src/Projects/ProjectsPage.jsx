@@ -49,12 +49,12 @@ export default function ProjectManagement() {
   const navigate = useNavigate();
 
   return (
-    <div dir="rtl" className="overflow-hidden bg-[#FAFCF7] font-['Heebo',sans-serif] text-[#213020]">
+    <div dir="rtl" className="overflow-hidden bg-[#FAFCF7] font-sans text-[#213020]">
       <Hero />
       {/* <AboutAsaf /> */}
       <WhyUs />
       <div>
-        <div className="text-center mt-6 font-['Heebo',sans-serif]">
+        <div className="text-center mt-6 font-sans">
           <div className=" flex items-center justify-center gap-4">
             <span className="h-px w-10 bg-gradient-to-l from-[#8EAD70] to-transparent" />
 
@@ -72,7 +72,7 @@ export default function ProjectManagement() {
       <StepsSection />
       <section
         dir="rtl"
-        className="relative overflow-hidden bg-[#F7F5EF] py-20 font-['Heebo',sans-serif] md:py-28"
+        className="relative overflow-hidden bg-[#F7F5EF] py-20 font-sans md:py-28"
       >
         {/* תמונת רקע עדינה */}
         <div
@@ -235,7 +235,7 @@ export default function ProjectManagement() {
         </div>
       </section>
       <div className="bg-[#F4F6F2] pb-4">
-        <div className="text-center pt-10 font-['Heebo',sans-serif]">
+        <div className="text-center pt-10 font-sans">
           <div className=" flex items-center justify-center gap-4">
             <span className="h-[2px] w-10 bg-[#8FC24B]" />
 
@@ -252,7 +252,7 @@ export default function ProjectManagement() {
 
       <section
         dir="rtl"
-        className="relative overflow-hidden bg-[#1F2E18] py-20 font-['Heebo',sans-serif] md:py-12"
+        className="relative overflow-hidden bg-[#1F2E18] py-20 font-sans md:py-12"
       >
 
         <div className="relative mx-auto max-w-[47.5rem] px-5 text-center">

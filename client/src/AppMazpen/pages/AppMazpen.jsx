@@ -66,7 +66,7 @@ const makeFaqs = (price) => [
   [`האם המחיר יישאר ${price} ₪?`, "זהו מחיר השקה לתקופה מוגבלת. לאחר מכן המחיר צפוי להתעדכן."],
 ];
 
-/* האנימציה של המצפן (הגופן Heebo נטען לכל האתר ב-index.html), כדי שלא יהיה צורך לגעת ב-CSS של האתר הראשי */
+/* האנימציה של המצפן (הגופן של האתר נטען לכל האתר מ-App.css), כדי שלא יהיה צורך לגעת ב-CSS של האתר הראשי */
 function PageStyles() {
   return (
     <style>{`@keyframes compass-spin{to{transform:rotate(360deg)}}`}</style>
@@ -141,7 +141,7 @@ function CompassPage() {
   }, []);
 
   return (
-    <div dir="rtl" className="min-h-screen overflow-hidden bg-[#F6F5EF] font-['Heebo',sans-serif] text-[#2E3423]">
+    <div dir="rtl" className="min-h-screen overflow-hidden bg-[#F6F5EF] font-sans text-[#2E3423]">
       <PageStyles />
       <HeroSection/>
       <HomeBuildingIntro />

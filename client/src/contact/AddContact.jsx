@@ -90,7 +90,7 @@ const AddContact = () => {
     <section
       id="contact"
       dir="rtl"
-      className="relative isolate min-h-[42.5rem] overflow-hidden bg-[#EDE8DC] py-16 font-['Heebo',sans-serif] md:py-24"
+      className="relative isolate min-h-[42.5rem] overflow-hidden bg-[#EDE8DC] py-16 font-sans md:py-24"
       style={{
         backgroundImage: `url(${myBgImage})`,
         backgroundPosition: "center",

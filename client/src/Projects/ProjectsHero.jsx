@@ -41,7 +41,7 @@ export default function Hero() {
   return (
     <section
       dir="rtl"
-      className="relative overflow-hidden bg-[#1F2E18] font-['Heebo',sans-serif] md:h-[42.5rem]"
+      className="relative overflow-hidden bg-[#1F2E18] font-sans md:h-[42.5rem]"
     >
       <style>{`
         @keyframes hero-letter-in {
