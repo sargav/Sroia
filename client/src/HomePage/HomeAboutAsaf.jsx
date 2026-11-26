@@ -104,9 +104,9 @@ export default function AboutAsaf() {
             style={{ unicodeBidi: "isolate" }}
             className="whitespace-nowrap text-[1rem] font-bold leading-none text-brand min-[340px]:text-[1.125rem] min-[380px]:text-[1.25rem] sm:text-[1.875rem] md:text-[2rem] lg:text-[3rem]"
           >
-            {/* תצוגה משמאל לימין: 120,000+ ₪ */}
+            {/* תצוגה משמאל לימין: ₪120,000+ (הש"ח בצד שמאל של המספר) */}
+            {item.currency && <span className="me-[0.15em]">₪</span>}
             {item.number}
-            {item.currency && <span className="ms-[0.2em]">₪</span>}
           </dd>
           <dt className="order-last mt-1.5 text-[0.875rem] font-semibold leading-snug text-[#E3E7E0] sm:text-[0.9375rem] lg:mt-2">
             {item.text}
@@ -154,7 +154,7 @@ export default function AboutAsaf() {
             >
               ”
             </span>
-            <blockquote className="text-balance text-[1.25rem] font-semibold leading-[1.45] min-[380px]:text-[1.375rem] md:text-[2rem] lg:text-[2.25rem]">
+            <blockquote className="text-balance text-[1.25rem] font-bold leading-[1.45] min-[380px]:text-[1.375rem] md:text-[2rem] lg:text-[2.25rem]">
               <span className="block text-charcoal">
                 מאחורי כל פרויקט יש משפחה, חלום והשקעה של שנים.
               </span>
@@ -175,7 +175,7 @@ export default function AboutAsaf() {
         {/* במחשב: התמונה מימין והטקסט משמאל */}
         <div className="lg:grid lg:grid-cols-[20rem_minmax(0,1fr)] lg:items-start lg:gap-14 xl:px-12">
           <div className="lg:order-2 lg:pt-6">
-            <div className="mb-5 space-y-2 text-[1.125rem] md:space-y-3 md:border-r-2 md:border-brand md:pr-5 font-normal leading-[1.8] text-graphite">
+            <div className="mb-5 space-y-2 text-[1.125rem] md:space-y-3 md:border-r-2 md:border-brand md:pr-5 font-medium leading-[1.8] text-graphite">
               <p>
                 אסף סרויה צמח מתוך עולם הבנייה והביצוע ומביא איתו למעלה
                 מ־{YEARS_OF_EXPERIENCE} שנות ניסיון בקבלנות, בניהול ובפיקוח
