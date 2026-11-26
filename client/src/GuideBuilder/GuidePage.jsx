@@ -771,7 +771,7 @@ export default function GuidePage() {
   };
 
   return (
-    <div dir="rtl" style={{ fontFamily: "'Heebo', sans-serif" }} className="text-neutral-900">
+    <div dir="rtl" style={{ fontFamily: "'IBM Plex Sans Hebrew', sans-serif" }} className="text-neutral-900">
 
       <TopBar />
       <div style={{ backgroundColor: "#faf7ec" }}>

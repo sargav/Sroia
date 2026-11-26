@@ -35,7 +35,7 @@ export default function Services() {
     return (
      <section
   dir="rtl"
-  className="relative overflow-hidden  bg-[#EEF2E8] py-16 font-['Heebo',sans-serif] md:py-24"
+  className="relative overflow-hidden  bg-[#EEF2E8] py-16 font-sans md:py-24"
 >
         
             {/* שכבה בהירה כדי שהטקסט יהיה ברור */}

@@ -31,7 +31,7 @@ export default function Hero() {
   return (
     <section
       dir="rtl"
-      className={`relative isolate overflow-hidden ${T.section} font-['Heebo',sans-serif] md:flex md:min-h-[42.5rem] md:items-center`}
+      className={`relative isolate overflow-hidden ${T.section} font-sans md:flex md:min-h-[42.5rem] md:items-center`}
     >
       <style>{`
         @keyframes hero-image-in {
@@ -143,13 +143,13 @@ export default function Hero() {
             {/* תווית עליונה */}
             <div className="mb-3.5 flex items-center justify-center gap-2 md:mb-5 md:gap-3">
               <span className={`h-[2px] w-5 shrink-0 md:w-14 ${T.line}`} aria-hidden="true" />
-              <span className={`whitespace-nowrap text-[0.9375rem] font-bold tracking-[0.03em] md:text-[1.0625rem] md:tracking-[0.12em] ${T.eyebrow}`}>
+              <span className={`whitespace-nowrap text-[0.9375rem] font-semibold tracking-[0.03em] md:text-[1.0625rem] md:tracking-[0.12em] ${T.eyebrow}`}>
                 המעטפת המקצועית לבונה הפרטי
               </span>
               <span className={`h-[2px] w-5 shrink-0 md:w-14 ${T.line}`} aria-hidden="true" />
             </div>
 
-            <h1 className={`mb-4 text-[1.875rem] font-black leading-[1.25] ${T.h1} sm:text-[2.25rem] md:mb-5 md:text-[2.5rem]`}>
+            <h1 className={`mb-4 text-[1.875rem] font-semibold leading-[1.25] ${T.h1} sm:text-[2.25rem] md:mb-5 md:text-[2.5rem]`}>
               <span className="block">בונים בית פרטי?</span>
               <span className={`block ${T.h1b}`}>
                 {/* במסך צר נשבר בין המילים ולא באמצע צירוף */}
@@ -159,22 +159,22 @@ export default function Hero() {
               </span>
             </h1>
 
-            <p className={`mx-auto mb-2.5 max-w-[35rem] md:mb-0 text-balance text-[1rem] font-medium leading-[1.75] ${T.body} md:leading-[1.8]`}>
-              <strong className={`font-extrabold ${T.strong}`}>
+            <p className={`mx-auto mb-2.5 max-w-[35rem] md:mb-0 text-balance text-[1rem] font-normal leading-[1.75] ${T.body} md:leading-[1.8]`}>
+              <strong className={`font-semibold ${T.strong}`}>
                 סרויה ניהול פרויקטים ופיקוח בנייה
               </strong>{" "}
               {/* במחשב שם החברה בשורה נפרדת */}
               <br className="hidden md:block" />
               מלווה אתכם מרכישת המגרש ועד קבלת המפתח.
             </p>
-            <p className={`mx-auto mb-4 max-w-[35rem] text-balance text-[1rem] font-medium leading-[1.75] ${T.body} md:mb-[1.125rem] md:leading-[1.8]`}>
+            <p className={`mx-auto mb-4 max-w-[35rem] text-balance text-[1rem] font-normal leading-[1.75] ${T.body} md:mb-[1.125rem] md:leading-[1.8]`}>
               בניהול מקצועי מלא או בבנייה עצמאית, אנחנו מעניקים לכם את הידע
               והכלים לקבל החלטות נכונות, לחסוך טעויות יקרות ולבנות באיכות
               גבוהה.
             </p>
 
             {/* שלושת השירותים: בנייד עם נקודה לכל פריט, במסך רחב עם נקודות מפרידות */}
-            <ul className={`mb-[1.375rem] flex flex-wrap justify-center gap-x-3.5 gap-y-1.5 text-[0.875rem] font-bold md:mb-[1.625rem] md:gap-x-2.5 ${T.list}`}>
+            <ul className={`mb-[1.375rem] flex flex-wrap justify-center gap-x-3.5 gap-y-1.5 text-[0.875rem] font-semibold md:mb-[1.625rem] md:gap-x-2.5 ${T.list}`}>
               {SERVICES.map((service, index) => (
                 <li key={service} className="inline-flex items-center gap-1.5 whitespace-nowrap md:gap-2.5">
                   <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${T.dot} md:hidden`} aria-hidden="true" />
@@ -197,7 +197,7 @@ export default function Hero() {
               className="
                 group flex items-center justify-center gap-4
                 rounded-[0.625rem] bg-brand
-                px-7 py-4 text-[0.9375rem] font-bold text-brand-ink
+                px-7 py-4 text-[0.9375rem] font-semibold text-brand-ink
                 shadow-[0_9px_25px_rgba(128,204,40,0.28)]
                 transition-all duration-300
                 hover:-translate-y-1 hover:gap-6
@@ -220,7 +220,7 @@ export default function Hero() {
               className={`
                 group flex items-center justify-center gap-4
                 rounded-[0.625rem] border px-7 py-4
-                text-[0.9375rem] font-bold
+                text-[0.9375rem] font-semibold
                 backdrop-blur-sm transition-all duration-300
                 hover:-translate-y-1 hover:gap-6
                 ${T.btn2}

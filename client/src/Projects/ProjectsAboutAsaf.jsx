@@ -24,7 +24,7 @@ export default function AboutAsaf() {
   return (
     <section
       dir="rtl"
-      className="relative overflow-hidden bg-gradient-to-br from-[#FAFBF7] via-[#F6F8F1] to-[#F0F3E8] py-16 font-['Heebo',sans-serif] md:py-24"
+      className="relative overflow-hidden bg-gradient-to-br from-[#FAFBF7] via-[#F6F8F1] to-[#F0F3E8] py-16 font-sans md:py-24"
     >
       {/* כתמי רקע עדינים */}
       <div className="pointer-events-none absolute -right-24 -top-24 h-[21.25rem] w-[21.25rem] rounded-full bg-white/70 blur-3xl" />

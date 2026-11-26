@@ -7,7 +7,7 @@ export default function NotFound() {
     <PageTitle title="העמוד לא נמצא">
       <section
         dir="rtl"
-        className="flex min-h-[70vh] items-center justify-center bg-[#FAFCF7] px-6 py-16 font-['Heebo',sans-serif]"
+        className="flex min-h-[70vh] items-center justify-center bg-[#FAFCF7] px-6 py-16 font-sans"
       >
         <div className="mx-auto max-w-[35rem] text-center">
           {/* 404 קישוטי: מוצג דרך CSS כדי שלא ייחשב טקסט (הכותרת למטה אומרת את זה במילים) */}

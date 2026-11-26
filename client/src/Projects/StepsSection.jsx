@@ -36,7 +36,7 @@ const StepsSection = () => {
   return (
     <section
       dir="rtl"
-      className="relative overflow-hidden bg-[#F4F6F2] py-16 font-['Heebo',sans-serif] md:py-20"
+      className="relative overflow-hidden bg-[#F4F6F2] py-16 font-sans md:py-20"
     >
       <div className="relative mx-auto max-w-[81.25rem] px-5 md:px-10 lg:px-14">
         {/* כותרת */}

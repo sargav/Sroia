@@ -60,7 +60,7 @@ export default function WhyUs() {
       ref={sectionRef}
       id="why-us"
       dir="rtl"
-      className="relative overflow-hidden bg-[#FBF8F2] py-16 font-['Heebo',sans-serif] md:py-20"
+      className="relative overflow-hidden bg-[#FBF8F2] py-16 font-sans md:py-20"
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",

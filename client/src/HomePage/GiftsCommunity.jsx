@@ -34,7 +34,7 @@ export default function GiftsCommunity() {
       ref={sectionRef}
       id="gifts"
       dir="rtl"
-      className="relative overflow-hidden py-16 font-['Heebo',sans-serif] md:py-24"
+      className="relative overflow-hidden py-16 font-sans md:py-24"
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundPosition: "center",

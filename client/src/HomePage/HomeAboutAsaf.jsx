@@ -40,7 +40,7 @@ function Values() {
         {VALUES.map((value, i) => (
           <li
             key={value}
-            className="flex items-center gap-4 whitespace-nowrap text-[1rem] font-bold text-charcoal"
+            className="flex items-center gap-4 whitespace-nowrap text-[1rem] font-semibold text-charcoal"
           >
             {i > 0 && (
               <span
@@ -66,7 +66,7 @@ function Values() {
       {VALUES.map((value, i) => (
         <li
           key={value}
-          className={`flex items-center gap-2 whitespace-nowrap text-[1rem] font-bold text-charcoal ${
+          className={`flex items-center gap-2 whitespace-nowrap text-[1rem] font-semibold text-charcoal ${
             i > 0 && V.values === "dividers" ? "sm:border-r sm:border-line" : ""
           }`}
         >
@@ -102,13 +102,13 @@ export default function AboutAsaf() {
           <dd
             dir="ltr"
             style={{ unicodeBidi: "isolate" }}
-            className="whitespace-nowrap text-[1rem] font-black leading-none text-brand min-[340px]:text-[1.125rem] min-[380px]:text-[1.25rem] sm:text-[1.875rem] md:text-[2rem] lg:text-[3rem]"
+            className="whitespace-nowrap text-[1rem] font-bold leading-none text-brand min-[340px]:text-[1.125rem] min-[380px]:text-[1.25rem] sm:text-[1.875rem] md:text-[2rem] lg:text-[3rem]"
           >
             {/* תצוגה משמאל לימין: 120,000+ ₪ */}
             {item.number}
             {item.currency && <span className="ms-[0.2em]">₪</span>}
           </dd>
-          <dt className="order-last mt-1.5 text-[0.875rem] font-bold leading-snug text-[#E3E7E0] sm:text-[0.9375rem] lg:mt-2">
+          <dt className="order-last mt-1.5 text-[0.875rem] font-semibold leading-snug text-[#E3E7E0] sm:text-[0.9375rem] lg:mt-2">
             {item.text}
           </dt>
         </div>
@@ -119,7 +119,7 @@ export default function AboutAsaf() {
   return (
     <section
       dir="rtl"
-      className={`${V.section} font-['Heebo',sans-serif] ${
+      className={`${V.section} font-sans ${
         V.bandOutside ? "pt-12 md:pt-16" : "py-8 md:py-16"
       }`}
     >
@@ -138,10 +138,10 @@ export default function AboutAsaf() {
         <div className="mx-auto mb-6 max-w-[70rem] text-center lg:mb-6">
           {/* שם ותואר בשתי שורות */}
           <p className="mb-4 leading-snug">
-            <span className="block text-[1.375rem] font-extrabold text-charcoal md:text-[1.65rem]">
+            <span className="block text-[1.375rem] font-bold text-charcoal md:text-[1.65rem]">
               אסף סרויה
             </span>
-            <span className="mt-0.5 block text-[1rem] font-bold tracking-[0.03em] text-deep md:text-[1.0625rem] md:tracking-[0.08em]">
+            <span className="mt-0.5 block text-[1rem] font-semibold tracking-[0.03em] text-deep md:text-[1.0625rem] md:tracking-[0.08em]">
               מייסד החברה ומומחה לבנייה פרטית
             </span>
           </p>
@@ -154,7 +154,7 @@ export default function AboutAsaf() {
             >
               ”
             </span>
-            <blockquote className="text-balance text-[1.25rem] font-black leading-[1.45] min-[380px]:text-[1.375rem] md:text-[2rem] lg:text-[2.25rem]">
+            <blockquote className="text-balance text-[1.25rem] font-semibold leading-[1.45] min-[380px]:text-[1.375rem] md:text-[2rem] lg:text-[2.25rem]">
               <span className="block text-charcoal">
                 מאחורי כל פרויקט יש משפחה, חלום והשקעה של שנים.
               </span>
@@ -175,7 +175,7 @@ export default function AboutAsaf() {
         {/* במחשב: התמונה מימין והטקסט משמאל */}
         <div className="lg:grid lg:grid-cols-[20rem_minmax(0,1fr)] lg:items-start lg:gap-14 xl:px-12">
           <div className="lg:order-2 lg:pt-6">
-            <div className="mb-5 space-y-2 text-[1.125rem] md:space-y-3 md:border-r-2 md:border-brand md:pr-5 font-medium leading-[1.8] text-graphite">
+            <div className="mb-5 space-y-2 text-[1.125rem] md:space-y-3 md:border-r-2 md:border-brand md:pr-5 font-normal leading-[1.8] text-graphite">
               <p>
                 אסף סרויה צמח מתוך עולם הבנייה והביצוע ומביא איתו למעלה
                 מ־{YEARS_OF_EXPERIENCE} שנות ניסיון בקבלנות, בניהול ובפיקוח

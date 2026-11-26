@@ -41,7 +41,7 @@ export default function PaymentResult() {
   return (
     <div
       dir="rtl"
-      className="grid min-h-[75vh] place-items-center bg-[#F5F6F1] px-5 py-14 font-['Heebo',sans-serif] text-[#2D382B]"
+      className="grid min-h-[75vh] place-items-center bg-[#F5F6F1] px-5 py-14 font-sans text-[#2D382B]"
     >
       <div className="w-full max-w-lg rounded-[8px_36px_8px_36px] border border-[#D3DECC] bg-white px-6 py-10 text-center shadow-[0_30px_80px_rgba(50,65,43,.12)] md:px-10">
         <span
