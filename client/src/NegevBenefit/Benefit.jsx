@@ -213,7 +213,7 @@ export default function Benefit() {
     };
 
     return (
-        <div dir="rtl" style={{ backgroundColor: DARK, fontFamily: "'IBM Plex Sans Hebrew', sans-serif" }} className="min-h-screen text-white">
+        <div dir="rtl" style={{ backgroundColor: DARK, fontFamily: "'Noto Sans Hebrew', sans-serif" }} className="min-h-screen text-white">
             <PageAnimationStyles />
 
             {/* HERO */}

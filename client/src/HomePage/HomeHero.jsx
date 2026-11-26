@@ -21,7 +21,7 @@ const T = {
   xl: `linear-gradient(to left, rgba(${CH},0.82) 0%, rgba(${CH},0.78) 50%, rgba(${CH},0.3) 62%, rgba(${CH},0) 85%)`,
   bottom: "from-transparent",
   line: "bg-brand", eyebrow: "text-[#E6E8E7]", h1: "text-white", h1b: "text-brand",
-  body: "text-[#E6E8E7]", strong: "text-white", list: "text-[#E6E8E7]", dot: "bg-brand",
+  body: "text-white", strong: "text-white", list: "text-[#E6E8E7]", dot: "bg-brand",
   btn2: "border-white/70 bg-transparent text-white hover:border-white hover:bg-white/10",
 };
 
@@ -149,7 +149,7 @@ export default function Hero() {
               <span className={`h-[2px] w-5 shrink-0 md:w-14 ${T.line}`} aria-hidden="true" />
             </div>
 
-            <h1 className={`mb-4 text-[1.875rem] font-semibold leading-[1.25] ${T.h1} sm:text-[2.25rem] md:mb-5 md:text-[2.5rem]`}>
+            <h1 className={`mb-4 text-[1.875rem] font-bold leading-[1.25] ${T.h1} sm:text-[2.25rem] md:mb-5 md:text-[2.5rem]`}>
               <span className="block">בונים בית פרטי?</span>
               <span className={`block ${T.h1b}`}>
                 {/* במסך צר נשבר בין המילים ולא באמצע צירוף */}
@@ -159,7 +159,7 @@ export default function Hero() {
               </span>
             </h1>
 
-            <p className={`mx-auto mb-2.5 max-w-[35rem] md:mb-0 text-balance text-[1rem] font-normal leading-[1.75] ${T.body} md:leading-[1.8]`}>
+            <p className={`mx-auto mb-2.5 max-w-[35rem] md:mb-0 text-balance text-[1rem] font-medium leading-[1.75] ${T.body} md:leading-[1.8]`}>
               <strong className={`font-semibold ${T.strong}`}>
                 סרויה ניהול פרויקטים ופיקוח בנייה
               </strong>{" "}
@@ -167,7 +167,7 @@ export default function Hero() {
               <br className="hidden md:block" />
               מלווה אתכם מרכישת המגרש ועד קבלת המפתח.
             </p>
-            <p className={`mx-auto mb-4 max-w-[35rem] text-balance text-[1rem] font-normal leading-[1.75] ${T.body} md:mb-[1.125rem] md:leading-[1.8]`}>
+            <p className={`mx-auto mb-4 max-w-[35rem] text-balance text-[1rem] font-medium leading-[1.75] ${T.body} md:mb-[1.125rem] md:leading-[1.8]`}>
               בניהול מקצועי מלא או בבנייה עצמאית, אנחנו מעניקים לכם את הידע
               והכלים לקבל החלטות נכונות, לחסוך טעויות יקרות ולבנות באיכות
               גבוהה.

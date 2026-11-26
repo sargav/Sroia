@@ -6,7 +6,7 @@ import todaSketchBg from "./assets/sketch-warm-wide.webp";
 
 export default function ThankYouPage() {
   return (
-    <div dir="rtl" style={{ fontFamily: "'IBM Plex Sans Hebrew', sans-serif" }} className="text-neutral-900">
+    <div dir="rtl" style={{ fontFamily: "'Noto Sans Hebrew', sans-serif" }} className="text-neutral-900">
 
       <section className="relative overflow-hidden py-6" style={{ minHeight: "100vh" }}>
         <div
